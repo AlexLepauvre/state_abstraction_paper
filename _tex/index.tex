@@ -251,44 +251,60 @@ The human brain is remarkable in its capacity to learn and solve complex
 tasks efficiently. Even performing the mundane tasks from our daily life
 (planning the day, cooking a meal) constitute complex planning problems
 requiring significant computational resources to resolve somewhat
-adequately. And while in recent years, artificial intelligence have been
-able to surpass us for certain tasks (playing chess\ldots), they
-systematically require more resources to do so (more training to learn
-to solve a problem, as well as more energy required at each problem
-solving iteration).
-
-This extraordinary capacity is typically studied by applying
-reinforcement learning algorithms, where decision making problems are
-operationalized using Markov Decision Problems (MDP) modelling the
+adequately. This extraordinary capacity is typically studied by applying
+reinforcement learning (RL) algorithms, where decision making problems
+are operationalized using Markov Decision Problems (MDP) modelling the
 environment in terms of states and rewards associated with decision
 performed by participants in each states. Many algorithms have been
 developped to identify the values associated with each action in each
 state to determine the optimal decision participants have to perform in
 each state to maximize their reward over time (rather than in a single
-state, CITE SUTTON AND BARTO). While these algoritms have been
-instrumental in understanding key aspects of human decision making (HERE
-CITE SOME REVIEW), they typically fall short in two regards. In complex
-tasks, humans behaviour deviates systematically from optimal predictions
-from these models. They are not biologically plausible as the
-computation complexity grows exponentially with the number of states
-involved, making them biologically intractable for any real life
-problem.
+state, {Sutton et al.} (1998)).
 
-Both these limitations are thought to be intertwined, as it is generally
-assumed that humans behave suboptimally in complex tasks because they do
-not have the computational resources to compute the optimal solution.
-Instead, they have to identify the best possible solution given limited
-resources, an idea known as bounded rationality, which is reflect in
-participants behaviour. Practically, deviations from optimality are
-capture using flexible bias parameters to account for the systematic
-deviations from optimality. These bias are often treated as necessary to
-reveal the underlying planning more clearly. The structure of these
-preferences is rarely investigated and therefore remains poorly
-understood.
+Eventhough these models reflect participants behaviour quite well, they
+fail in systematic ways. Human participants show systematic biases away
+from optimality. These deviations are thought to reflect the limited
+processing capabilities of the human brain Gershman et al. (2015).
+Identifying the course of actions that maximizes reward accumulation in
+the long term comes at a significant computational costs, which depends
+on the size and temporal horizon of the task. Given the limited
+processing capacity of the brain, the degree to which to invest in
+costly planning should depend on how much there is to gain from it.
+Accordingly, for reward optimization under resources constraints, the
+goal is to balance the benefit of planning with its cost and adopt
+simpler decision making strategies if the latter outweight the former.
 
-In this paper, we examine human behaviour in a large state space (448
-states) to investigate whether deviations from optimality reflect the
-structure of the task.
+Decision making under constraints therefore require a judgement call to
+be made regarding the extent to which one should invest in planning, as
+the value of planning cannot be known with certainty, since knowing the
+value of planning would certainty would require planning. HERE TRY TO
+FIND A CONNECTION BACK TO BIASES. THIS IS A CORE IDEA. WE ARE TRYING TO
+SAY THAT PARTICIPANTS BIASES ARE THE BASIS FOR THIS JUDGEMENT.
+
+While it is generally accepted that biases away from optimality observed
+in human decision making, the structure of these bias remains poorly
+understood. In this paper, we examine the extent to which participants
+biases reflect the structure of the task. We show that participants
+behaviour reflect a combination of value based planning and a factored
+preferences independently associated with each dimension of that task
+that get combined in a weighted fashion at the moment of decision.
+Importantly, when participants preferences are strong, they rely on
+planning less. Accordingly, the judgement as to the extent
+
+We are trying to say two things: 1. Participants biases/preferences
+reflect the structure of the task 2. Participants preferences determines
+how much they invest in planning And one final thing that would be cool
+would be to show that participants preferences do not simply constitute
+sort of a contamination from previous experience but rather an adaptive
+mechanism. In the case of policy compression, they are showing that if
+you can't afford full planning, you upweight your prior (marginal action
+likelihood in their case), because that's kind of the best you can do.
+It would be great if we could show that the way participants weight the
+biases associated with each aspect of the task leads to higher reward.
+Like the preferences reflect offer and energy much more than costs. I
+strongly suspect that given the structure of our task, if you plan by
+ignoring energy and offer, you'd do much worst than if you ignore future
+costs.
 
 \textsubscript{Source:
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
@@ -971,6 +987,11 @@ Capretto, T., Piho, C., Kumar, R., Westfall, J., Yarkoni, T., \& Martin,
 O. A. (2022). Bambi: A simple interface for fitting bayesian linear
 models in python. \emph{Journal of Statistical Software},
 \emph{103}(15), 1--29. \url{https://doi.org/10.18637/jss.v103.i15}
+
+\bibitem[\citeproctext]{ref-gershman2015computational}
+Gershman, S. J., Horvitz, E. J., \& Tenenbaum, J. B. (2015).
+Computational rationality: A converging paradigm for intelligence in
+brains, minds, and machines. \emph{Science}, \emph{349}(6245), 273--278.
 
 \bibitem[\citeproctext]{ref-lepauvre2026preferences-code}
 Lepauvre, A., \& Kiebel, S. J. (2026). Preferences for forward planning
