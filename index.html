@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alex Lepauvre">
+<meta name="author" content="Stefan Kiebel">
+<meta name="dcterms.date" content="2026-04-24">
+<meta name="keywords" content="Decision making, Reinforcement learning">
+
+<title>Planning and preferences</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-aace5a68aa1f55e68671977e4802b583.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta name="citation_title" content="Planning and preferences">
+<meta name="citation_abstract" content="Human decision making is often described in terms of value-based planning, yet behavior in complex tasks systematically deviates from optimal predictions. These deviations are typically captured using flexible bias parameters, leaving their underlying structure unclear.
+Here, we examine behavior in a complex sequential decision task and test whether such deviations can be explained in a more principled way. We show that behavior can be well described by a combination of value-based planning and a small set of simple, state-dependent preference terms motivated by task structure. These preferences reflect coarse properties of the environment, including offer characteristics, action costs, and transition structure, and substantially improve model fit over planning alone. Importantly, they account for a meaningful portion of the variability captured by more flexible bias models.
+Across analyses, we find that preferences alone are insufficient to explain behavior, but jointly contribute with planning to guide decisions. Trial-level analyses further show that deviations from preference-consistent behavior arise when preference signals are weak or opposed by strong decision values. In addition, trials with stronger preference signals are associated with faster response times, consistent with reduced reliance on computationally demanding planning.
+Together, these results suggest that deviations from planning are not purely arbitrary, but reflect structured, task-informed preferences that complement value-based evaluation. This provides a simple and interpretable account of behavior in complex decision problems.
+">
+<meta name="citation_keywords" content="Decision making,Reinforcement learning">
+<meta name="citation_author" content="Alex Lepauvre">
+<meta name="citation_author" content="Stefan Kiebel">
+<meta name="citation_publication_date" content="2026-04-24">
+<meta name="citation_cover_date" content="2026-04-24">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-04-24">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Forward planning driven by context-dependant conflict processing in anterior cingulate cortex;,citation_author=Florian Ott;,citation_author=Eric Legler;,citation_author=Stefan J Kiebel;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_doi=10.1016/j.neuroimage.2022.119222;,citation_volume=256;,citation_journal_title=NeuroImage;,citation_publisher=Elsevier;">
+<meta name="citation_reference" content="citation_title=Forward planning driven by context-dependent conflict processing in anterior cingulate cortex - analysis code and datasets;,citation_author=Florian Ott;,citation_author=Eric Legler;,citation_author=Stefan J Kiebel;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://zenodo.org/records/6328296;,citation_doi=10.5281/zenodo.6328296;,citation_publisher=zenodo;">
+<meta name="citation_reference" content="citation_title=Preferences for forward planning in human decision-making-CODE;,citation_author=Alex Lepauvre;,citation_author=Stefan J Kiebel;,citation_publication_date=2026;,citation_cover_date=2026;,citation_year=2026;,citation_fulltext_html_url=https://github.com/AlexLepauvre/state_abstraction_paper;,citation_publisher=zenodo;">
+<meta name="citation_reference" content="citation_title=Reinforcement learning: An introduction;,citation_author=Richard S Sutton;,citation_author=Andrew G Barto;,citation_author=others;,citation_publication_date=1998;,citation_cover_date=1998;,citation_year=1998;,citation_volume=1;">
+<meta name="citation_reference" content="citation_title=PyMC: A modern, and comprehensive probabilistic programming framework in python;,citation_author=Oriol Abril-Pla;,citation_author=Virgile Andreani;,citation_author=Colin Carroll;,citation_author=Larry Dong;,citation_author=Christopher J Fonnesbeck;,citation_author=Maxim Kochurov;,citation_author=Ravin Kumar;,citation_author=Junpeng Lao;,citation_author=Christian C Luhmann;,citation_author=Osvaldo A Martin;,citation_author=others;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_volume=9;,citation_journal_title=PeerJ Computer Science;,citation_publisher=PeerJ Inc.;">
+<meta name="citation_reference" content="citation_title=Bambi: A simple interface for fitting bayesian linear models in python;,citation_author=Tomás Capretto;,citation_author=Camen Piho;,citation_author=Ravin Kumar;,citation_author=Jacob Westfall;,citation_author=Tal Yarkoni;,citation_author=Osvaldo A Martin;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://www.jstatsoft.org/index.php/jss/article/view/v103i15;,citation_issue=15;,citation_doi=10.18637/jss.v103.i15;,citation_volume=103;,citation_journal_title=Journal of Statistical Software;">
+<meta name="citation_reference" content="citation_title=Values and preferences: Defining preference construction;,citation_author=Caleb Warren;,citation_author=A Peter McGraw;,citation_author=Leaf Van Boven;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_issue=2;,citation_volume=2;,citation_journal_title=Wiley Interdisciplinary Reviews: Cognitive Science;,citation_publisher=Wiley Online Library;">
+<meta name="citation_reference" content="citation_title=Determining the relative importance of predictors in logistic regression: An extension of relative weight analysis;,citation_author=Scott Tonidandel;,citation_author=James M LeBreton;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;,citation_issue=4;,citation_volume=13;,citation_journal_title=Organizational Research Methods;,citation_publisher=Sage Publications Sage CA: Los Angeles, CA;">
+</head>
+
+<body class="quarto-light">
+
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Planning and preferences</h1>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Authors</div>
+          <div class="quarto-title-meta-heading">Affiliation</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Alex Lepauvre <a href="mailto:alex_francois.lepauvre@tu-dresden.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-4191-1578" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Chair of Cognitive Computational Neuroscience, Faculty of Psychology, TUD Dresden University of Technology, Dresden 01187, Germany
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Stefan Kiebel <a href="https://orcid.org/0000-0002-5052-1117" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Chair of Cognitive Computational Neuroscience, Faculty of Psychology, TUD Dresden University of Technology, Dresden 01187, Germany
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta">
+
+                      
+                <div>
+            <div class="quarto-title-meta-heading">Published</div>
+            <div class="quarto-title-meta-contents">
+              <p class="date">April 24, 2026</p>
+            </div>
+          </div>
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="index.docx"><i class="bi bi-file-word"></i>MS Word</a></p></div><div class="quarto-title-meta-contents"><p><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF (agu)</a></p></div><div class="quarto-title-meta-contents"><p><a href="index-meca.zip" data-meca-link="true"><i class="bi bi-archive"></i>MECA Bundle</a></p></div></div></div>
+    </div>
+
+    <div>
+      <div class="abstract">
+        <div class="block-title">Abstract</div>
+        <p>Human decision making is often described in terms of value-based planning, yet behavior in complex tasks systematically deviates from optimal predictions. These deviations are typically captured using flexible bias parameters, leaving their underlying structure unclear. Here, we examine behavior in a complex sequential decision task and test whether such deviations can be explained in a more principled way. We show that behavior can be well described by a combination of value-based planning and a small set of simple, state-dependent preference terms motivated by task structure. These preferences reflect coarse properties of the environment, including offer characteristics, action costs, and transition structure, and substantially improve model fit over planning alone. Importantly, they account for a meaningful portion of the variability captured by more flexible bias models. Across analyses, we find that preferences alone are insufficient to explain behavior, but jointly contribute with planning to guide decisions. Trial-level analyses further show that deviations from preference-consistent behavior arise when preference signals are weak or opposed by strong decision values. In addition, trials with stronger preference signals are associated with faster response times, consistent with reduced reliance on computationally demanding planning. Together, these results suggest that deviations from planning are not purely arbitrary, but reflect structured, task-informed preferences that complement value-based evaluation. This provides a simple and interpretable account of behavior in complex decision problems.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="keywords">
+        <div class="block-title">Keywords</div>
+        <p>Decision making, Reinforcement learning</p>
+      </div>
+    </div>
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">2</span> Methods</a>
+  <ul class="collapse">
+  <li><a href="#participants-and-experimental-design" id="toc-participants-and-experimental-design" class="nav-link" data-scroll-target="#participants-and-experimental-design"><span class="header-section-number">2.1</span> Participants and experimental design</a></li>
+  <li><a href="#optimal-planning-model-of-choice-behaviour" id="toc-optimal-planning-model-of-choice-behaviour" class="nav-link" data-scroll-target="#optimal-planning-model-of-choice-behaviour"><span class="header-section-number">2.2</span> Optimal planning model of choice behaviour</a></li>
+  <li><a href="#modelling-participants-preferences" id="toc-modelling-participants-preferences" class="nav-link" data-scroll-target="#modelling-participants-preferences"><span class="header-section-number">2.3</span> Modelling participants preferences</a></li>
+  <li><a href="#model-fitting-and-comparison" id="toc-model-fitting-and-comparison" class="nav-link" data-scroll-target="#model-fitting-and-comparison"><span class="header-section-number">2.4</span> Model fitting and comparison</a></li>
+  <li><a href="#reaction-times-analysis" id="toc-reaction-times-analysis" class="nav-link" data-scroll-target="#reaction-times-analysis"><span class="header-section-number">2.5</span> Reaction times analysis</a></li>
+  <li><a href="#task-structure-importance" id="toc-task-structure-importance" class="nav-link" data-scroll-target="#task-structure-importance"><span class="header-section-number">2.6</span> Task structure importance</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="header-section-number">3</span> Results</a>
+  <ul class="collapse">
+  <li><a href="#choice-behaviour" id="toc-choice-behaviour" class="nav-link" data-scroll-target="#choice-behaviour"><span class="header-section-number">3.1</span> Choice behaviour</a></li>
+  <li><a href="#reaction-times" id="toc-reaction-times" class="nav-link" data-scroll-target="#reaction-times"><span class="header-section-number">3.2</span> Reaction times</a></li>
+  <li><a href="#variables-weighting" id="toc-variables-weighting" class="nav-link" data-scroll-target="#variables-weighting"><span class="header-section-number">3.3</span> Variables weighting</a></li>
+  </ul></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">4</span> Discussion</a></li>
+  </ul>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="index-preview.html"><i class="bi bi-journal-code"></i>Article Notebook</a></li></ul></div></nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+  
+
+
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<p>The human brain is remarkable in its capacity to learn and solve complex tasks efficiently. Even performing the mundane tasks from our daily life (planning the day, cooking a meal) constitute complex planning problems requiring significant computational resources to resolve somewhat adequately. And while in recent years, artificial intelligence have been able to surpass us for certain tasks (playing chess…), they systematically require more resources to do so (more training to learn to solve a problem, as well as more energy required at each problem solving iteration).</p>
+<p>This extraordinary capacity is typically studied by applying reinforcement learning algorithms, where decision making problems are operationalized using Markov Decision Problems (MDP) modelling the environment in terms of states and rewards associated with decision performed by participants in each states. Many algorithms have been developped to identify the values associated with each action in each state to determine the optimal decision participants have to perform in each state to maximize their reward over time (rather than in a single state, CITE SUTTON AND BARTO). While these algoritms have been instrumental in understanding key aspects of human decision making (HERE CITE SOME REVIEW), they typically fall short in two regards. In complex tasks, humans behaviour deviates systematically from optimal predictions from these models. They are not biologically plausible as the computation complexity grows exponentially with the number of states involved, making them biologically intractable for any real life problem.</p>
+<p>Both these limitations are thought to be intertwined, as it is generally assumed that humans behave suboptimally in complex tasks because they do not have the computational resources to compute the optimal solution. Instead, they have to identify the best possible solution given limited resources, an idea known as bounded rationality, which is reflect in participants behaviour. Practically, deviations from optimality are capture using flexible bias parameters to account for the systematic deviations from optimality. These bias are often treated as necessary to reveal the underlying planning more clearly. The structure of these preferences is rarely investigated and therefore remains poorly understood.</p>
+<p>In this paper, we examine human behaviour in a large state space (448 states) to investigate whether deviations from optimality reflect the structure of the task.</p>
+</section>
+<section id="methods" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="methods"><span class="header-section-number">2</span> Methods</h2>
+<section id="participants-and-experimental-design" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="participants-and-experimental-design"><span class="header-section-number">2.1</span> Participants and experimental design</h3>
+<p>For this paper, we reused data from a previously published study in whichy40 participants (22, mean age=24.4, SD=4.6) took part in a sequential decision making task (<span class="citation" data-cites="ott2022forward">Ott et al. (<a href="#ref-ott2022forward" role="doc-biblioref">2022a</a>)</span>, <span class="citation" data-cites="ott2022forward-data">Ott et al. (<a href="#ref-ott2022forward-data" role="doc-biblioref">2022b</a>)</span>). The study was approved by the Institutional Review Board of the Technische Universität Dresden and conducted in accordance to ethical standards of the Declaration of Helsinki.</p>
+<p>In the task, participants were instructed to gather as many points as possible throughout the task. In each trial, participants were presented with offers associated with a reward of 1, 2, 3 or 4 points which they could either accept or reject. To accept an offer, participants have to pay an energy cost of either 1 or 2 energy points. In case they reject the offer, they gain 1 energy point. Participants energy level was capped, there energy can therefore range from 0 (depleted energy) to 6. Offers vary in each trial following a uniform distribution (equal probability of each offer in each trial). Costs remain fixed for 4 trials segments and participants were informed of the price of the current 4 trials and future 4 trials. The costs of the segment beyond the current horizon was randomly picked such that each costs transitions (from current low cost to future high and low cost and vice versa) were equally probable throughout the experiment. If participants accept an offer that they cannot afford (current energy level below current cost), no reward was awarded.</p>
+<div id="fig-design" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Experimental design">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/experimental_design.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Experimental design (from @ott2022forward): (A) Single trial procedure, each frame represents a step within the trial with duration of each step above. Top row depicts participants accepting, bottom row depicts participants rejecting. In each trial, participants are presented with N golden cups, the number of cups symbolizes the amount of reward. The blue bar represents energy level, they yellow bar represents accumulated reward so far, lightning symbols at the bottom right of each frame represent current cost (left) and future cost (right). (B) Between trial costs dependencies. A segment consists of 4 trials within which cost is fixed, and participants are aware of the cost in the current and future 4 trials but not beyond. (C) Transition structure. Cost can transition from low cost (LC) to high cost (HC), LC to LC, HC to LC and HC to HC"><img src="images/experimental_design.jpg" class="img-fluid figure-img" alt="Experimental design"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Experimental design (from <span class="citation" data-cites="ott2022forward">Ott et al. (<a href="#ref-ott2022forward" role="doc-biblioref">2022a</a>)</span>): (A) Single trial procedure, each frame represents a step within the trial with duration of each step above. Top row depicts participants accepting, bottom row depicts participants rejecting. In each trial, participants are presented with N golden cups, the number of cups symbolizes the amount of reward. The blue bar represents energy level, they yellow bar represents accumulated reward so far, lightning symbols at the bottom right of each frame represent current cost (left) and future cost (right). (B) Between trial costs dependencies. A segment consists of 4 trials within which cost is fixed, and participants are aware of the cost in the current and future 4 trials but not beyond. (C) Transition structure. Cost can transition from low cost (LC) to high cost (HC), LC to LC, HC to LC and HC to HC
+</figcaption>
+</figure>
+</div>
+<p>Accordingly, participants have to decide whether to accept or reject an offer based on the current offer and cost ratio. They also take into account the impact of their current decision on their future capabilities to accept high offers, as systematically accepting offer will deplete energy fast, hindering their capacity to collect more reward. Therefore, maximizing overall return is non trivial in this task and requires complex planning.</p>
+</section>
+<section id="optimal-planning-model-of-choice-behaviour" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="optimal-planning-model-of-choice-behaviour"><span class="header-section-number">2.2</span> Optimal planning model of choice behaviour</h3>
+<p>To model optimal behaviour in the task, we operationalized our task as a Markov Decision Process with the following tuples:</p>
+<p><span class="math display">\[
+MDP = (S, A, P, R)
+\]</span></p>
+<p>Where <span class="math inline">\(A\)</span> is the set of possible actions in our task (<span class="math inline">\(accept=1, reject=0\)</span>), <span class="math inline">\(P\)</span> is the transitional probability from a given state to all other states (<span class="math inline">\(P=P_{\forall s \in S}(s'|s, a)\)</span>), and <span class="math inline">\(R\)</span> is the reward function characterizing the reward participants can obtain in a given state for each action (<span class="math inline">\(R=R_{\forall s \in S}(s|a)\)</span>). <span class="math inline">\(S\)</span> represent all possible states in our task, where each state <span class="math inline">\(s\)</span> consists of a combination of the experimental variables in our task: <span class="math inline">\(S=E \times O \times CC \times FC \times T\)</span>, with energy <span class="math inline">\(E={0, 1, ..., 6}\)</span>, offer <span class="math inline">\(O={1, 2, 3, 4}\)</span>, current segment cost <span class="math inline">\(CC={1, 2}\)</span>, future segment cost <span class="math inline">\(FC={1, 2}\)</span> and trial <span class="math inline">\(T={1, 2,..., 13}\)</span>. Time steps (i.e.&nbsp;trials) has to be incorporated in the state space to account for the cost being trial dependent. Furthermore, despite knowledge horizon going only until trial 8, we incorporated one segment beyond the known horizon to ensure that future beyond known horizon is considered, otherwise the optimal solution would seek to reach minimal energy level by the end of the 2 segments, which would be detrimental to long term planning.</p>
+<p>By extending the time horizon to one trial beyond what is known, we can operationalize the task as an episodic MDP and solve it for the finite horizon of 13 trials. For the trials beyond the known horizon the uncertainty associated with the offer is compounded by the uncertainty related to the costs transition. In trials in the known horizon, the probability of the next state reflects the offer related stochasticity while the result is deterministic, based on participants actions and structural constraints of our task (see <span class="citation" data-cites="ott2022forward">Ott et al. (<a href="#ref-ott2022forward" role="doc-biblioref">2022a</a>)</span> for more details and <a href="LINK">here</a>).</p>
+<p>We applied backward induction to the MDP to compute value associated with each state and the value associated with each action in each state (V and Q functions respectively, see <span class="citation" data-cites="sutton1998reinforcement"><span class="nocase">Sutton et al.</span> (<a href="#ref-sutton1998reinforcement" role="doc-biblioref">1998</a>)</span>). If participants behave optimally, their behaviour should reflect a softmax function over the value associated with each action in a given state, which in the case of a binary decision problem simplifies to the logit function (see <span class="citation" data-cites="lepauvre2026preferences-code">Lepauvre and Kiebel (<a href="#ref-lepauvre2026preferences-code" role="doc-biblioref">2026</a>)</span> for proof):</p>
+<p><span class="math display">\[
+\begin{align}
+P(a=1) &amp;= \frac{1}{1+e^{DV}} \\
+where\ DV &amp;= Q(s, a=1) - Q(s, a=0)
+\end{align}
+\]</span></p>
+</section>
+<section id="modelling-participants-preferences" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="modelling-participants-preferences"><span class="header-section-number">2.3</span> Modelling participants preferences</h3>
+<p>In addition from the planning component, it was previously observed that participants behaviour differs significantly depending on the offer. Specifically, it was observed that participants respond significantly faster yet less optimally when offers were either high or low (o=1 and o=4) compared to intermediate offers (o=2 and o=4). This was interpreted as indication that participants consider that the task constitutes of two separate offer based context, and inferred that the intermediate offer context required more careful planning than the extreme offer context.</p>
+<p>In this work, we aimed to investigate whether instead of a binary contextualization of the task, participants behaviour reflects a weighted combination of a planning component with preferences reflecting the structure of the task. Specifically, we hypothesized that the data can be explained by a weighted combination of preferences associated with each levels of each factors of the state space. This idea can be formalized using the following model:</p>
+<p><span class="math display">\[
+\begin{align*}
+P(a=1) &amp;= \frac{1}{1+e^{\eta}} \\
+where\ \eta &amp;= \beta_{plan} \times Q(s, a=1) - Q(s, a=0) + \mathbf{X_{pref}}\mathbf{\beta}
+\end{align*}
+\]</span></p>
+<p>Where <span class="math inline">\(\mathbf{X_{pref}}\)</span> is a <span class="math inline">\([M \times N]\)</span> (m=measurements, N=experimental levels) matrix dummy coding each factors of the experimental design (energy, offer, current and future costs), and the <span class="math inline">\(\mathbf{\beta}\)</span> is a vector of weights estimated for each levels of each factors of the experimental design. In other words, in addition to the planning component, we estimated weights associated with each experimental factors to compute a compound preference score. Beyond the mere combination of planning and preferences, we sought to investigate whether participants behaviour reflects an interaction between the two, whereby if participants rely more or less on planning depending on whether they have weak or strong preferences in a particular state (preferences scores closer or further away from 0). This required us to estimate the latent preference score component from the data and test for possible interaction with the planning component. However, as our interaction relate not to the raw preference scores but to their strength, we transformed the preference score to entropy. In other words:</p>
+<p><span class="math display">\[
+\begin{align*}
+P(a=1) &amp;= \frac{1}{1+e^{\eta}} \\
+where\ \eta_{preference} &amp;= \beta_{plan} \times DV + Preference + \beta_{Interaction}(H(Preference) \times DV) \\
+with\ Preference &amp;= \mathbf{X_{pref}}\mathbf{\beta_{pref}}
+\end{align*}
+\]</span></p>
+<p>In addition to this model, we fitted both the planning model and hybrid model from Ott and colleagues (<span class="citation" data-cites="ott2022forward">Ott et al. (<a href="#ref-ott2022forward" role="doc-biblioref">2022a</a>)</span>). Specifically:</p>
+<p><span class="math display">\[
+\begin{align*}
+\eta_{planning} =&amp; \beta{plan} \times DV + \\
+&amp;\beta_{basic}\mathbf{I}_{basic} + \beta_{maxE}\mathbf{I}_{maxE} + \\
+&amp;\beta_{minE_{LC}}\mathbf{I}_{minE_{LC}} + \beta_{minE_{HC}}\mathbf{I}_{minE_{HC}}
+\end{align*}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align*}
+\eta_{hybrid} =&amp; \beta{plan23} \times DV_{23} + \beta{plan14} \times DV_{14} + \\
+&amp;\beta_{O1}\mathbf{I}_{O1} + \beta_{O2}\mathbf{I}_{O2} + \beta_{O3}\mathbf{I}_{O3} + \beta_{O4}\mathbf{I}_{O4} + \\
+&amp;\beta_{basic}\mathbf{I}_{basic} + \beta_{maxE}\mathbf{I}_{maxE} + \\
+&amp;\beta_{minE_{LC}}\mathbf{I}_{minE_{LC}} + \beta_{minE_{HC}}\mathbf{I}_{minE_{HC}}
+\end{align*}
+\]</span></p>
+<p>Where <span class="math inline">\(\mathbf{I}\)</span> indicate dummy regressor encoding specific experimental conditions: <span class="math inline">\(\mathbf{I}_{basic}\)</span> encode trials where energy is sufficient to accept the offer and inferior to 6, <span class="math inline">\(\mathbf{I}_{maxE}\)</span> encodes trials where energy is equal to 6, <span class="math inline">\(\mathbf{I}_{minE_{LC}}\)</span> for trials where energy is too low to accept the offer when cost is low, <span class="math inline">\(\mathbf{I}_{minE_{HC}}\)</span> for trials where energy is too low to accept the offer when cost is high, <span class="math inline">\(\mathbf{I}_{minE_{O1-4}}\)</span> for trials with offer 1-4 where energy is sufficient to accept.</p>
+</section>
+<section id="model-fitting-and-comparison" class="level3" data-number="2.4">
+<h3 data-number="2.4" class="anchored" data-anchor-id="model-fitting-and-comparison"><span class="header-section-number">2.4</span> Model fitting and comparison</h3>
+<p>The model described above were fitted on participants responses data as Bayesian hierarchical logistic regressions using PYMC (<span class="citation" data-cites="abril2023pymc"><span class="nocase">Abril-Pla et al.</span> (<a href="#ref-abril2023pymc" role="doc-biblioref">2023</a>)</span>) and Bambi (<span class="citation" data-cites="Capretto2022">Capretto et al. (<a href="#ref-Capretto2022" role="doc-biblioref">2022</a>)</span>), (see <span class="citation" data-cites="lepauvre2026preferences-code">Lepauvre and Kiebel (<a href="#ref-lepauvre2026preferences-code" role="doc-biblioref">2026</a>)</span> for the exact models). We excluded trials where participants reaction time (RT) exceeded the response window (5s) or didn’t provide a response. Across models, the following parameters were left to vary across participants (i.e.&nbsp;random slope): <span class="math inline">\(\beta_{plan},\ \beta_{plan23},\ \beta_{plan14},\ \beta_{pref},\ \beta_{Interaction},\ \beta_{basic},\ \beta_{O1},\ \beta_{O1},\ \beta_{O2},\ \beta_{O3},\ \beta_{O4}\)</span>, while the rest were fixed across participants. For all parameters, we used weakly informative hyperprior distributions <span class="math inline">\(\mu \sim \mathcal{N}(0, 2)\)</span> and <span class="math inline">\(\sigma \sim Halfnormal(0, 2)\)</span>. All models were fitted using 4 chains of 8000 sample each (4000 warmups), resulting in 16000 samples in total.</p>
+<p>We used Pareto-smoothed importance sampling to approximate leave one out cross validation (PSIS-LOO) to estimate the expected log pointwise predictive density (elpd) which we used to compare the fit of these different models.</p>
+<p>Furthermore, we perform model comparison within each single subject to estimate the robustness of the winning model in our population sample, but computing the sum of the pointwise predictive accuracy for each participant and model, yielding a score for each participant and model. We further predicted that participants for whom the preferences model fits the best, we should observed a positive correlation between preferences entropy and total return, as participants with stronger preferences should deviate most from optimal decision making reflected in the decision values components. To test this prediction, we tested for a correlation between average preferences entropy and total score.</p>
+</section>
+<section id="reaction-times-analysis" class="level3" data-number="2.5">
+<h3 data-number="2.5" class="anchored" data-anchor-id="reaction-times-analysis"><span class="header-section-number">2.5</span> Reaction times analysis</h3>
+<p>Following the observation that modelling choice behaviour as a function of both preferences and decisions as well as the interaction between the two outperforms models assuming that different offers are treated as separate contexts, we hypothesized that the degree to which participants engage in effortful foward planning in a given state depends on the strength of their preferences. If that is the case, this should be reflected in participants reaction time (RT), such that the stronger their preferences (i.e.&nbsp;the lower their preferences entropy), the lower their RT. Importantly, as it was previously observed that participants RT increases when decision values are close to 0, which was interepreted as evidence that participants are able to reach a decision quicker when the value asssociated with one decision is much higher than that associated with any other decisions <span class="citation" data-cites="ott2022forward">Ott et al. (<a href="#ref-ott2022forward" role="doc-biblioref">2022a</a>)</span>. In this paper, they further observed that participant RT depended more on decision values in intermediate offers (2 and 3) compared to extreme ones (1 and 4), which they interpreted as evidence that participants consider these offer groups as separate contexts, with the latter requiring more forward planning that the former.</p>
+<p>Here, we predicted that the driving factors of reaction time was not simply offer groups but rather the strength of participants state-specific preferences. In other words, it is possible that the reason participants treat intermediate and extreme offers differently is because of different overall preferences associated with states presenting such offer. By fitting preferences directly in the previous model we can investigate with a greater granularity how it shapes reaction time combined with decision values. We modelled the log of reaction time using the following model:</p>
+<p><span class="math display">\[
+log(RT) = \beta_{plan} * DV + \beta_{pref} * H(preferences) + \beta_{interaction} * (DV : H(preferences))
+\]</span></p>
+<p>Where <span class="math inline">\(preferences\)</span> is the preference score fitted from the preference choice model above, and <span class="math inline">\(H\)</span> stands for the binomial entropy function. We compared this model to <span class="citation" data-cites="ott2022forward">Ott et al. (<a href="#ref-ott2022forward" role="doc-biblioref">2022a</a>)</span> RT model to test whether the use of preference fits the data better than a dichotomous distinction between intermediate and extreme offers, which would indicate that participants consider the strength of their preferences to determine how much they should invest in planning and that the observation of the distinction between intermediate and extreme offers is a byproduct thereof.</p>
+</section>
+<section id="task-structure-importance" class="level3" data-number="2.6">
+<h3 data-number="2.6" class="anchored" data-anchor-id="task-structure-importance"><span class="header-section-number">2.6</span> Task structure importance</h3>
+<p>Our choice and reaction time results replicate and extend on <span class="citation" data-cites="ott2022forward">Ott et al. (<a href="#ref-ott2022forward" role="doc-biblioref">2022a</a>)</span> findings. We indeed observed that deviation from optimal value based decisions depends strongly on offer as well as on energy. Our results further indicates that these deviations reflect composite preferences derived from the structure of the task. Our results also suggest that not all dimensions of the task are weighted equally in participants preferences. To further quantify the importance associated with each factor of the task (offer, energy, current and future cost), we performed a variance partitioning analysis by computing the coefficient of determiniation associated with each factor <span class="citation" data-cites="tonidandel2010determining">Tonidandel and LeBreton (<a href="#ref-tonidandel2010determining" role="doc-biblioref">2010</a>)</span>:</p>
+<p><span class="math display">\[
+R_O^2 = 1 - \frac{\sum{(y-\hat{y})^2}}{\sum{(y-\bar{y})^2}}
+\]</span></p>
+<p>Where <span class="math inline">\(\hat{y}\)</span> are the responses fitted by the model without the factor in question and <span class="math inline">\(\bar{y}\)</span> are the responses fitted by the full model. The <span class="math inline">\(R_O^2\)</span> therefore quantifies the proportion of responses that are accounted for by each factors in the model.</p>
+<p>A final question we sought to investigate is whether this hierarchy in terms of factors on which preferences are based is arbitrary or instead reflects optimality</p>
+</section>
+</section>
+<section id="results" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="results"><span class="header-section-number">3</span> Results</h2>
+<section id="choice-behaviour" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="choice-behaviour"><span class="header-section-number">3.1</span> Choice behaviour</h3>
+<p>In line with <span class="citation" data-cites="ott2022forward">Ott et al. (<a href="#ref-ott2022forward" role="doc-biblioref">2022a</a>)</span>, we observe that a model taking only planning component into account does not perform as well compared to taking more flexible biases into account. Importantly, the preference model was found to significantly outperform the hybrid model, indicating that participants biases do reflect the structure of the task (see <a href="#fig-2" class="quarto-xref">Figure&nbsp;2</a> A). When investigating the fitted preferences parameters, we observe that participants exhibit strong offer based preferences, such that they tend to reject low offers (1 and 2) more than dicated by the decision values and accept larger offers more than they should (see <a href="#fig-2" class="quarto-xref">Figure&nbsp;2</a> B), and this bias is more extreme for more extreme offers (1 and 4) than intermediate ones (2 and 3), replicating Ott’s impact of offers on decision making. For costs, the estimated preference parameters all significantly overlap 0, indicating that participants do not show any bias away from optimal decision based on task. In terms of energy, participant show strong preferences when energy is at 0 (systematically reject) and at 6 (almost systematically accept regardless of any other conditions, see below). In intermediate values, participants show a midly incremental preference, such that they have a tendency to reject offers slightly more than they should when energy is low, but are increasingly likely to accept when energy increases.</p>
+<p>The results broadly replicate Ott’s findings, as they show that participants treat high and low offers quite differently, with a further modulatory effect of energy, reflecting the energy specific parameters from Ott’s model (<span class="math inline">\(\beta_{basic}, \beta_{maxE}, \beta_{minE_LC}, \beta_{minE_HC}\)</span>).</p>
+<div id="cell-fig-2" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div id="fig-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/fig-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Results of participants choice behaviour models. (A) Result of the model comparison, displaying the expected log pointwise predictive density (ELPD) associated with each model (closer to 0 indicate better fit). (B) Observed and fitted probability of accepting the offer separately for each offer by each of the models. The single dots represent the average acceptance probability for each subject. (C) Fitted preference parameters of the preference model. Top left figure depicts the parameters associated with offer parameters, top right associated with each cost, bottom with each energy level. (D) Model fit for each participant and model, color coded by model of best fit."><img src="index_files/figure-html/fig-2-output-1.png" width="757" height="564" class="figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Results of participants choice behaviour models. (A) Result of the model comparison, displaying the expected log pointwise predictive density (ELPD) associated with each model (closer to 0 indicate better fit). (B) Observed and fitted probability of accepting the offer separately for each offer by each of the models. The single dots represent the average acceptance probability for each subject. (C) Fitted preference parameters of the preference model. Top left figure depicts the parameters associated with offer parameters, top right associated with each cost, bottom with each energy level. (D) Model fit for each participant and model, color coded by model of best fit.
+</figcaption>
+</figure>
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-1" href="index-preview.html#cell-fig-2">Source: Article Notebook</a></div>
+<p>Importantly, our model revealed a positive interaction between preferences entropy and decision values ($=$1.74, CI=[0.38, 3.07], see <a href="#fig-3" class="quarto-xref">Figure&nbsp;3</a> A), indicating that participants weight decision values higher when their preferences are weak and vice versa. <a href="#fig-3" class="quarto-xref">Figure&nbsp;3</a> B depicts participants responses as a function of decision values and fitted preferences, the grey dots represent trials in which both the preferences and decision values were matched (either both positive or both negative), while colored markers indicate trials in which preferences and decision values were misaligned, color coded by participants responses (green triangles: accept, yellow hexagon: reject). Importantly, rejected trials in the upper left quadrant of the figure indicate that participans responses follows the decision values but goes against the preference, while accepting indicates that participants actions follows the preference to the detriment of the decision values, and vice versa in the bottom right quadrant.</p>
+<p>As we can see from <a href="#fig-3" class="quarto-xref">Figure&nbsp;3</a> B, when preferences are positive and decision values negative (top left quadrant), participants tend to accept the offer when the decision values are close to zero, reflected in the green triangles data points clustering towards 0 on the x axis. In contrast, participants tend to reject the reward more often when the decision values grow more negative, illustrated by the increased number of yellow dots on the left extremities of the top left quadrant. Similarly, when decision values are positive and preferences negative (bottom right quadrant), participants tend to reject the offer more often when the decision values are small, and accept the offer more often when the decision values grow larger (though the number of samples is much lower in this quadrant). These observations reflect the positive interaction between preferences entropy and decision values, indicating that participants rely more on preferences when decision values are close to 0 and vice versa.</p>
+<div id="cell-fig-3" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div id="fig-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/fig-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: Interaction between preferences and decision values. (A) Posterior probability of the interaction parameter of the preference model (B) Shows participants responses as a function of decision values and preference scores. On the off diagonal quadrant (top left and bottom right), the dot color indicate whether participants accepted the reward (green triangles) or rejected the reward (yellow octogons). The number in the legend indicate hte number of trials of the corresponding colors."><img src="index_files/figure-html/fig-3-output-1.png" width="757" height="566" class="figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Interaction between preferences and decision values. (A) Posterior probability of the interaction parameter of the preference model (B) Shows participants responses as a function of decision values and preference scores. On the off diagonal quadrant (top left and bottom right), the dot color indicate whether participants accepted the reward (green triangles) or rejected the reward (yellow octogons). The number in the legend indicate hte number of trials of the corresponding colors.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="reaction-times" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="reaction-times"><span class="header-section-number">3.2</span> Reaction times</h3>
+<p>In a task as large as ours (448 single states), computing the exact value associated with each state is costly. In comparison, preferences, are presumably readily available to the participants, or requires minimal computation. The interaction between the two observed at the responses levels suggests that participant control the planning demands depending on the strength of their preferences, such that if their preferences are really strong in a particular state, they would devolve less effort to forward planning. Indeed, <span class="citation" data-cites="ott2022forward">Ott et al. (<a href="#ref-ott2022forward" role="doc-biblioref">2022a</a>)</span> observed that RT grew significantly more rapidly in intermediate offers as a function of the magnitude of decision values compared to extreme offers, indicating that participants dedicate less cognitive effort to the extreme offers, which they interpret as evidence that these constitute two distinct contexts.</p>
+<p>Importantly, these differences in RT patterns observed between intermediate and extreme offers might in fact be driven by differences in overall preference strength between both these conditions rather than these conditions being treated as separate contexts. In other words, we hypothesized that participants investement in forward planning depends on the strength of their preferences, and we therefore predicted that reaction time (indexing forward planning) should reflect the strength of the decision values and of their preferences as well as the interaction between the two rather than an interaction between decision values and intermediate offers (as was found in <span class="citation" data-cites="ott2022forward">Ott et al. (<a href="#ref-ott2022forward" role="doc-biblioref">2022a</a>)</span>). Specifically, we expect a positive interaction between conflict (i.e.&nbsp;negative amplitude of the decision values) and the preference entropy, indicating that participants reaction time increase more rapidly as a function of decision values when preferences are weak (i.e.&nbsp;entropy is high).</p>
+<p>In line with this prediction, modelling reaction time as a function of preferences and conflict as well as the interaction between the two performs better than <span class="citation" data-cites="ott2022forward">Ott et al. (<a href="#ref-ott2022forward" role="doc-biblioref">2022a</a>)</span> original model (see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a> A). We observed a positive interaction effect between preferences entropy and conflict (see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a> B), indicating that participants reaction time is more strongly dependent on decision values when preferences are weak (i.e.&nbsp;high preference entropy, see <a href="#fig-4" class="quarto-xref">Figure&nbsp;4</a> C). Combined with the response choice models, these results reveal that the participants decreased accuracy and reaction time in extreme offers compared to intermediate offers reflects participants stronger preferences in these conditions.</p>
+<div id="cell-25" class="cell" data-tags="[&quot;RT_models&quot;]" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"cdeb315aaebb491fbfcfdf55b5d59e29","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b8ddabaa7d184bab85e29232ae952a00","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div>
+</div>
+<div id="cell-fig-4" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display">
+<div id="fig-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/fig-4-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4: Results of reaction time models. (A) Comparison of the model of RT as a function of decision values and intermediate offer against the model of RT as a function of decision values and preferences. (B) Posterior distribution of the fitted parameter. (C) Posterior predictive curve depicting the predicted reaction time as a function of the conflict values, separately for preference entropy of 0, 0.5 and 1.0"><img src="index_files/figure-html/fig-4-output-2.png" width="755" height="567" class="figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Results of reaction time models. (A) Comparison of the model of RT as a function of decision values and intermediate offer against the model of RT as a function of decision values and preferences. (B) Posterior distribution of the fitted parameter. (C) Posterior predictive curve depicting the predicted reaction time as a function of the conflict values, separately for preference entropy of 0, 0.5 and 1.0
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="variables-weighting" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="variables-weighting"><span class="header-section-number">3.3</span> Variables weighting</h3>
+<p>We have observed that both response selection and reaction time reflects value based combined with preferences and that these preferences themselves reflect the structure of the task. Specifically, our results suggest that participants have preferences related to each factors of the task that then get combined to generate a composite preference score in a given state. Importantly, not all features of the task are weighted equally. Indeed, we can see in <a href="#fig-2" class="quarto-xref">Figure&nbsp;2</a> C that the parameters associated with offers and energy weight higher than cost in the preference. To further characterize these differences, we used variance partitioning analysis within each subject to quantify the amount of variance accounted for by each experimental conditions.</p>
+<p><a href="#fig-5" class="quarto-xref">Figure&nbsp;5</a> displays the difference in fit between the full preference model against models in which the preferences related to each experimental factors were removed, larger values indicate that the factor account for a more important proportion of the full model’s fit (i.e.&nbsp;the preferences associated with this factor have a larger impact on participants choice). These results indicate that energy followed offer have a much larger impact on participants final responses, compared to costs. Why is that? It could be that humans are generally biased towards energy and rewards due to the prevalance of those dimensions in their environment. Alternatively, it could be that based on the structure of the task, following general heuristic associated with these two dimensions is efficient in yielding large return without relying on planning (which also assumes that the preferences participants have are also good for reward maximization, so double whammy).</p>
+<p>To investigate the latter possibility, we relied on posterior distribution sampling to evaluate the return that would be obtained if participants follow only the preferences related to each aspect of the task without relying on planning nor on any other preferences.</p>
+<div id="cell-fig-5" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display">
+<div id="fig-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/fig-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;5: Importance of each parameters in participants response and optimal solution. (A) Depicts the difference in fit between the full preference model and models in which each of the experimental factors were removed from preference estimations. Values closer to 0 indicate that the factor does not lead to a strong improvement of the model fit (i.e.&nbsp;the factor weight less in participants final decision)."><img src="index_files/figure-html/fig-5-output-1.png" width="690" height="507" class="figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Importance of each parameters in participants response and optimal solution. (A) Depicts the difference in fit between the full preference model and models in which each of the experimental factors were removed from preference estimations. Values closer to 0 indicate that the factor does not lead to a strong improvement of the model fit (i.e.&nbsp;the factor weight less in participants final decision).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>To test this prediction, we generated a</p>
+</section>
+</section>
+<section id="discussion" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="discussion"><span class="header-section-number">4</span> Discussion</h2>
+<p>A limitation of the present work is we assume that preferences are fixed, thought they are likely to be dynamically updated throughout the task. Future work should aim to characterize preferences update mechanisms, by dynamically updating both the reward and transitional probabilty structure of the task, either in a gradually or chunk-wise (i.e.&nbsp;having separate experimental blocks with different task structures).</p>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-abril2023pymc" class="csl-entry" role="listitem">
+<span class="nocase">Abril-Pla, Oriol, Virgile Andreani, Colin Carroll, et al.</span> 2023. <span>“PyMC: A Modern, and Comprehensive Probabilistic Programming Framework in Python.”</span> <em>PeerJ Computer Science</em> 9: e1516.
+</div>
+<div id="ref-Capretto2022" class="csl-entry" role="listitem">
+Capretto, Tomás, Camen Piho, Ravin Kumar, Jacob Westfall, Tal Yarkoni, and Osvaldo A Martin. 2022. <span>“Bambi: A Simple Interface for Fitting Bayesian Linear Models in Python.”</span> <em>Journal of Statistical Software</em> 103 (15): 1–29. <a href="https://doi.org/10.18637/jss.v103.i15">https://doi.org/10.18637/jss.v103.i15</a>.
+</div>
+<div id="ref-lepauvre2026preferences-code" class="csl-entry" role="listitem">
+Lepauvre, Alex, and Stefan J Kiebel. 2026. <em>Preferences for Forward Planning in Human Decision-Making-CODE</em>. V. 0.1. Zenodo, released. <a href="https://github.com/AlexLepauvre/state_abstraction_paper">https://github.com/AlexLepauvre/state_abstraction_paper</a>.
+</div>
+<div id="ref-ott2022forward" class="csl-entry" role="listitem">
+Ott, Florian, Eric Legler, and Stefan J Kiebel. 2022a. <span>“Forward Planning Driven by Context-Dependant Conflict Processing in Anterior Cingulate Cortex.”</span> <em>NeuroImage</em> 256: 119222. <a href="https://doi.org/10.1016/j.neuroimage.2022.119222">https://doi.org/10.1016/j.neuroimage.2022.119222</a>.
+</div>
+<div id="ref-ott2022forward-data" class="csl-entry" role="listitem">
+Ott, Florian, Eric Legler, and Stefan J Kiebel. 2022b. <em>Forward Planning Driven by Context-Dependent Conflict Processing in Anterior Cingulate Cortex - Analysis Code and Datasets</em>. V. 1.2. Zenodo, released. <a href="https://doi.org/10.5281/zenodo.6328296">https://doi.org/10.5281/zenodo.6328296</a>.
+</div>
+<div id="ref-sutton1998reinforcement" class="csl-entry" role="listitem">
+<span class="nocase">Sutton, Richard S, Andrew G Barto, et al.</span> 1998. <em>Reinforcement Learning: An Introduction</em>. Vol. 1. MIT press Cambridge.
+</div>
+<div id="ref-tonidandel2010determining" class="csl-entry" role="listitem">
+Tonidandel, Scott, and James M LeBreton. 2010. <span>“Determining the Relative Importance of Predictors in Logistic Regression: An Extension of Relative Weight Analysis.”</span> <em>Organizational Research Methods</em> 13 (4): 767–81.
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script type="application/vnd.jupyter.widget-state+json">
+{"state":{"24abf892777c4eae95fc108a8a56b210":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"9d88f262b312412fa00fb4dfd98249fe":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"b8ddabaa7d184bab85e29232ae952a00":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/output","_model_module_version":"1.0.0","_model_name":"OutputModel","_view_count":null,"_view_module":"@jupyter-widgets/output","_view_module_version":"1.0.0","_view_name":"OutputView","layout":"IPY_MODEL_9d88f262b312412fa00fb4dfd98249fe","msg_id":"","outputs":[{"data":{"text/html":"<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">                                                                                                                   \n <span style=\"font-weight: bold\"> Progress                  </span> <span style=\"font-weight: bold\"> Draws </span> <span style=\"font-weight: bold\"> Divergences </span> <span style=\"font-weight: bold\"> Step size </span> <span style=\"font-weight: bold\"> Grad evals </span> <span style=\"font-weight: bold\"> Sampling Speed </span> <span style=\"font-weight: bold\"> Elapsed </span> <span style=\"font-weight: bold\"> Remaining </span> \n ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━━━━━━━━━━━━━━━</span>   2000    0             0.107       63           54.69 draws/s    0:00:36   0:00:00    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━━━━━━━━━━━━━━━</span>   2000    0             0.080       63           54.00 draws/s    0:00:37   0:00:00    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━━━━━━━━━━━━━━━</span>   2000    0             0.119       63           57.96 draws/s    0:00:34   0:00:00    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━━━━━━━━━━━━━━━</span>   2000    0             0.104       31           54.36 draws/s    0:00:36   0:00:00    \n                                                                                                                   \n</pre>\n","text/plain":"                                                                                                                   \n \u001b[1m \u001b[0m\u001b[1mProgress                 \u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mDraws\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mDivergences\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mStep size\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mGrad evals\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mSampling Speed\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mElapsed\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mRemaining\u001b[0m\u001b[1m \u001b[0m \n ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── \n  \u001b[38;2;31;119;180m━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m   2000    0             0.107       63           54.69 draws/s    0:00:36   0:00:00    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m   2000    0             0.080       63           54.00 draws/s    0:00:37   0:00:00    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m   2000    0             0.119       63           57.96 draws/s    0:00:34   0:00:00    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m   2000    0             0.104       31           54.36 draws/s    0:00:36   0:00:00    \n                                                                                                                   \n"},"metadata":{},"output_type":"display_data"}],"tabbable":null,"tooltip":null}},"cdeb315aaebb491fbfcfdf55b5d59e29":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/output","_model_module_version":"1.0.0","_model_name":"OutputModel","_view_count":null,"_view_module":"@jupyter-widgets/output","_view_module_version":"1.0.0","_view_name":"OutputView","layout":"IPY_MODEL_24abf892777c4eae95fc108a8a56b210","msg_id":"","outputs":[{"data":{"text/html":"<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">                                                                                                                   \n <span style=\"font-weight: bold\"> Progress                  </span> <span style=\"font-weight: bold\"> Draws </span> <span style=\"font-weight: bold\"> Divergences </span> <span style=\"font-weight: bold\"> Step size </span> <span style=\"font-weight: bold\"> Grad evals </span> <span style=\"font-weight: bold\"> Sampling Speed </span> <span style=\"font-weight: bold\"> Elapsed </span> <span style=\"font-weight: bold\"> Remaining </span> \n ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━━━━━━━━━━━━━━━</span>   2000    0             0.102       63           55.80 draws/s    0:00:35   0:00:00    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━━━━━━━━━━━━━━━</span>   2000    0             0.096       31           58.99 draws/s    0:00:33   0:00:00    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━━━━━━━━━━━━━━━</span>   2000    0             0.108       63           59.26 draws/s    0:00:33   0:00:00    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━━━━━━━━━━━━━━━</span>   2000    0             0.111       63           56.59 draws/s    0:00:35   0:00:00    \n                                                                                                                   \n</pre>\n","text/plain":"                                                                                                                   \n \u001b[1m \u001b[0m\u001b[1mProgress                 \u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mDraws\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mDivergences\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mStep size\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mGrad evals\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mSampling Speed\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mElapsed\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mRemaining\u001b[0m\u001b[1m \u001b[0m \n ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── \n  \u001b[38;2;31;119;180m━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m   2000    0             0.102       63           55.80 draws/s    0:00:35   0:00:00    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m   2000    0             0.096       31           58.99 draws/s    0:00:33   0:00:00    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m   2000    0             0.108       63           59.26 draws/s    0:00:33   0:00:00    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m   2000    0             0.111       63           56.59 draws/s    0:00:35   0:00:00    \n                                                                                                                   \n"},"metadata":{},"output_type":"display_data"}],"tabbable":null,"tooltip":null}}},"version_major":2,"version_minor":0}
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
