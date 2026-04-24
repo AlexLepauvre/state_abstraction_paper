@@ -6,3 +6,5 @@
 
 /agujournal2019.cls
 /trackchanges.sty
+
+**/*.quarto_ipynb
