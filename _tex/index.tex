@@ -210,8 +210,7 @@
 of Psychology, TUD Dresden University of Technology, Dresden 01187,
 Germany, }
 \correspondingauthor{Alex
-Lepauvre}{alex\_francois.lepauvre@tu-dresden.de}\correspondingauthor{Stefan
-Kiebel}{}
+Lepauvre}{alex\_francois.lepauvre@tu-dresden.de}
 
 
 \begin{abstract}
@@ -247,64 +246,63 @@ of behavior in complex decision problems.
 
 \section{Introduction}\label{introduction}
 
-The human brain is remarkable in its capacity to learn and solve complex
-tasks efficiently. Even performing the mundane tasks from our daily life
-(planning the day, cooking a meal) constitute complex planning problems
-requiring significant computational resources to resolve somewhat
-adequately. This extraordinary capacity is typically studied by applying
-reinforcement learning (RL) algorithms, where decision making problems
-are operationalized using Markov Decision Problems (MDP) modelling the
-environment in terms of states and rewards associated with decision
-performed by participants in each states. Many algorithms have been
-developped to identify the values associated with each action in each
-state to determine the optimal decision participants have to perform in
-each state to maximize their reward over time (rather than in a single
-state, {Sutton et al.} (1998)).
+The human brain is remarkable in its capacity to learn and perform
+complicated tasks based on relatively little training and despite
+limited computational resources. This extraordinary faculty is typically
+studied in terms of value-based planning, where the task is
+operationalized as a Markov Decision Process (MDP) to determine which
+decisions participants should make in order to maximize the reward they
+obtain throughout the task (\hyperref[references]{REFERENCES}).
+Different reinforcement learning (RL) algorithms can estimate the value
+associated with each action in any given state in terms of reward
+maximization, which can be compared to participants behaviour to
+investigate how optimal their choices are.
 
-Eventhough these models reflect participants behaviour quite well, they
-fail in systematic ways. Human participants show systematic biases away
-from optimality. These deviations are thought to reflect the limited
-processing capabilities of the human brain Gershman et al. (2015).
-Identifying the course of actions that maximizes reward accumulation in
-the long term comes at a significant computational costs, which depends
-on the size and temporal horizon of the task. Given the limited
-processing capacity of the brain, the degree to which to invest in
-costly planning should depend on how much there is to gain from it.
-Accordingly, for reward optimization under resources constraints, the
-goal is to balance the benefit of planning with its cost and adopt
-simpler decision making strategies if the latter outweight the former.
+However, participants behaviour in complex tasks systematically deviates
+from optimality (\hyperref[references]{REFERENCES}). These deviations
+are generally thought to reflect the limited processing capabilities of
+the human brain (\hyperref[references]{REFERENCES}). Planning comes at a
+computational costs, as it typically requires evaluating several
+alternative futures trajectories in parallel, dependending on actions
+taken in the future and on the stochasticity of the task, leading to a
+combinatorial explosion of the outcomes to consider. Accordingly, under
+computational constraints, one would expect participants to engage in
+planning to different extents depending on whether it is worth it
+considering the costs (\hyperref[references]{REFERENCES}).
 
-Decision making under constraints therefore require a judgement call to
-be made regarding the extent to which one should invest in planning, as
-the value of planning cannot be known with certainty, since knowing the
-value of planning would certainty would require planning. HERE TRY TO
-FIND A CONNECTION BACK TO BIASES. THIS IS A CORE IDEA. WE ARE TRYING TO
-SAY THAT PARTICIPANTS BIASES ARE THE BASIS FOR THIS JUDGEMENT.
+Congruent with this notion of computational rationality, recent studies
+have suggested that in complex tasks, participants engage in planning to
+different extent across states of a given task
+(\hyperref[references]{REFERENCES}). It is however unclear on which
+basis participants decide that certain states require less investment in
+planning than others (\hyperref[references]{REFERENCES}). In this paper,
+we hypothesized that participants directly exploit the structure of the
+task to determine the extent to which they should invest in forward
+planning. Specifically, we hypothesized that participants define a set
+of simple rules based on each aspect of the task independently such as
+``Accept high offers more than small ones'', ``Accept cheap offers more
+than expansive ones''\ldots{} These preferences then get combined when
+presented with a given state. Prior to reaching a decision, participants
+evaluate the strength of their composite preference score and the weaker
+it is, the more they engage in forward planning.
 
-While it is generally accepted that biases away from optimality observed
-in human decision making, the structure of these bias remains poorly
-understood. In this paper, we examine the extent to which participants
-biases reflect the structure of the task. We show that participants
-behaviour reflect a combination of value based planning and a factored
-preferences independently associated with each dimension of that task
-that get combined in a weighted fashion at the moment of decision.
-Importantly, when participants preferences are strong, they rely on
-planning less. Accordingly, the judgement as to the extent
-
-We are trying to say two things: 1. Participants biases/preferences
-reflect the structure of the task 2. Participants preferences determines
-how much they invest in planning And one final thing that would be cool
-would be to show that participants preferences do not simply constitute
-sort of a contamination from previous experience but rather an adaptive
-mechanism. In the case of policy compression, they are showing that if
-you can't afford full planning, you upweight your prior (marginal action
-likelihood in their case), because that's kind of the best you can do.
-It would be great if we could show that the way participants weight the
-biases associated with each aspect of the task leads to higher reward.
-Like the preferences reflect offer and energy much more than costs. I
-strongly suspect that given the structure of our task, if you plan by
-ignoring energy and offer, you'd do much worst than if you ignore future
-costs.
+To test this hypothesis, we reanalyzed the data from Ott et al. (2022a)
+by fitting preferences biases for each factors of the task (offer,
+energy, current and future costs) and investigating the interaction
+between the strength of the composite preference score and the decision
+values to test whether the stronger the preference, the weaker the
+planning. Our results reveal that participants behaviour are better
+captured when computing biases scores explicitely based on the structure
+of the task compared to using more flexible biases models. Importantly,
+while participants exhibit distinct preferences associated with each
+aspects of the task, they weight certain aspects more highly than other.
+Our results suggest that participantss weighting of the task features
+reflects the relevance of those features in terms of reward
+maximization. This could either indicate that the dynamics of our task
+important dyanmics of the environment. Alternatively, this might
+indicate that participants are able to estimate the relevance of
+distinct features of the task in their driving influence on the return
+in the task.
 
 \textsubscript{Source:
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
@@ -324,28 +322,28 @@ Notebook}}
 design}\label{participants-and-experimental-design}
 
 For this paper, we reused data from a previously published study in
-whichy40 participants (22, mean age=24.4, SD=4.6) took part in a
+which 40 participants (22, mean age=24.4, SD=4.6) took part in a
 sequential decision making task (Ott et al. (2022a), Ott et al.
 (2022b)). The study was approved by the Institutional Review Board of
 the Technische Universität Dresden and conducted in accordance to
 ethical standards of the Declaration of Helsinki.
 
-In the task, participants were instructed to gather as many points as
-possible throughout the task. In each trial, participants were presented
-with offers associated with a reward of 1, 2, 3 or 4 points which they
-could either accept or reject. To accept an offer, participants have to
-pay an energy cost of either 1 or 2 energy points. In case they reject
-the offer, they gain 1 energy point. Participants energy level was
-capped, there energy can therefore range from 0 (depleted energy) to 6.
-Offers vary in each trial following a uniform distribution (equal
-probability of each offer in each trial). Costs remain fixed for 4
-trials segments and participants were informed of the price of the
-current 4 trials and future 4 trials. The costs of the segment beyond
-the current horizon was randomly picked such that each costs transitions
-(from current low cost to future high and low cost and vice versa) were
-equally probable throughout the experiment. If participants accept an
-offer that they cannot afford (current energy level below current cost),
-no reward was awarded.
+Participants were instructed to gather as many points as possible
+throughout the task. In each trial, they were presented with offers
+associated with a reward of 1, 2, 3 or 4 points which they could either
+accept or reject. To accept an offer, participants had to pay an energy
+cost of either 1 or 2 energy points. When they rejected the offer, they
+gained 1 energy point. Participants energy level was capped at 6, so
+their energy could range from 0 (depleted energy) to 6. Offers varied in
+each trial following a uniform distribution (equal probability of each
+offer in each trial). Costs remained fixed for 4 trials segments and
+participants were informed of the price of the current 4 trials and
+future 4 trials. The costs of the segment beyond the current horizon was
+randomly picked such that each costs transitions (from current high or
+low cost to future high and low cost and vice versa) were equally
+probable throughout the experiment. If participants accept an offer that
+they cannot afford (current energy level below current cost), no reward
+was awarded.
 
 \begin{figure}
 
@@ -371,13 +369,13 @@ cost (HC), LC to LC, HC to LC and HC to HC}
 
 \end{figure}%
 
-Accordingly, participants have to decide whether to accept or reject an
-offer based on the current offer and cost ratio. They also take into
-account the impact of their current decision on their future
-capabilities to accept high offers, as systematically accepting offer
-will deplete energy fast, hindering their capacity to collect more
-reward. Therefore, maximizing overall return is non trivial in this task
-and requires complex planning.
+Accordingly, participants had to decide whether to accept or reject an
+offer based on the current offer and cost ratio. They also had to take
+into account the impact of their current decision on their future
+capabilities to accept offers, as systematically accepting offer will
+deplete energy fast, hindering their capacity to collect more reward.
+Therefore, maximizing overall return is non trivial in this task and
+requires complex planning.
 
 \textsubscript{Source:
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
@@ -418,7 +416,7 @@ horizon of 13 trials. For the trials beyond the known horizon the
 uncertainty associated with the offer is compounded by the uncertainty
 related to the costs transition. In trials in the known horizon, the
 probability of the next state reflects the offer related stochasticity
-while the result is deterministic, based on participants actions and
+while the rest is deterministic, based on participants actions and
 structural constraints of our task (see Ott et al. (2022a) for more
 details and \href{LINK}{here}).
 
@@ -426,9 +424,10 @@ We applied backward induction to the MDP to compute value associated
 with each state and the value associated with each action in each state
 (V and Q functions respectively, see {Sutton et al.} (1998)). If
 participants behave optimally, their behaviour should reflect a softmax
-function over the value associated with each action in a given state,
-which in the case of a binary decision problem simplifies to the logit
-function (see Lepauvre \& Kiebel (2026) for proof):
+function over the value associated with each action in a given state
+({[}REFERENCE{]})e, which in the case of a binary decision problem
+simplifies to the logit function (see Lepauvre \& Kiebel (2026) for
+proof):
 
 \begin{align}
 P(a=1) &= \frac{1}{1+e^{DV}} \\
@@ -446,15 +445,14 @@ Notebook}}
 \subsection{Modelling participants
 preferences}\label{modelling-participants-preferences}
 
-In addition from the planning component, it was previously observed that
+In addition to the planning component, it was previously observed that
 participants behaviour differs significantly depending on the offer.
 Specifically, it was observed that participants respond significantly
 faster yet less optimally when offers were either high or low (o=1 and
 o=4) compared to intermediate offers (o=2 and o=4). This was interpreted
-as indication that participants consider that the task constitutes of
-two separate offer based context, and inferred that the intermediate
-offer context required more careful planning than the extreme offer
-context.
+as indication that participants consider that the task consists of two
+separate offer-based contexts, and inferred that the intermediate offer
+context required more careful planning than the extreme offer context.
 
 In this work, we aimed to investigate whether instead of a binary
 contextualization of the task, participants behaviour reflects a
@@ -469,7 +467,7 @@ P(a=1) &= \frac{1}{1+e^{\eta}} \\
 where\ \eta &= \beta_{plan} \times Q(s, a=1) - Q(s, a=0) + \mathbf{X_{pref}}\mathbf{\beta}
 \end{align*}
 
-Where \(\mathbf{X_{pref}}\) is a \([M \times N]\) (m=measurements,
+Where \(\mathbf{X_{pref}}\) is a \([M \times N]\) (M=measurements,
 N=experimental levels) matrix dummy coding each factors of the
 experimental design (energy, offer, current and future costs), and the
 \(\mathbf{\beta}\) is a vector of weights estimated for each levels of
@@ -545,13 +543,13 @@ across participants (i.e.~random slope):
 while the rest were fixed across participants. For all parameters, we
 used weakly informative hyperprior distributions
 \(\mu \sim \mathcal{N}(0, 2)\) and \(\sigma \sim Halfnormal(0, 2)\). All
-models were fitted using 4 chains of 8000 sample each (4000 warmups),
+models were fitted using 4 chains of 2000 sample each (1000 warmups),
 resulting in 16000 samples in total.
 
 We used Pareto-smoothed importance sampling to approximate leave one out
-cross validation (PSIS-LOO) to estimate the expected log pointwise
-predictive density (elpd) which we used to compare the fit of these
-different models.
+cross validation (PSIS-LOO, Vehtari et al. (2017)) to estimate the
+expected log pointwise predictive density (elpd) which we used to
+compare the fit of these different models.
 
 \textsubscript{Source:
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
@@ -581,12 +579,6 @@ Furthermore, we perform model comparison within each single subject to
 estimate the robustness of the winning model in our population sample,
 but computing the sum of the pointwise predictive accuracy for each
 participant and model, yielding a score for each participant and model.
-We further predicted that participants for whom the preferences model
-fits the best, we should observed a positive correlation between
-preferences entropy and total return, as participants with stronger
-preferences should deviate most from optimal decision making reflected
-in the decision values components. To test this prediction, we tested
-for a correlation between average preferences entropy and total score.
 
 \textsubscript{Source:
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
@@ -595,23 +587,22 @@ Notebook}}
 \subsection{Reaction times analysis}\label{reaction-times-analysis}
 
 Following the observation that modelling choice behaviour as a function
-of both preferences and decisions as well as the interaction between the
-two outperforms models assuming that different offers are treated as
-separate contexts, we hypothesized that the degree to which participants
-engage in effortful foward planning in a given state depends on the
-strength of their preferences. If that is the case, this should be
-reflected in participants reaction time (RT), such that the stronger
-their preferences (i.e.~the lower their preferences entropy), the lower
-their RT. Importantly, as it was previously observed that participants
-RT increases when decision values are close to 0, which was interepreted
-as evidence that participants are able to reach a decision quicker when
-the value asssociated with one decision is much higher than that
-associated with any other decisions Ott et al. (2022a). In this paper,
-they further observed that participant RT depended more on decision
-values in intermediate offers (2 and 3) compared to extreme ones (1 and
-4), which they interpreted as evidence that participants consider these
-offer groups as separate contexts, with the latter requiring more
-forward planning that the former.
+of preferences, decisions values and the interaction between the two
+fitted the data best, we hypothesized that the degree to which
+participants engage in effortful foward planning in a given state
+depends on the strength of their preferences. If that is the case, this
+should be reflected in participants reaction time (RT), such that the
+stronger their preferences (i.e.~the lower their preferences entropy),
+the lower their RT. Importantly, as it was previously observed that
+participants RT increases when decision values are close to 0, which was
+interepreted as evidence that participants are able to reach a decision
+quicker when the value asssociated with one decision is much higher than
+that associated with any other decisions Ott et al. (2022a). In this
+paper, they further observed that participant RT depended more on
+decision values in intermediate offers (2 and 3) compared to extreme
+ones (1 and 4), which they interpreted as evidence that participants
+consider these offer groups as separate contexts, with the latter
+requiring more forward planning than the former.
 
 Here, we predicted that the driving factors of reaction time was not
 simply offer groups but rather the strength of participants
@@ -619,8 +610,8 @@ state-specific preferences. In other words, it is possible that the
 reason participants treat intermediate and extreme offers differently is
 because of different overall preferences associated with states
 presenting such offer. By fitting preferences directly in the previous
-model we can investigate with a greater granularity how it shapes
-reaction time combined with decision values. We modelled the log of
+model we can investigate with a greater granularity how they shape
+reaction time when combined with decision values. We modelled the log of
 reaction time using the following model:
 
 \[
@@ -651,22 +642,22 @@ preferences derived from the structure of the task. Our results also
 suggest that not all dimensions of the task are weighted equally in
 participants preferences. To further quantify the importance associated
 with each factor of the task (offer, energy, current and future cost),
-we performed a variance partitioning analysis by computing the
-coefficient of determiniation associated with each factor Tonidandel \&
-LeBreton (2010):
+we performed a model comparison in which we remove the preferences
+associated with each factor of our task (i.e.~removing all regressors
+associated with offers, energy, current and future costs one at a time)
+to identify how much of the fit is explained by each.
 
-\[
-R_O^2 = 1 - \frac{\sum{(y-\hat{y})^2}}{\sum{(y-\bar{y})^2}}
-\]
-
-Where \(\hat{y}\) are the responses fitted by the model without the
-factor in question and \(\bar{y}\) are the responses fitted by the full
-model. The \(R_O^2\) therefore quantifies the proportion of responses
-that are accounted for by each factors in the model.
-
-A final question we sought to investigate is whether this hierarchy in
-terms of factors on which preferences are based is arbitrary or instead
-reflects optimality
+In addition, we computed the expected cummulative return when the
+optimal policy is derived from a reduced MDP of the task, in which we
+selectively remove each factor of the task. Specifically, we created
+reduced MDPs in which we averaged the transition probability and reward
+associated with all levels of each factor to investigate what the
+optimal return would be for a planner that selectively ignores a given
+aspect of the task. We then computed the optimal policy on this reduced
+MDP, and applied this optimal policy from the reduced MDP back to the
+full MDP. This analysis is meant to investigate whether participants'
+weighting of the factors in their preferences reflects the dominant
+structures in the task driving the return.
 
 \textsubscript{Source:
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
@@ -678,25 +669,24 @@ Notebook}}
 
 In line with Ott et al. (2022a), we observe that a model taking only
 planning component into account does not perform as well compared to
-taking more flexible biases into account. Importantly, the preference
+taking state specific biases into account. Importantly, the preference
 model was found to significantly outperform the hybrid model, indicating
 that participants biases do reflect the structure of the task (see
 Figure~\ref{fig-2} A). When investigating the fitted preferences
 parameters, we observe that participants exhibit strong offer based
 preferences, such that they tend to reject low offers (1 and 2) more
-than dicated by the decision values and accept larger offers more than
+than dictated by the decision values and accept larger offers more than
 they should (see Figure~\ref{fig-2} B), and this bias is more extreme
-for more extreme offers (1 and 4) than intermediate ones (2 and 3),
-replicating Ott's impact of offers on decision making. For costs, the
-estimated preference parameters all significantly overlap 0, indicating
-that participants do not show any bias away from optimal decision based
-on task. In terms of energy, participant show strong preferences when
-energy is at 0 (systematically reject) and at 6 (almost systematically
-accept regardless of any other conditions, see below). In intermediate
-values, participants show a midly incremental preference, such that they
-have a tendency to reject offers slightly more than they should when
-energy is low, but are increasingly likely to accept when energy
-increases.
+for more extreme offers (1 and 4) than intermediate ones (2 and 3). For
+costs, the estimated preference parameters all significantly overlap 0,
+indicating that participants do not show strong biases away from optimal
+decision based on these factoors. Participants show strong preferences
+when energy is at 0 (systematically reject) and at 6 (almost
+systematically accept regardless of any other conditions, see below). In
+intermediate values, participants show a midly incremental preference,
+such that they have a tendency to reject offers slightly more than they
+should when energy is low, but are increasingly likely to accept when
+energy increases.
 
 The results broadly replicate Ott's findings, as they show that
 participants treat high and low offers quite differently, with a further
@@ -712,7 +702,7 @@ Notebook}}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-2-output-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-2-output-1.png}}
 
 }
 
@@ -739,7 +729,7 @@ Notebook}}
 Notebook}}
 
 Importantly, our model revealed a positive interaction between
-preferences entropy and decision values (\$\beta=\$1.74, CI={[}0.38,
+preferences entropy and decision values (\(\beta\)=1.74, CI={[}0.38,
 3.07{]}, see Figure~\ref{fig-3} A), indicating that participants weight
 decision values higher when their preferences are weak and vice versa.
 Figure~\ref{fig-3} B depicts participants responses as a function of
@@ -778,7 +768,7 @@ Notebook}}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-3-output-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-3-output-1.png}}
 
 }
 
@@ -801,17 +791,16 @@ Notebook}}
 
 In a task as large as ours (448 single states), computing the exact
 value associated with each state is costly. In comparison, preferences,
-are presumably readily available to the participants, or requires
-minimal computation. The interaction between the two observed at the
-responses levels suggests that participant control the planning demands
-depending on the strength of their preferences, such that if their
-preferences are really strong in a particular state, they would devolve
-less effort to forward planning. Indeed, Ott et al. (2022a) observed
-that RT grew significantly more rapidly in intermediate offers as a
-function of the magnitude of decision values compared to extreme offers,
-indicating that participants dedicate less cognitive effort to the
-extreme offers, which they interpret as evidence that these constitute
-two distinct contexts.
+are presumably readily available to the participants, or require minimal
+computation. The interaction between the two observed at the responses
+levels suggests that participant control the planning demands depending
+on the strength of their preferences, such that if their preferences are
+really strong in a particular state, they would dedicate less effort to
+forward planning. Indeed, Ott et al. (2022a) observed that RT grew
+significantly more rapidly in intermediate offers as a function of the
+magnitude of decision values compared to extreme offers, indicating that
+participants dedicate less cognitive effort to the extreme offers, which
+they interpret as evidence that these constitute two distinct contexts.
 
 Importantly, these differences in RT patterns observed between
 intermediate and extreme offers might in fact be driven by differences
@@ -844,29 +833,11 @@ participants stronger preferences in these conditions.
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
 Notebook}}
 
-\begin{verbatim}
-Output()
-\end{verbatim}
-
-\begin{verbatim}
-\end{verbatim}
-
-\begin{verbatim}
-Output()
-\end{verbatim}
-
-\begin{verbatim}
-\end{verbatim}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
 \begin{figure}[H]
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-4-output-2.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-4-output-2.png}}
 
 }
 
@@ -886,38 +857,29 @@ Notebook}}
 
 \subsection{Variables weighting}\label{variables-weighting}
 
-We have observed that both response selection and reaction time reflects
-value based combined with preferences and that these preferences
+We observed that both response selection and reaction time reflect
+value-based combined with preferences and that these preferences
 themselves reflect the structure of the task. Specifically, our results
 suggest that participants have preferences related to each factors of
 the task that then get combined to generate a composite preference score
 in a given state. Importantly, not all features of the task are weighted
 equally. Indeed, we can see in Figure~\ref{fig-2} C that the parameters
 associated with offers and energy weight higher than cost in the
-preference. To further characterize these differences, we used variance
-partitioning analysis within each subject to quantify the amount of
-variance accounted for by each experimental conditions.
+preference. To further characterize these differences, we compared
+models in which the preferences associated with each factor of our task
+were removed one at a time.
 
 Figure~\ref{fig-5} displays the difference in fit between the full
 preference model against models in which the preferences related to each
-experimental factors were removed, larger values indicate that the
-factor account for a more important proportion of the full model's fit
-(i.e.~the preferences associated with this factor have a larger impact
-on participants choice). These results indicate that energy followed
-offer have a much larger impact on participants final responses,
-compared to costs. Why is that? It could be that humans are generally
-biased towards energy and rewards due to the prevalance of those
-dimensions in their environment. Alternatively, it could be that based
-on the structure of the task, following general heuristic associated
-with these two dimensions is efficient in yielding large return without
-relying on planning (which also assumes that the preferences
-participants have are also good for reward maximization, so double
-whammy).
+experimental factor was removed, larger values indicate that the factor
+account for a more important proportion of the full model's fit. These
+results indicate that energy followed by offer have a much larger impact
+on participants final responses, whereas costs related preferences have
+a small impact on the overall fit.
 
-To investigate the latter possibility, we relied on posterior
-distribution sampling to evaluate the return that would be obtained if
-participants follow only the preferences related to each aspect of the
-task without relying on planning nor on any other preferences.
+\textsubscript{Source:
+\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
+Notebook}}
 
 \textsubscript{Source:
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
@@ -931,16 +893,20 @@ Notebook}}
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-5-output-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-5-output-1.png}}
 
 }
 
 \caption{\label{fig-5}Importance of each parameters in participants
-response and optimal solution. (A) Depicts the difference in fit between
-the full preference model and models in which each of the experimental
-factors were removed from preference estimations. Values closer to 0
-indicate that the factor does not lead to a strong improvement of the
-model fit (i.e.~the factor weight less in participants final decision).}
+response and optimal solution. (A) Difference in fit between the full
+preference model and models in which each of the experimental factors
+were removed from preference estimations. Values closer to 0 indicate
+that the factor does not lead to a strong improvement of the model fit
+(i.e.~the factor weight less in participants final decision). (B)
+Relative expected return of reduced MDPs in which each of the factors
+were removed. Values closer to 1 indicate that the factor does not lead
+to a strong decrease in the expected return (i.e.~the factor weight less
+in the optimal solution).}
 
 \end{figure}%
 
@@ -948,7 +914,31 @@ model fit (i.e.~the factor weight less in participants final decision).}
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
 Notebook}}
 
-To test this prediction, we generated a
+This differential weighting of experimental factors in participants
+preferences might reflect the fact that humans are generally biased to
+attend to certain features (such as reward and energy) over others, due
+to their overall relevance in the environment. Alternatively, these may
+reflect that based on the structure of our task, certain features might
+be more relevant than others to maximize rewards, such that when
+ignoring more relevant dimensions of the task when planning leads to
+larger reward loss than other. If that is the case, an agent with
+limited processing capabilities should attend to this features more,
+which might be what the differential weighting of participants'
+preferences reflect.
+
+To provide substantive evidence for the latter claim, we computed the
+expected return from simplified representations of the task in which
+each experimental factor is omitted one at a time, to quantify the loss
+in reward associated with ignoring it. The results are shown in
+Figure~\ref{fig-5} B. We observe that order of the factors in terms of
+their relevance for returns is reminescent of participants's weighting
+of those factors in their preferences. Indeed, both current and future
+costs have relatively low impact on the overall return, while offer and
+more critically energy have a larger impact, which reflects preferences
+weighting. While this does not constitute decisive evidence, these
+results suggests that participants preferences might not only reflect
+bias based on previous experience in their environment, but might also
+be adapted to the structure of the task.
 
 \textsubscript{Source:
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
@@ -956,17 +946,54 @@ Notebook}}
 
 \section{Discussion}\label{discussion}
 
-A limitation of the present work is we assume that preferences are
-fixed, thought they are likely to be dynamically updated throughout the
-task. Future work should aim to characterize preferences update
-mechanisms, by dynamically updating both the reward and transitional
-probabilty structure of the task, either in a gradually or chunk-wise
-(i.e.~having separate experimental blocks with different task
-structures).
+\begin{itemize}
+\item
+  High level summary of results interpretation
+\item
+  Discuss how the results relate to the notion of computational
+  rationality and policy compression In policy compression framework,
+  planning is complemented by the marginal action probability which is
+  taken to constitute a prior over action. Our use of preferences
+  constitutes an extension to it. Instead of considering marginal
+  probability across states, our preferences define action probability
+  based on the structure of the task, informing the default policy of
+  subjects beyond what is done in traditional policy compression. Or put
+  differently, in policy compression, assuming that participants are
+  under too much pressure to rely on planning, participants should rely
+  on state independent action prior, which is very restrictive and
+  probably not adaptive. It is likely that participants rely on more
+  information to make adaptive decisions even when planning is limited.
+  Our Preferences offer a solution to this
+\item
+  Discuss how the results relate to Sarah's model (2024 PLoS CB paper)
+  and the idea of Certainty-based stopping criterion
+\item
+  Discuss how the results relate to the traditional distinction between
+  habits and goal directed. Preferences might reflect the habit process,
+  and our results might indicate that both modules are at play, just
+  that planning kicks in only if habits are weak, also in line with
+  Sarah's work on balancing habits and goal directed behaviour paper
+  from 2021
+\item
+  Future experiment: have participants conduct several versions of the
+  same task in which different features of the task drive the return
+  (i.e.~make cost more relevant for example) and see how that influences
+  the preferences weighting.
+\item
+  A limitation of the present work is we assume that preferences are
+  fixed, thought they are likely to be dynamically updated throughout
+  the task. Future work should aim to characterize preferences update
+  mechanisms, by dynamically updating both the reward and transitional
+  probabilty structure of the task, either in a gradually or chunk-wise
+  (i.e.~having separate experimental blocks with different task
+  structures).
+\end{itemize}
 
 \textsubscript{Source:
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
 Notebook}}
+
+\section{References}\label{references}
 
 \vspace{1em}
 
@@ -987,11 +1014,6 @@ Capretto, T., Piho, C., Kumar, R., Westfall, J., Yarkoni, T., \& Martin,
 O. A. (2022). Bambi: A simple interface for fitting bayesian linear
 models in python. \emph{Journal of Statistical Software},
 \emph{103}(15), 1--29. \url{https://doi.org/10.18637/jss.v103.i15}
-
-\bibitem[\citeproctext]{ref-gershman2015computational}
-Gershman, S. J., Horvitz, E. J., \& Tenenbaum, J. B. (2015).
-Computational rationality: A converging paradigm for intelligence in
-brains, minds, and machines. \emph{Science}, \emph{349}(6245), 273--278.
 
 \bibitem[\citeproctext]{ref-lepauvre2026preferences-code}
 Lepauvre, A., \& Kiebel, S. J. (2026). Preferences for forward planning
@@ -1014,11 +1036,10 @@ analysis code and datasets (Version 1.2). zenodo.
 {Sutton, R. S., Barto, A. G., et al.} (1998). \emph{Reinforcement
 learning: An introduction} (Vol. 1). MIT press Cambridge.
 
-\bibitem[\citeproctext]{ref-tonidandel2010determining}
-Tonidandel, S., \& LeBreton, J. M. (2010). Determining the relative
-importance of predictors in logistic regression: An extension of
-relative weight analysis. \emph{Organizational Research Methods},
-\emph{13}(4), 767--781.
+\bibitem[\citeproctext]{ref-vehtari2017practical}
+Vehtari, A., Gelman, A., \& Gabry, J. (2017). Practical bayesian model
+evaluation using leave-one-out cross-validation and WAIC.
+\emph{Statistics and Computing}, \emph{27}(5), 1413--1432.
 
 \end{CSLReferences}
 
