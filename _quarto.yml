@@ -14,4 +14,10 @@ format:
       hypothesis: true
   docx: default
   jats: default
-  nature-pdf: default
+  arxiv-pdf: 
+    linenumbers: true # Add (continuous) line numbers?
+    doublespacing: false # Double space the PDF output?
+    runninghead: "Task-structure preferences" # The text on the top of each page of the output
+    authorcols: false # Should authors be listed in a single column (default) or in multiple columns (`authorcols: true`)
+
+
