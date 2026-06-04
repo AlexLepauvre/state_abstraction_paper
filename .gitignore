@@ -3,6 +3,8 @@
 
 /.quarto/
 /_manuscript
+/data
+/data/bids/limited_energy/derivatives/control_models
 
 /agujournal2019.cls
 /trackchanges.sty
