@@ -1117,14 +1117,14 @@ Notebook}}
 }
 
 \caption{\label{fig-returns}Single participants fit and performances (A)
-Model fit for each participant. (B) Correlation between participants
-return and the fitted \(\beta_{planning}\) parameter. Each dot represent
-a single participant, the line is a correlation fitted using optimal
-least square, legend indicates pearson correlation alongside p value.
-(C) Correlation between participants performances and the average
-preference entropy. Same convention as (B). (C) Correlation between
-participants performances and \(\beta_{modulation}\). Same convention as
-(B) and model, color coded by model of best fit.}
+Model fit for each participant, color coded per model of best fit. (B)
+Correlation between participants return and the fitted
+\(\beta_{planning}\) parameter. Each dot represent a single participant,
+the line is a correlation fitted using optimal least square, legend
+indicates pearson correlation alongside p value. (C) Correlation between
+participants performances and the average preference entropy. Same
+convention as (B). (C) Correlation between participants performances and
+\(\beta_{modulation}\). Same convention as (B)}
 
 \end{figure}%
 
@@ -1356,112 +1356,108 @@ Notebook}}
 
 In this paper, we investigated the systematicity in participants
 deviations from optimalility in a complex sequential decision making
-task. Our results reveal that participants choice behaviours reflects
-the combination of planning and task-structured preferences which are
+task. Analysis of participants responses revealed that choices reflect a
+combination of planning and task-structured preferences which are
 integrated in a Bayesian-like fashion, such that the certainty of the
 preference component modulates the extent to which participants rely on
-planning for making their decision. Investigations of participants RT
-further indicates that participants dedicate less resources in planning
-when their preferences are strong. Finally, exploring the impact of task
-features on reward maximization revealed that participants preferences
-are adapted to the task, enabling them to still obtain adequate returns
-in case planning is not feasible due to resource constraints.
+planning for decision-making. Investigations of participants RT further
+indicates that participants dedicate less efforts to planning when their
+preferences are strong. Finally, exploring the impact of task features
+on reward maximization revealed that participants preferences are
+adapted to the task, enabling them to still obtain adequate returns in
+case planning is not feasible due to resource constraints.
+
+To our knowledge, our study is the first to combined planning values
+derived from reinforcement learning with factorial regressors associated
+with each experimental conditions. Compuational approaches typically
+models participants behaviour using RL algorithm combined with flexible
+bias parameters, these bias parameters are generally considered to
+constitute nuisance effects that are to be removed to reveal the
+planning underneath
+\citep{ott2022forward, ott2020dynamic, huys2012bonsai, ho2022people, schwartenbeck2015dopaminergic}.
+In contrast, experimental work typically models behaviour or neural
+responses using hierarchical models incorporating all factors of the
+task to test hypotheses regarding predicted impact of experimental
+manipulations on measured responses
+\citep{barr2013random, baayen2010analyzing, ashburner2014spm12, singmann2019introduction}.
+Combining both approaches into a unified model indicates that in
+sequential decision making tasks, participants supplement costly
+planning with biases reflecting the task structure to enable fast and
+efficient decisions.
 
 Our results constitute an important reframing of participants deviation
 from optimal behaviour. In the literature, biases are typically
-considered to be maladaptive nuisance effects, leading participants to
-behave poorly. Our results suggest that participants preferences
-constitute a compact summaries of task structure that help guide
-behavior when exhaustive planning is costly, when there is no time or
-when planning comes with high uncertainty. This framing aligns with the
-recently proposed policy compression framework, in which it has been
-shown that biases towards most frequent actions are instruemntal in
-maximizing returns: for an agent under resource constraints, the optimal
-policy integrates planning with marginal action distribution under the
-optimal policy which constitutes participants prior over action. Our
-present study however extends on this idea, by showing that rather than
-integrating planning with state independent priors over actions,
+considered to be maladaptive deviations from rational behaviour. In
+psychology, many biases have been documented
+\citep{berthet2023heuristics}, which are thought to reflect the use of
+wrong heuristics, leading participants to make flawed decisions
+\citep{tversky1974judgment, gilovich2002heuristics}. Similarly, in
+perceptual decision making, deviations from optimality have been
+extensively documented \citep[see][ for a
+review]{rahnev2018suboptimality}, which are thought to reflect a bug
+rather than a feature of human cognition \citep[ ADD ADDITIONAL
+REFERENCES]{summerfield2018perceptual}. In contrast, our results suggest
+that rather than nuisance effects, participants preferences constitute a
+compact summary of task structure that help guide behavior when
+exhaustive planning is costly, when there is no time or when planning
+comes with high uncertainty.
+
+The preference component of our model is rather descriptive, we can
+therefore not infer how preferences are formed in our task. However, we
+speculate that the state dependent preferences may reflect priors over
+action. Participants might be able to transfer priors over policies from
+previous experience to a new task context, enabling them to perform
+close to optimal with relatively little trainining. Accordingly, our
+results align with Bayesian accounts of planning and the active
+inference framework, under which planning consists of the integration of
+the integration of priors with evidence regarding the value of actions
+derived from forward planning such that the extent of forward planning
+depends on the certainty of the prior
+\citep{parr2022active, friston2009reinforcement, friston2016active, schwobel2021balancing, schwobel2024joint, kuperwajs2021planning}.
+
+This framing of preferences as priors further aligns with the notion
+that biases from optimal behaviour are instrumental when processes
+associated with decision making (ranging from perceptual to motor
+responses) are noisy, processing resources are limited
+\citep{summerfield2018perceptual, tsetsos2016economic, schwiedrzik2014untangling, fischer2014serial}.
+Recent efforts to apply rate distortion theory and the policy
+compression framework have shown that biases towards most frequent
+actions are instrumental: for an agent under resource constraints, the
+optimal policy integrates planning with marginal action distribution
+under the optimal policy which constitutes participants prior over
+action
+\citep{tishby2010information, still2012information, lai2024human, lai2021policy}.
+Our present study however extends on this idea, by showing that rather
+than integrating planning with state independent priors over actions,
 participants rely on state dependent preferences. This is an important
 addition to the policy compression framework, which to our knowledge as
-only been tested in relatively simple decision making tasks. In most
-complex tasks, a state independent action prior would not yield to a
-much better outcome than just chosing responses randomly (as was the
-case in our task). It is therefore likely that to solve real world,
-complex problems, humans are able to keep track or approximate adequate
-responses preferences associated with relevant dimensions of the
-environment to maximize their return when they are unable to obtain
-fully certain or accuracy planning values.
+only been tested in tasks with small state spaces and where actions have
+no temporally distance consequences
+\citep{lai2024human, bari2023undermatching, liu2025action, lai2022action, gershman2025policy}.
+In most complex tasks, when a large number of states can be reacted to
+with many different actions, and action-state combination have complex
+downstream implications, state independent choice history biases might
+not be a satisfactory alternative to planning when no resources can be
+spared. It is therefore likely that to solve real world, complex
+problems, humans rely on hierarchical priors reflecting relevant
+dimensions of the environment to maximize their return when they are
+unable to obtain fully certain or accuracy planning values.
 
-Importantly, despite the use of exhaustive planning with reinforcement
-learning algorithm to obtain action values in our task, it is unlikely
-that planning is implemented in this way in the brain, as it would be
-prohibitively expansive to do so for large state spaces. More
-biologically plausible alternatives have been proposed, such as sampling
-methods, reply, partial tree search and approximate value computations.
-We are not committed to either of these alternatives, as our main
-interest in the paper was to investigate the structure underlying
-participants deviations from planning. The observation that RT depends
-on the interaction between preferences strength and decision conflict
-suggests that whichever algorithm implements action value implementation
-in the brain, the extent of the computations can be controlled to obtain
-more or less precise estimates depending on the specific circumstances
-in which planning is called into action.
-
-\begin{itemize}
-\item
-  Discuss bigger picture: Biases are often treated as defects, nuisance
-  terms, or deviations from rational planning. Your results suggest a
-  different interpretation. In complex tasks, biases may reflect priors:
-  compact summaries of task structure that help guide behavior when
-  exhaustive planning is costly, when there is no time, when planning
-  comes up with high uncertainty.
-\item
-  Discuss that we don't imply that planning is done in the exhaustive
-  way. Planning could be implemented by sampling, replay, partial tree
-  search, or approximate value computation.
-\item
-  Discuss that we speculate that preference should read as priors and
-  that we can't show this here but the active inference framework offers
-  itself here. And these are priors over policies, maybe good connection
-  to your next point and connect to reinforcement learning findings:
-\item
-  Discuss how the results relate to the notion of computational
-  rationality and policy compression In policy compression framework,
-  planning is complemented by the marginal action probability which is
-  taken to constitute a prior over action. Our use of preferences
-  constitutes an extension to it. Instead of considering marginal
-  probability across states, our preferences define action probability
-  based on the structure of the task, informing the default policy of
-  subjects beyond what is done in traditional policy compression. Or put
-  differently, in policy compression, assuming that participants are
-  under too much pressure to rely on planning, participants should rely
-  on state independent action prior, which is very restrictive and
-  probably not adaptive. It is likely that participants rely on more
-  information to make adaptive decisions even when planning is limited.
-  Our Preferences offer a solution to this
-\item
-  Discuss how the results relate to Sarah's model (2024 PLoS CB paper)
-  and the idea of Certainty-based stopping criterion
-\item
-  Discuss how the results relate to the traditional distinction between
-  habits and goal directed. Preferences might reflect the habit process,
-  and our results might indicate that both modules are at play, just
-  that planning kicks in only if habits are weak, also in line with
-  Sarah's work on balancing habits and goal directed behaviour paper
-  from 2021
-\item
-  A limitation of the present work is we assume that preferences are
-  fixed, thought they are likely to be dynamically updated throughout
-  the task. Future work should aim to characterize preferences update
-  mechanisms, by dynamically updating both the reward and transitional
-  probabilty structure of the task, either in a gradually or chunk-wise
-  (i.e.~having separate experimental blocks with different task
-  structures).
-\end{itemize}
-
-Similarly, Bayesian models of planning depth formalize the decision of
-how much to plan as a meta-decision about the value of further tree
-search \citep{kuperwajs2021planning}.
+The use of exhaustive RL algorithm (backward induction) to derive action
+values for the planning component of our model does not imply that this
+is how planning has to be implemented in the brain. It is indeed more
+likely that alternative, more biologically plausible planning algorithm
+are at play, such as sampling methods, partial tree search and
+approximate value computations \citep[ ADD MORE
+REFERENCES]{sutton1998reinforcement, silver2016mastering}. We are not
+committed to either of these alternatives, as our main interest in the
+paper was to investigate the structure underlying participants
+deviations from planning. The observation that RT depends on the
+interaction between preferences strength and decision conflict suggests
+that whichever algorithm implements action value implementation in the
+brain, the extent of the computations can be controlled to obtain more
+or less precise estimates depending on the specific circumstances in
+which planning is called into action.
 
 \textsubscript{Source:
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index-preview.html}{Article

@@ -1973,16 +1973,16 @@ Germany</institution>
         <fig id="fig-returns">
           <caption>
             <p>Figure 4: Single participants fit and performances (A)
-      Model fit for each participant. (B) Correlation between
-      participants return and the fitted <inline-formula><alternatives><tex-math><![CDATA[\beta_{planning}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:mi>n</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>g</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
+      Model fit for each participant, color coded per model of best fit.
+      (B) Correlation between participants return and the fitted
+      <inline-formula><alternatives><tex-math><![CDATA[\beta_{planning}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:mi>n</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>g</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
       parameter. Each dot represent a single participant, the line is a
       correlation fitted using optimal least square, legend indicates
       pearson correlation alongside p value. (C) Correlation between
       participants performances and the average preference entropy. Same
       convention as (B). (C) Correlation between participants
       performances and <inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>.
-      Same convention as (B) and model, color coded by model of best
-      fit.</p>
+      Same convention as (B)</p>
           </caption>
           <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-returns-output-1.png"/>
         </fig>
@@ -2180,122 +2180,156 @@ Germany</institution>
       <title>4 Discussion</title>
       <p>In this paper, we investigated the systematicity in participants
   deviations from optimalility in a complex sequential decision making
-  task. Our results reveal that participants choice behaviours reflects
-  the combination of planning and task-structured preferences which are
+  task. Analysis of participants responses revealed that choices reflect
+  a combination of planning and task-structured preferences which are
   integrated in a Bayesian-like fashion, such that the certainty of the
   preference component modulates the extent to which participants rely
-  on planning for making their decision. Investigations of participants
-  RT further indicates that participants dedicate less resources in
-  planning when their preferences are strong. Finally, exploring the
-  impact of task features on reward maximization revealed that
-  participants preferences are adapted to the task, enabling them to
-  still obtain adequate returns in case planning is not feasible due to
-  resource constraints.</p>
+  on planning for decision-making. Investigations of participants RT
+  further indicates that participants dedicate less efforts to planning
+  when their preferences are strong. Finally, exploring the impact of
+  task features on reward maximization revealed that participants
+  preferences are adapted to the task, enabling them to still obtain
+  adequate returns in case planning is not feasible due to resource
+  constraints.</p>
+      <p>To our knowledge, our study is the first to combined planning
+  values derived from reinforcement learning with factorial regressors
+  associated with each experimental conditions. Compuational approaches
+  typically models participants behaviour using RL algorithm combined
+  with flexible bias parameters, these bias parameters are generally
+  considered to constitute nuisance effects that are to be removed to
+  reveal the planning underneath
+  (<xref alt="Ott et al. 2022a" rid="ref-ott2022forward" ref-type="bibr">Ott
+  et al. 2022a</xref>,
+  <xref alt="2020" rid="ref-ott2020dynamic" ref-type="bibr">2020</xref>;
+  <xref alt="Huys et al. 2012" rid="ref-huys2012bonsai" ref-type="bibr">Huys
+  et al. 2012</xref>;
+  <xref alt="Ho et al. 2022" rid="ref-ho2022people" ref-type="bibr">Ho
+  et al. 2022</xref>;
+  <xref alt="Schwartenbeck et al. 2015" rid="ref-schwartenbeck2015dopaminergic" ref-type="bibr">Schwartenbeck
+  et al. 2015</xref>). In contrast, experimental work typically models
+  behaviour or neural responses using hierarchical models incorporating
+  all factors of the task to test hypotheses regarding predicted impact
+  of experimental manipulations on measured responses
+  (<xref alt="Barr et al. 2013" rid="ref-barr2013random" ref-type="bibr">Barr
+  et al. 2013</xref>;
+  <xref alt="Baayen and Milin 2010" rid="ref-baayen2010analyzing" ref-type="bibr">Baayen
+  and Milin 2010</xref>;
+  <xref alt="Ashburner et al. 2014" rid="ref-ashburner2014spm12" ref-type="bibr"><named-content content-type="nocase">Ashburner
+  et al.</named-content> 2014</xref>;
+  <xref alt="Singmann and Kellen 2019" rid="ref-singmann2019introduction" ref-type="bibr">Singmann
+  and Kellen 2019</xref>). Combining both approaches into a unified
+  model indicates that in sequential decision making tasks, participants
+  supplement costly planning with biases reflecting the task structure
+  to enable fast and efficient decisions.</p>
       <p>Our results constitute an important reframing of participants
   deviation from optimal behaviour. In the literature, biases are
-  typically considered to be maladaptive nuisance effects, leading
-  participants to behave poorly. Our results suggest that participants
-  preferences constitute a compact summaries of task structure that help
+  typically considered to be maladaptive deviations from rational
+  behaviour. In psychology, many biases have been documented
+  (<xref alt="Berthet and De Gardelle 2023" rid="ref-berthet2023heuristics" ref-type="bibr">Berthet
+  and De Gardelle 2023</xref>), which are thought to reflect the use of
+  wrong heuristics, leading participants to make flawed decisions
+  (<xref alt="Tversky and Kahneman 1974" rid="ref-tversky1974judgment" ref-type="bibr">Tversky
+  and Kahneman 1974</xref>;
+  <xref alt="Gilovich and Griffin 2002" rid="ref-gilovich2002heuristics" ref-type="bibr">Gilovich
+  and Griffin 2002</xref>). Similarly, in perceptual decision making,
+  deviations from optimality have been extensively documented (see
+  <xref alt="Rahnev and Denison 2018" rid="ref-rahnev2018suboptimality" ref-type="bibr">Rahnev
+  and Denison 2018</xref> for a review), which are thought to reflect a
+  bug rather than a feature of human cognition
+  (<xref alt="Summerfield and Li 2018" rid="ref-summerfield2018perceptual" ref-type="bibr">Summerfield
+  and Li 2018</xref> ADD ADDITIONAL REFERENCES). In contrast, our
+  results suggest that rather than nuisance effects, participants
+  preferences constitute a compact summary of task structure that help
   guide behavior when exhaustive planning is costly, when there is no
-  time or when planning comes with high uncertainty. This framing aligns
-  with the recently proposed policy compression framework, in which it
-  has been shown that biases towards most frequent actions are
-  instruemntal in maximizing returns: for an agent under resource
-  constraints, the optimal policy integrates planning with marginal
-  action distribution under the optimal policy which constitutes
-  participants prior over action. Our present study however extends on
-  this idea, by showing that rather than integrating planning with state
-  independent priors over actions, participants rely on state dependent
-  preferences. This is an important addition to the policy compression
-  framework, which to our knowledge as only been tested in relatively
-  simple decision making tasks. In most complex tasks, a state
-  independent action prior would not yield to a much better outcome than
-  just chosing responses randomly (as was the case in our task). It is
-  therefore likely that to solve real world, complex problems, humans
-  are able to keep track or approximate adequate responses preferences
-  associated with relevant dimensions of the environment to maximize
+  time or when planning comes with high uncertainty.</p>
+      <p>The preference component of our model is rather descriptive, we can
+  therefore not infer how preferences are formed in our task. However,
+  we speculate that the state dependent preferences may reflect priors
+  over action. Participants might be able to transfer priors over
+  policies from previous experience to a new task context, enabling them
+  to perform close to optimal with relatively little trainining.
+  Accordingly, our results align with Bayesian accounts of planning and
+  the active inference framework, under which planning consists of the
+  integration of the integration of priors with evidence regarding the
+  value of actions derived from forward planning such that the extent of
+  forward planning depends on the certainty of the prior
+  (<xref alt="Parr et al. 2022" rid="ref-parr2022active" ref-type="bibr">Parr
+  et al. 2022</xref>;
+  <xref alt="Friston et al. 2009" rid="ref-friston2009reinforcement" ref-type="bibr">Friston
+  et al. 2009</xref>;
+  <xref alt="Friston et al. 2016" rid="ref-friston2016active" ref-type="bibr"><named-content content-type="nocase">Friston
+  et al.</named-content> 2016</xref>;
+  <xref alt="Schwöbel et al. 2021" rid="ref-schwobel2021balancing" ref-type="bibr">Schwöbel
+  et al. 2021</xref>,
+  <xref alt="2024" rid="ref-schwobel2024joint" ref-type="bibr">2024</xref>;
+  <xref alt="Kuperwajs and Ma 2021" rid="ref-kuperwajs2021planning" ref-type="bibr">Kuperwajs
+  and Ma 2021</xref>).</p>
+      <p>This framing of preferences as priors further aligns with the
+  notion that biases from optimal behaviour are instrumental when
+  processes associated with decision making (ranging from perceptual to
+  motor responses) are noisy, processing resources are limited
+  (<xref alt="Summerfield and Li 2018" rid="ref-summerfield2018perceptual" ref-type="bibr">Summerfield
+  and Li 2018</xref>;
+  <xref alt="Tsetsos et al. 2016" rid="ref-tsetsos2016economic" ref-type="bibr">Tsetsos
+  et al. 2016</xref>;
+  <xref alt="Schwiedrzik et al. 2014" rid="ref-schwiedrzik2014untangling" ref-type="bibr">Schwiedrzik
+  et al. 2014</xref>;
+  <xref alt="Fischer and Whitney 2014" rid="ref-fischer2014serial" ref-type="bibr">Fischer
+  and Whitney 2014</xref>). Recent efforts to apply rate distortion
+  theory and the policy compression framework have shown that biases
+  towards most frequent actions are instrumental: for an agent under
+  resource constraints, the optimal policy integrates planning with
+  marginal action distribution under the optimal policy which
+  constitutes participants prior over action
+  (<xref alt="Tishby and Polani 2010" rid="ref-tishby2010information" ref-type="bibr">Tishby
+  and Polani 2010</xref>;
+  <xref alt="Still and Precup 2012" rid="ref-still2012information" ref-type="bibr">Still
+  and Precup 2012</xref>;
+  <xref alt="Lai and Gershman 2024" rid="ref-lai2024human" ref-type="bibr">Lai
+  and Gershman 2024</xref>,
+  <xref alt="2021" rid="ref-lai2021policy" ref-type="bibr">2021</xref>).
+  Our present study however extends on this idea, by showing that rather
+  than integrating planning with state independent priors over actions,
+  participants rely on state dependent preferences. This is an important
+  addition to the policy compression framework, which to our knowledge
+  as only been tested in tasks with small state spaces and where actions
+  have no temporally distance consequences
+  (<xref alt="Lai and Gershman 2024" rid="ref-lai2024human" ref-type="bibr">Lai
+  and Gershman 2024</xref>;
+  <xref alt="Bari and Gershman 2023" rid="ref-bari2023undermatching" ref-type="bibr">Bari
+  and Gershman 2023</xref>;
+  <xref alt="Liu and Gershman 2025" rid="ref-liu2025action" ref-type="bibr">Liu
+  and Gershman 2025</xref>;
+  <xref alt="Lai et al. 2022" rid="ref-lai2022action" ref-type="bibr">Lai
+  et al. 2022</xref>;
+  <xref alt="Gershman and Lak 2025" rid="ref-gershman2025policy" ref-type="bibr">Gershman
+  and Lak 2025</xref>). In most complex tasks, when a large number of
+  states can be reacted to with many different actions, and action-state
+  combination have complex downstream implications, state independent
+  choice history biases might not be a satisfactory alternative to
+  planning when no resources can be spared. It is therefore likely that
+  to solve real world, complex problems, humans rely on hierarchical
+  priors reflecting relevant dimensions of the environment to maximize
   their return when they are unable to obtain fully certain or accuracy
   planning values.</p>
-      <p>Importantly, despite the use of exhaustive planning with
-  reinforcement learning algorithm to obtain action values in our task,
-  it is unlikely that planning is implemented in this way in the brain,
-  as it would be prohibitively expansive to do so for large state
-  spaces. More biologically plausible alternatives have been proposed,
-  such as sampling methods, reply, partial tree search and approximate
-  value computations. We are not committed to either of these
-  alternatives, as our main interest in the paper was to investigate the
-  structure underlying participants deviations from planning. The
-  observation that RT depends on the interaction between preferences
-  strength and decision conflict suggests that whichever algorithm
-  implements action value implementation in the brain, the extent of the
-  computations can be controlled to obtain more or less precise
-  estimates depending on the specific circumstances in which planning is
-  called into action.</p>
-      <list list-type="bullet">
-        <list-item>
-          <p>Discuss bigger picture: Biases are often treated as defects,
-      nuisance terms, or deviations from rational planning. Your results
-      suggest a different interpretation. In complex tasks, biases may
-      reflect priors: compact summaries of task structure that help
-      guide behavior when exhaustive planning is costly, when there is
-      no time, when planning comes up with high uncertainty.</p>
-        </list-item>
-        <list-item>
-          <p>Discuss that we don’t imply that planning is done in the
-      exhaustive way. Planning could be implemented by sampling, replay,
-      partial tree search, or approximate value computation.</p>
-        </list-item>
-        <list-item>
-          <p>Discuss that we speculate that preference should read as priors
-      and that we can’t show this here but the active inference
-      framework offers itself here. And these are priors over policies,
-      maybe good connection to your next point and connect to
-      reinforcement learning findings:</p>
-        </list-item>
-        <list-item>
-          <p>Discuss how the results relate to the notion of computational
-      rationality and policy compression In policy compression
-      framework, planning is complemented by the marginal action
-      probability which is taken to constitute a prior over action. Our
-      use of preferences constitutes an extension to it. Instead of
-      considering marginal probability across states, our preferences
-      define action probability based on the structure of the task,
-      informing the default policy of subjects beyond what is done in
-      traditional policy compression. Or put differently, in policy
-      compression, assuming that participants are under too much
-      pressure to rely on planning, participants should rely on state
-      independent action prior, which is very restrictive and probably
-      not adaptive. It is likely that participants rely on more
-      information to make adaptive decisions even when planning is
-      limited. Our Preferences offer a solution to this</p>
-        </list-item>
-        <list-item>
-          <p>Discuss how the results relate to Sarah’s model (2024 PLoS CB
-      paper) and the idea of Certainty-based stopping criterion</p>
-        </list-item>
-        <list-item>
-          <p>Discuss how the results relate to the traditional distinction
-      between habits and goal directed. Preferences might reflect the
-      habit process, and our results might indicate that both modules
-      are at play, just that planning kicks in only if habits are weak,
-      also in line with Sarah’s work on balancing habits and goal
-      directed behaviour paper from 2021</p>
-        </list-item>
-        <list-item>
-          <p>A limitation of the present work is we assume that preferences
-      are fixed, thought they are likely to be dynamically updated
-      throughout the task. Future work should aim to characterize
-      preferences update mechanisms, by dynamically updating both the
-      reward and transitional probabilty structure of the task, either
-      in a gradually or chunk-wise (i.e. having separate experimental
-      blocks with different task structures).</p>
-        </list-item>
-      </list>
-      <p>Similarly, Bayesian models of planning depth formalize the decision
-  of how much to plan as a meta-decision about the value of further tree
-  search
-  (<xref alt="Kuperwajs and Ma 2021" rid="ref-kuperwajs2021planning" ref-type="bibr">Kuperwajs
-  and Ma 2021</xref>).</p>
+      <p>The use of exhaustive RL algorithm (backward induction) to derive
+  action values for the planning component of our model does not imply
+  that this is how planning has to be implemented in the brain. It is
+  indeed more likely that alternative, more biologically plausible
+  planning algorithm are at play, such as sampling methods, partial tree
+  search and approximate value computations
+  (<xref alt="Sutton et al. 1998" rid="ref-sutton1998reinforcement" ref-type="bibr"><named-content content-type="nocase">Sutton
+  et al.</named-content> 1998</xref>;
+  <xref alt="Silver et al. 2016" rid="ref-silver2016mastering" ref-type="bibr"><named-content content-type="nocase">Silver
+  et al.</named-content> 2016</xref> ADD MORE REFERENCES). We are not
+  committed to either of these alternatives, as our main interest in the
+  paper was to investigate the structure underlying participants
+  deviations from planning. The observation that RT depends on the
+  interaction between preferences strength and decision conflict
+  suggests that whichever algorithm implements action value
+  implementation in the brain, the extent of the computations can be
+  controlled to obtain more or less precise estimates depending on the
+  specific circumstances in which planning is called into action.</p>
     </sec>
     <sec id="acknowledgements">
       <title>5 Acknowledgements</title>
@@ -2773,9 +2807,796 @@ Germany</institution>
           <volume>43</volume>
         </element-citation>
       </ref>
+      <ref id="ref-ho2022people">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ho</surname>
+              <given-names>Mark K</given-names>
+            </name>
+            <name>
+              <surname>Abel</surname>
+              <given-names>David</given-names>
+            </name>
+            <name>
+              <surname>Correa</surname>
+              <given-names>Carlos G</given-names>
+            </name>
+            <name>
+              <surname>Littman</surname>
+              <given-names>Michael L</given-names>
+            </name>
+            <name>
+              <surname>Cohen</surname>
+              <given-names>Jonathan D</given-names>
+            </name>
+            <name>
+              <surname>Griffiths</surname>
+              <given-names>Thomas L</given-names>
+            </name>
+          </person-group>
+          <article-title>People construct simplified mental representations to plan</article-title>
+          <source>Nature</source>
+          <publisher-name>Nature Publishing Group UK London</publisher-name>
+          <year iso-8601-date="2022">2022</year>
+          <volume>606</volume>
+          <issue>7912</issue>
+          <fpage>129</fpage>
+          <lpage>136</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-tversky1974judgment">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tversky</surname>
+              <given-names>Amos</given-names>
+            </name>
+            <name>
+              <surname>Kahneman</surname>
+              <given-names>Daniel</given-names>
+            </name>
+          </person-group>
+          <article-title>Judgment under uncertainty: Heuristics and biases: Biases in judgments reveal some heuristics of thinking under uncertainty.</article-title>
+          <source>science</source>
+          <publisher-name>American association for the advancement of science</publisher-name>
+          <year iso-8601-date="1974">1974</year>
+          <volume>185</volume>
+          <issue>4157</issue>
+          <fpage>1124</fpage>
+          <lpage>1131</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-still2012information">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Still</surname>
+              <given-names>Susanne</given-names>
+            </name>
+            <name>
+              <surname>Precup</surname>
+              <given-names>Doina</given-names>
+            </name>
+          </person-group>
+          <article-title>An information-theoretic approach to curiosity-driven reinforcement learning</article-title>
+          <source>Theory in Biosciences</source>
+          <publisher-name>Springer</publisher-name>
+          <year iso-8601-date="2012">2012</year>
+          <volume>131</volume>
+          <issue>3</issue>
+          <fpage>139</fpage>
+          <lpage>148</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-tishby2010information">
+        <element-citation publication-type="chapter">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tishby</surname>
+              <given-names>Naftali</given-names>
+            </name>
+            <name>
+              <surname>Polani</surname>
+              <given-names>Daniel</given-names>
+            </name>
+          </person-group>
+          <article-title>Information theory of decisions and actions</article-title>
+          <source>Perception-action cycle: Models, architectures, and hardware</source>
+          <publisher-name>Springer</publisher-name>
+          <year iso-8601-date="2010">2010</year>
+          <fpage>601</fpage>
+          <lpage>636</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-berthet2023heuristics">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Berthet</surname>
+              <given-names>Vincent</given-names>
+            </name>
+            <name>
+              <surname>De Gardelle</surname>
+              <given-names>Vincent</given-names>
+            </name>
+          </person-group>
+          <article-title>The heuristics-and-biases inventory: An open-source tool to explore individual differences in rationality</article-title>
+          <source>Frontiers in Psychology</source>
+          <publisher-name>Frontiers Media SA</publisher-name>
+          <year iso-8601-date="2023">2023</year>
+          <volume>14</volume>
+          <fpage>1145246</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-gilovich2002heuristics">
+        <element-citation publication-type="chapter">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Gilovich</surname>
+              <given-names>Thomas</given-names>
+            </name>
+            <name>
+              <surname>Griffin</surname>
+              <given-names>Dale W</given-names>
+            </name>
+          </person-group>
+          <article-title>Heuristics and biases: The psychology of intuitive judgment</article-title>
+          <publisher-name>Cambridge university press</publisher-name>
+          <year iso-8601-date="2002">2002</year>
+        </element-citation>
+      </ref>
+      <ref id="ref-rahnev2018suboptimality">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Rahnev</surname>
+              <given-names>Dobromir</given-names>
+            </name>
+            <name>
+              <surname>Denison</surname>
+              <given-names>Rachel N</given-names>
+            </name>
+          </person-group>
+          <article-title>Suboptimality in perceptual decision making</article-title>
+          <source>Behavioral and brain sciences</source>
+          <publisher-name>Cambridge University Press</publisher-name>
+          <year iso-8601-date="2018">2018</year>
+          <volume>41</volume>
+          <fpage>e223</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-barr2013random">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Barr</surname>
+              <given-names>Dale J</given-names>
+            </name>
+            <name>
+              <surname>Levy</surname>
+              <given-names>Roger</given-names>
+            </name>
+            <name>
+              <surname>Scheepers</surname>
+              <given-names>Christoph</given-names>
+            </name>
+            <name>
+              <surname>Tily</surname>
+              <given-names>Harry J</given-names>
+            </name>
+          </person-group>
+          <article-title>Random effects structure for confirmatory hypothesis testing: Keep it maximal</article-title>
+          <source>Journal of memory and language</source>
+          <publisher-name>Elsevier</publisher-name>
+          <year iso-8601-date="2013">2013</year>
+          <volume>68</volume>
+          <issue>3</issue>
+          <fpage>255</fpage>
+          <lpage>278</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-baayen2010analyzing">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Baayen</surname>
+              <given-names>R Harald</given-names>
+            </name>
+            <name>
+              <surname>Milin</surname>
+              <given-names>Petar</given-names>
+            </name>
+          </person-group>
+          <article-title>Analyzing reaction times</article-title>
+          <source>International journal of psychological research</source>
+          <publisher-name>Universidad de San Buenaventura (USB), Medellı́n</publisher-name>
+          <year iso-8601-date="2010">2010</year>
+          <volume>3</volume>
+          <issue>2</issue>
+          <fpage>12</fpage>
+          <lpage>28</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-ashburner2014spm12">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ashburner</surname>
+              <given-names>John</given-names>
+            </name>
+            <name>
+              <surname>Barnes</surname>
+              <given-names>Gareth</given-names>
+            </name>
+            <name>
+              <surname>Chen</surname>
+              <given-names>Chun-Chuan</given-names>
+            </name>
+            <name>
+              <surname>Daunizeau</surname>
+              <given-names>Jean</given-names>
+            </name>
+            <name>
+              <surname>Flandin</surname>
+              <given-names>Guillaume</given-names>
+            </name>
+            <name>
+              <surname>Friston</surname>
+              <given-names>Karl</given-names>
+            </name>
+            <name>
+              <surname>Kiebel</surname>
+              <given-names>Stefan</given-names>
+            </name>
+            <name>
+              <surname>Kilner</surname>
+              <given-names>James</given-names>
+            </name>
+            <name>
+              <surname>Litvak</surname>
+              <given-names>Vladimir</given-names>
+            </name>
+            <name>
+              <surname>Moran</surname>
+              <given-names>Rosalyn</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>SPM12 manual</article-title>
+          <source>Wellcome Trust Centre for Neuroimaging, London, UK</source>
+          <year iso-8601-date="2014">2014</year>
+          <volume>2464</volume>
+          <issue>4</issue>
+          <fpage>53</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-singmann2019introduction">
+        <element-citation publication-type="chapter">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Singmann</surname>
+              <given-names>Henrik</given-names>
+            </name>
+            <name>
+              <surname>Kellen</surname>
+              <given-names>David</given-names>
+            </name>
+          </person-group>
+          <article-title>An introduction to mixed models for experimental psychology</article-title>
+          <source>New methods in cognitive psychology</source>
+          <publisher-name>Routledge</publisher-name>
+          <year iso-8601-date="2019">2019</year>
+          <fpage>4</fpage>
+          <lpage>31</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-ott2020dynamic">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ott</surname>
+              <given-names>Florian</given-names>
+            </name>
+            <name>
+              <surname>Marković</surname>
+              <given-names>Dimitrije</given-names>
+            </name>
+            <name>
+              <surname>Strobel</surname>
+              <given-names>Alexander</given-names>
+            </name>
+            <name>
+              <surname>Kiebel</surname>
+              <given-names>Stefan J</given-names>
+            </name>
+          </person-group>
+          <article-title>Dynamic integration of forward planning and heuristic preferences during multiple goal pursuit</article-title>
+          <source>PLoS computational biology</source>
+          <publisher-name>Public Library of Science San Francisco, CA USA</publisher-name>
+          <year iso-8601-date="2020">2020</year>
+          <volume>16</volume>
+          <issue>2</issue>
+          <fpage>e1007685</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-huys2012bonsai">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Huys</surname>
+              <given-names>Quentin JM</given-names>
+            </name>
+            <name>
+              <surname>Eshel</surname>
+              <given-names>Neir</given-names>
+            </name>
+            <name>
+              <surname>O’Nions</surname>
+              <given-names>Elizabeth</given-names>
+            </name>
+            <name>
+              <surname>Sheridan</surname>
+              <given-names>Luke</given-names>
+            </name>
+            <name>
+              <surname>Dayan</surname>
+              <given-names>Peter</given-names>
+            </name>
+            <name>
+              <surname>Roiser</surname>
+              <given-names>Jonathan P</given-names>
+            </name>
+          </person-group>
+          <article-title>Bonsai trees in your head: How the pavlovian system sculpts goal-directed choices by pruning decision trees</article-title>
+          <source>PLoS computational biology</source>
+          <publisher-name>Public Library of Science San Francisco, USA</publisher-name>
+          <year iso-8601-date="2012">2012</year>
+          <volume>8</volume>
+          <issue>3</issue>
+          <fpage>e1002410</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-ho2022people">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Ho</surname>
+              <given-names>Mark K</given-names>
+            </name>
+            <name>
+              <surname>Abel</surname>
+              <given-names>David</given-names>
+            </name>
+            <name>
+              <surname>Correa</surname>
+              <given-names>Carlos G</given-names>
+            </name>
+            <name>
+              <surname>Littman</surname>
+              <given-names>Michael L</given-names>
+            </name>
+            <name>
+              <surname>Cohen</surname>
+              <given-names>Jonathan D</given-names>
+            </name>
+            <name>
+              <surname>Griffiths</surname>
+              <given-names>Thomas L</given-names>
+            </name>
+          </person-group>
+          <article-title>People construct simplified mental representations to plan</article-title>
+          <source>Nature</source>
+          <publisher-name>Nature Publishing Group UK London</publisher-name>
+          <year iso-8601-date="2022">2022</year>
+          <volume>606</volume>
+          <issue>7912</issue>
+          <fpage>129</fpage>
+          <lpage>136</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-schwartenbeck2015dopaminergic">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Schwartenbeck</surname>
+              <given-names>Philipp</given-names>
+            </name>
+            <name>
+              <surname>FitzGerald</surname>
+              <given-names>Thomas HB</given-names>
+            </name>
+            <name>
+              <surname>Mathys</surname>
+              <given-names>Christoph</given-names>
+            </name>
+            <name>
+              <surname>Dolan</surname>
+              <given-names>Ray</given-names>
+            </name>
+            <name>
+              <surname>Friston</surname>
+              <given-names>Karl</given-names>
+            </name>
+          </person-group>
+          <article-title>The dopaminergic midbrain encodes the expected certainty about desired outcomes</article-title>
+          <source>Cerebral cortex</source>
+          <publisher-name>Oxford University Press</publisher-name>
+          <year iso-8601-date="2015">2015</year>
+          <volume>25</volume>
+          <issue>10</issue>
+          <fpage>3434</fpage>
+          <lpage>3445</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-summerfield2018perceptual">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Summerfield</surname>
+              <given-names>Christopher</given-names>
+            </name>
+            <name>
+              <surname>Li</surname>
+              <given-names>Vickie</given-names>
+            </name>
+          </person-group>
+          <article-title>Perceptual suboptimality: Bug or feature?</article-title>
+          <source>Behavioral and Brain Sciences</source>
+          <publisher-name>Cambridge University Press</publisher-name>
+          <year iso-8601-date="2018">2018</year>
+          <volume>41</volume>
+        </element-citation>
+      </ref>
+      <ref id="ref-tsetsos2016economic">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tsetsos</surname>
+              <given-names>Konstantinos</given-names>
+            </name>
+            <name>
+              <surname>Moran</surname>
+              <given-names>Rani</given-names>
+            </name>
+            <name>
+              <surname>Moreland</surname>
+              <given-names>James</given-names>
+            </name>
+            <name>
+              <surname>Chater</surname>
+              <given-names>Nick</given-names>
+            </name>
+            <name>
+              <surname>Usher</surname>
+              <given-names>Marius</given-names>
+            </name>
+            <name>
+              <surname>Summerfield</surname>
+              <given-names>Christopher</given-names>
+            </name>
+          </person-group>
+          <article-title>Economic irrationality is optimal during noisy decision making</article-title>
+          <source>Proceedings of the National Academy of Sciences</source>
+          <publisher-name>National Academy of Sciences</publisher-name>
+          <year iso-8601-date="2016">2016</year>
+          <volume>113</volume>
+          <issue>11</issue>
+          <fpage>3102</fpage>
+          <lpage>3107</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-lai2024human">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Lai</surname>
+              <given-names>Lucy</given-names>
+            </name>
+            <name>
+              <surname>Gershman</surname>
+              <given-names>Samuel J</given-names>
+            </name>
+          </person-group>
+          <article-title>Human decision making balances reward maximization and policy compression</article-title>
+          <source>PLOS Computational Biology</source>
+          <publisher-name>Public Library of Science San Francisco, CA USA</publisher-name>
+          <year iso-8601-date="2024">2024</year>
+          <volume>20</volume>
+          <issue>4</issue>
+          <fpage>e1012057</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-bari2023undermatching">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Bari</surname>
+              <given-names>Bilal A</given-names>
+            </name>
+            <name>
+              <surname>Gershman</surname>
+              <given-names>Samuel J</given-names>
+            </name>
+          </person-group>
+          <article-title>Undermatching is a consequence of policy compression</article-title>
+          <source>Journal of Neuroscience</source>
+          <publisher-name>Society for Neuroscience</publisher-name>
+          <year iso-8601-date="2023">2023</year>
+          <volume>43</volume>
+          <issue>3</issue>
+          <fpage>447</fpage>
+          <lpage>457</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-liu2025action">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Liu</surname>
+              <given-names>Shuze</given-names>
+            </name>
+            <name>
+              <surname>Gershman</surname>
+              <given-names>Samuel Joseph</given-names>
+            </name>
+          </person-group>
+          <article-title>Action subsampling supports policy compression in large action spaces</article-title>
+          <source>PLOS Computational Biology</source>
+          <publisher-name>Public Library of Science San Francisco, CA USA</publisher-name>
+          <year iso-8601-date="2025">2025</year>
+          <volume>21</volume>
+          <issue>9</issue>
+          <fpage>e1013444</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-lai2022action">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Lai</surname>
+              <given-names>Lucy</given-names>
+            </name>
+            <name>
+              <surname>Huang</surname>
+              <given-names>Ann Zixiang</given-names>
+            </name>
+            <name>
+              <surname>Gershman</surname>
+              <given-names>Samuel J</given-names>
+            </name>
+          </person-group>
+          <article-title>Action chunking as policy compression</article-title>
+          <source>PsyArXiv</source>
+          <year iso-8601-date="2022">2022</year>
+        </element-citation>
+      </ref>
+      <ref id="ref-gershman2025policy">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Gershman</surname>
+              <given-names>Samuel J</given-names>
+            </name>
+            <name>
+              <surname>Lak</surname>
+              <given-names>Armin</given-names>
+            </name>
+          </person-group>
+          <article-title>Policy complexity suppresses dopamine responses</article-title>
+          <source>Journal of Neuroscience</source>
+          <publisher-name>Society for Neuroscience</publisher-name>
+          <year iso-8601-date="2025">2025</year>
+          <volume>45</volume>
+          <issue>9</issue>
+        </element-citation>
+      </ref>
+      <ref id="ref-parr2022active">
+        <element-citation publication-type="book">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Parr</surname>
+              <given-names>Thomas</given-names>
+            </name>
+            <name>
+              <surname>Pezzulo</surname>
+              <given-names>Giovanni</given-names>
+            </name>
+            <name>
+              <surname>Friston</surname>
+              <given-names>Karl J</given-names>
+            </name>
+          </person-group>
+          <source>Active inference: The free energy principle in mind, brain, and behavior</source>
+          <publisher-name>MIT Press</publisher-name>
+          <year iso-8601-date="2022">2022</year>
+        </element-citation>
+      </ref>
+      <ref id="ref-friston2009reinforcement">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Friston</surname>
+              <given-names>Karl J</given-names>
+            </name>
+            <name>
+              <surname>Daunizeau</surname>
+              <given-names>Jean</given-names>
+            </name>
+            <name>
+              <surname>Kiebel</surname>
+              <given-names>Stefan J</given-names>
+            </name>
+          </person-group>
+          <article-title>Reinforcement learning or active inference?</article-title>
+          <source>PloS one</source>
+          <publisher-name>Public Library of Science San Francisco, USA</publisher-name>
+          <year iso-8601-date="2009">2009</year>
+          <volume>4</volume>
+          <issue>7</issue>
+          <fpage>e6421</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-friston2016active">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Friston</surname>
+              <given-names>Karl</given-names>
+            </name>
+            <name>
+              <surname>FitzGerald</surname>
+              <given-names>Thomas</given-names>
+            </name>
+            <name>
+              <surname>Rigoli</surname>
+              <given-names>Francesco</given-names>
+            </name>
+            <name>
+              <surname>Schwartenbeck</surname>
+              <given-names>Philipp</given-names>
+            </name>
+            <name>
+              <surname>Pezzulo</surname>
+              <given-names>Giovanni</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Active inference and learning</article-title>
+          <source>Neuroscience &amp; Biobehavioral Reviews</source>
+          <publisher-name>Elsevier</publisher-name>
+          <year iso-8601-date="2016">2016</year>
+          <volume>68</volume>
+          <fpage>862</fpage>
+          <lpage>879</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-silver2016mastering">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Silver</surname>
+              <given-names>David</given-names>
+            </name>
+            <name>
+              <surname>Huang</surname>
+              <given-names>Aja</given-names>
+            </name>
+            <name>
+              <surname>Maddison</surname>
+              <given-names>Chris J</given-names>
+            </name>
+            <name>
+              <surname>Guez</surname>
+              <given-names>Arthur</given-names>
+            </name>
+            <name>
+              <surname>Sifre</surname>
+              <given-names>Laurent</given-names>
+            </name>
+            <name>
+              <surname>Van Den Driessche</surname>
+              <given-names>George</given-names>
+            </name>
+            <name>
+              <surname>Schrittwieser</surname>
+              <given-names>Julian</given-names>
+            </name>
+            <name>
+              <surname>Antonoglou</surname>
+              <given-names>Ioannis</given-names>
+            </name>
+            <name>
+              <surname>Panneershelvam</surname>
+              <given-names>Veda</given-names>
+            </name>
+            <name>
+              <surname>Lanctot</surname>
+              <given-names>Marc</given-names>
+            </name>
+            <etal/>
+          </person-group>
+          <article-title>Mastering the game of go with deep neural networks and tree search</article-title>
+          <source>nature</source>
+          <publisher-name>Nature Publishing Group UK London</publisher-name>
+          <year iso-8601-date="2016">2016</year>
+          <volume>529</volume>
+          <issue>7587</issue>
+          <fpage>484</fpage>
+          <lpage>489</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-schwiedrzik2014untangling">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Schwiedrzik</surname>
+              <given-names>Caspar M</given-names>
+            </name>
+            <name>
+              <surname>Ruff</surname>
+              <given-names>Christian C</given-names>
+            </name>
+            <name>
+              <surname>Lazar</surname>
+              <given-names>Andreea</given-names>
+            </name>
+            <name>
+              <surname>Leitner</surname>
+              <given-names>Frauke C</given-names>
+            </name>
+            <name>
+              <surname>Singer</surname>
+              <given-names>Wolf</given-names>
+            </name>
+            <name>
+              <surname>Melloni</surname>
+              <given-names>Lucia</given-names>
+            </name>
+          </person-group>
+          <article-title>Untangling perceptual memory: Hysteresis and adaptation map into separate cortical networks</article-title>
+          <source>Cerebral Cortex</source>
+          <publisher-name>Oxford University Press</publisher-name>
+          <year iso-8601-date="2014">2014</year>
+          <volume>24</volume>
+          <issue>5</issue>
+          <fpage>1152</fpage>
+          <lpage>1164</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-fischer2014serial">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Fischer</surname>
+              <given-names>Jason</given-names>
+            </name>
+            <name>
+              <surname>Whitney</surname>
+              <given-names>David</given-names>
+            </name>
+          </person-group>
+          <article-title>Serial dependence in visual perception</article-title>
+          <source>Nature neuroscience</source>
+          <publisher-name>Nature Publishing Group US New York</publisher-name>
+          <year iso-8601-date="2014">2014</year>
+          <volume>17</volume>
+          <issue>5</issue>
+          <fpage>738</fpage>
+          <lpage>743</lpage>
+        </element-citation>
+      </ref>
     </ref-list>
   </back>
-  <sub-article article-type="notebook" id="nb-10-nb-article">
+  <sub-article article-type="notebook" id="nb-12-nb-article">
     <front-stub>
       <title-group>
         <article-title>Task-structure preferences</article-title>
@@ -5667,7 +6488,7 @@ ax["A"].set_xticks(range(len(traces)))
 ax["A"].set_xticklabels([s.split(' ')[0] for s in traces.keys()]) # , ha='right')
 ax["A"].set_ylabel("Sum of LOO values")
 ax["A"].spines[['right', 'top']].set_visible(False)
-# ax["A"].legend(frameon=False, bbox_to_anchor=(0.95, 0.9))
+ax["A"].legend(frameon=False)
 ax["A"].text(-0.2, 1.05, "A", transform=ax["A"].transAxes, 
               fontsize=16, fontweight='bold', va='top', ha='right'
               )
@@ -5733,17 +6554,16 @@ plt.tight_layout();</code>
               <fig id="fig-returns-nb-article">
                 <caption>
                   <p>Figure 4: Single participants fit and performances
-        (A) Model fit for each participant. (B) Correlation between
-        participants return and the fitted
-        <inline-formula><alternatives><tex-math><![CDATA[\beta_{planning}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:mi>n</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>g</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
+        (A) Model fit for each participant, color coded per model of
+        best fit. (B) Correlation between participants return and the
+        fitted <inline-formula><alternatives><tex-math><![CDATA[\beta_{planning}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:mi>n</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>g</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
         parameter. Each dot represent a single participant, the line is
         a correlation fitted using optimal least square, legend
         indicates pearson correlation alongside p value. (C) Correlation
         between participants performances and the average preference
         entropy. Same convention as (B). (C) Correlation between
         participants performances and <inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>.
-        Same convention as (B) and model, color coded by model of best
-        fit.</p>
+        Same convention as (B)</p>
                 </caption>
                 <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-returns-output-1.png"/>
               </fig>
@@ -6345,7 +7165,8 @@ NUTS: [sigma, Intercept, conflict, entropy, conflict:entropy, 1|vpn_sigma, 1|vpn
               <preformat/>
             </boxed-text>
             <boxed-text>
-              <preformat>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 58296 seconds.</preformat>
+              <preformat>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 58 seconds.
+The rhat statistic is larger than 1.01 for some parameters. This indicates problems during sampling. See https://arxiv.org/abs/1903.08008 for details</preformat>
             </boxed-text>
           </sec>
           <sec id="cell-fig-rt-nb-article" specific-use="notebook-content">
@@ -6450,122 +7271,156 @@ plt.tight_layout();</code>
           <title>4 Discussion</title>
           <p>In this paper, we investigated the systematicity in participants
   deviations from optimalility in a complex sequential decision making
-  task. Our results reveal that participants choice behaviours reflects
-  the combination of planning and task-structured preferences which are
+  task. Analysis of participants responses revealed that choices reflect
+  a combination of planning and task-structured preferences which are
   integrated in a Bayesian-like fashion, such that the certainty of the
   preference component modulates the extent to which participants rely
-  on planning for making their decision. Investigations of participants
-  RT further indicates that participants dedicate less resources in
-  planning when their preferences are strong. Finally, exploring the
-  impact of task features on reward maximization revealed that
-  participants preferences are adapted to the task, enabling them to
-  still obtain adequate returns in case planning is not feasible due to
-  resource constraints.</p>
+  on planning for decision-making. Investigations of participants RT
+  further indicates that participants dedicate less efforts to planning
+  when their preferences are strong. Finally, exploring the impact of
+  task features on reward maximization revealed that participants
+  preferences are adapted to the task, enabling them to still obtain
+  adequate returns in case planning is not feasible due to resource
+  constraints.</p>
+          <p>To our knowledge, our study is the first to combined planning
+  values derived from reinforcement learning with factorial regressors
+  associated with each experimental conditions. Compuational approaches
+  typically models participants behaviour using RL algorithm combined
+  with flexible bias parameters, these bias parameters are generally
+  considered to constitute nuisance effects that are to be removed to
+  reveal the planning underneath
+  (<xref alt="Ott et al. 2022a" rid="ref-ott2022forward-nb-article" ref-type="bibr">Ott
+  et al. 2022a</xref>,
+  <xref alt="2020" rid="ref-ott2020dynamic-nb-article" ref-type="bibr">2020</xref>;
+  <xref alt="Huys et al. 2012" rid="ref-huys2012bonsai-nb-article" ref-type="bibr">Huys
+  et al. 2012</xref>;
+  <xref alt="Ho et al. 2022" rid="ref-ho2022people-nb-article" ref-type="bibr">Ho
+  et al. 2022</xref>;
+  <xref alt="Schwartenbeck et al. 2015" rid="ref-schwartenbeck2015dopaminergic-nb-article" ref-type="bibr">Schwartenbeck
+  et al. 2015</xref>). In contrast, experimental work typically models
+  behaviour or neural responses using hierarchical models incorporating
+  all factors of the task to test hypotheses regarding predicted impact
+  of experimental manipulations on measured responses
+  (<xref alt="Barr et al. 2013" rid="ref-barr2013random-nb-article" ref-type="bibr">Barr
+  et al. 2013</xref>;
+  <xref alt="Baayen and Milin 2010" rid="ref-baayen2010analyzing-nb-article" ref-type="bibr">Baayen
+  and Milin 2010</xref>;
+  <xref alt="Ashburner et al. 2014" rid="ref-ashburner2014spm12-nb-article" ref-type="bibr"><named-content content-type="nocase">Ashburner
+  et al.</named-content> 2014</xref>;
+  <xref alt="Singmann and Kellen 2019" rid="ref-singmann2019introduction-nb-article" ref-type="bibr">Singmann
+  and Kellen 2019</xref>). Combining both approaches into a unified
+  model indicates that in sequential decision making tasks, participants
+  supplement costly planning with biases reflecting the task structure
+  to enable fast and efficient decisions.</p>
           <p>Our results constitute an important reframing of participants
   deviation from optimal behaviour. In the literature, biases are
-  typically considered to be maladaptive nuisance effects, leading
-  participants to behave poorly. Our results suggest that participants
-  preferences constitute a compact summaries of task structure that help
+  typically considered to be maladaptive deviations from rational
+  behaviour. In psychology, many biases have been documented
+  (<xref alt="Berthet and De Gardelle 2023" rid="ref-berthet2023heuristics-nb-article" ref-type="bibr">Berthet
+  and De Gardelle 2023</xref>), which are thought to reflect the use of
+  wrong heuristics, leading participants to make flawed decisions
+  (<xref alt="Tversky and Kahneman 1974" rid="ref-tversky1974judgment-nb-article" ref-type="bibr">Tversky
+  and Kahneman 1974</xref>;
+  <xref alt="Gilovich and Griffin 2002" rid="ref-gilovich2002heuristics-nb-article" ref-type="bibr">Gilovich
+  and Griffin 2002</xref>). Similarly, in perceptual decision making,
+  deviations from optimality have been extensively documented (see
+  <xref alt="Rahnev and Denison 2018" rid="ref-rahnev2018suboptimality-nb-article" ref-type="bibr">Rahnev
+  and Denison 2018</xref> for a review), which are thought to reflect a
+  bug rather than a feature of human cognition
+  (<xref alt="Summerfield and Li 2018" rid="ref-summerfield2018perceptual-nb-article" ref-type="bibr">Summerfield
+  and Li 2018</xref> ADD ADDITIONAL REFERENCES). In contrast, our
+  results suggest that rather than nuisance effects, participants
+  preferences constitute a compact summary of task structure that help
   guide behavior when exhaustive planning is costly, when there is no
-  time or when planning comes with high uncertainty. This framing aligns
-  with the recently proposed policy compression framework, in which it
-  has been shown that biases towards most frequent actions are
-  instruemntal in maximizing returns: for an agent under resource
-  constraints, the optimal policy integrates planning with marginal
-  action distribution under the optimal policy which constitutes
-  participants prior over action. Our present study however extends on
-  this idea, by showing that rather than integrating planning with state
-  independent priors over actions, participants rely on state dependent
-  preferences. This is an important addition to the policy compression
-  framework, which to our knowledge as only been tested in relatively
-  simple decision making tasks. In most complex tasks, a state
-  independent action prior would not yield to a much better outcome than
-  just chosing responses randomly (as was the case in our task). It is
-  therefore likely that to solve real world, complex problems, humans
-  are able to keep track or approximate adequate responses preferences
-  associated with relevant dimensions of the environment to maximize
+  time or when planning comes with high uncertainty.</p>
+          <p>The preference component of our model is rather descriptive, we can
+  therefore not infer how preferences are formed in our task. However,
+  we speculate that the state dependent preferences may reflect priors
+  over action. Participants might be able to transfer priors over
+  policies from previous experience to a new task context, enabling them
+  to perform close to optimal with relatively little trainining.
+  Accordingly, our results align with Bayesian accounts of planning and
+  the active inference framework, under which planning consists of the
+  integration of the integration of priors with evidence regarding the
+  value of actions derived from forward planning such that the extent of
+  forward planning depends on the certainty of the prior
+  (<xref alt="Parr et al. 2022" rid="ref-parr2022active-nb-article" ref-type="bibr">Parr
+  et al. 2022</xref>;
+  <xref alt="Friston et al. 2009" rid="ref-friston2009reinforcement-nb-article" ref-type="bibr">Friston
+  et al. 2009</xref>;
+  <xref alt="Friston et al. 2016" rid="ref-friston2016active-nb-article" ref-type="bibr"><named-content content-type="nocase">Friston
+  et al.</named-content> 2016</xref>;
+  <xref alt="Schwöbel et al. 2021" rid="ref-schwobel2021balancing-nb-article" ref-type="bibr">Schwöbel
+  et al. 2021</xref>,
+  <xref alt="2024" rid="ref-schwobel2024joint-nb-article" ref-type="bibr">2024</xref>;
+  <xref alt="Kuperwajs and Ma 2021" rid="ref-kuperwajs2021planning-nb-article" ref-type="bibr">Kuperwajs
+  and Ma 2021</xref>).</p>
+          <p>This framing of preferences as priors further aligns with the
+  notion that biases from optimal behaviour are instrumental when
+  processes associated with decision making (ranging from perceptual to
+  motor responses) are noisy, processing resources are limited
+  (<xref alt="Summerfield and Li 2018" rid="ref-summerfield2018perceptual-nb-article" ref-type="bibr">Summerfield
+  and Li 2018</xref>;
+  <xref alt="Tsetsos et al. 2016" rid="ref-tsetsos2016economic-nb-article" ref-type="bibr">Tsetsos
+  et al. 2016</xref>;
+  <xref alt="Schwiedrzik et al. 2014" rid="ref-schwiedrzik2014untangling-nb-article" ref-type="bibr">Schwiedrzik
+  et al. 2014</xref>;
+  <xref alt="Fischer and Whitney 2014" rid="ref-fischer2014serial-nb-article" ref-type="bibr">Fischer
+  and Whitney 2014</xref>). Recent efforts to apply rate distortion
+  theory and the policy compression framework have shown that biases
+  towards most frequent actions are instrumental: for an agent under
+  resource constraints, the optimal policy integrates planning with
+  marginal action distribution under the optimal policy which
+  constitutes participants prior over action
+  (<xref alt="Tishby and Polani 2010" rid="ref-tishby2010information-nb-article" ref-type="bibr">Tishby
+  and Polani 2010</xref>;
+  <xref alt="Still and Precup 2012" rid="ref-still2012information-nb-article" ref-type="bibr">Still
+  and Precup 2012</xref>;
+  <xref alt="Lai and Gershman 2024" rid="ref-lai2024human-nb-article" ref-type="bibr">Lai
+  and Gershman 2024</xref>,
+  <xref alt="2021" rid="ref-lai2021policy-nb-article" ref-type="bibr">2021</xref>).
+  Our present study however extends on this idea, by showing that rather
+  than integrating planning with state independent priors over actions,
+  participants rely on state dependent preferences. This is an important
+  addition to the policy compression framework, which to our knowledge
+  as only been tested in tasks with small state spaces and where actions
+  have no temporally distance consequences
+  (<xref alt="Lai and Gershman 2024" rid="ref-lai2024human-nb-article" ref-type="bibr">Lai
+  and Gershman 2024</xref>;
+  <xref alt="Bari and Gershman 2023" rid="ref-bari2023undermatching-nb-article" ref-type="bibr">Bari
+  and Gershman 2023</xref>;
+  <xref alt="Liu and Gershman 2025" rid="ref-liu2025action-nb-article" ref-type="bibr">Liu
+  and Gershman 2025</xref>;
+  <xref alt="Lai et al. 2022" rid="ref-lai2022action-nb-article" ref-type="bibr">Lai
+  et al. 2022</xref>;
+  <xref alt="Gershman and Lak 2025" rid="ref-gershman2025policy-nb-article" ref-type="bibr">Gershman
+  and Lak 2025</xref>). In most complex tasks, when a large number of
+  states can be reacted to with many different actions, and action-state
+  combination have complex downstream implications, state independent
+  choice history biases might not be a satisfactory alternative to
+  planning when no resources can be spared. It is therefore likely that
+  to solve real world, complex problems, humans rely on hierarchical
+  priors reflecting relevant dimensions of the environment to maximize
   their return when they are unable to obtain fully certain or accuracy
   planning values.</p>
-          <p>Importantly, despite the use of exhaustive planning with
-  reinforcement learning algorithm to obtain action values in our task,
-  it is unlikely that planning is implemented in this way in the brain,
-  as it would be prohibitively expansive to do so for large state
-  spaces. More biologically plausible alternatives have been proposed,
-  such as sampling methods, reply, partial tree search and approximate
-  value computations. We are not committed to either of these
-  alternatives, as our main interest in the paper was to investigate the
-  structure underlying participants deviations from planning. The
-  observation that RT depends on the interaction between preferences
-  strength and decision conflict suggests that whichever algorithm
-  implements action value implementation in the brain, the extent of the
-  computations can be controlled to obtain more or less precise
-  estimates depending on the specific circumstances in which planning is
-  called into action.</p>
-          <list list-type="bullet">
-            <list-item>
-              <p>Discuss bigger picture: Biases are often treated as defects,
-      nuisance terms, or deviations from rational planning. Your results
-      suggest a different interpretation. In complex tasks, biases may
-      reflect priors: compact summaries of task structure that help
-      guide behavior when exhaustive planning is costly, when there is
-      no time, when planning comes up with high uncertainty.</p>
-            </list-item>
-            <list-item>
-              <p>Discuss that we don’t imply that planning is done in the
-      exhaustive way. Planning could be implemented by sampling, replay,
-      partial tree search, or approximate value computation.</p>
-            </list-item>
-            <list-item>
-              <p>Discuss that we speculate that preference should read as priors
-      and that we can’t show this here but the active inference
-      framework offers itself here. And these are priors over policies,
-      maybe good connection to your next point and connect to
-      reinforcement learning findings:</p>
-            </list-item>
-            <list-item>
-              <p>Discuss how the results relate to the notion of computational
-      rationality and policy compression In policy compression
-      framework, planning is complemented by the marginal action
-      probability which is taken to constitute a prior over action. Our
-      use of preferences constitutes an extension to it. Instead of
-      considering marginal probability across states, our preferences
-      define action probability based on the structure of the task,
-      informing the default policy of subjects beyond what is done in
-      traditional policy compression. Or put differently, in policy
-      compression, assuming that participants are under too much
-      pressure to rely on planning, participants should rely on state
-      independent action prior, which is very restrictive and probably
-      not adaptive. It is likely that participants rely on more
-      information to make adaptive decisions even when planning is
-      limited. Our Preferences offer a solution to this</p>
-            </list-item>
-            <list-item>
-              <p>Discuss how the results relate to Sarah’s model (2024 PLoS CB
-      paper) and the idea of Certainty-based stopping criterion</p>
-            </list-item>
-            <list-item>
-              <p>Discuss how the results relate to the traditional distinction
-      between habits and goal directed. Preferences might reflect the
-      habit process, and our results might indicate that both modules
-      are at play, just that planning kicks in only if habits are weak,
-      also in line with Sarah’s work on balancing habits and goal
-      directed behaviour paper from 2021</p>
-            </list-item>
-            <list-item>
-              <p>A limitation of the present work is we assume that preferences
-      are fixed, thought they are likely to be dynamically updated
-      throughout the task. Future work should aim to characterize
-      preferences update mechanisms, by dynamically updating both the
-      reward and transitional probabilty structure of the task, either
-      in a gradually or chunk-wise (i.e. having separate experimental
-      blocks with different task structures).</p>
-            </list-item>
-          </list>
-          <p>Similarly, Bayesian models of planning depth formalize the decision
-  of how much to plan as a meta-decision about the value of further tree
-  search
-  (<xref alt="Kuperwajs and Ma 2021" rid="ref-kuperwajs2021planning-nb-article" ref-type="bibr">Kuperwajs
-  and Ma 2021</xref>).</p>
+          <p>The use of exhaustive RL algorithm (backward induction) to derive
+  action values for the planning component of our model does not imply
+  that this is how planning has to be implemented in the brain. It is
+  indeed more likely that alternative, more biologically plausible
+  planning algorithm are at play, such as sampling methods, partial tree
+  search and approximate value computations
+  (<xref alt="Sutton et al. 1998" rid="ref-sutton1998reinforcement-nb-article" ref-type="bibr"><named-content content-type="nocase">Sutton
+  et al.</named-content> 1998</xref>;
+  <xref alt="Silver et al. 2016" rid="ref-silver2016mastering-nb-article" ref-type="bibr"><named-content content-type="nocase">Silver
+  et al.</named-content> 2016</xref> ADD MORE REFERENCES). We are not
+  committed to either of these alternatives, as our main interest in the
+  paper was to investigate the structure underlying participants
+  deviations from planning. The observation that RT depends on the
+  interaction between preferences strength and decision conflict
+  suggests that whichever algorithm implements action value
+  implementation in the brain, the extent of the computations can be
+  controlled to obtain more or less precise estimates depending on the
+  specific circumstances in which planning is called into action.</p>
         </sec>
         <sec id="cell-43-nb-article" specific-use="notebook-content">
 </sec>
@@ -7051,6 +7906,793 @@ plt.tight_layout();</code>
             <source>Proceedings of the annual meeting of the cognitive science society</source>
             <year iso-8601-date="2021">2021</year>
             <volume>43</volume>
+          </element-citation>
+        </ref>
+        <ref id="ref-ho2022people-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Ho</surname>
+                <given-names>Mark K</given-names>
+              </name>
+              <name>
+                <surname>Abel</surname>
+                <given-names>David</given-names>
+              </name>
+              <name>
+                <surname>Correa</surname>
+                <given-names>Carlos G</given-names>
+              </name>
+              <name>
+                <surname>Littman</surname>
+                <given-names>Michael L</given-names>
+              </name>
+              <name>
+                <surname>Cohen</surname>
+                <given-names>Jonathan D</given-names>
+              </name>
+              <name>
+                <surname>Griffiths</surname>
+                <given-names>Thomas L</given-names>
+              </name>
+            </person-group>
+            <article-title>People construct simplified mental representations to plan</article-title>
+            <source>Nature</source>
+            <publisher-name>Nature Publishing Group UK London</publisher-name>
+            <year iso-8601-date="2022">2022</year>
+            <volume>606</volume>
+            <issue>7912</issue>
+            <fpage>129</fpage>
+            <lpage>136</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-tversky1974judgment-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Tversky</surname>
+                <given-names>Amos</given-names>
+              </name>
+              <name>
+                <surname>Kahneman</surname>
+                <given-names>Daniel</given-names>
+              </name>
+            </person-group>
+            <article-title>Judgment under uncertainty: Heuristics and biases: Biases in judgments reveal some heuristics of thinking under uncertainty.</article-title>
+            <source>science</source>
+            <publisher-name>American association for the advancement of science</publisher-name>
+            <year iso-8601-date="1974">1974</year>
+            <volume>185</volume>
+            <issue>4157</issue>
+            <fpage>1124</fpage>
+            <lpage>1131</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-still2012information-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Still</surname>
+                <given-names>Susanne</given-names>
+              </name>
+              <name>
+                <surname>Precup</surname>
+                <given-names>Doina</given-names>
+              </name>
+            </person-group>
+            <article-title>An information-theoretic approach to curiosity-driven reinforcement learning</article-title>
+            <source>Theory in Biosciences</source>
+            <publisher-name>Springer</publisher-name>
+            <year iso-8601-date="2012">2012</year>
+            <volume>131</volume>
+            <issue>3</issue>
+            <fpage>139</fpage>
+            <lpage>148</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-tishby2010information-nb-article">
+          <element-citation publication-type="chapter">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Tishby</surname>
+                <given-names>Naftali</given-names>
+              </name>
+              <name>
+                <surname>Polani</surname>
+                <given-names>Daniel</given-names>
+              </name>
+            </person-group>
+            <article-title>Information theory of decisions and actions</article-title>
+            <source>Perception-action cycle: Models, architectures, and hardware</source>
+            <publisher-name>Springer</publisher-name>
+            <year iso-8601-date="2010">2010</year>
+            <fpage>601</fpage>
+            <lpage>636</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-berthet2023heuristics-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Berthet</surname>
+                <given-names>Vincent</given-names>
+              </name>
+              <name>
+                <surname>De Gardelle</surname>
+                <given-names>Vincent</given-names>
+              </name>
+            </person-group>
+            <article-title>The heuristics-and-biases inventory: An open-source tool to explore individual differences in rationality</article-title>
+            <source>Frontiers in Psychology</source>
+            <publisher-name>Frontiers Media SA</publisher-name>
+            <year iso-8601-date="2023">2023</year>
+            <volume>14</volume>
+            <fpage>1145246</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-gilovich2002heuristics-nb-article">
+          <element-citation publication-type="chapter">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Gilovich</surname>
+                <given-names>Thomas</given-names>
+              </name>
+              <name>
+                <surname>Griffin</surname>
+                <given-names>Dale W</given-names>
+              </name>
+            </person-group>
+            <article-title>Heuristics and biases: The psychology of intuitive judgment</article-title>
+            <publisher-name>Cambridge university press</publisher-name>
+            <year iso-8601-date="2002">2002</year>
+          </element-citation>
+        </ref>
+        <ref id="ref-rahnev2018suboptimality-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Rahnev</surname>
+                <given-names>Dobromir</given-names>
+              </name>
+              <name>
+                <surname>Denison</surname>
+                <given-names>Rachel N</given-names>
+              </name>
+            </person-group>
+            <article-title>Suboptimality in perceptual decision making</article-title>
+            <source>Behavioral and brain sciences</source>
+            <publisher-name>Cambridge University Press</publisher-name>
+            <year iso-8601-date="2018">2018</year>
+            <volume>41</volume>
+            <fpage>e223</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-barr2013random-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Barr</surname>
+                <given-names>Dale J</given-names>
+              </name>
+              <name>
+                <surname>Levy</surname>
+                <given-names>Roger</given-names>
+              </name>
+              <name>
+                <surname>Scheepers</surname>
+                <given-names>Christoph</given-names>
+              </name>
+              <name>
+                <surname>Tily</surname>
+                <given-names>Harry J</given-names>
+              </name>
+            </person-group>
+            <article-title>Random effects structure for confirmatory hypothesis testing: Keep it maximal</article-title>
+            <source>Journal of memory and language</source>
+            <publisher-name>Elsevier</publisher-name>
+            <year iso-8601-date="2013">2013</year>
+            <volume>68</volume>
+            <issue>3</issue>
+            <fpage>255</fpage>
+            <lpage>278</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-baayen2010analyzing-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Baayen</surname>
+                <given-names>R Harald</given-names>
+              </name>
+              <name>
+                <surname>Milin</surname>
+                <given-names>Petar</given-names>
+              </name>
+            </person-group>
+            <article-title>Analyzing reaction times</article-title>
+            <source>International journal of psychological research</source>
+            <publisher-name>Universidad de San Buenaventura (USB), Medellı́n</publisher-name>
+            <year iso-8601-date="2010">2010</year>
+            <volume>3</volume>
+            <issue>2</issue>
+            <fpage>12</fpage>
+            <lpage>28</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-ashburner2014spm12-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Ashburner</surname>
+                <given-names>John</given-names>
+              </name>
+              <name>
+                <surname>Barnes</surname>
+                <given-names>Gareth</given-names>
+              </name>
+              <name>
+                <surname>Chen</surname>
+                <given-names>Chun-Chuan</given-names>
+              </name>
+              <name>
+                <surname>Daunizeau</surname>
+                <given-names>Jean</given-names>
+              </name>
+              <name>
+                <surname>Flandin</surname>
+                <given-names>Guillaume</given-names>
+              </name>
+              <name>
+                <surname>Friston</surname>
+                <given-names>Karl</given-names>
+              </name>
+              <name>
+                <surname>Kiebel</surname>
+                <given-names>Stefan</given-names>
+              </name>
+              <name>
+                <surname>Kilner</surname>
+                <given-names>James</given-names>
+              </name>
+              <name>
+                <surname>Litvak</surname>
+                <given-names>Vladimir</given-names>
+              </name>
+              <name>
+                <surname>Moran</surname>
+                <given-names>Rosalyn</given-names>
+              </name>
+              <etal/>
+            </person-group>
+            <article-title>SPM12 manual</article-title>
+            <source>Wellcome Trust Centre for Neuroimaging, London, UK</source>
+            <year iso-8601-date="2014">2014</year>
+            <volume>2464</volume>
+            <issue>4</issue>
+            <fpage>53</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-singmann2019introduction-nb-article">
+          <element-citation publication-type="chapter">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Singmann</surname>
+                <given-names>Henrik</given-names>
+              </name>
+              <name>
+                <surname>Kellen</surname>
+                <given-names>David</given-names>
+              </name>
+            </person-group>
+            <article-title>An introduction to mixed models for experimental psychology</article-title>
+            <source>New methods in cognitive psychology</source>
+            <publisher-name>Routledge</publisher-name>
+            <year iso-8601-date="2019">2019</year>
+            <fpage>4</fpage>
+            <lpage>31</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-ott2020dynamic-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Ott</surname>
+                <given-names>Florian</given-names>
+              </name>
+              <name>
+                <surname>Marković</surname>
+                <given-names>Dimitrije</given-names>
+              </name>
+              <name>
+                <surname>Strobel</surname>
+                <given-names>Alexander</given-names>
+              </name>
+              <name>
+                <surname>Kiebel</surname>
+                <given-names>Stefan J</given-names>
+              </name>
+            </person-group>
+            <article-title>Dynamic integration of forward planning and heuristic preferences during multiple goal pursuit</article-title>
+            <source>PLoS computational biology</source>
+            <publisher-name>Public Library of Science San Francisco, CA USA</publisher-name>
+            <year iso-8601-date="2020">2020</year>
+            <volume>16</volume>
+            <issue>2</issue>
+            <fpage>e1007685</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-huys2012bonsai-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Huys</surname>
+                <given-names>Quentin JM</given-names>
+              </name>
+              <name>
+                <surname>Eshel</surname>
+                <given-names>Neir</given-names>
+              </name>
+              <name>
+                <surname>O’Nions</surname>
+                <given-names>Elizabeth</given-names>
+              </name>
+              <name>
+                <surname>Sheridan</surname>
+                <given-names>Luke</given-names>
+              </name>
+              <name>
+                <surname>Dayan</surname>
+                <given-names>Peter</given-names>
+              </name>
+              <name>
+                <surname>Roiser</surname>
+                <given-names>Jonathan P</given-names>
+              </name>
+            </person-group>
+            <article-title>Bonsai trees in your head: How the pavlovian system sculpts goal-directed choices by pruning decision trees</article-title>
+            <source>PLoS computational biology</source>
+            <publisher-name>Public Library of Science San Francisco, USA</publisher-name>
+            <year iso-8601-date="2012">2012</year>
+            <volume>8</volume>
+            <issue>3</issue>
+            <fpage>e1002410</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-ho2022people-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Ho</surname>
+                <given-names>Mark K</given-names>
+              </name>
+              <name>
+                <surname>Abel</surname>
+                <given-names>David</given-names>
+              </name>
+              <name>
+                <surname>Correa</surname>
+                <given-names>Carlos G</given-names>
+              </name>
+              <name>
+                <surname>Littman</surname>
+                <given-names>Michael L</given-names>
+              </name>
+              <name>
+                <surname>Cohen</surname>
+                <given-names>Jonathan D</given-names>
+              </name>
+              <name>
+                <surname>Griffiths</surname>
+                <given-names>Thomas L</given-names>
+              </name>
+            </person-group>
+            <article-title>People construct simplified mental representations to plan</article-title>
+            <source>Nature</source>
+            <publisher-name>Nature Publishing Group UK London</publisher-name>
+            <year iso-8601-date="2022">2022</year>
+            <volume>606</volume>
+            <issue>7912</issue>
+            <fpage>129</fpage>
+            <lpage>136</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-schwartenbeck2015dopaminergic-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Schwartenbeck</surname>
+                <given-names>Philipp</given-names>
+              </name>
+              <name>
+                <surname>FitzGerald</surname>
+                <given-names>Thomas HB</given-names>
+              </name>
+              <name>
+                <surname>Mathys</surname>
+                <given-names>Christoph</given-names>
+              </name>
+              <name>
+                <surname>Dolan</surname>
+                <given-names>Ray</given-names>
+              </name>
+              <name>
+                <surname>Friston</surname>
+                <given-names>Karl</given-names>
+              </name>
+            </person-group>
+            <article-title>The dopaminergic midbrain encodes the expected certainty about desired outcomes</article-title>
+            <source>Cerebral cortex</source>
+            <publisher-name>Oxford University Press</publisher-name>
+            <year iso-8601-date="2015">2015</year>
+            <volume>25</volume>
+            <issue>10</issue>
+            <fpage>3434</fpage>
+            <lpage>3445</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-summerfield2018perceptual-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Summerfield</surname>
+                <given-names>Christopher</given-names>
+              </name>
+              <name>
+                <surname>Li</surname>
+                <given-names>Vickie</given-names>
+              </name>
+            </person-group>
+            <article-title>Perceptual suboptimality: Bug or feature?</article-title>
+            <source>Behavioral and Brain Sciences</source>
+            <publisher-name>Cambridge University Press</publisher-name>
+            <year iso-8601-date="2018">2018</year>
+            <volume>41</volume>
+          </element-citation>
+        </ref>
+        <ref id="ref-tsetsos2016economic-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Tsetsos</surname>
+                <given-names>Konstantinos</given-names>
+              </name>
+              <name>
+                <surname>Moran</surname>
+                <given-names>Rani</given-names>
+              </name>
+              <name>
+                <surname>Moreland</surname>
+                <given-names>James</given-names>
+              </name>
+              <name>
+                <surname>Chater</surname>
+                <given-names>Nick</given-names>
+              </name>
+              <name>
+                <surname>Usher</surname>
+                <given-names>Marius</given-names>
+              </name>
+              <name>
+                <surname>Summerfield</surname>
+                <given-names>Christopher</given-names>
+              </name>
+            </person-group>
+            <article-title>Economic irrationality is optimal during noisy decision making</article-title>
+            <source>Proceedings of the National Academy of Sciences</source>
+            <publisher-name>National Academy of Sciences</publisher-name>
+            <year iso-8601-date="2016">2016</year>
+            <volume>113</volume>
+            <issue>11</issue>
+            <fpage>3102</fpage>
+            <lpage>3107</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-lai2024human-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Lai</surname>
+                <given-names>Lucy</given-names>
+              </name>
+              <name>
+                <surname>Gershman</surname>
+                <given-names>Samuel J</given-names>
+              </name>
+            </person-group>
+            <article-title>Human decision making balances reward maximization and policy compression</article-title>
+            <source>PLOS Computational Biology</source>
+            <publisher-name>Public Library of Science San Francisco, CA USA</publisher-name>
+            <year iso-8601-date="2024">2024</year>
+            <volume>20</volume>
+            <issue>4</issue>
+            <fpage>e1012057</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-bari2023undermatching-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Bari</surname>
+                <given-names>Bilal A</given-names>
+              </name>
+              <name>
+                <surname>Gershman</surname>
+                <given-names>Samuel J</given-names>
+              </name>
+            </person-group>
+            <article-title>Undermatching is a consequence of policy compression</article-title>
+            <source>Journal of Neuroscience</source>
+            <publisher-name>Society for Neuroscience</publisher-name>
+            <year iso-8601-date="2023">2023</year>
+            <volume>43</volume>
+            <issue>3</issue>
+            <fpage>447</fpage>
+            <lpage>457</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-liu2025action-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Liu</surname>
+                <given-names>Shuze</given-names>
+              </name>
+              <name>
+                <surname>Gershman</surname>
+                <given-names>Samuel Joseph</given-names>
+              </name>
+            </person-group>
+            <article-title>Action subsampling supports policy compression in large action spaces</article-title>
+            <source>PLOS Computational Biology</source>
+            <publisher-name>Public Library of Science San Francisco, CA USA</publisher-name>
+            <year iso-8601-date="2025">2025</year>
+            <volume>21</volume>
+            <issue>9</issue>
+            <fpage>e1013444</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-lai2022action-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Lai</surname>
+                <given-names>Lucy</given-names>
+              </name>
+              <name>
+                <surname>Huang</surname>
+                <given-names>Ann Zixiang</given-names>
+              </name>
+              <name>
+                <surname>Gershman</surname>
+                <given-names>Samuel J</given-names>
+              </name>
+            </person-group>
+            <article-title>Action chunking as policy compression</article-title>
+            <source>PsyArXiv</source>
+            <year iso-8601-date="2022">2022</year>
+          </element-citation>
+        </ref>
+        <ref id="ref-gershman2025policy-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Gershman</surname>
+                <given-names>Samuel J</given-names>
+              </name>
+              <name>
+                <surname>Lak</surname>
+                <given-names>Armin</given-names>
+              </name>
+            </person-group>
+            <article-title>Policy complexity suppresses dopamine responses</article-title>
+            <source>Journal of Neuroscience</source>
+            <publisher-name>Society for Neuroscience</publisher-name>
+            <year iso-8601-date="2025">2025</year>
+            <volume>45</volume>
+            <issue>9</issue>
+          </element-citation>
+        </ref>
+        <ref id="ref-parr2022active-nb-article">
+          <element-citation publication-type="book">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Parr</surname>
+                <given-names>Thomas</given-names>
+              </name>
+              <name>
+                <surname>Pezzulo</surname>
+                <given-names>Giovanni</given-names>
+              </name>
+              <name>
+                <surname>Friston</surname>
+                <given-names>Karl J</given-names>
+              </name>
+            </person-group>
+            <source>Active inference: The free energy principle in mind, brain, and behavior</source>
+            <publisher-name>MIT Press</publisher-name>
+            <year iso-8601-date="2022">2022</year>
+          </element-citation>
+        </ref>
+        <ref id="ref-friston2009reinforcement-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Friston</surname>
+                <given-names>Karl J</given-names>
+              </name>
+              <name>
+                <surname>Daunizeau</surname>
+                <given-names>Jean</given-names>
+              </name>
+              <name>
+                <surname>Kiebel</surname>
+                <given-names>Stefan J</given-names>
+              </name>
+            </person-group>
+            <article-title>Reinforcement learning or active inference?</article-title>
+            <source>PloS one</source>
+            <publisher-name>Public Library of Science San Francisco, USA</publisher-name>
+            <year iso-8601-date="2009">2009</year>
+            <volume>4</volume>
+            <issue>7</issue>
+            <fpage>e6421</fpage>
+            <lpage/>
+          </element-citation>
+        </ref>
+        <ref id="ref-friston2016active-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Friston</surname>
+                <given-names>Karl</given-names>
+              </name>
+              <name>
+                <surname>FitzGerald</surname>
+                <given-names>Thomas</given-names>
+              </name>
+              <name>
+                <surname>Rigoli</surname>
+                <given-names>Francesco</given-names>
+              </name>
+              <name>
+                <surname>Schwartenbeck</surname>
+                <given-names>Philipp</given-names>
+              </name>
+              <name>
+                <surname>Pezzulo</surname>
+                <given-names>Giovanni</given-names>
+              </name>
+              <etal/>
+            </person-group>
+            <article-title>Active inference and learning</article-title>
+            <source>Neuroscience &amp; Biobehavioral Reviews</source>
+            <publisher-name>Elsevier</publisher-name>
+            <year iso-8601-date="2016">2016</year>
+            <volume>68</volume>
+            <fpage>862</fpage>
+            <lpage>879</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-silver2016mastering-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Silver</surname>
+                <given-names>David</given-names>
+              </name>
+              <name>
+                <surname>Huang</surname>
+                <given-names>Aja</given-names>
+              </name>
+              <name>
+                <surname>Maddison</surname>
+                <given-names>Chris J</given-names>
+              </name>
+              <name>
+                <surname>Guez</surname>
+                <given-names>Arthur</given-names>
+              </name>
+              <name>
+                <surname>Sifre</surname>
+                <given-names>Laurent</given-names>
+              </name>
+              <name>
+                <surname>Van Den Driessche</surname>
+                <given-names>George</given-names>
+              </name>
+              <name>
+                <surname>Schrittwieser</surname>
+                <given-names>Julian</given-names>
+              </name>
+              <name>
+                <surname>Antonoglou</surname>
+                <given-names>Ioannis</given-names>
+              </name>
+              <name>
+                <surname>Panneershelvam</surname>
+                <given-names>Veda</given-names>
+              </name>
+              <name>
+                <surname>Lanctot</surname>
+                <given-names>Marc</given-names>
+              </name>
+              <etal/>
+            </person-group>
+            <article-title>Mastering the game of go with deep neural networks and tree search</article-title>
+            <source>nature</source>
+            <publisher-name>Nature Publishing Group UK London</publisher-name>
+            <year iso-8601-date="2016">2016</year>
+            <volume>529</volume>
+            <issue>7587</issue>
+            <fpage>484</fpage>
+            <lpage>489</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-schwiedrzik2014untangling-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Schwiedrzik</surname>
+                <given-names>Caspar M</given-names>
+              </name>
+              <name>
+                <surname>Ruff</surname>
+                <given-names>Christian C</given-names>
+              </name>
+              <name>
+                <surname>Lazar</surname>
+                <given-names>Andreea</given-names>
+              </name>
+              <name>
+                <surname>Leitner</surname>
+                <given-names>Frauke C</given-names>
+              </name>
+              <name>
+                <surname>Singer</surname>
+                <given-names>Wolf</given-names>
+              </name>
+              <name>
+                <surname>Melloni</surname>
+                <given-names>Lucia</given-names>
+              </name>
+            </person-group>
+            <article-title>Untangling perceptual memory: Hysteresis and adaptation map into separate cortical networks</article-title>
+            <source>Cerebral Cortex</source>
+            <publisher-name>Oxford University Press</publisher-name>
+            <year iso-8601-date="2014">2014</year>
+            <volume>24</volume>
+            <issue>5</issue>
+            <fpage>1152</fpage>
+            <lpage>1164</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-fischer2014serial-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Fischer</surname>
+                <given-names>Jason</given-names>
+              </name>
+              <name>
+                <surname>Whitney</surname>
+                <given-names>David</given-names>
+              </name>
+            </person-group>
+            <article-title>Serial dependence in visual perception</article-title>
+            <source>Nature neuroscience</source>
+            <publisher-name>Nature Publishing Group US New York</publisher-name>
+            <year iso-8601-date="2014">2014</year>
+            <volume>17</volume>
+            <issue>5</issue>
+            <fpage>738</fpage>
+            <lpage>743</lpage>
           </element-citation>
         </ref>
       </ref-list>
@@ -8602,6 +10244,137 @@ checks</article-title>
     <body>
       <sec id="f624059a-nb-4" specific-use="notebook-content">
         <p>WIP</p>
+      </sec>
+    </body>
+    <back>
+</back>
+  </sub-article>
+  <sub-article article-type="notebook" id="nb-10-nb-5">
+    <front-stub>
+      <title-group>
+        <article-title>Literature notes</article-title>
+      </title-group>
+    </front-stub>
+    <body>
+      <sec id="b38102ba-nb-5" specific-use="notebook-content">
+        <p>PRIORITY LIST: - READ THESE PAPERS:
+@parr2022active;@friston2009reinforcement;@friston2016active, TO
+UNDERSTAND HOW EXACTLY PLANNING IS CONCEPTUALIZED IN ACTIVE INFERENCE
+FRAMEWORK</p>
+        <list list-type="bullet">
+          <list-item>
+            <p>Suboptimality in perceptual decision making - From Rachel
+    Dension, to read. Contains a lot of studies looking into biased
+    perceptual decision making</p>
+          </list-item>
+          <list-item>
+            <p>Perceptual suboptimality:Bug or feature?: They argue that biases
+    are a feature, in line with Gershman and co.</p>
+          </list-item>
+          <list-item>
+            <p>Robust averaging protects decisions from noise in neural
+    computations: Shows that robust averaging bias enables maximizing
+    returns when noise occurs in late processing stage, as is the case
+    in the brain.</p>
+          </list-item>
+          <list-item>
+            <p>Economic irrationality is optimal during noisy decision making:
+    shows that economic irrationality is in fact optimal when dealing
+    with limtied resources. -&gt; REALLY IMPORTANT, they talk about
+    preferences.</p>
+          </list-item>
+          <list-item>
+            <p>The Neural Basis of Decision Making from Mike Shadlen,
+    potentially relevant</p>
+          </list-item>
+          <list-item>
+            <p>he framing of decisions and the psychology of choice: potentially
+    important to cite, one of the gazillions papers from Kahneman about
+    bias in decision making</p>
+          </list-item>
+          <list-item>
+            <p>Intransitivity of preferences, Ttversky: potentially relevant in
+    case someone doesn’t like our use of the word preferences.</p>
+          </list-item>
+        </list>
+        <p>TO READ: - SEQUENTIAL DECISION MAKING TASK:
+https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1009633&amp;utm_source=you.com#:~:text=humans%20often%20deviate%20from%20making%20optimal
+- Confirmation bias:
+https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009517
+- Environmental dynamics shape perceptual decision bias:
+https://journals.plos.org/ploscompbiol/article?id=10.1371%2Fjournal.pcbi.1011104&amp;utm_source=you.com
+- Optimism bias:
+https://www.nature.com/articles/s41562-017-0067?utm_source=you.com#:~:text=Caz%C3%A9%2C%20R.%20D.%20%26,for%20positive%20and%20negative
+- Habits are what make us addicted paper:
+https://www.nature.com/articles/nrn.2017.67?utm_source=you.com#:~:text=Huys%2C%20Q.%20J.%2C%20Maia%2C,Rev%20Neurosci%2018%2C%20450</p>
+      </sec>
+      <sec id="a073d7a0-nb-5" specific-use="notebook-content">
+        <sec id="discussion-plan-nb-5">
+          <title>Discussion plan:</title>
+          <list list-type="bullet">
+            <list-item>
+              <p>Discuss bigger picture: Biases are often treated as defects,
+      nuisance terms, or deviations from rational planning. Your results
+      suggest a different interpretation. In complex tasks, biases may
+      reflect priors: compact summaries of task structure that help
+      guide behavior when exhaustive planning is costly, when there is
+      no time, when planning comes up with high uncertainty.</p>
+            </list-item>
+            <list-item>
+              <p>Discuss that we don’t imply that planning is done in the
+      exhaustive way. Planning could be implemented by sampling, replay,
+      partial tree search, or approximate value computation.</p>
+            </list-item>
+            <list-item>
+              <p>Discuss that we speculate that preference should read as priors
+      and that we can’t show this here but the active inference
+      framework offers itself here. And these are priors over policies,
+      maybe good connection to your next point and connect to
+      reinforcement learning findings:</p>
+            </list-item>
+            <list-item>
+              <p>Discuss how the results relate to the notion of computational
+      rationality and policy compression In policy compression
+      framework, planning is complemented by the marginal action
+      probability which is taken to constitute a prior over action. Our
+      use of preferences constitutes an extension to it. Instead of
+      considering marginal probability across states, our preferences
+      define action probability based on the structure of the task,
+      informing the default policy of subjects beyond what is done in
+      traditional policy compression. Or put differently, in policy
+      compression, assuming that participants are under too much
+      pressure to rely on planning, participants should rely on state
+      independent action prior, which is very restrictive and probably
+      not adaptive. It is likely that participants rely on more
+      information to make adaptive decisions even when planning is
+      limited. Our Preferences offer a solution to this</p>
+            </list-item>
+            <list-item>
+              <p>Discuss how the results relate to Sarah’s model (2024 PLoS CB
+      paper) and the idea of Certainty-based stopping criterion</p>
+            </list-item>
+            <list-item>
+              <p>Discuss how the results relate to the traditional distinction
+      between habits and goal directed. Preferences might reflect the
+      habit process, and our results might indicate that both modules
+      are at play, just that planning kicks in only if habits are weak,
+      also in line with Sarah’s work on balancing habits and goal
+      directed behaviour paper from 2021</p>
+            </list-item>
+            <list-item>
+              <p>A limitation of the present work is we assume that preferences
+      are fixed, thought they are likely to be dynamically updated
+      throughout the task. Future work should aim to characterize
+      preferences update mechanisms, by dynamically updating both the
+      reward and transitional probabilty structure of the task, either
+      in a gradually or chunk-wise (i.e. having separate experimental
+      blocks with different task structures).</p>
+            </list-item>
+          </list>
+          <p>Similarly, Bayesian models of planning depth formalize the decision
+  of how much to plan as a meta-decision about the value of further tree
+  search [@kuperwajs2021planning].</p>
+        </sec>
       </sec>
     </body>
     <back>
