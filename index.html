@@ -8,7 +8,7 @@
 
 <meta name="author" content="Alex Lepauvre">
 <meta name="author" content="Stefan Kiebel">
-<meta name="dcterms.date" content="2026-06-10">
+<meta name="dcterms.date" content="2026-07-09">
 <meta name="keywords" content="Decision making, Reinforcement learning">
 
 <title>Task-structure preferences</title>
@@ -104,10 +104,10 @@ window.Quarto = {
 <meta name="citation_keywords" content="Decision making,Reinforcement learning">
 <meta name="citation_author" content="Alex Lepauvre">
 <meta name="citation_author" content="Stefan Kiebel">
-<meta name="citation_publication_date" content="2026-06-10">
-<meta name="citation_cover_date" content="2026-06-10">
+<meta name="citation_publication_date" content="2026-07-09">
+<meta name="citation_cover_date" content="2026-07-09">
 <meta name="citation_year" content="2026">
-<meta name="citation_online_date" content="2026-06-10">
+<meta name="citation_online_date" content="2026-07-09">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=Forward planning driven by context-dependant conflict processing in anterior cingulate cortex;,citation_author=Florian Ott;,citation_author=Eric Legler;,citation_author=Stefan J Kiebel;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_doi=10.1016/j.neuroimage.2022.119222;,citation_volume=256;,citation_journal_title=NeuroImage;,citation_publisher=Elsevier;">
 <meta name="citation_reference" content="citation_title=Forward planning driven by context-dependent conflict processing in anterior cingulate cortex - analysis code and datasets;,citation_author=Florian Ott;,citation_author=Eric Legler;,citation_author=Stefan J Kiebel;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://zenodo.org/records/6328296;,citation_doi=10.5281/zenodo.6328296;,citation_publisher=zenodo;">
@@ -207,7 +207,7 @@ window.Quarto = {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">June 10, 2026</p>
+              <p class="date">July 9, 2026</p>
             </div>
           </div>
           
@@ -261,7 +261,7 @@ window.Quarto = {
   <li><a href="#data-and-code-statement" id="toc-data-and-code-statement" class="nav-link" data-scroll-target="#data-and-code-statement"><span class="header-section-number">6</span> Data and code statement</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">7</span> References</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="index-preview.html"><i class="bi bi-journal-code"></i>Article Notebook</a></li><li><a href="literature_notes-preview.html"><i class="bi bi-journal-code"></i>Literature notes</a></li><li><a href="S1-choice_model_comparison-preview.html"><i class="bi bi-journal-code"></i>Supplementary 1 Choice model comparison</a></li><li><a href="S2-parameters_recovery-preview.html"><i class="bi bi-journal-code"></i>Supplementary 2 Parameters recovery</a></li><li><a href="S2-posterior_predictive_checks-preview.html"><i class="bi bi-journal-code"></i>Supplementary 2 Posterior predictive checks</a></li><li><a href="S3-model_differentiability-preview.html"><i class="bi bi-journal-code"></i>Supplementary 3 models differentiability</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="index-preview.html"><i class="bi bi-journal-code"></i>Article Notebook</a></li><li><a href="literature_notes-preview.html"><i class="bi bi-journal-code"></i>Literature notes</a></li><li><a href="S1-supplementary_figures_tables-preview.html"><i class="bi bi-journal-code"></i>Supplementary 1: figures and tables</a></li><li><a href="S2-choice_model_comparison-preview.html"><i class="bi bi-journal-code"></i>Supplementary 2: Choice model comparison</a></li><li><a href="S3-parameters_recovery-preview.html"><i class="bi bi-journal-code"></i>Supplementary 3: Parameters recovery</a></li><li><a href="S4-posterior_predictive_checks-preview.html"><i class="bi bi-journal-code"></i>Supplementary 4: Posterior predictive checks</a></li><li><a href="S5-model_differentiability-preview.html"><i class="bi bi-journal-code"></i>Supplementary 5: models differentiability</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -383,6 +383,81 @@ H(Preferences) = -expit(Preferences) * log(expit(Preferences)) - (1-expit(Prefer
 <h3 data-number="2.4" class="anchored" data-anchor-id="model-fitting-and-comparison"><span class="header-section-number">2.4</span> Model fitting and comparison</h3>
 <p>Models were fitted to participants’ responses data as Bayesian hierarchical logistic regressions using PYMC <span class="citation" data-cites="abril2023pymc">(<a href="#ref-abril2023pymc" role="doc-biblioref"><span class="nocase">Abril-Pla et al.</span> 2023</a>)</span> and Bambi <span class="citation" data-cites="Capretto2022">(<a href="#ref-Capretto2022" role="doc-biblioref">Capretto et al. 2022</a>)</span>. We excluded trials where participants reaction time (RT) exceeded the response window (5s) or didn’t provide a response. Across models, the following parameters were left to vary across participants (i.e.&nbsp;random slopes): <span class="math inline">\(\beta_{plan},\ \beta_{plan23},\ \beta_{plan14},\ \beta_{pref},\ \beta_{Interaction},\ \beta_{basic},\ \beta_{O1},\ \beta_{O1},\ \beta_{O2},\ \beta_{O3},\ \beta_{O4}\)</span>, while the rest were fixed across participants. For all parameters, we used weakly informative hyperprior distributions <span class="math inline">\(\mu \sim \mathcal{N}(0, 2)\)</span> and <span class="math inline">\(\sigma \sim Halfnormal(0, 2)\)</span>. All models were fitted using 4 chains of 3000 sample each (1000 warmups), resulting in 8000 samples in total.</p>
 <p>We used Pareto-smoothed importance sampling to approximate leave one out cross validation <span class="citation" data-cites="vehtari2017practical">(PSIS-LOO, <a href="#ref-vehtari2017practical" role="doc-biblioref">Vehtari et al. 2017</a>)</span> to estimate the expected log pointwise predictive density (elpd) which we used to compare the fit of these different models. Furthermore, we perform model comparison within each single subject to estimate the robustness of the winning model in our population sample, by computing the sum of the pointwise predictive accuracy for each participant and model, yielding a score for each participant and model.</p>
+<div id="cell-19" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">rank</th>
+<th data-quarto-table-cell-role="th">elpd_loo</th>
+<th data-quarto-table-cell-role="th">p_loo</th>
+<th data-quarto-table-cell-role="th">elpd_diff</th>
+<th data-quarto-table-cell-role="th">weight</th>
+<th data-quarto-table-cell-role="th">se</th>
+<th data-quarto-table-cell-role="th">dse</th>
+<th data-quarto-table-cell-role="th">warning</th>
+<th data-quarto-table-cell-role="th">scale</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Preference</th>
+<td>0</td>
+<td>-1491.091155</td>
+<td>253.490122</td>
+<td>0.000000</td>
+<td>0.965445</td>
+<td>48.615646</td>
+<td>0.000000</td>
+<td>True</td>
+<td>log</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Context</th>
+<td>1</td>
+<td>-1657.637631</td>
+<td>160.489145</td>
+<td>166.546476</td>
+<td>0.021726</td>
+<td>52.567672</td>
+<td>19.564850</td>
+<td>True</td>
+<td>log</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Frequency prior</th>
+<td>2</td>
+<td>-2073.888906</td>
+<td>77.715858</td>
+<td>582.797751</td>
+<td>0.000000</td>
+<td>55.631849</td>
+<td>35.907683</td>
+<td>False</td>
+<td>log</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">Planning</th>
+<td>3</td>
+<td>-2078.472463</td>
+<td>68.229279</td>
+<td>587.381308</td>
+<td>0.012829</td>
+<td>55.513947</td>
+<td>36.031041</td>
+<td>True</td>
+<td>log</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<a class="quarto-notebook-link" id="nblink-1" href="index-preview.html#cell-19">Source: Article Notebook</a></div>
 </section>
 <section id="experimental-factors-relevance-analysis" class="level3" data-number="2.5">
 <h3 data-number="2.5" class="anchored" data-anchor-id="experimental-factors-relevance-analysis"><span class="header-section-number">2.5</span> Experimental factors relevance analysis</h3>
@@ -410,7 +485,7 @@ log(RT) = \beta_{conflict} * Conflict + \beta_{pref} * H(preferences) + \beta_{i
 <p>We modelled participants response choices using 4 different models, to investigate the systematicity in participants deviations from optimal planning, which would be achieved by pure planning. As already reported in <span class="citation" data-cites="ott2022forward">(<a href="#ref-ott2022forward" role="doc-biblioref">Ott et al. 2022a</a>)</span>, participants’ responses systematically deviate from optimality: the pure planning model has the lowest fit compared to the other three models, see <a href="#fig-choicemdl" class="quarto-xref">Figure&nbsp;2</a> A. Furthermore, our results indicate that participants biases do not reflect recency prior (frequency model), nor a splitting of the task into separate contexts (context model). Rather, participants exhibit preferences derived from the structure of the task, as the Preference model was observed to fit the data the best (see <a href="#fig-choicemdl" class="quarto-xref">Figure&nbsp;2</a> A).</p>
 <p><a href="#fig-choicemdl" class="quarto-xref">Figure&nbsp;2</a> B shows the proportion of match between observed and predicted responses separately for each model and offer values, highlighting the increased fit of the preference model. This increase in fit compared to the context model <span class="citation" data-cites="ott2022forward">(which was previously report to fit data best compared to many alternatives <a href="#ref-ott2022forward" role="doc-biblioref">Ott et al. 2022a</a>)</span> suggests that participants have distinct preferences for each state feature, which are combined according to the current state’s features to form state-specific preferences. This result is highly consistent across participants: the preference model fits the data best for 35 out of 40 participants (see <a href="#fig-returns" class="quarto-xref">Figure&nbsp;4</a> A).</p>
 <p>The estimated preference weights associated with each factor of the task (<a href="#fig-choicemdl" class="quarto-xref">Figure&nbsp;2</a> C) reveal that participants tend to be biased towards rejecting (i.e.&nbsp;reject offers more often than forward planning would suggest) for low (one and two), while they are biased towards accepting when offers are high (three and four). These deviations are more pronounced for extreme (one and four) compared to intermediate ones (two and three). Furthermore, the energy state has a strong impact on participants’ behaviour, especially in extreme cases (no or maxed out energy). Finally, costs (both current and future) has a lower impact on participants’ behaviour, with a slight bias to accept offers when costs (both current and future) are low.</p>
-<div id="cell-fig-choicemdl" class="cell" data-execution_count="12">
+<div id="cell-fig-choicemdl" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div id="fig-choicemdl" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -423,9 +498,9 @@ Figure&nbsp;2: Results of participants choice behaviour models. (A) Result of th
 </figure>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="index-preview.html#cell-fig-choicemdl">Source: Article Notebook</a></div>
-<div class="cell" data-execution_count="13">
-<div id="tbl-pref_model_param" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="13">
+</div>
+<div class="cell" data-execution_count="14">
+<div id="tbl-pref_model_param" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="14">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pref_model_param-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: Summary of the parameters of the preference model. The table displays the mean and 95% highest density interval (HDI) for the population level parameters associated with the planning values, the preference regressors and their interaction.
@@ -572,7 +647,7 @@ Table&nbsp;1: Summary of the parameters of the preference model. The table displ
 <p>We next asked whether the influence of planning depends on how informative participants’ preferences are. If preferences and planning jointly guide choice, then choices should be dominated by whichever source provides the clearer signal on a given trial. Consistent with this idea, our model revealed a positive modulatory effect of preferences entropy on planning (<span class="math inline">\(\beta_{modulation}\)</span>=1.71, CI=[0.28, 2.99], see <a href="#fig-pref-planning-interaction" class="quarto-xref">Figure&nbsp;3</a> A). This positive effect implies that the more informative source of information exerts the stronger influence on participants’ choices. When preferences are strong and DV are close to 0, participants follow their preferences. Conversly, when preferences are weak and DV strongly favour one action, choices follow planning derived values.</p>
 <p>This effect can be seen when the sign of preferences and DV are opposed (one suggests accepting and the other rejecting or vice versa), as participants choice should either reflect preference or planning depending on their relative strength. <a href="#fig-pref-planning-interaction" class="quarto-xref">Figure&nbsp;3</a> A shows participants responses as a function of preferences and DV, with emphasizes on the off diagonal quadrants (top left and bottom right where the sign of DV and preferences are opposed) by color coding accept and rejected trials (green triangles for accepting, yellow hexagons for rejecting). The background colors indicate the fitted probability of accepting an offer as a function of preferences and DV. In the top left quadrant, participants follow their preferences (i.e.&nbsp;accept) when DV are low relative to preferences, hence the green markers cluster close to DV equal to 0, while participants reject (i.e.&nbsp;follow DV) when DV are strong relative to preferences, hence the yellow marker cluster towards more negative DV. The contour line in the background reflect this modulatory effect, as the probability of rejecting an offer for a given DV decreases as preferneces score increases in the top left corner. Similarly, in the bottom right corner, the probability of accepting (i.e.&nbsp;following DV) an offer for a given DV decreases as preferences grows more negative. The effect of preferences on participants’ responses can further be seen in <a href="#fig-pref-planning-interaction" class="quarto-xref">Figure&nbsp;3</a> B, where responses were binned as a function of DV, separately for states where preferences are positive (top row) and negative (bottom row). We can see that for a given DV, the probability of accepting is systematically increased when preferences are positive compared to when preferences are negative.</p>
 <p>Notably, both figures highlight that there are fewer trials in which DV are positive while preferences are negative (bottom right quadrant in <a href="#fig-pref-planning-interaction" class="quarto-xref">Figure&nbsp;3</a> A). Furthermore, there are no trials in which preferences are strongly negative when DV are clearly positive (bottom right quadrant), while there are cases in which preferences are strongly positive while DV are strongly negative (top left). This indicates that bias towards rejecting an offer tends to be aligned with the DV, while participants sometimes show bias towards accepting when planning would suggest otherwise. This asymetry reflects the structure of our task. Strongly positive preference with strongly negative DV occur in trials where offer is high and energy is low, such that planning suggests to forgo a large offer to ensure future offers can be accepted, while participants preference for large offers outweights the weights associated with remaining factors. In the mirror case, where offer is low and energy is high, planning suggests rejecting the offer because sparing energy is preferrable, and so do preferences, as the negative weight associated with low offer is rarely outweighted by the positive bias associated with high energy states.</p>
-<div id="cell-fig-pref-planning-interaction" class="cell" data-execution_count="15">
+<div id="cell-fig-pref-planning-interaction" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div id="fig-pref-planning-interaction" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -588,7 +663,7 @@ Figure&nbsp;3: Interaction between preferences and DV. (A) Shows participants re
 </div>
 <p>To further establish the behavioural relevance of the planning parameter, the preference score and the modulatory effect of preferences entropy, we tested whether they are predictive of participants overall performances. As larger <span class="math inline">\(\beta_{planning}\)</span> values indicate stronger reliance on planning, we expected participants with larger <span class="math inline">\(\beta_{planning}\)</span> to obtain higher returns. In contrast to planning, preferences might sometimes not maximize reward, so participants with strong preferences (i.e.&nbsp;low preference entropy) should obtain lower return on average. Finally, larger <span class="math inline">\(\beta_{modulation}\)</span> indicate that participants plan more when their preferences are weak (i.e.&nbsp;preferences entropy is larger), and should accordingly obtain larger returns compared to participants’ who do not engage more strongly in planning when their preferences are weak. Accordingly, we predicted that <span class="math inline">\(\beta_{planning}\)</span>, preferences entropy and <span class="math inline">\(\beta_{modulation}\)</span> should be positively correlated with return.</p>
 <p>In line with our prediction, we observed a positive correlation between <span class="math inline">\(\beta_{planning}\)</span> and return (r=0.59, p=0.000, <a href="#fig-returns" class="quarto-xref">Figure&nbsp;4</a> B), showing that participants who rely more on planning get larger return. Furthermore, <span class="math inline">\(\beta_{modulation}\)</span> is strongly and positively correlated with return (r=0.66, p=0.000, <a href="#fig-returns" class="quarto-xref">Figure&nbsp;4</a> C). However, contrary to our prediction, we observed a negative correlation though only marginally significant correlation between preferences entropy and return (r=-0.30, p=0.064, <a href="#fig-returns" class="quarto-xref">Figure&nbsp;4</a> D). Visual inspection of <a href="#fig-returns" class="quarto-xref">Figure&nbsp;4</a> D revealed that the correlation appears to be driven from the subject with very low return (2.63 standard deviations from population mean). When removing this subject, the correlation between preferences entropy and return is not marginally significant (r=-0.09, p=0.570), while it remains strongly significant for planning (r=0.48, p=0.002) and modulation (r=0.60, p=0.000) when the same subject is removed.</p>
-<div id="cell-fig-returns" class="cell" data-execution_count="17">
+<div id="cell-fig-returns" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div id="fig-returns" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -607,7 +682,7 @@ Figure&nbsp;4: Single participants fit and performances (A) Model fit for each p
 <h3 data-number="3.2" class="anchored" data-anchor-id="experimental-factors-relevance"><span class="header-section-number">3.2</span> Experimental factors relevance</h3>
 <p>Our results indicate that participants choices are shaped by two sources of information: planning-derived values and task-structured preferences. These preferences are not a single global bias. Instead, participants appear to assign preferences to different features of the task, such as the offer, the current cost context, and upcoming transitions, and combine these feature-specific preferences into an overall preference for each action in a given state. Importantly, not all features of the task are weighted equally. <a href="#fig-choicemdl" class="quarto-xref">Figure&nbsp;2</a> C shows that the parameters associated with offers and energy weight strongly in participants preferences compared to costs (both current and future). To identify which aspects of task structure participants use to guide their choices, we compared models in which individual preference components were removed one at a time. This effectively tests how decision making changes when participants are assumed to ignore one specific sources of task information, such as offer value, action costs, or future transitions.</p>
 <p><a href="#fig-task-features" class="quarto-xref">Figure&nbsp;5</a> A displays the difference in fit between the full preference model against models in which the preferences related to each experimental factor was removed, larger values indicate that the factor account for a more important proportion of the full model’s fit. These results indicate that energy followed by offer have a much larger impact on participants final responses, whereas costs related preferences have a small impact on the overall fit.</p>
-<div id="cell-fig-task-features" class="cell" data-execution_count="22">
+<div id="cell-fig-task-features" class="cell" data-execution_count="23">
 <div class="cell-output cell-output-display">
 <div id="fig-task-features" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -630,7 +705,7 @@ Figure&nbsp;5: Importance of each parameters in participants response and optima
 <p>Under our hypothesis, the degree to which participants engage in planning should depend on the strength of participants preferences, which should be reflected in RTs (the less planning, the faster the RTs). Previous studies have shown that participants RT is positively correlated with planning conflict, indicating that less planning is required when the value associated with each action is more clearly distinct <span class="citation" data-cites="ott2022forward">(<a href="#ref-ott2022forward" role="doc-biblioref">Ott et al. 2022a</a>)</span>. We therefore predicted that the effect of preferences should modulate the effect of planning conflict: when participants preferences are strong, they engage less in planning overall, resulting in a lower dependence between RT and conflict.</p>
 <p>In line with our prediction, we observed that participants RT was influenced by conflict, preferences an the interaction between the two (see <a href="#fig-rt" class="quarto-xref">Figure&nbsp;6</a> A). This result extend on the previous findings showing that participants do not rely on planning to the same extent across all states of the task. Our results suggest that rather than splitting the task in independent contexts and engaging in planning to a different extent across those <span class="citation" data-cites="ott2022forward">(<a href="#ref-ott2022forward" role="doc-biblioref">Ott et al. 2022a</a>)</span>, the differential amount of planning across states instead reflects the interaction between preference and conflict strength. The positive interaction (see <a href="#fig-rt" class="quarto-xref">Figure&nbsp;6</a> A) between conflict and preferences indicate that the dependence of planning on the degree of conflict is modulated by the strength of participants’ preferences. As can be seen in <a href="#fig-rt" class="quarto-xref">Figure&nbsp;6</a> B, planning depends little on conflict when preferences are strong (entropy close to 0), but increasingly when preferences grow weaker (preference entropy of 0.5 or 1.0).</p>
 <p>In other words, when preferences or planning signals are clear, participants do not engage much effort in planning. Participants dedicate most efforts in planning when preferences and planning signals are both weak. Combined with the choice model, these results indicate that participants engage in forward planning only to reduce the current uncertainty in their choice if their preferences are uncertain.</p>
-<div id="cell-fig-rt" class="cell" data-execution_count="24">
+<div id="cell-fig-rt" class="cell" data-execution_count="25">
 <div class="cell-output cell-output-display">
 <div id="fig-rt" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">

@@ -1123,6 +1123,74 @@ Germany</institution>
     in our population sample, by computing the sum of the pointwise
     predictive accuracy for each participant and model, yielding a score
     for each participant and model.</p>
+        <table-wrap>
+          <table border="1">
+            <thead>
+              <tr style="text-align: right;">
+                <th/>
+                <th>rank</th>
+                <th>elpd_loo</th>
+                <th>p_loo</th>
+                <th>elpd_diff</th>
+                <th>weight</th>
+                <th>se</th>
+                <th>dse</th>
+                <th>warning</th>
+                <th>scale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Preference</td>
+                <td>0</td>
+                <td>-1491.091155</td>
+                <td>253.490122</td>
+                <td>0.000000</td>
+                <td>0.965445</td>
+                <td>48.615646</td>
+                <td>0.000000</td>
+                <td>True</td>
+                <td>log</td>
+              </tr>
+              <tr>
+                <td>Context</td>
+                <td>1</td>
+                <td>-1657.637631</td>
+                <td>160.489145</td>
+                <td>166.546476</td>
+                <td>0.021726</td>
+                <td>52.567672</td>
+                <td>19.564850</td>
+                <td>True</td>
+                <td>log</td>
+              </tr>
+              <tr>
+                <td>Frequency prior</td>
+                <td>2</td>
+                <td>-2073.888906</td>
+                <td>77.715858</td>
+                <td>582.797751</td>
+                <td>0.000000</td>
+                <td>55.631849</td>
+                <td>35.907683</td>
+                <td>False</td>
+                <td>log</td>
+              </tr>
+              <tr>
+                <td>Planning</td>
+                <td>3</td>
+                <td>-2078.472463</td>
+                <td>68.229279</td>
+                <td>587.381308</td>
+                <td>0.012829</td>
+                <td>55.513947</td>
+                <td>36.031041</td>
+                <td>True</td>
+                <td>log</td>
+              </tr>
+            </tbody>
+          </table>
+        </table-wrap>
       </sec>
       <sec id="experimental-factors-relevance-analysis">
         <title>2.5 Experimental factors relevance analysis</title>
@@ -3596,7 +3664,7 @@ Germany</institution>
       </ref>
     </ref-list>
   </back>
-  <sub-article article-type="notebook" id="nb-12-nb-article">
+  <sub-article article-type="notebook" id="nb-8-nb-article">
     <front-stub>
       <title-group>
         <article-title>Task-structure preferences</article-title>
@@ -5203,6 +5271,79 @@ loos_df = pd.DataFrame({
 loos_sub = loos_df.groupby('vpn').sum().reset_index()</code>
           </sec>
           <sec id="cell-19-nb-article" specific-use="notebook-content">
+            <code language="python">model_comparison</code>
+            <boxed-text>
+              <table-wrap>
+                <table border="1">
+                  <thead>
+                    <tr style="text-align: right;">
+                      <th/>
+                      <th>rank</th>
+                      <th>elpd_loo</th>
+                      <th>p_loo</th>
+                      <th>elpd_diff</th>
+                      <th>weight</th>
+                      <th>se</th>
+                      <th>dse</th>
+                      <th>warning</th>
+                      <th>scale</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Preference</td>
+                      <td>0</td>
+                      <td>-1491.091155</td>
+                      <td>253.490122</td>
+                      <td>0.000000</td>
+                      <td>0.965445</td>
+                      <td>48.615646</td>
+                      <td>0.000000</td>
+                      <td>True</td>
+                      <td>log</td>
+                    </tr>
+                    <tr>
+                      <td>Context</td>
+                      <td>1</td>
+                      <td>-1657.637631</td>
+                      <td>160.489145</td>
+                      <td>166.546476</td>
+                      <td>0.021726</td>
+                      <td>52.567672</td>
+                      <td>19.564850</td>
+                      <td>True</td>
+                      <td>log</td>
+                    </tr>
+                    <tr>
+                      <td>Frequency prior</td>
+                      <td>2</td>
+                      <td>-2073.888906</td>
+                      <td>77.715858</td>
+                      <td>582.797751</td>
+                      <td>0.000000</td>
+                      <td>55.631849</td>
+                      <td>35.907683</td>
+                      <td>False</td>
+                      <td>log</td>
+                    </tr>
+                    <tr>
+                      <td>Planning</td>
+                      <td>3</td>
+                      <td>-2078.472463</td>
+                      <td>68.229279</td>
+                      <td>587.381308</td>
+                      <td>0.012829</td>
+                      <td>55.513947</td>
+                      <td>36.031041</td>
+                      <td>True</td>
+                      <td>log</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </table-wrap>
+            </boxed-text>
+          </sec>
+          <sec id="cell-20-nb-article" specific-use="notebook-content">
             <code language="python"># Generate posterior predictive samples for each model:
 for model_name, idata in traces.items():
     try:
@@ -5218,11 +5359,11 @@ for model_name, idata in traces.items():
     # Compute the proportion of match between observed and predicted responses:
     beh_data[f"Match_{model_name.lower()}"] = np.mean(matches, axis=0)</code>
           </sec>
-          <sec id="cell-20-nb-article" specific-use="notebook-content">
+          <sec id="cell-21-nb-article" specific-use="notebook-content">
             <code language="python"># Extract relevant variables from preference model:
 beh_data['preference_score'] = np.mean(traces['Preference'].posterior["preference"], axis=(0, 1)).to_numpy()</code>
           </sec>
-          <sec id="cell-21-nb-article" specific-use="notebook-content">
+          <sec id="cell-22-nb-article" specific-use="notebook-content">
   </sec>
           <sec id="experimental-factors-relevance-analysis-nb-article">
             <title>2.5 Experimental factors relevance analysis</title>
@@ -5300,7 +5441,7 @@ beh_data['preference_score'] = np.mean(traces['Preference'].posterior["preferenc
     each independent factors of the task, similarity between the two
     would suggest that this is a plausible interpretation.</p>
           </sec>
-          <sec id="cell-22-nb-article" specific-use="notebook-content">
+          <sec id="cell-23-nb-article" specific-use="notebook-content">
   </sec>
           <sec id="reaction-times-analysis-nb-article">
             <title>2.6 Reaction times analysis</title>
@@ -5455,7 +5596,7 @@ beh_data['preference_score'] = np.mean(traces['Preference'].posterior["preferenc
     entropy (i.e. the weaker the preference), the larger the RT because
     the larger the reliance on planning.</p>
           </sec>
-          <sec id="cell-23-nb-article" specific-use="notebook-content">
+          <sec id="cell-24-nb-article" specific-use="notebook-content">
   </sec>
         </sec>
         <sec id="results-nb-article">
@@ -6150,12 +6291,12 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
               </boxed-text>
             </fig>
           </sec>
-          <sec id="cell-26-nb-article" specific-use="notebook-content">
+          <sec id="cell-27-nb-article" specific-use="notebook-content">
             <code language="python"># Calculate the interaction confidence intervals:
 mu_interaction = traces['Preference'].posterior["beta_interaction"].values.flatten().mean()
 ci_interaction = az.hdi(traces['Preference'].posterior["beta_interaction"].values)[0]</code>
           </sec>
-          <sec id="cell-27-nb-article" specific-use="notebook-content">
+          <sec id="cell-28-nb-article" specific-use="notebook-content">
             <p>We next asked whether the influence of planning depends on how
     informative participants’ preferences are. If preferences and
     planning jointly guide choice, then choices should be dominated by
@@ -6365,7 +6506,7 @@ ax2.axhline(0.5, linestyle="--", color="grey", alpha=0.5);</code>
               </fig>
             </boxed-text>
           </sec>
-          <sec id="cell-29-nb-article" specific-use="notebook-content">
+          <sec id="cell-30-nb-article" specific-use="notebook-content">
             <code language="python">from scipy.stats import zscore
 # Compute correlation between models parameters and return:
 # Get the return from each subject:
@@ -6416,7 +6557,7 @@ r_interaction, pval_interaction = r.statistic, r.pvalue
 r = pearsonr(interaction_beta[outlier_mask], subjects_returns[outlier_mask])
 r_interaction_no_outlier, pval_interaction_no_outlier = r.statistic, r.pvalue</code>
           </sec>
-          <sec id="cell-30-nb-article" specific-use="notebook-content">
+          <sec id="cell-31-nb-article" specific-use="notebook-content">
             <p>To further establish the behavioural relevance of the planning
     parameter, the preference score and the modulatory effect of
     preferences entropy, we tested whether they are predictive of
@@ -6569,7 +6710,7 @@ plt.tight_layout();</code>
               </fig>
             </boxed-text>
           </sec>
-          <sec id="cell-32-nb-article" specific-use="notebook-content">
+          <sec id="cell-33-nb-article" specific-use="notebook-content">
   </sec>
           <sec id="experimental-factors-relevance-nb-article">
             <title>3.2 Experimental factors relevance</title>
@@ -6599,7 +6740,7 @@ plt.tight_layout();</code>
     impact on participants final responses, whereas costs related
     preferences have a small impact on the overall fit.</p>
           </sec>
-          <sec id="cell-33-nb-article" specific-use="notebook-content">
+          <sec id="cell-34-nb-article" specific-use="notebook-content">
             <code language="python"># Full model:
 traces_reduced = {"Preference": traces["Preference"]}
 
@@ -6684,7 +6825,7 @@ else:
 # Compare against the full model:
 model_comparison = az.compare(traces_reduced)</code>
           </sec>
-          <sec id="cell-34-nb-article" specific-use="notebook-content">
+          <sec id="cell-35-nb-article" specific-use="notebook-content">
             <code language="python"># Compute the reduced MDPs:
 return_reduced = {
     "Offer": None,
@@ -6785,7 +6926,7 @@ return_reduced["FC"] = 1 - (task_mdp.expected_return(task_mdp.greedy_policy(Q), 
 # Sort the dictionary:
 return_reduced = {k: v for k, v in sorted(return_reduced.items(), reverse=True, key=lambda item: item[1])}</code>
           </sec>
-          <sec id="cell-35-nb-article" specific-use="notebook-content">
+          <sec id="cell-36-nb-article" specific-use="notebook-content">
             <code language="python"># Compute expected return from optimal policy and stochastic policy:
 n_states = len(task_mdp.states)
 returns_stochastic = task_mdp.expected_return(np.array([np.zeros(n_states) + 0.5, np.zeros(n_states) + 0.5]).T)
@@ -6832,7 +6973,7 @@ for mdl in mdls:
     # Evaluate the policy
     returns_pref[mdl] = 1 - (task_mdp.expected_return(np.array([1-np.array(pi), pi]).T)) / returns_optimal</code>
           </sec>
-          <sec id="cell-36-nb-article" specific-use="notebook-content">
+          <sec id="cell-37-nb-article" specific-use="notebook-content">
             <code language="python"># Calculate the marginal action distribution associated with each aspect of the task:
 pi_optimal = task_mdp.greedy_policy(Q_full)
 
@@ -6988,7 +7129,7 @@ plt.tight_layout();</code>
               </fig>
             </boxed-text>
           </sec>
-          <sec id="cell-38-nb-article" specific-use="notebook-content">
+          <sec id="cell-39-nb-article" specific-use="notebook-content">
             <p>To investigate whether preferences constitute adaptive biases to
     improve return in the absence of planning, we first quantified the
     reward sensitivity of each task factors by computing the loss in
@@ -7063,7 +7204,7 @@ plt.tight_layout();</code>
     that this is a plausible explanation of participants
     preferences.</p>
           </sec>
-          <sec id="cell-39-nb-article" specific-use="notebook-content">
+          <sec id="cell-40-nb-article" specific-use="notebook-content">
   </sec>
           <sec id="reaction-times-nb-article">
             <title>3.3 Reaction times</title>
@@ -7108,7 +7249,7 @@ plt.tight_layout();</code>
     the current uncertainty in their choice if their preferences are
     uncertain.</p>
           </sec>
-          <sec id="cell-40-nb-article" specific-use="notebook-content">
+          <sec id="cell-41-nb-article" specific-use="notebook-content">
             <code language="python">beh_data['logRT'] = np.log(beh_data['reaction_time'])
 
 # Repeat Ott's RT model:
@@ -7165,8 +7306,7 @@ NUTS: [sigma, Intercept, conflict, entropy, conflict:entropy, 1|vpn_sigma, 1|vpn
               <preformat/>
             </boxed-text>
             <boxed-text>
-              <preformat>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 58 seconds.
-The rhat statistic is larger than 1.01 for some parameters. This indicates problems during sampling. See https://arxiv.org/abs/1903.08008 for details</preformat>
+              <preformat>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 58 seconds.</preformat>
             </boxed-text>
           </sec>
           <sec id="cell-fig-rt-nb-article" specific-use="notebook-content">
@@ -7264,7 +7404,7 @@ plt.tight_layout();</code>
               </fig>
             </boxed-text>
           </sec>
-          <sec id="cell-42-nb-article" specific-use="notebook-content">
+          <sec id="cell-43-nb-article" specific-use="notebook-content">
   </sec>
         </sec>
         <sec id="discussion-nb-article">
@@ -7422,12 +7562,12 @@ plt.tight_layout();</code>
   controlled to obtain more or less precise estimates depending on the
   specific circumstances in which planning is called into action.</p>
         </sec>
-        <sec id="cell-43-nb-article" specific-use="notebook-content">
+        <sec id="cell-44-nb-article" specific-use="notebook-content">
 </sec>
         <sec id="acknowledgements-nb-article">
           <title>5 Acknowledgements</title>
         </sec>
-        <sec id="cell-44-nb-article" specific-use="notebook-content">
+        <sec id="cell-45-nb-article" specific-use="notebook-content">
 </sec>
         <sec id="data-and-code-statement-nb-article">
           <title>6 Data and code statement</title>
@@ -7441,7 +7581,7 @@ plt.tight_layout();</code>
   algorithm, which can be found here:
   https://github.com/AlexLepauvre/state-abstraction</p>
         </sec>
-        <sec id="cell-45-nb-article" specific-use="notebook-content">
+        <sec id="cell-46-nb-article" specific-use="notebook-content">
 </sec>
         <sec id="references-nb-article">
           <title>7 References</title>
@@ -8698,1565 +8838,46 @@ plt.tight_layout();</code>
       </ref-list>
     </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-2-nb-1">
+  <!-- (F2ED4C6E)[nb-1]:/home/alex-lepauvre/Documents/Github/state_abstraction_paper/S1-supplementary_figures_tables.ipynb -->
+  <!-- (F2ED4C6E)[nb-2]:/home/alex-lepauvre/Documents/Github/state_abstraction_paper/S2-choice_model_comparison.ipynb -->
+  <!-- (F2ED4C6E)[nb-3]:/home/alex-lepauvre/Documents/Github/state_abstraction_paper/S3-parameters_recovery.ipynb -->
+  <sub-article article-type="notebook" id="nb-2-nb-4">
     <front-stub>
       <title-group>
-        <article-title>Supplementary 1 Choice model comparison</article-title>
-      </title-group>
-    </front-stub>
-    <body>
-      <sec id="f624059a-nb-1" specific-use="notebook-content">
-        <sec id="preference-model-comparison-nb-1">
-          <title>Preference model comparison</title>
-          <p>To investigate the relationship between task structures and
-  participants preferences, we fitted a model in which we fitted a
-  latent preference score computed as the weighted sum of regressors
-  associated with each factors of our task (offers, energy, current and
-  future costs) where the weight associated with each are estimated from
-  participants data. In addition, the model comprised a fixed effect for
-  the decision values derived from reinforcement learning (RL) backward
-  induction method to represent the behaviour of an optimal planner, as
-  well as an interaction between the decision values and the entropy of
-  the preferences scores, to investigate whether participants reliance
-  on planning depends on the strength of their preferences.</p>
-          <p>This model was observed to fit the data best, showing that
-  participants behaviour reflects the integration of a planning
-  component together with priors reflecting the structure of the task,
-  shedding light on the structure of the priors themselves. To further
-  show that participants priors reflect the whole structure of the task,
-  we modelled the data removing one experimental factor from the
-  preferences fitting one at a time and compared to the full model, to
-  show that our results cannot be explained by the fact that
-  participants’s priors do not reflect a single nor a subset of
-  experimental factors.</p>
-        </sec>
-        <sec id="cell-68b0c10c-nb-1" specific-use="notebook-content">
-          <code language="python"># Import all packages
-
-# General utilities:
-import os 
-import pandas as pd
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-import warnings
-from pathlib import Path
-
-# Stats
-import pymc as pm
-import arviz as az
-import bambi as bmb
-from scipy.special import logit
-
-# Custom packages:
-from stabst.MarkovDecisionProcess import MDP
-from stabst.TaskConfig import LimitedEnergyTask
-from stabst.utils import avg_reduce_mdp, abstract2ground_value
-
-# Set random seed for reproducibility:
-np.random.seed(42)
-warnings.filterwarnings("ignore")
-
-n_samples = 1000
-n_warmup = 1000
-n_chains = 4
-
-control_models_path = "./data/bids/limited_energy/derivatives/control_models/"
-if not os.path.exists(control_models_path):
-    os.makedirs(control_models_path)
-
-# Choice behaviour model with preferences and decision values:
-def preference_model(
-        y: np.array,
-        decision_values: np.array,
-        pref_regressors: pd.DataFrame,
-        subject_index: np.array,
-        subject_labels: np.array      
-):
-    '''
-    Parameters
-    ----------
-    y : np.array [N samples, ]
-        Observed binary data (1, 0...)
-    decision_values : np.array [N samples, ]
-        Decision values to regress onto the observed data
-    pref_regressors : np.array [N samples, M regressors]
-        Regressor to fit participants preference for. We can have M regressors
-    subject_index : np.array  [N samples, ]
-        Index of the subject associated with each observation
-    subject_labels : np.array  [N subjects, ]
-        Single identifier of each subject
-    coords : dict  
-        "subject": subj_labels, 
-        "coef": ["intercept", "slope"],
-        The subject maps the data to each subject, the coef are for the coefficients
-    b_prior_mean : Optional[float], optional
-        Prior mean of each beta parameters, by default 0
-    b_prior_sigma : Optional[float], optional
-        Prior variance of the population level distribution of the beta, by default 2
-    s_prior_sigma : Optional[float], optional
-        Prior between subjects variance, by default 2
-    n_drawss : Optional[int], optional
-        Number of draws for the posterior, by default 1000
-    n_tuning_draws : Optional[int], optional
-        Number of tuning draws, by default 1000
-    Returns
-    -------
-    tuple[pm.Model, arviz.InferenceData]
-        pm.model : pymc model object
-        idata : arviz inference data
-    """
-    '''
-    # Get dimensions:
-    n_obs = y.shape[0]
-    n_groups = subject_labels.shape[0]
-    n_pref = pref_regressors.shape[1]
-
-    # Create intercept:
-    intercept = np.ones(n_obs)
-
-    # Set coordinates:
-    coords = {
-        "subject": subject_labels,
-        "coef_intercept": ["B_intercept"],
-        "coef_planning": ["B_plan"],
-        "coef_pref": ["B_" + col for col in pref_regressors.columns],
-        "coef_interaction": ["slope"],
-    }
-
-
-    # Model:
-    with pm.Model(coords=coords) as planning_preferences_interaction_model:
-        # Data:
-        y_obs = pm.Data("y_obs", y)
-        intercept = pm.Data("intercept", intercept)
-        planning = pm.Data("planning", decision_values)
-        preferences = pm.Data("preferences", pref_regressors)
-        subj_idx = pm.Data("subj_idx", subject_index.astype("int32"))
-
-        # Hyperpriors:
-        # Intercept term
-        beta_intercept = pm.Normal("beta_intercept", mu=0, sigma=2, dims="coef_intercept")
-        sigma_intercept = pm.HalfNormal("sigma_intercept", sigma=2, dims="coef_intercept")
-        # Planning term:
-        beta_planning = pm.Normal("beta_planning", mu=0, sigma=2, dims="coef_planning")
-        sigma_planning = pm.HalfNormal("sigma_planning", sigma=2, dims="coef_planning")
-        # Preference terms:
-        beta_pref = pm.Normal("beta_pref", mu=0, sigma=2, dims="coef_pref")
-        sigma_pref = pm.HalfNormal("sigma_pref", sigma=2, dims="coef_pref")
-        # Interaction term:
-        beta_interaction = pm.Normal("beta_interaction", mu=0, sigma=2, dims="coef_interaction")
-        sigma_interaction = pm.HalfNormal("sigma_interaction", sigma=2, dims="coef_interaction")
-
-        # Offset parameters:
-        z_intercept = pm.Normal("z_intercept", 0, 1, dims=("subject", "coef_intercept"))
-        z_planning = pm.Normal("z_planning", 0, 1, dims=("subject", "coef_planning"))
-        z_biases = pm.Normal("z_biases", 0, 1, dims=("subject", "coef_pref"))
-        z_interaction = pm.Normal("z_interaction", 0, 1, dims=("subject", "coef_interaction"))
-
-        # Centered parameters:
-        beta_intercept_sub = pm.Deterministic("beta_intercept_sub", beta_intercept + z_intercept * sigma_intercept, 
-                                              dims=("subject", "coef_intercept"))
-        beta_planning_sub = pm.Deterministic("beta_planning_sub", beta_planning + z_planning * sigma_planning, 
-                                             dims=("subject", "coef_planning"))
-        beta_pref_sub = pm.Deterministic("beta_pref_sub", beta_pref + z_biases * sigma_pref, 
-                                         dims=("subject", "coef_pref"))
-        beta_interaction_sub = pm.Deterministic("beta_interaction_sub", beta_interaction + z_interaction * sigma_interaction, 
-                                                dims=("subject", "coef_interaction"))
-        
-        # Estimate the score of the bias (i.e. weighted sum of each of the biases regressors):
-        preference = pm.Deterministic('preference', (beta_pref_sub[subj_idx] * preferences).sum(axis=-1))
-        
-        # Convert the bias back onto probability space:
-        pi_prior = pm.Deterministic("pi_prior", pm.math.sigmoid(preference))
-
-        # Compute the entropy:
-        entropy = pm.Deterministic("entropy", -pi_prior * pm.math.log(pi_prior) - (1-pi_prior) * pm.math.log(1 - pi_prior))
-        
-        # Eta parameter is the weighted sum of the intercept, the bias, the planning values and 
-        # the interaction between the entropy of the bias and the planning
-        eta = (
-            beta_intercept_sub[subj_idx, 0] * intercept
-            + preference
-            + beta_planning_sub[subj_idx, 0] * planning
-            + beta_interaction_sub[subj_idx, 0] * (entropy * planning)
-        )
-        
-        # Expected values:
-        p = pm.Deterministic("p", pm.math.sigmoid(eta))
-
-        # Likelihood 
-        pm.Bernoulli("y", p=p, observed=y_obs)
-
-        # Sampling:
-        idata = pm.sample(
-            draws=n_samples,
-            tune=n_warmup,
-            chains=n_chains,
-            target_accept=0.85,
-            idata_kwargs={"log_likelihood": True},
-        )
-
-    return idata
-
-
-def linear_decay_mvavg(arr, window_size, init_val = 0.5, kernel="linear"):
-    '''
-    Compute the moving average of a 1D array with a specified window size and 
-    linear decay
-    '''
-    # Pad the array with initial value
-    padded_arr = np.pad(arr.astype(float), (window_size - 1, 0), constant_values=init_val)
-    # Generate kernel:
-    if kernel.lower() == "linear":
-        kern = np.arange(window_size)/np.sum(np.arange(window_size))
-    elif kernel.lower() == "exponential":
-        kern = np.exp(np.arange(window_size))/np.sum(np.exp(np.arange(window_size)))
-    conv_result = np.convolve(padded_arr, kern, mode='valid')
-    res = np.full(len(arr), init_val)
-    # For t &gt;= k, we can use conv_result[t-1]
-    for t in range(window_size, len(arr)):
-        res[t] = conv_result[t-1]
-    return res</code>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S1-choice_model_comparison_files/figure-jats/cell-2-output-1.png"/>
-          </boxed-text>
-        </sec>
-        <sec id="cell-58199512-nb-1" specific-use="notebook-content">
-</sec>
-        <sec id="preparing-the-data-nb-1">
-          <title>Preparing the data:</title>
-          <p>We apply the exact same preprocessing as in the manuscript
-  notebook</p>
-        </sec>
-        <sec id="ddb2c7d5-nb-1" specific-use="notebook-content">
-          <code language="python"># Download the data if needed:
-if not os.path.exists('../data/raw_data/all_participants_data.csv'):
-    if not os.path.exists('../data/raw_data'):
-        os.makedirs('../data/raw_data')
-    url = 'https://raw.githubusercontent.com/fmott/context_dependent_planning/4d239b721749adabb8fe8f1d8ac2d1ecdeba17cf/data/behaviour/data_all_participants_20220215120148.csv'
-    os.system(f'wget {url} -O ../data/raw_data/all_participants_data.csv')
-if not os.path.exists('../data/raw_data/all_participants_age_gender.csv'):
-    if not os.path.exists('../data/raw_data'):
-        os.makedirs('../data/raw_data')
-    url = 'https://raw.githubusercontent.com/fmott/context_dependent_planning/4d239b721749adabb8fe8f1d8ac2d1ecdeba17cf/data/behaviour/age_gender.csv'
-    os.system(f'wget {url} -O ../data/raw_data/all_participants_age_gender.csv')
-# Load the data:
-beh_data = pd.read_csv('../data/raw_data/all_participants_data.csv')
-demographic_data = pd.read_csv('../data/raw_data/all_participants_age_gender.csv', sep=";")
-
-# Extract demographic information:
-n_participants = demographic_data.shape[0]
-n_female = demographic_data['gender (m = 1, f = 2)'].value_counts()[2]
-mean_age = demographic_data['age'].mean()
-std_age = demographic_data['age'].std()
-
-# ===================================================================
-# Data preprocessing:
-# Remove nans:
-beh_data = beh_data.dropna()
-# Remove timeout:
-beh_data = beh_data[beh_data["timeout"] == 0]
-# Flip responses: 1 = accept:
-beh_data["response"] = (beh_data["response"] == 0).astype(int)
-# Make trial 1 based
-beh_data["trial"] = beh_data["trial"] + 1
-# Generate future cost based on the transitions:
-transitions_costs = {
-    0: [1, 1],
-    1: [2, 1],
-    2: [1, 2],
-    3: [2, 2]
-}
-beh_data["fc"] = [transitions_costs[row["transition"]][1] for _, row in beh_data.iterrows()]
-
-# ===================================================================
-# Prepare the decision values:
-# Task MDP:
-# Create the task and its parameters (transition probability, reward...):
-task = LimitedEnergyTask(O=[1, 2, 3, 4], p_offer=[1/4] * 4)
-task.build()
-
-# Create full MDP and compute solution for later reference:
-gamma = 1
-task_mdp = MDP(task.states, task.tp, task.r, gamma, s2i=task.s2i)
-V_full, Q_full = task_mdp.backward_induction()
-
-# Add decision values to the data frame:
-dv = Q_full[:, 1] - Q_full[:, 0]
-# Loop through each trial to set DV:
-dv_trials = []
-for trial_i, trial in beh_data.iterrows():
-    e, o, cc, t = trial.energy, trial.reward, trial.energy_cost, trial.trial
-    fc = transitions_costs[trial.transition][1]
-    dv_trials.append(dv[task.s2i[(e, o, cc, fc, t)]])
-beh_data['dv'] = dv_trials
-# Compute offer specific decision value regressors:
-beh_data['dv_23'] = beh_data['dv'].to_numpy() * (beh_data['is_2'].to_numpy() + beh_data['is_3'].to_numpy())
-beh_data['dv_14'] = beh_data['dv'].to_numpy() * (beh_data['is_1'].to_numpy() + beh_data['is_4'].to_numpy())
-
-# ===================================================================
-# Preparing regressors:
-# Categorical offer regressor for high and low offer
-beh_data['is_12'] = beh_data['is_1'].to_numpy() + beh_data['is_2'].to_numpy()
-beh_data['is_34'] = beh_data['is_3'].to_numpy() + beh_data['is_4'].to_numpy()
-# Continuous regressor for high and low offer:
-beh_data['high_vs_low'] = beh_data['is_34'] - beh_data['is_12']
-
-# Categorical costs regressor
-beh_data['is_lc'] = (beh_data['energy_cost'] == 1).astype(int).to_numpy()
-beh_data['is_hc'] = (beh_data['energy_cost'] == 2).astype(int).to_numpy()
-# Categorical future costs regressor
-beh_data['is_lfc'] = (beh_data['fc'] == 1).astype(int).to_numpy()
-beh_data['is_hfc'] = (beh_data['fc'] == 2).astype(int).to_numpy()
-
-# Categorical transition regressor
-beh_data['is_trans1'] = (beh_data['transition'] == 0).to_numpy()
-beh_data['is_trans2'] = (beh_data['transition'] == 1).to_numpy()
-beh_data['is_trans3'] = (beh_data['transition'] == 2).to_numpy()
-beh_data['is_trans4'] = (beh_data['transition'] == 3).to_numpy()
-
-# Categorical energy regressor:
-beh_data['e_is_0'] = (beh_data['energy'] == 0).to_numpy()
-beh_data['e_is_1'] = (beh_data['energy'] == 1).to_numpy()
-beh_data['e_is_2'] = (beh_data['energy'] == 2).to_numpy()
-beh_data['e_is_3'] = (beh_data['energy'] == 3).to_numpy()
-beh_data['e_is_4'] = (beh_data['energy'] == 4).to_numpy()
-beh_data['e_is_5'] = (beh_data['energy'] == 5).to_numpy()
-beh_data['e_is_6'] = (beh_data['energy'] == 6).to_numpy()
-
-# Random effects
-subj_idx_raw, subj_labels = pd.factorize(beh_data["vpn"])</code>
-        </sec>
-        <sec id="cell-876a815a-nb-1" specific-use="notebook-content">
-</sec>
-        <sec id="fitting-the-full-model-nb-1">
-          <title>Fitting the full model</title>
-          <p>First, we fit the full model, which will then be compared to
-  reduced models:</p>
-        </sec>
-        <sec id="efac6ff0-nb-1" specific-use="notebook-content">
-          <code language="python"># Fitting the models:
-traces = {}
-# ===================================================================
-# Preference model:
-if os.path.exists("./data/bids/limited_energy/derivatives/models/preferences_model_trace.nc"):
-    idata = az.from_netcdf("./data/bids/limited_energy/derivatives/models/preferences_model_trace.nc")
-    traces['full_preferences_model'] = idata
-else:
-    raise Exception("Make sure to run the index notebook first!")</code>
-        </sec>
-        <sec id="cell-09e61f36-nb-1" specific-use="notebook-content">
-</sec>
-        <sec id="compute-models-removing-each-factors-from-the-preferences-nb-1">
-          <title>Compute models removing each factors from the
-  preferences:</title>
-          <p>Then, we compute the same model, but removing each factors from the
-  task when computing the preferences:</p>
-        </sec>
-        <sec id="cell-8936cbc1-nb-1" specific-use="notebook-content">
-          <code language="python"># ===================================================================
-# Model without offer related preferences:
-if os.path.exists(Path(control_models_path, "preferences_model_no_offer_trace.nc")):
-    idata = az.from_netcdf(Path(control_models_path, "preferences_model_no_offer_trace.nc"))
-    traces['No_Offer'] = idata
-else:
-    preference_columns = [
-        'is_lc', 'is_hc', 
-        'is_lfc', 'is_hfc',
-        'e_is_0', 'e_is_1', 'e_is_2', 'e_is_3', 'e_is_4', 'e_is_5', 'e_is_6'
-    ]
-    idata = preference_model(beh_data['response'],  # Subjects responses
-                                np.squeeze(beh_data[['dv']].to_numpy()),  # Optimal decision values
-                                beh_data[preference_columns],  # Preferences regressors
-                                subj_idx_raw, subj_labels)
-    # Add the idata to the rest:
-    traces['No_Offer'] = idata
-    # Save the trace to file:
-    az.to_netcdf(traces['No_Offer'], Path(control_models_path, "preferences_model_no_offer_trace.nc"))
-
-# ===================================================================
-# Model without current costs related preferences:
-if os.path.exists(Path(control_models_path, "preferences_model_no_costs_trace.nc")):
-    idata = az.from_netcdf(Path(control_models_path, "preferences_model_no_costs_trace.nc"))
-    traces['No_CC'] = idata
-else:
-    # Fit the model without the costs related preferences:
-    preference_columns = [
-        'is_1', 'is_2', 'is_3', 'is_4', 
-        'is_lfc', 'is_hfc',
-        'e_is_0', 'e_is_1', 'e_is_2', 'e_is_3', 'e_is_4', 'e_is_5', 'e_is_6'
-    ]
-    idata = preference_model(beh_data['response'],  # Subjects responses
-                                np.squeeze(beh_data[['dv']].to_numpy()),  # Optimal decision values
-                                beh_data[preference_columns],  # Preferences regressors
-                                subj_idx_raw, subj_labels)
-    # Add the idata to the rest:
-    traces['No_CC'] = idata
-    # Save the trace to file:
-    az.to_netcdf(traces['No_CC'], Path(control_models_path, "preferences_model_no_costs_trace.nc"))
-
-# ===================================================================
-# Model without future costs related preferences:
-if os.path.exists(Path(control_models_path, "preferences_model_no_future_costs_trace.nc")):
-    idata = az.from_netcdf(Path(control_models_path, "preferences_model_no_future_costs_trace.nc"))
-    traces['No_FC'] = idata
-else:
-    # Fit the model without the future costs related preferences:
-    preference_columns = [
-        'is_1', 'is_2', 'is_3', 'is_4', 
-        'is_lc', 'is_hc', 
-        'e_is_0', 'e_is_1', 'e_is_2', 'e_is_3', 'e_is_4', 'e_is_5', 'e_is_6'
-    ]
-    idata = preference_model(beh_data['response'],  # Subjects responses
-                                np.squeeze(beh_data[['dv']].to_numpy()),  # Optimal decision values
-                                beh_data[preference_columns],  # Preferences regressors
-                                subj_idx_raw, subj_labels)
-    # Add the idata to the rest:
-    traces['No_FC'] = idata
-    # Save the trace to file:
-    az.to_netcdf(traces['No_FC'], Path(control_models_path, "preferences_model_no_future_costs_trace.nc"))
-
-# ===================================================================
-# Model without energy related preferences:
-if os.path.exists(Path(control_models_path, "preferences_model_no_energy_trace.nc")):
-    idata = az.from_netcdf(Path(control_models_path, "preferences_model_no_energy_trace.nc"))
-    traces['No_Energy'] = idata
-else:
-    # Fit the model without the energy related preferences:
-    preference_columns = [
-        'is_1', 'is_2', 'is_3', 'is_4', 
-        'is_lc', 'is_hc', 
-        'is_trans1', 'is_trans2', 'is_trans3', 'is_trans4', 
-    ]
-    idata = preference_model(beh_data['response'],  # Subjects responses
-                                np.squeeze(beh_data[['dv']].to_numpy()),  # Optimal decision values
-                                beh_data[preference_columns],  # Preferences regressors
-                                subj_idx_raw, subj_labels)
-    # Add the idata to the rest:
-    traces['No_Energy'] = idata
-    # Save the trace to file:
-    az.to_netcdf(traces['No_Energy'], Path(control_models_path, "preferences_model_no_energy_trace.nc"))</code>
-        </sec>
-        <sec id="cell-94dd8bd8-nb-1" specific-use="notebook-content">
-</sec>
-        <sec id="model-without-decision-values-nb-1">
-          <title>Model without decision values</title>
-          <p>In addition, we compared the full preference model with a model
-  without decision values. This is to investigate whether participants
-  behaviour might not rely on any sort of optimal planning but on
-  simpler heuristic based on the structure of the task:</p>
-        </sec>
-        <sec id="a1a86d83-nb-1" specific-use="notebook-content">
-          <code language="python">if os.path.exists(Path(control_models_path, "no_planning_model.nc")):
-    idata = az.from_netcdf(Path(control_models_path, "no_planning_model.nc"))
-    traces['No_Planning'] = idata
-else:
-    # Choice behaviour model with prefences only, no decision values:
-    pref_regressors = beh_data[[
-        'is_1', 'is_2', 'is_3', 'is_4', 
-        'is_lc', 'is_hc', 
-        'is_lfc', 'is_hfc',
-        'e_is_0', 'e_is_1', 'e_is_2', 'e_is_3', 'e_is_4', 'e_is_5', 'e_is_6'
-    ]]
-
-    # Create intercept:
-    intercept = np.ones(beh_data.shape[0])
-
-    # Set coordinates:
-    coords = {
-        "subject": subj_labels,
-        "coef_intercept": ["B_intercept"],
-        "coef_planning": ["B_plan"],
-        "coef_pref": ["B_" + col for col in pref_regressors.columns],
-        "coef_interaction": ["slope"],
-    }
-
-    # Model:
-    with pm.Model(coords=coords) as preference_model:
-        # Data:
-        y_obs = pm.Data("y_obs", beh_data['response'])
-        intercept = pm.Data("intercept", intercept)
-        preferences = pm.Data("preferences", pref_regressors)
-        subj_idx = pm.Data("subj_idx", subj_idx_raw.astype("int32"))
-
-        # Hyperpriors:
-        # Intercept term
-        beta_intercept = pm.Normal("beta_intercept", mu=0, sigma=2, dims="coef_intercept")
-        sigma_intercept = pm.HalfNormal("sigma_intercept", sigma=2, dims="coef_intercept")
-        # Preference terms:
-        beta_pref = pm.Normal("beta_pref", mu=0, sigma=2, dims="coef_pref")
-        sigma_pref = pm.HalfNormal("sigma_pref", sigma=2, dims="coef_pref")
-
-        # Offset parameters:
-        z_intercept = pm.Normal("z_intercept", 0, 1, dims=("subject", "coef_intercept"))
-        z_biases = pm.Normal("z_biases", 0, 1, dims=("subject", "coef_pref"))
-
-        # Centered parameters:
-        beta_intercept_sub = pm.Deterministic("beta_intercept_sub", beta_intercept + z_intercept * sigma_intercept, 
-                                                dims=("subject", "coef_intercept"))
-        beta_pref_sub = pm.Deterministic("beta_pref_sub", beta_pref + z_biases * sigma_pref, 
-                                            dims=("subject", "coef_pref"))
-        
-        # Estimate the score of the bias (i.e. weighted sum of each of the biases regressors):
-        preference = pm.Deterministic('preference', (beta_pref_sub[subj_idx] * preferences).sum(axis=-1))
-
-        # Eta parameter is the weighted sum of the intercept, the bias, the planning values and 
-        # the interaction between the entropy of the bias and the planning
-        eta = (
-            beta_intercept_sub[subj_idx, 0] * intercept
-            + preference
-        )
-        
-        # Expected values:
-        p = pm.Deterministic("p", pm.math.sigmoid(eta))
-
-        # Likelihood 
-        pm.Bernoulli("y", p=p, observed=y_obs)
-
-        # Sampling:
-        traces['No_Planning'] = pm.sample(
-            draws=n_samples,
-            tune=n_warmup,
-            chains=n_chains,
-            target_accept=0.85,
-            idata_kwargs={"log_likelihood": True},
-        )
-        # Save to file:
-        az.to_netcdf(traces['No_Planning'], Path(control_models_path, "no_planning_model.nc"))</code>
-        </sec>
-        <sec id="cell-487698b8-nb-1" specific-use="notebook-content">
-</sec>
-        <sec id="model-without-interactions-nb-1">
-          <title>Model without interactions</title>
-          <p>Finally, we also test a model without interaction between
-  preferences entropy and decision values.</p>
-        </sec>
-        <sec id="cell-357b6a61-nb-1" specific-use="notebook-content">
-          <code language="python">if os.path.exists(Path(control_models_path, "no_interaction_model.nc")):
-    idata = az.from_netcdf(Path(control_models_path, "no_interaction_model.nc"))
-    traces['No_Interaction'] = idata
-else:
-    # Choice behaviour model with prefences only, no decision values:
-    pref_regressors = beh_data[[
-        'is_1', 'is_2', 'is_3', 'is_4', 
-        'is_lc', 'is_hc', 
-        'is_lfc', 'is_hfc',
-        'e_is_0', 'e_is_1', 'e_is_2', 'e_is_3', 'e_is_4', 'e_is_5', 'e_is_6'
-    ]]
-
-    # Create intercept:
-    intercept = np.ones(beh_data.shape[0])
-
-    # Set coordinates:
-    coords = {
-        "subject": subj_labels,
-        "coef_intercept": ["B_intercept"],
-        "coef_planning": ["B_plan"],
-        "coef_pref": ["B_" + col for col in pref_regressors.columns],
-        "coef_interaction": ["slope"],
-    }
-
-    # Model:
-    with pm.Model(coords=coords) as no_interaction_model:
-        # Data:
-        y_obs = pm.Data("y_obs", beh_data['response'])
-        intercept = pm.Data("intercept", intercept)
-        planning = pm.Data("planning", np.squeeze(beh_data[['dv']].to_numpy()))
-        preferences = pm.Data("preferences", pref_regressors)
-        subj_idx = pm.Data("subj_idx", subj_idx_raw.astype("int32"))
-
-        # Hyperpriors:
-        # Intercept term
-        beta_intercept = pm.Normal("beta_intercept", mu=0, sigma=2, dims="coef_intercept")
-        sigma_intercept = pm.HalfNormal("sigma_intercept", sigma=2, dims="coef_intercept")
-        # Planning term:
-        beta_planning = pm.Normal("beta_planning", mu=0, sigma=2, dims="coef_planning")
-        sigma_planning = pm.HalfNormal("sigma_planning", sigma=2, dims="coef_planning")
-        # Preference terms:
-        beta_pref = pm.Normal("beta_pref", mu=0, sigma=2, dims="coef_pref")
-        sigma_pref = pm.HalfNormal("sigma_pref", sigma=2, dims="coef_pref")
-
-        # Offset parameters:
-        z_intercept = pm.Normal("z_intercept", 0, 1, dims=("subject", "coef_intercept"))
-        z_planning = pm.Normal("z_planning", 0, 1, dims=("subject", "coef_planning"))
-        z_biases = pm.Normal("z_biases", 0, 1, dims=("subject", "coef_pref"))
-
-        # Centered parameters:
-        beta_intercept_sub = pm.Deterministic("beta_intercept_sub", beta_intercept + z_intercept * sigma_intercept, 
-                                                dims=("subject", "coef_intercept"))
-        beta_planning_sub = pm.Deterministic("beta_planning_sub", beta_planning + z_planning * sigma_planning, 
-                                                dims=("subject", "coef_planning"))
-        beta_pref_sub = pm.Deterministic("beta_pref_sub", beta_pref + z_biases * sigma_pref, 
-                                            dims=("subject", "coef_pref"))
-        
-        # Estimate the score of the bias (i.e. weighted sum of each of the biases regressors):
-        preference = pm.Deterministic('preference', (beta_pref_sub[subj_idx] * preferences).sum(axis=-1))
-
-        # Eta parameter is the weighted sum of the intercept, the bias, the planning values and 
-        # the interaction between the entropy of the bias and the planning
-        eta = (
-            beta_intercept_sub[subj_idx, 0] * intercept
-            + beta_planning_sub[subj_idx, 0] * planning
-            + preference
-        )
-        
-        # Expected values:
-        p = pm.Deterministic("p", pm.math.sigmoid(eta))
-
-        # Likelihood 
-        pm.Bernoulli("y", p=p, observed=y_obs)
-
-        # Sampling:
-        traces['No_Interaction'] = pm.sample(
-            draws=n_samples,
-            tune=n_warmup,
-            chains=n_chains,
-            target_accept=0.85,
-            idata_kwargs={"log_likelihood": True},
-        )
-
-        az.to_netcdf(traces['No_Interaction'], Path(control_models_path, "no_interaction_model.nc"))</code>
-        </sec>
-        <sec id="f3513c10-nb-1" specific-use="notebook-content">
-</sec>
-        <sec id="comparing-the-models-nb-1">
-          <title>Comparing the models:</title>
-        </sec>
-        <sec id="cell-493c20b9-nb-1" specific-use="notebook-content">
-          <code language="python"># Compare the models:
-model_comparison = az.compare(traces)
-az.plot_compare(model_comparison);
-model_comparison</code>
-          <boxed-text>
-            <table-wrap>
-              <table border="1">
-                <thead>
-                  <tr style="text-align: right;">
-                    <th/>
-                    <th>rank</th>
-                    <th>elpd_loo</th>
-                    <th>p_loo</th>
-                    <th>elpd_diff</th>
-                    <th>weight</th>
-                    <th>se</th>
-                    <th>dse</th>
-                    <th>warning</th>
-                    <th>scale</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>full_preferences_model</td>
-                    <td>0</td>
-                    <td>-1491.091155</td>
-                    <td>253.490122</td>
-                    <td>0.000000</td>
-                    <td>7.589529e-01</td>
-                    <td>48.615646</td>
-                    <td>0.000000</td>
-                    <td>True</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>No_Interaction</td>
-                    <td>1</td>
-                    <td>-1501.438309</td>
-                    <td>245.860995</td>
-                    <td>10.347154</td>
-                    <td>5.733417e-15</td>
-                    <td>48.910290</td>
-                    <td>5.418092</td>
-                    <td>True</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>No_FC</td>
-                    <td>2</td>
-                    <td>-1517.792877</td>
-                    <td>227.725070</td>
-                    <td>26.701722</td>
-                    <td>9.830322e-15</td>
-                    <td>48.535449</td>
-                    <td>7.599396</td>
-                    <td>True</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>No_CC</td>
-                    <td>3</td>
-                    <td>-1539.490753</td>
-                    <td>262.803473</td>
-                    <td>48.399597</td>
-                    <td>1.728439e-14</td>
-                    <td>49.889247</td>
-                    <td>9.677248</td>
-                    <td>True</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>No_Planning</td>
-                    <td>4</td>
-                    <td>-1581.229261</td>
-                    <td>217.308042</td>
-                    <td>90.138106</td>
-                    <td>1.559356e-01</td>
-                    <td>48.803948</td>
-                    <td>17.226217</td>
-                    <td>True</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>No_Energy</td>
-                    <td>5</td>
-                    <td>-1626.441742</td>
-                    <td>211.154968</td>
-                    <td>135.350587</td>
-                    <td>4.964563e-02</td>
-                    <td>51.568217</td>
-                    <td>17.853538</td>
-                    <td>True</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>No_Offer</td>
-                    <td>6</td>
-                    <td>-1629.835751</td>
-                    <td>235.202668</td>
-                    <td>138.744596</td>
-                    <td>3.546586e-02</td>
-                    <td>54.438208</td>
-                    <td>19.332967</td>
-                    <td>True</td>
-                    <td>log</td>
-                  </tr>
-                </tbody>
-              </table>
-            </table-wrap>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S1-choice_model_comparison_files/figure-jats/cell-8-output-2.png"/>
-          </boxed-text>
-        </sec>
-        <sec id="de4001ca-nb-1" specific-use="notebook-content">
-</sec>
-        <sec id="frequency-prior-model-comparison-nb-1">
-          <title>Frequency prior model comparison</title>
-          <p>In the main text, we compared the preference model with a model in
-  which priors are computed based on action frequency. In this model,
-  the priors are computed using a linearly decaying moving average,
-  discounting actions that occured further in the past. We presented the
-  results obtained when the priors are derived from the XXX previous
-  trials. This number of trials was selected by exploring priors witk
-  <inline-formula><alternatives><tex-math><![CDATA[k=[2, 5, 10, 15, 20, 30, 50]]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>k</mml:mi><mml:mo>=</mml:mo><mml:mo stretchy="false" form="prefix">[</mml:mo><mml:mn>2</mml:mn><mml:mo>,</mml:mo><mml:mn>5</mml:mn><mml:mo>,</mml:mo><mml:mn>10</mml:mn><mml:mo>,</mml:mo><mml:mn>15</mml:mn><mml:mo>,</mml:mo><mml:mn>20</mml:mn><mml:mo>,</mml:mo><mml:mn>30</mml:mn><mml:mo>,</mml:mo><mml:mn>50</mml:mn><mml:mo stretchy="false" form="postfix">]</mml:mo></mml:mrow></mml:math></alternatives></inline-formula>
-  to identify the values that fit the data the best:</p>
-        </sec>
-        <sec id="cell-010f26eb-nb-1" specific-use="notebook-content">
-          <code language="python">traces = {}
-for k in [2, 5, 10, 15, 20, 30, 50]:
-    if os.path.exists(Path(control_models_path, f"linear_freq_prior_k{k}.nc")):
-        idata = az.from_netcdf(Path(control_models_path, f"linear_freq_prior_k{k}.nc"))
-        traces[f'Linear, k={k}'] = idata
-    else:
-        # Compute action priors:
-        P_A = []
-        for subj in beh_data['vpn'].unique():
-            sub_resp = beh_data[beh_data['vpn'] == subj]['response'].to_numpy()
-            P_A.append(linear_decay_mvavg(sub_resp, window_size=k, init_val=0.5))
-        data = pd.DataFrame(
-            {
-            'response': beh_data['response'],
-            'vpn': beh_data['vpn'],
-            'dv': beh_data['dv'],
-            'logitP_A': logit(np.clip(np.concatenate(P_A), 1e-3, 1-1e-3))
-            }
-        )
-        action_prior_model = bmb.Model(
-            "response ~ dv + logitP_A + dv:logitP_A +"
-            " + (dv + logitP_A|vpn)",
-                data, 
-                family="bernoulli"
-            )
-        # Add the idata to the rest:
-        traces[f'Linear, k={k}'] = action_prior_model.fit(
-            draws=n_samples, tune=n_warmup, chains=n_chains, target_accept=0.85, idata_kwargs={"log_likelihood": True}
-        )
-
-        # Save the trace to file:
-        az.to_netcdf(traces[f'Linear, k={k}'], Path(control_models_path, f"linear_freq_prior_k{k}.nc"))              
-
-# Compare the models:
-model_comparison = az.compare(traces)
-az.plot_compare(model_comparison);
-model_comparison                            </code>
-          <boxed-text>
-            <table-wrap>
-              <table border="1">
-                <thead>
-                  <tr style="text-align: right;">
-                    <th/>
-                    <th>rank</th>
-                    <th>elpd_loo</th>
-                    <th>p_loo</th>
-                    <th>elpd_diff</th>
-                    <th>weight</th>
-                    <th>se</th>
-                    <th>dse</th>
-                    <th>warning</th>
-                    <th>scale</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Linear, k=20</td>
-                    <td>0</td>
-                    <td>-2069.603756</td>
-                    <td>78.387251</td>
-                    <td>0.000000</td>
-                    <td>5.525676e-01</td>
-                    <td>55.685833</td>
-                    <td>0.000000</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Linear, k=15</td>
-                    <td>1</td>
-                    <td>-2073.741747</td>
-                    <td>74.270280</td>
-                    <td>4.137991</td>
-                    <td>1.564493e-01</td>
-                    <td>55.887831</td>
-                    <td>5.240833</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Linear, k=2</td>
-                    <td>2</td>
-                    <td>-2074.978233</td>
-                    <td>75.567712</td>
-                    <td>5.374477</td>
-                    <td>2.909832e-01</td>
-                    <td>55.683306</td>
-                    <td>6.296650</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Linear, k=5</td>
-                    <td>3</td>
-                    <td>-2076.303091</td>
-                    <td>78.839970</td>
-                    <td>6.699335</td>
-                    <td>0.000000e+00</td>
-                    <td>55.648421</td>
-                    <td>5.581387</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Linear, k=10</td>
-                    <td>4</td>
-                    <td>-2077.335887</td>
-                    <td>74.064255</td>
-                    <td>7.732131</td>
-                    <td>0.000000e+00</td>
-                    <td>55.534071</td>
-                    <td>5.653286</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Linear, k=50</td>
-                    <td>5</td>
-                    <td>-2080.708924</td>
-                    <td>78.790183</td>
-                    <td>11.105168</td>
-                    <td>3.115964e-14</td>
-                    <td>55.716113</td>
-                    <td>5.095259</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Linear, k=30</td>
-                    <td>6</td>
-                    <td>-2081.095963</td>
-                    <td>75.785958</td>
-                    <td>11.492207</td>
-                    <td>2.691895e-14</td>
-                    <td>55.760237</td>
-                    <td>5.469725</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                </tbody>
-              </table>
-            </table-wrap>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S1-choice_model_comparison_files/figure-jats/cell-9-output-2.png"/>
-          </boxed-text>
-        </sec>
-        <sec id="cell-68ffb1a7-nb-1" specific-use="notebook-content">
-          <p>In addition, we tested whether participants might derive action
-  priors based on recent response choices using an exponential instead
-  of a linear kernel. We compared the fit of the model with a linear
-  kernel with <inline-formula><alternatives><tex-math><![CDATA[k=5]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>k</mml:mi><mml:mo>=</mml:mo><mml:mn>5</mml:mn></mml:mrow></mml:math></alternatives></inline-formula>
-  against the exponential kernel fitted using
-  <inline-formula><alternatives><tex-math><![CDATA[k=[2, 5, 10, 15, 20, 30, 50]]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>k</mml:mi><mml:mo>=</mml:mo><mml:mo stretchy="false" form="prefix">[</mml:mo><mml:mn>2</mml:mn><mml:mo>,</mml:mo><mml:mn>5</mml:mn><mml:mo>,</mml:mo><mml:mn>10</mml:mn><mml:mo>,</mml:mo><mml:mn>15</mml:mn><mml:mo>,</mml:mo><mml:mn>20</mml:mn><mml:mo>,</mml:mo><mml:mn>30</mml:mn><mml:mo>,</mml:mo><mml:mn>50</mml:mn><mml:mo stretchy="false" form="postfix">]</mml:mo></mml:mrow></mml:math></alternatives></inline-formula>:</p>
-        </sec>
-        <sec id="cell-4add01b1-nb-1" specific-use="notebook-content">
-          <code language="python">traces = {'Linear, k=20': traces['Linear, k=20']}
-for k in [2, 5, 10, 15, 20, 30, 50]:
-    if os.path.exists(Path(control_models_path, f"exponential_freq_prior_k{k}.nc")):
-        idata = az.from_netcdf(Path(control_models_path, f"exponential_freq_prior_k{k}.nc"))
-        traces[f'Exponential, k={k}'] = idata
-    else:
-        # Compute action priors:
-        P_A = []
-        for subj in beh_data['vpn'].unique():
-            sub_resp = beh_data[beh_data['vpn'] == subj]['response'].to_numpy()
-            P_A.append(linear_decay_mvavg(sub_resp, window_size=k, init_val=0.5, kernel="exponential"))
-        data = pd.DataFrame(
-            {
-            'response': beh_data['response'],
-            'vpn': beh_data['vpn'],
-            'dv': beh_data['dv'],
-            'logitP_A': logit(np.clip(np.concatenate(P_A), 1e-3, 1-1e-3))
-            }
-        )
-        action_prior_model = bmb.Model(
-            "response ~ dv + logitP_A + dv:logitP_A +"
-            " + (dv + logitP_A|vpn)",
-                data, 
-                family="bernoulli"
-            )
-        # Add the idata to the rest:
-        traces[f'Exponential, k={k}'] = action_prior_model.fit(
-            draws=n_samples, tune=n_warmup, chains=n_chains, target_accept=0.85, idata_kwargs={"log_likelihood": True}
-        )
-
-        # Save the trace to file:
-        az.to_netcdf(traces[f'Exponential, k={k}'], Path(control_models_path, f"exponential_freq_prior_k{k}.nc"))              
-
-# Compare the models:
-model_comparison = az.compare(traces)
-az.plot_compare(model_comparison);
-model_comparison                            </code>
-          <boxed-text>
-            <table-wrap>
-              <table border="1">
-                <thead>
-                  <tr style="text-align: right;">
-                    <th/>
-                    <th>rank</th>
-                    <th>elpd_loo</th>
-                    <th>p_loo</th>
-                    <th>elpd_diff</th>
-                    <th>weight</th>
-                    <th>se</th>
-                    <th>dse</th>
-                    <th>warning</th>
-                    <th>scale</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Exponential, k=2</td>
-                    <td>0</td>
-                    <td>-2064.628118</td>
-                    <td>85.339856</td>
-                    <td>0.000000</td>
-                    <td>6.058397e-01</td>
-                    <td>56.439552</td>
-                    <td>0.000000</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Linear, k=20</td>
-                    <td>1</td>
-                    <td>-2069.603756</td>
-                    <td>78.387251</td>
-                    <td>4.975638</td>
-                    <td>3.941603e-01</td>
-                    <td>55.685833</td>
-                    <td>7.227144</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Exponential, k=10</td>
-                    <td>2</td>
-                    <td>-2077.151400</td>
-                    <td>74.264996</td>
-                    <td>12.523282</td>
-                    <td>0.000000e+00</td>
-                    <td>55.702638</td>
-                    <td>6.703761</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Exponential, k=15</td>
-                    <td>3</td>
-                    <td>-2078.332743</td>
-                    <td>74.954288</td>
-                    <td>13.704625</td>
-                    <td>6.890618e-15</td>
-                    <td>55.602516</td>
-                    <td>6.063295</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Exponential, k=50</td>
-                    <td>4</td>
-                    <td>-2079.104283</td>
-                    <td>75.761862</td>
-                    <td>14.476165</td>
-                    <td>1.584729e-15</td>
-                    <td>55.654758</td>
-                    <td>6.161292</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Exponential, k=5</td>
-                    <td>5</td>
-                    <td>-2079.293819</td>
-                    <td>78.543763</td>
-                    <td>14.665702</td>
-                    <td>1.078400e-14</td>
-                    <td>55.797832</td>
-                    <td>6.079922</td>
-                    <td>True</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Exponential, k=20</td>
-                    <td>6</td>
-                    <td>-2080.627939</td>
-                    <td>73.780732</td>
-                    <td>15.999821</td>
-                    <td>5.011252e-14</td>
-                    <td>55.742427</td>
-                    <td>5.903085</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                  <tr>
-                    <td>Exponential, k=30</td>
-                    <td>7</td>
-                    <td>-2081.401913</td>
-                    <td>74.463744</td>
-                    <td>16.773795</td>
-                    <td>4.016913e-14</td>
-                    <td>55.592170</td>
-                    <td>5.900511</td>
-                    <td>False</td>
-                    <td>log</td>
-                  </tr>
-                </tbody>
-              </table>
-            </table-wrap>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S1-choice_model_comparison_files/figure-jats/cell-10-output-2.png"/>
-          </boxed-text>
-        </sec>
-      </sec>
-    </body>
-    <back>
-</back>
-  </sub-article>
-  <sub-article article-type="notebook" id="nb-4-nb-2">
-    <front-stub>
-      <title-group>
-        <article-title>Supplementary 2 Parameters recovery</article-title>
-      </title-group>
-    </front-stub>
-    <body>
-      <sec id="f624059a-nb-2" specific-use="notebook-content">
-        <p>In the main text, we have observed that our preference model,
-describing participants responses as a mixture of forward planning,
-state-features-dependent preferences and the interaction between the
-two. This is a rather complex model with preference parameters being
-estimated as latent variable, and entailing an additional entropy
-transformation in the interaction term. To establish that despite the
-complexity of the model, it is still capable of accurately estimate all
-parameters, we perform a parameter recovery analysis in which we
-simulate data using the mean parameters recovered from the original
-data. We then fit the same model to the simulated data. We can then
-compare the estimated parameters from the simulated data against ground
-truth to establish the model capacity to identify parameters
-correctly.</p>
-      </sec>
-      <sec id="cell-825efc41-nb-2" specific-use="notebook-content">
-        <sec id="preparing-the-data-nb-2">
-          <title>Preparing the data</title>
-          <p>To simulate data and test parameters recovery, we will use the
-  exact same experimental design as provided in the task.</p>
-        </sec>
-        <sec id="cell-03f7940a-nb-2" specific-use="notebook-content">
-          <code language="python"># General utilities:
-import os 
-import pandas as pd
-import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
-import warnings
-
-# Stats
-import pymc as pm
-import arviz as az
-import bambi as bmb
-from scipy.special import expit
-from scipy.stats import bernoulli
-
-# Custom packages:
-from stabst.MarkovDecisionProcess import MDP
-from stabst.TaskConfig import LimitedEnergyTask
-from stabst.utils import avg_reduce_mdp, abstract2ground_value
-
-from utilities.models import preference_model
-
-def entropy(p):
-    return -p * np.log(p) - (1-p) * np.log(1-p)
-
-# Download the data if needed:
-if not os.path.exists('./data/raw_data/all_participants_data.csv'):
-    if not os.path.exists('./data/raw_data'):
-        os.makedirs('./data/raw_data')
-    url = 'https://raw.githubusercontent.com/fmott/context_dependent_planning/4d239b721749adabb8fe8f1d8ac2d1ecdeba17cf/data/behaviour/data_all_participants_20220215120148.csv'
-    os.system(f'wget {url} -O ./data/raw_data/all_participants_data.csv')
-
-# Load the data:
-beh_data = pd.read_csv('./data/raw_data/all_participants_data.csv')
-
-# ===================================================================
-# Data preprocessing:
-# Remove nans:
-beh_data = beh_data.dropna()
-# Remove timeout:
-beh_data = beh_data[beh_data["timeout"] == 0]
-# Flip responses: 1 = accept:
-beh_data["response"] = (beh_data["response"] == 0).astype(int)
-# Make trial 1 based
-beh_data["trial"] = beh_data["trial"] + 1
-# Generate future cost based on the transitions:
-transitions_costs = {
-    0: [1, 1],
-    1: [2, 1],
-    2: [1, 2],
-    3: [2, 2]
-}
-beh_data["fc"] = [transitions_costs[row["transition"]][1] for _, row in beh_data.iterrows()]
-
-# Categorical costs regressor
-beh_data['is_lc'] = (beh_data['energy_cost'] == 1).astype(int).to_numpy()
-beh_data['is_hc'] = (beh_data['energy_cost'] == 2).astype(int).to_numpy()
-# Categorical future costs regressor
-beh_data['is_lfc'] = (beh_data['fc'] == 1).astype(int).to_numpy()
-beh_data['is_hfc'] = (beh_data['fc'] == 2).astype(int).to_numpy()
-
-# Categorical energy regressor:
-beh_data['e_is_0'] = (beh_data['energy'] == 0).to_numpy()
-beh_data['e_is_1'] = (beh_data['energy'] == 1).to_numpy()
-beh_data['e_is_2'] = (beh_data['energy'] == 2).to_numpy()
-beh_data['e_is_3'] = (beh_data['energy'] == 3).to_numpy()
-beh_data['e_is_4'] = (beh_data['energy'] == 4).to_numpy()
-beh_data['e_is_5'] = (beh_data['energy'] == 5).to_numpy()
-beh_data['e_is_6'] = (beh_data['energy'] == 6).to_numpy()
-
-# Random effects
-subj_idx_raw, subj_labels = pd.factorize(beh_data["vpn"])
-
-# ===================================================================
-# Compute decision values:
-# Create the task and its parameters (transition probability, reward...):
-task = LimitedEnergyTask(O=[1, 2, 3, 4], p_offer=[1/4] * 4)
-task.build()
-
-# Create full MDP and compute solution for later reference:
-gamma = 1
-task_mdp = MDP(task.states, task.tp, task.r, gamma, s2i=task.s2i)
-V_full, Q_full = task_mdp.backward_induction()
-
-# Add decision values to the data frame:
-dv = Q_full[:, 1] - Q_full[:, 0]
-# Loop through each trial to set DV:
-dv_trials = []
-for trial_i, trial in beh_data.iterrows():
-    e, o, cc, t = trial.energy, trial.reward, trial.energy_cost, trial.trial
-    fc = transitions_costs[trial.transition][1]
-    dv_trials.append(dv[task.s2i[(e, o, cc, fc, t)]])
-beh_data['dv'] = dv_trials</code>
-        </sec>
-        <sec id="cell-87cad2c6-nb-2" specific-use="notebook-content">
-</sec>
-        <sec id="simulation-nb-2">
-          <title>Simulation</title>
-          <p>We then retrieve the fitted parameters from the model fitted in the
-  main text and use the mean estimated parameters to simulate the
-  data.</p>
-        </sec>
-        <sec id="d007968a-nb-2" specific-use="notebook-content">
-          <code language="python"># Load prefernece model trace:
-if os.path.exists("./data/bids/limited_energy/derivatives/models/preferences_model_trace.nc"):
-    idata_orig = az.from_netcdf("./data/bids/limited_energy/derivatives/models/preferences_model_trace.nc")
-else:
-    raise Exception("Make sure to run the index.pynb before running control analyses")
-
-simulated_data = []
-
-# Loop through each participants:
-pref_cols = [
-        'is_1', 'is_2', 'is_3', 'is_4', 
-        'is_lc', 'is_hc', 
-        'is_lfc', 'is_hfc', 
-        'e_is_0', 'e_is_1', 'e_is_2', 'e_is_3', 'e_is_4', 'e_is_5', 'e_is_6'
-    ]
-# Prepare dictionary to store ground truth parameters:
-ground_truth_params = {
-    "beta_planning": [],
-    "beta_pref": [],
-    "beta_interaction": []
-}
-for i, sub in enumerate(beh_data["vpn"].unique()):
-    # ===================================================================
-    # Extract experimental design for this subject:
-    subject_data = beh_data[beh_data["vpn"] == sub]
-    # Extract the preferences regressors:
-    prefs_reg = subject_data[pref_cols].to_numpy()
-    # Extract the decision values:
-    dv = subject_data["dv"].to_numpy()
-
-    # ===================================================================
-    # Extract fitted parameters for this subject:
-    beta_planning = idata_orig.posterior["beta_planning_sub"].mean(dim=["chain", "draw"]).to_numpy()[i, 0]
-    beta_pref = idata_orig.posterior["beta_pref_sub"].mean(dim=["chain", "draw"]).to_numpy()[i, :]
-    beta_interaction = idata_orig.posterior["beta_interaction_sub"].mean(dim=["chain", "draw"]).to_numpy()[i, 0]
-
-    # ===================================================================
-    # Simulate responses following the preference model:
-    # Compute preferences
-    prefs = (beta_pref * prefs_reg).sum(axis=-1).astype(float)
-    # Compute eta:
-    eta = beta_planning * dv + prefs + beta_interaction * (dv * entropy(expit(prefs)))
-    # Simulate responses:
-    resp = bernoulli.rvs(expit(eta))
-    # Assemble into a dataframe:
-    df = pd.DataFrame({
-        "vpn": sub,
-        "dv": dv,
-        **{col: subject_data[col].to_numpy() for col in pref_cols},
-        "response": resp,
-    })
-    simulated_data.append(df)
-    ground_truth_params["beta_planning"].append(beta_planning)
-    ground_truth_params["beta_pref"].append(beta_pref)
-    ground_truth_params["beta_interaction"].append(beta_interaction)
-# Combine into a single dataframe:
-simulated_data = pd.concat(simulated_data, ignore_index=True)
-    </code>
-        </sec>
-        <sec id="f54c614c-nb-2" specific-use="notebook-content">
-          <sec id="fitting-the-model-and-comparing-estimated-to-known-parameters-nb-2">
-            <title>Fitting the model and comparing estimated to known
-    parameters</title>
-            <p>If all goes well, we would expect the estimated parameters to be
-    close to the known ground truth parameters. To make sure that this
-    is the case, we will fit the model and plot the computed parameters
-    against the ground truth</p>
-          </sec>
-          <sec id="cell-43b15f6b-nb-2" specific-use="notebook-content">
-            <code language="python"># Fit the model:
-if os.path.exists("./data/bids/limited_energy/derivatives/control_models/preferences_model_trace.nc"):
-    idata = az.from_netcdf("./data/bids/limited_energy/derivatives/control_models/simulation_preferences_model_trace.nc")
-else:
-    idata = preference_model(
-        y=simulated_data["response"].values,
-        decision_values=simulated_data["dv"].values,
-        pref_regressors=simulated_data[pref_cols],
-        subject_index=subj_idx_raw,
-        subject_labels=subj_labels
-    )
-    # Save the trace to file:
-    az.to_netcdf(idata, "./data/bids/limited_energy/derivatives/control_models/simulation_preferences_model_trace.nc")</code>
-            <boxed-text>
-              <preformat>Initializing NUTS using jitter+adapt_diag...
-Multiprocess sampling (4 chains in 4 jobs)
-NUTS: [beta_intercept, sigma_intercept, beta_planning, sigma_planning, beta_pref, sigma_pref, beta_interaction, sigma_interaction, z_intercept, z_planning, z_biases, z_interaction]</preformat>
-            </boxed-text>
-            <boxed-text>
-              <preformat>Output()</preformat>
-            </boxed-text>
-            <boxed-text>
-              <preformat/>
-            </boxed-text>
-            <boxed-text>
-              <preformat>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 1106 seconds.</preformat>
-            </boxed-text>
-          </sec>
-          <sec id="aeaea98f-nb-2" specific-use="notebook-content">
-  </sec>
-          <sec id="group-level-parameters-nb-2">
-            <title>Group level parameters</title>
-            <p>To test whether the model is able to retrieve group level
-    parameters, we can compare the fitted parameters from the simulated
-    to the parameters retrieved by the model from real data.</p>
-          </sec>
-          <sec id="cell-02264a59-nb-2" specific-use="notebook-content">
-            <code language="python"># Plot group level parameters:
-fig, ax = plt.subplot_mosaic("ABCCCCCC", figsize=(12, 4), sharey=True)
-fig_key = ["A", "B", "C"]
-for i, param in enumerate(["beta_planning", "beta_interaction", "beta_pref"]):
-    # Plot the fitted parameters from the real model:
-    # posterior_orig = idata_orig.posterior[param].values.reshape(-1, idata_orig.posterior[param].shape[-1])
-    # ax[fig_key[i]].violinplot(posterior_orig, positions=range(posterior_orig.shape[-1]), widths=0.8,
-    #                 showmeans=False, showmedians=True,
-    #                 showextrema=False, side="high");
-    # Plot parameters fitted to the simulated data:
-    posterior_sim = idata.posterior[param].values.reshape(-1, idata_orig.posterior[param].shape[-1])
-    ax[fig_key[i]].violinplot(posterior_sim, positions=range(posterior_sim.shape[-1]), widths=0.8,
-                       showmeans=False, showmedians=True,
-                       showextrema=False, side="high");
-    ax[fig_key[i]].hlines(np.mean(np.array(ground_truth_params[param]), axis=0), 
-                          xmin=[iii for iii in range(posterior_sim.shape[-1])], 
-                          xmax=[iii+0.25 for iii in range(posterior_sim.shape[-1])], 
-                          color="green", label="Ground truth")
-    ax[fig_key[i]].set_title(param.split("_")[1])
-    ax[fig_key[i]].spines[['right', 'top']].set_visible(False)
-    ax[fig_key[i]].set_xlabel("P(x)")
-    if i == 0:
-        ax[fig_key[i]].set_ylabel("Parameter value")
-    elif i == 2:
-        ax[fig_key[i]].legend()
-    if param == "beta_pref":
-        ax[fig_key[i]].set_xticks(range(posterior_sim.shape[-1]))
-        ax[fig_key[i]].set_xticklabels(["O=1", "O=2", "O=3", "O=4", 
-                                       "CC=1", "CC=2", 
-                                       "FC=1", "FC=2",
-                                       "E=0", "E=1", "E=2", "E=3", "E=4", "E=5", "E=6"], 
-                                       rotation=20)
-plt.show()</code>
-            <boxed-text>
-              <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-5-output-1.png"/>
-            </boxed-text>
-          </sec>
-          <sec id="b82d5f45-nb-2" specific-use="notebook-content">
-  </sec>
-        </sec>
-        <sec id="single-subject-parameters-nb-2">
-          <title>Single subject parameters:</title>
-          <p>In addition, we investigate the fit of single subjects parameters
-  against the known ground truth. These should also align:</p>
-        </sec>
-        <sec id="cell-7051eda2-nb-2" specific-use="notebook-content">
-          <code language="python"># Loop through each subject:
-for i, sub in enumerate(beh_data["vpn"].unique()):
-    fig, ax = plt.subplot_mosaic("ABCCCCCC", figsize=(12, 4))
-    fig_key = ["A", "B", "C"]
-    for ii, param in enumerate(["beta_planning", "beta_interaction", "beta_pref"]):
-        # Plot parameters fitted to the simulated data:
-        posterior_sim = idata.posterior[param + "_sub"].values[:, :, i, :].reshape(-1, idata_orig.posterior[param].shape[-1])
-        ax[fig_key[ii]].violinplot(posterior_sim, positions=range(posterior_sim.shape[-1]), widths=0.8,
-                        showmeans=False, showmedians=True,
-                        showextrema=False, side="high");
-        # Plot the ground truth parameter:
-        ax[fig_key[ii]].hlines(ground_truth_params[param][i], 
-                               xmin=[iii for iii in range(posterior_sim.shape[-1])], 
-                               xmax=[iii+0.25 for iii in range(posterior_sim.shape[-1])], 
-                               color="green", label="Ground truth")
-        ax[fig_key[ii]].set_title(param.split("_")[1])
-        ax[fig_key[ii]].spines[['right', 'top']].set_visible(False)
-        ax[fig_key[ii]].set_xlabel("P(x)")
-        if ii == 0:
-            ax[fig_key[ii]].set_ylabel("Parameter value")
-        elif ii == 2:
-            ax[fig_key[ii]].legend()
-        if param == "beta_pref":
-            ax[fig_key[ii]].set_xticks(range(posterior_sim.shape[-1]))
-            ax[fig_key[ii]].set_xticklabels(["O=1", "O=2", "O=3", "O=4", 
-                                        "CC=1", "CC=2", 
-                                        "FC=1", "FC=2",
-                                        "E=0", "E=1", "E=2", "E=3", "E=4", "E=5", "E=6"], 
-                                        rotation=20)
-        plt.suptitle(f"Subject {sub}")
-    plt.tight_layout()
-    plt.show()</code>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-1.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-2.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-3.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-4.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-5.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-6.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-7.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-8.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-9.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-10.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-11.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-12.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-13.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-14.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-15.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-16.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-17.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-18.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-19.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-20.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-21.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-22.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-23.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-24.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-25.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-26.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-27.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-28.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-29.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-30.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-31.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-32.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-33.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-34.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-35.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-36.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-37.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-38.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-39.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="S2-parameters_recovery_files/figure-jats/cell-6-output-40.png"/>
-          </boxed-text>
-        </sec>
-        <sec id="d4974aef-nb-2" specific-use="notebook-content">
-          <p>Across all participants, the ground truth parameters is well within
-  the credible intervals of the retrieved parameters from the data,
-  indicating that our model is indeed capable of recovering the
-  parameters of the underlying generative model.</p>
-        </sec>
-      </sec>
-    </body>
-    <back>
-</back>
-  </sub-article>
-  <sub-article article-type="notebook" id="nb-6-nb-3">
-    <front-stub>
-      <title-group>
-        <article-title>Supplementary 2 Posterior predictive
+        <article-title>Supplementary 4: Posterior predictive
 checks</article-title>
       </title-group>
     </front-stub>
     <body>
-      <sec id="f624059a-nb-3" specific-use="notebook-content">
+      <sec id="f624059a-nb-4" specific-use="notebook-content">
         <p>IN PROGRESS</p>
       </sec>
     </body>
     <back>
 </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-8-nb-4">
+  <sub-article article-type="notebook" id="nb-4-nb-5">
     <front-stub>
       <title-group>
-        <article-title>Supplementary 3 models differentiability</article-title>
+        <article-title>Supplementary 5: models differentiability</article-title>
       </title-group>
     </front-stub>
     <body>
-      <sec id="f624059a-nb-4" specific-use="notebook-content">
+      <sec id="f624059a-nb-5" specific-use="notebook-content">
         <p>WIP</p>
       </sec>
     </body>
     <back>
 </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-10-nb-5">
+  <sub-article article-type="notebook" id="nb-6-nb-6">
     <front-stub>
       <title-group>
         <article-title>Literature notes</article-title>
       </title-group>
     </front-stub>
     <body>
-      <sec id="b38102ba-nb-5" specific-use="notebook-content">
+      <sec id="b38102ba-nb-6" specific-use="notebook-content">
         <p>PRIORITY LIST: - READ THESE PAPERS:
 @parr2022active;@friston2009reinforcement;@friston2016active, TO
 UNDERSTAND HOW EXACTLY PLANNING IS CONCEPTUALIZED IN ACTIVE INFERENCE
@@ -10308,8 +8929,8 @@ https://www.nature.com/articles/s41562-017-0067?utm_source=you.com#:~:text=Caz%C
 - Habits are what make us addicted paper:
 https://www.nature.com/articles/nrn.2017.67?utm_source=you.com#:~:text=Huys%2C%20Q.%20J.%2C%20Maia%2C,Rev%20Neurosci%2018%2C%20450</p>
       </sec>
-      <sec id="a073d7a0-nb-5" specific-use="notebook-content">
-        <sec id="discussion-plan-nb-5">
+      <sec id="a073d7a0-nb-6" specific-use="notebook-content">
+        <sec id="discussion-plan-nb-6">
           <title>Discussion plan:</title>
           <list list-type="bullet">
             <list-item>
