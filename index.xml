@@ -16,8 +16,34 @@ and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
           </name>
           <string-name>Alex Lepauvre</string-name>
           <email>alex_francois.lepauvre@tu-dresden.de</email>
+          <role vocab="https://credit.niso.org" vocab-term="conceptualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/conceptualization/">conceptualization</role>
+          <role vocab="https://credit.niso.org" vocab-term="data curation" vocab-term-identifier="https://credit.niso.org/contributor-roles/data-curation/">data
+curation</role>
+          <role vocab="https://credit.niso.org" vocab-term="formal analysis" vocab-term-identifier="https://credit.niso.org/contributor-roles/formal-analysis/">formal
+analysis</role>
+          <role vocab="https://credit.niso.org" vocab-term="investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">investigation</role>
+          <role vocab="https://credit.niso.org" vocab-term="methodology" vocab-term-identifier="https://credit.niso.org/contributor-roles/methodology/">methodology</role>
+          <role vocab="https://credit.niso.org" vocab-term="project administration" vocab-term-identifier="https://credit.niso.org/contributor-roles/project-administration/">project
+administration</role>
+          <role vocab="https://credit.niso.org" vocab-term="software" vocab-term-identifier="https://credit.niso.org/contributor-roles/software/">software</role>
+          <role vocab="https://credit.niso.org" vocab-term="validation" vocab-term-identifier="https://credit.niso.org/contributor-roles/validation/">validation</role>
+          <role vocab="https://credit.niso.org" vocab-term="visualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/visualization/">visualization</role>
+          <role>writing - original draft</role>
+          <role>writing - review &amp; editing</role>
           <xref ref-type="aff" rid="aff-1">a</xref>
           <xref ref-type="corresp" rid="cor-1">*</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">0000-0002-6183-600X</contrib-id>
+          <name>
+            <surname>Ott</surname>
+            <given-names>Florian</given-names>
+          </name>
+          <string-name>Florian Ott</string-name>
+          <role vocab="https://credit.niso.org" vocab-term="funding acquisition" vocab-term-identifier="https://credit.niso.org/contributor-roles/funding-acquisition/">funding
+acquisition</role>
+          <role vocab="https://credit.niso.org" vocab-term="investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">investigation</role>
+          <role>writing - review &amp; editing</role>
         </contrib>
         <contrib contrib-type="author">
           <contrib-id contrib-id-type="orcid">0000-0002-5052-1117</contrib-id>
@@ -26,15 +52,27 @@ and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
             <given-names>Stefan</given-names>
           </name>
           <string-name>Stefan Kiebel</string-name>
+          <role vocab="https://credit.niso.org" vocab-term="conceptualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/conceptualization/">conceptualization</role>
+          <role vocab="https://credit.niso.org" vocab-term="funding acquisition" vocab-term-identifier="https://credit.niso.org/contributor-roles/funding-acquisition/">funding
+acquisition</role>
+          <role vocab="https://credit.niso.org" vocab-term="methodology" vocab-term-identifier="https://credit.niso.org/contributor-roles/methodology/">methodology</role>
+          <role vocab="https://credit.niso.org" vocab-term="resources" vocab-term-identifier="https://credit.niso.org/contributor-roles/resources/">resources</role>
+          <role vocab="https://credit.niso.org" vocab-term="supervision" vocab-term-identifier="https://credit.niso.org/contributor-roles/supervision/">supervision</role>
+          <role vocab="https://credit.niso.org" vocab-term="visualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/visualization/">visualization</role>
+          <role>writing - original draft</role>
+          <role>writing - review &amp; editing</role>
           <xref ref-type="aff" rid="aff-1">a</xref>
         </contrib>
       </contrib-group>
       <aff id="aff-1">
+        <institution content-type="dept">Chair of Cognitive Computational
+Neuroscience, Faculty of Psychology</institution>
         <institution-wrap>
-          <institution>Chair of Cognitive Computational Neuroscience, Faculty of
-Psychology, TUD Dresden University of Technology, Dresden 01187,
-Germany</institution>
+          <institution>TUD Dresden University of Technology</institution>
+          <institution-id institution-id-type="ROR">https://ror.org/042aqky30</institution-id>
         </institution-wrap>
+        <addr-line>Dresden 01187</addr-line>
+        <country>DE</country>
       </aff>
       <author-notes>
         <corresp id="cor-1">alex_francois.lepauvre@tu-dresden.de</corresp>
@@ -3664,7 +3702,7 @@ Germany</institution>
       </ref>
     </ref-list>
   </back>
-  <sub-article article-type="notebook" id="nb-8-nb-article">
+  <sub-article article-type="notebook" id="nb-9-nb-article">
     <front-stub>
       <title-group>
         <article-title>Task-structure preferences</article-title>
@@ -3678,8 +3716,34 @@ Germany</institution>
           </name>
           <string-name>Alex Lepauvre</string-name>
           <email>alex_francois.lepauvre@tu-dresden.de</email>
+          <role vocab="https://credit.niso.org" vocab-term="conceptualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/conceptualization/">conceptualization</role>
+          <role vocab="https://credit.niso.org" vocab-term="data curation" vocab-term-identifier="https://credit.niso.org/contributor-roles/data-curation/">data
+curation</role>
+          <role vocab="https://credit.niso.org" vocab-term="formal analysis" vocab-term-identifier="https://credit.niso.org/contributor-roles/formal-analysis/">formal
+analysis</role>
+          <role vocab="https://credit.niso.org" vocab-term="investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">investigation</role>
+          <role vocab="https://credit.niso.org" vocab-term="methodology" vocab-term-identifier="https://credit.niso.org/contributor-roles/methodology/">methodology</role>
+          <role vocab="https://credit.niso.org" vocab-term="project administration" vocab-term-identifier="https://credit.niso.org/contributor-roles/project-administration/">project
+administration</role>
+          <role vocab="https://credit.niso.org" vocab-term="software" vocab-term-identifier="https://credit.niso.org/contributor-roles/software/">software</role>
+          <role vocab="https://credit.niso.org" vocab-term="validation" vocab-term-identifier="https://credit.niso.org/contributor-roles/validation/">validation</role>
+          <role vocab="https://credit.niso.org" vocab-term="visualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/visualization/">visualization</role>
+          <role>writing - original draft</role>
+          <role>writing - review &amp; editing</role>
           <xref ref-type="aff" rid="aff-1-nb-article">a</xref>
           <xref ref-type="corresp" rid="cor-1-nb-article">*</xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <contrib-id contrib-id-type="orcid">0000-0002-6183-600X</contrib-id>
+          <name>
+            <surname>Ott</surname>
+            <given-names>Florian</given-names>
+          </name>
+          <string-name>Florian Ott</string-name>
+          <role vocab="https://credit.niso.org" vocab-term="funding acquisition" vocab-term-identifier="https://credit.niso.org/contributor-roles/funding-acquisition/">funding
+acquisition</role>
+          <role vocab="https://credit.niso.org" vocab-term="investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">investigation</role>
+          <role>writing - review &amp; editing</role>
         </contrib>
         <contrib contrib-type="author">
           <contrib-id contrib-id-type="orcid">0000-0002-5052-1117</contrib-id>
@@ -3688,15 +3752,27 @@ Germany</institution>
             <given-names>Stefan</given-names>
           </name>
           <string-name>Stefan Kiebel</string-name>
+          <role vocab="https://credit.niso.org" vocab-term="conceptualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/conceptualization/">conceptualization</role>
+          <role vocab="https://credit.niso.org" vocab-term="funding acquisition" vocab-term-identifier="https://credit.niso.org/contributor-roles/funding-acquisition/">funding
+acquisition</role>
+          <role vocab="https://credit.niso.org" vocab-term="methodology" vocab-term-identifier="https://credit.niso.org/contributor-roles/methodology/">methodology</role>
+          <role vocab="https://credit.niso.org" vocab-term="resources" vocab-term-identifier="https://credit.niso.org/contributor-roles/resources/">resources</role>
+          <role vocab="https://credit.niso.org" vocab-term="supervision" vocab-term-identifier="https://credit.niso.org/contributor-roles/supervision/">supervision</role>
+          <role vocab="https://credit.niso.org" vocab-term="visualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/visualization/">visualization</role>
+          <role>writing - original draft</role>
+          <role>writing - review &amp; editing</role>
           <xref ref-type="aff" rid="aff-1-nb-article">a</xref>
         </contrib>
       </contrib-group>
       <aff id="aff-1-nb-article">
+        <institution content-type="dept">Chair of Cognitive Computational
+Neuroscience, Faculty of Psychology</institution>
         <institution-wrap>
-          <institution>Chair of Cognitive Computational Neuroscience, Faculty of
-Psychology, TUD Dresden University of Technology, Dresden 01187,
-Germany</institution>
+          <institution>TUD Dresden University of Technology</institution>
+          <institution-id institution-id-type="ROR">https://ror.org/042aqky30</institution-id>
         </institution-wrap>
+        <addr-line>Dresden 01187</addr-line>
+        <country>DE</country>
       </aff>
       <author-notes>
         <corresp id="cor-1-nb-article">alex_francois.lepauvre@tu-dresden.de</corresp>
