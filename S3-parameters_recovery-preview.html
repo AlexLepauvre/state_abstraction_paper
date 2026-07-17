@@ -161,9 +161,6 @@
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-aace5a68aa1f55e68671977e4802b583.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -210,16 +207,12 @@
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#supplementary-3-parameters-recovery" id="toc-supplementary-3-parameters-recovery" class="nav-link active" data-scroll-target="#supplementary-3-parameters-recovery">Supplementary 3: Parameters recovery</a>
-  <ul class="collapse">
+  <li><a href="#supplementary-3-parameters-recovery" id="toc-supplementary-3-parameters-recovery" class="nav-link active" data-scroll-target="#supplementary-3-parameters-recovery">Supplementary 3: Parameters recovery</a></li>
   <li><a href="#preparing-the-data" id="toc-preparing-the-data" class="nav-link" data-scroll-target="#preparing-the-data">Preparing the data</a></li>
-  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation">Simulation</a>
-  <ul class="collapse">
+  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation">Simulation</a></li>
   <li><a href="#fitting-the-model-and-comparing-estimated-to-known-parameters" id="toc-fitting-the-model-and-comparing-estimated-to-known-parameters" class="nav-link" data-scroll-target="#fitting-the-model-and-comparing-estimated-to-known-parameters">Fitting the model and comparing estimated to known parameters</a></li>
   <li><a href="#group-level-parameters" id="toc-group-level-parameters" class="nav-link" data-scroll-target="#group-level-parameters">Group level parameters</a></li>
-  </ul></li>
   <li><a href="#single-subject-parameters" id="toc-single-subject-parameters" class="nav-link" data-scroll-target="#single-subject-parameters">Single subject parameters:</a></li>
-  </ul></li>
   </ul>
 </nav>
 </div>
@@ -227,13 +220,19 @@
 </div>
 <main class="content quarto-banner-title-block" id="quarto-document-content">      
 
-       <section id="supplementary-3-parameters-recovery" class="level1">
+       <div id="f624059a" class="cell markdown">
+<section id="supplementary-3-parameters-recovery" class="level1">
 <h1>Supplementary 3: Parameters recovery</h1>
 <p>In the main text, we have observed that our preference model, describing participants responses as a mixture of forward planning, state-features-dependent preferences and the interaction between the two. This is a rather complex model with preference parameters being estimated as latent variable, and entailing an additional entropy transformation in the interaction term. To establish that despite the complexity of the model, it is still capable of accurately estimate all parameters, we perform a parameter recovery analysis in which we simulate data using the mean parameters recovered from the original data. We then fit the same model to the simulated data. We can then compare the estimated parameters from the simulated data against ground truth to establish the model capacity to identify parameters correctly.</p>
+</section>
+</div>
+<div id="825efc41" class="cell markdown">
 <section id="preparing-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="preparing-the-data">Preparing the data</h2>
 <p>To simulate data and test parameters recovery, we will use the exact same experimental design as provided in the task.</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [55]:</pre></div><div id="03f7940a" class="cell" data-execution_count="55">
+</section>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="03f7940a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># General utilities:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -328,11 +327,13 @@
 <span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    dv_trials.append(dv[task.s2i[(e, o, cc, fc, t)]])</span>
 <span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'dv'</span>] <span class="op">=</span> dv_trials</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
-</section>
+<div id="87cad2c6" class="cell markdown">
 <section id="simulation" class="level2">
 <h2 class="anchored" data-anchor-id="simulation">Simulation</h2>
 <p>We then retrieve the fitted parameters from the model fitted in the main text and use the mean estimated parameters to simulate the data.</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [56]:</pre></div><div id="d007968a" class="cell" data-execution_count="56">
+</section>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="d007968a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load prefernece model trace:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> os.path.exists(<span class="st">"./data/bids/limited_energy/derivatives/models/preferences_model_trace.nc"</span>):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    idata_orig <span class="op">=</span> az.from_netcdf(<span class="st">"./data/bids/limited_energy/derivatives/models/preferences_model_trace.nc"</span>)</span>
@@ -392,10 +393,13 @@
 <span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>simulated_data <span class="op">=</span> pd.concat(simulated_data, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
+<div id="f54c614c" class="cell markdown">
 <section id="fitting-the-model-and-comparing-estimated-to-known-parameters" class="level3">
 <h3 class="anchored" data-anchor-id="fitting-the-model-and-comparing-estimated-to-known-parameters">Fitting the model and comparing estimated to known parameters</h3>
 <p>If all goes well, we would expect the estimated parameters to be close to the known ground truth parameters. To make sure that this is the case, we will fit the model and plot the computed parameters against the ground truth</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [57]:</pre></div><div id="43b15f6b" class="cell" data-execution_count="57">
+</section>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="43b15f6b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model:</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> os.path.exists(<span class="st">"./data/bids/limited_energy/derivatives/control_models/preferences_model_trace.nc"</span>):</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    idata <span class="op">=</span> az.from_netcdf(<span class="st">"./data/bids/limited_energy/derivatives/control_models/simulation_preferences_model_trace.nc"</span>)</span>
@@ -416,386 +420,115 @@ NUTS: [beta_intercept, sigma_intercept, beta_planning, sigma_planning, beta_pref
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"bcc8f390e1da4feda5def2144197fbcf","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"4f299923edc34e9aa6e8aac93e57d6d4","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
-<div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 1106 seconds.</code></pre>
-</div>
 </div></div>
-</section>
+<div id="aeaea98f" class="cell markdown">
 <section id="group-level-parameters" class="level3">
 <h3 class="anchored" data-anchor-id="group-level-parameters">Group level parameters</h3>
 <p>To test whether the model is able to retrieve group level parameters, we can compare the fitted parameters from the simulated to the parameters retrieved by the model from real data.</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [62]:</pre></div><div id="02264a59" class="cell" data-execution_count="62">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot group level parameters:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the fitted parameters from the real model:</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># posterior_orig = idata_orig.posterior[param].values.reshape(-1, idata_orig.posterior[param].shape[-1])</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ax[fig_key[i]].violinplot(posterior_orig, positions=range(posterior_orig.shape[-1]), widths=0.8,</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                 showmeans=False, showmedians=True,</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                 showextrema=False, side="high");</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot parameters fitted to the simulated data:</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    posterior_sim <span class="op">=</span> idata.posterior[param].values.reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                       showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                       showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].hlines(np.mean(np.array(ground_truth_params[param]), axis<span class="op">=</span><span class="dv">0</span>), </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                          xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                          xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                          color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_xlabel(<span class="st">"P(x)"</span>)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> i <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].legend()</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                                       rotation<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div class="">
-<figure class="figure">
-<p class=""><a href="S3-parameters_recovery_files/figure-html/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="S3-parameters_recovery_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></a></p>
+</section>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="suppfig-population_parameter_recovery" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<figure class="quarto-float quarto-float-suppfig figure">
+<div aria-describedby="suppfig-population_parameter_recovery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot group level parameters:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the fitted parameters from the real model:</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># posterior_orig = idata_orig.posterior[param].values.reshape(-1, idata_orig.posterior[param].shape[-1])</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ax[fig_key[i]].violinplot(posterior_orig, positions=range(posterior_orig.shape[-1]), widths=0.8,</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                 showmeans=False, showmedians=True,</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                 showextrema=False, side="high");</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot parameters fitted to the simulated data:</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    posterior_sim <span class="op">=</span> idata.posterior[param].values.reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                       showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                       showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].hlines(np.mean(np.array(ground_truth_params[param]), axis<span class="op">=</span><span class="dv">0</span>), </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                          xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                          xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                          color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_xlabel(<span class="st">"P(x)"</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> i <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].legend()</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>                                       rotation<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-suppfig quarto-uncaptioned" id="suppfig-population_parameter_recovery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure S1
+</figcaption>
 </figure>
-</div>
-</div>
 </div></div>
-</section>
-</section>
+<div id="b82d5f45" class="cell markdown">
 <section id="single-subject-parameters" class="level2">
 <h2 class="anchored" data-anchor-id="single-subject-parameters">Single subject parameters:</h2>
 <p>In addition, we investigate the fit of single subjects parameters against the known ground truth. These should also align:</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [63]:</pre></div><div id="7051eda2" class="cell" data-execution_count="63">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each subject:</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, sub <span class="kw">in</span> <span class="bu">enumerate</span>(beh_data[<span class="st">"vpn"</span>].unique()):</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ii, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot parameters fitted to the simulated data:</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        posterior_sim <span class="op">=</span> idata.posterior[param <span class="op">+</span> <span class="st">"_sub"</span>].values[:, :, i, :].reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                        showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                        showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot the ground truth parameter:</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].hlines(ground_truth_params[param][i], </span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                               xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                               xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                               color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_xlabel(<span class="st">"P(x)"</span>)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ii <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> ii <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].legend()</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>                                        rotation<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        plt.suptitle(<span class="ss">f"Subject </span><span class="sc">{</span>sub<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></a></p>
+</section>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="suppfig-single_subject_parameter_recovery" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<figure class="quarto-float quarto-float-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each subject:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, sub <span class="kw">in</span> <span class="bu">enumerate</span>(beh_data[<span class="st">"vpn"</span>].unique()):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ii, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot parameters fitted to the simulated data:</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        posterior_sim <span class="op">=</span> idata.posterior[param <span class="op">+</span> <span class="st">"_sub"</span>].values[:, :, i, :].reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                        showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                        showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot the ground truth parameter:</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].hlines(ground_truth_params[param][i], </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                               xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                               xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                               color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_xlabel(<span class="st">"P(x)"</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ii <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> ii <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].legend()</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                                        rotation<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>        plt.suptitle(<span class="ss">f"Subject </span><span class="sc">{</span>sub<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-suppfig quarto-uncaptioned" id="suppfig-single_subject_parameter_recovery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure S2
+</figcaption>
 </figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-3.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-4.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-5.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-6.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-7.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-8.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-9.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-10.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-11.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-12.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-13.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-14.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-15.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-16.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-17.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-18.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-19.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-20.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-21.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-22.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-23.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-23.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-24.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-24.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-25.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-25.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-26.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-26.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-27.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-27.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-28.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-28.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-29.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-29.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-30.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-30.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-31.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-31.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-32.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-32.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-33.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-33.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-34.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-34.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-35.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-35.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-36.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-36.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-37.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-37.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-38.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-38.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-39.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-39.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="S3-parameters_recovery_files/figure-html/cell-6-output-40.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41"><img src="S3-parameters_recovery_files/figure-html/cell-6-output-40.png" class="img-fluid figure-img"></a></p>
-</figure>
-</div>
-</div>
 </div></div>
+<div id="d4974aef" class="cell markdown">
 <p>Across all participants, the ground truth parameters is well within the credible intervals of the retrieved parameters from the data, indicating that our model is indeed capable of recovering the parameters of the underlying generative model.</p>
-</section>
-</section>
+</div>
+<div id="2b436a89" class="cell markdown">
+
+</div>
      </main>
-<!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
+<!-- /main column -->  <script type="application/vnd.jupyter.widget-state+json">
+{"state":{"4f299923edc34e9aa6e8aac93e57d6d4":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/output","_model_module_version":"1.0.0","_model_name":"OutputModel","_view_count":null,"_view_module":"@jupyter-widgets/output","_view_module_version":"1.0.0","_view_name":"OutputView","layout":"IPY_MODEL_cc33dba1719040e384ea2ac32ab7531c","msg_id":"c7958546-61934316126aa2b78c74b8c7_341534_6","outputs":[{"data":{"text/html":"<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">                                                                                                                   \n <span style=\"font-weight: bold\"> Progress                  </span> <span style=\"font-weight: bold\"> Draws </span> <span style=\"font-weight: bold\"> Divergences </span> <span style=\"font-weight: bold\"> Step size </span> <span style=\"font-weight: bold\"> Grad evals </span> <span style=\"font-weight: bold\"> Sampling Speed </span> <span style=\"font-weight: bold\"> Elapsed </span> <span style=\"font-weight: bold\"> Remaining </span> \n ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━</span><span style=\"color: #3a3a3a; text-decoration-color: #3a3a3a\">╺━━━━━━━━━━━━━</span>   917     0             0.045       127          1.81 draws/s     0:08:26   0:10:38    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━</span><span style=\"color: #3a3a3a; text-decoration-color: #3a3a3a\">╺━━━━━━━━━━━━━</span>   904     0             0.039       127          1.79 draws/s     0:08:26   0:11:16    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━</span><span style=\"color: #3a3a3a; text-decoration-color: #3a3a3a\">╺━━━━━━━━━━━━━</span>   881     0             0.045       127          1.74 draws/s     0:08:26   0:11:20    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━</span><span style=\"color: #3a3a3a; text-decoration-color: #3a3a3a\">╺━━━━━━━━━━━━━</span>   908     0             0.048       127          1.79 draws/s     0:08:26   0:11:07    \n                                                                                                                   \n</pre>\n","text/plain":"                                                                                                                   \n \u001b[1m \u001b[0m\u001b[1mProgress                 \u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mDraws\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mDivergences\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mStep size\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mGrad evals\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mSampling Speed\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mElapsed\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mRemaining\u001b[0m\u001b[1m \u001b[0m \n ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── \n  \u001b[38;2;31;119;180m━━━━━━━━━━━\u001b[0m\u001b[38;5;237m╺\u001b[0m\u001b[38;5;237m━━━━━━━━━━━━━\u001b[0m   917     0             0.045       127          1.81 draws/s     0:08:26   0:10:38    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━\u001b[0m\u001b[38;5;237m╺\u001b[0m\u001b[38;5;237m━━━━━━━━━━━━━\u001b[0m   904     0             0.039       127          1.79 draws/s     0:08:26   0:11:16    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━\u001b[0m\u001b[38;5;237m╺\u001b[0m\u001b[38;5;237m━━━━━━━━━━━━━\u001b[0m   881     0             0.045       127          1.74 draws/s     0:08:26   0:11:20    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━\u001b[0m\u001b[38;5;237m╺\u001b[0m\u001b[38;5;237m━━━━━━━━━━━━━\u001b[0m   908     0             0.048       127          1.79 draws/s     0:08:26   0:11:07    \n                                                                                                                   \n"},"metadata":{},"output_type":"display_data"}],"tabbable":null,"tooltip":null}},"cc33dba1719040e384ea2ac32ab7531c":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}},"version_major":2,"version_minor":0}
+</script>  <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1194,37 +927,6 @@ NUTS: [beta_intercept, sigma_intercept, beta_planning, sigma_planning, beta_pref
       }
     }
   });
-  </script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script> 
+  </script>  </div> <!-- /content --> 
   
 </body></html>

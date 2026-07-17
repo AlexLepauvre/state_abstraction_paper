@@ -207,11 +207,9 @@
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#supplementary-1-figures-and-tables" id="toc-supplementary-1-figures-and-tables" class="nav-link active" data-scroll-target="#supplementary-1-figures-and-tables">Supplementary 1: figures and tables</a>
-  <ul class="collapse">
+  <li><a href="#supplementary-1-figures-and-tables" id="toc-supplementary-1-figures-and-tables" class="nav-link active" data-scroll-target="#supplementary-1-figures-and-tables">Supplementary 1: figures and tables</a></li>
   <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures">Figures</a></li>
   <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a></li>
-  </ul></li>
   </ul>
 </nav>
 </div>
@@ -219,8 +217,11 @@
 </div>
 <main class="content quarto-banner-title-block" id="quarto-document-content">      
 
-       <section id="supplementary-1-figures-and-tables" class="level1">
+       <div id="f624059a" class="cell markdown">
+<section id="supplementary-1-figures-and-tables" class="level1">
 <h1>Supplementary 1: figures and tables</h1>
+</section>
+</div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="38f3b385" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -375,19 +376,20 @@
 <pre><code>/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
   warnings.warn(
 /home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
-  warnings.warn(
-/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
   warnings.warn(</code></pre>
 </div>
 </div></div>
+<div id="d3eeb086" class="cell markdown">
 <section id="figures" class="level2">
 <h2 class="anchored" data-anchor-id="figures">Figures</h2>
+</section>
+</div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="da2d894d" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract relevant variables from preference model:</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'preference_score'</span>] <span class="op">=</span> np.mean(traces[<span class="st">'Preference'</span>].posterior[<span class="st">"preference"</span>], axis<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">1</span>)).to_numpy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-fig-pref-planning-interaction" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>[A4_inches[<span class="dv">0</span>], <span class="fl">0.5</span><span class="op">*</span>A4_inches[<span class="dv">1</span>]])</span>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-suppfig-pref-planning-interaction" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"A;B"</span>, figsize<span class="op">=</span>[A4_inches[<span class="dv">0</span>], <span class="dv">1</span><span class="op">*</span>A4_inches[<span class="dv">1</span>]], sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>cmap <span class="op">=</span> matplotlib.colormaps.get_cmap(<span class="st">'Set3'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ================================================================</span></span>
@@ -403,60 +405,74 @@
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>grid_df[<span class="st">"p"</span>] <span class="op">=</span> predict_responses(grid_df[<span class="st">"dv"</span>], grid_df[<span class="st">"pref"</span>], traces[<span class="st">"Preference"</span>])</span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>p_grid <span class="op">=</span> grid_df.pivot(index<span class="op">=</span><span class="st">"pref"</span>, columns<span class="op">=</span><span class="st">"dv"</span>, values<span class="op">=</span><span class="st">"p"</span>).to_numpy()</span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot contours:</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>cs <span class="op">=</span> ax.contourf(x1_grid, x2_grid, p_grid, alpha<span class="op">=</span><span class="fl">0.5</span>, cmap<span class="op">=</span>cmap_background)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>ax.clabel(cs, fontsize<span class="op">=</span><span class="dv">10</span>, colors<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>ax.axvline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">":"</span>, color<span class="op">=</span><span class="st">"grey"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">":"</span>, color<span class="op">=</span><span class="st">"grey"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># =================================</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot responses as a function of DV and pref:</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Get trials where pref and DV are opposed:</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co"># mismatch accept</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>mismatch_accept <span class="op">=</span> beh_data[(np.sign(beh_data[<span class="st">'dv'</span>]) <span class="op">!=</span> np.sign(beh_data[<span class="st">'preference_score'</span>])) <span class="op">&amp;</span> (beh_data[<span class="st">'response'</span>] <span class="op">==</span> <span class="dv">1</span>)]</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># mismatch reject</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>mismatch_reject<span class="op">=</span> beh_data[(np.sign(beh_data[<span class="st">'dv'</span>]) <span class="op">!=</span> np.sign(beh_data[<span class="st">'preference_score'</span>])) <span class="op">&amp;</span> (beh_data[<span class="st">'response'</span>] <span class="op">==</span> <span class="dv">0</span>)]</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the rest:</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>matched <span class="op">=</span> beh_data[(np.sign(beh_data[<span class="st">'dv'</span>]) <span class="op">==</span> np.sign(beh_data[<span class="st">'preference_score'</span>]))]</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot each mismatch</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>ax.scatter(matched[<span class="st">'dv'</span>], matched[<span class="st">'preference_score'</span>], </span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span><span class="st">"grey"</span>, marker<span class="op">=</span><span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="ss">f'sgn(DV)=sgn(Preferences)'</span>)</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>ax.scatter(mismatch_reject[<span class="st">'dv'</span>], mismatch_reject[<span class="st">'preference_score'</span>], </span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span>cmap(<span class="dv">1</span>), edgecolors<span class="op">=</span><span class="st">'black'</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, s<span class="op">=</span><span class="dv">50</span>,</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="ss">f'Reject (N=</span><span class="sc">{</span>mismatch_reject<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">)'</span>, marker<span class="op">=</span><span class="st">'h'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>ax.scatter(mismatch_accept[<span class="st">'dv'</span>], mismatch_accept[<span class="st">'preference_score'</span>], </span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span>cmap(<span class="dv">0</span>), edgecolors<span class="op">=</span><span class="st">'black'</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, s<span class="op">=</span><span class="dv">50</span>,</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="ss">f'Accept (N=</span><span class="sc">{</span>mismatch_accept<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">)'</span>, marker<span class="op">=</span><span class="st">'v'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Decoration:</span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"DV"</span>)</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Preference score"</span>)</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="op">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>, <span class="st">"A"</span>, transform<span class="op">=</span>ax.transAxes, </span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>              fontsize<span class="op">=</span><span class="dv">16</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, va<span class="op">=</span><span class="st">'top'</span>, ha<span class="op">=</span><span class="st">'right'</span></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>              )</span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>ax.spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>ax.legend(frameon<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>xlim <span class="op">=</span> ax.get_xlim()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>cs <span class="op">=</span> ax[<span class="st">"B"</span>].contourf(x1_grid, x2_grid, p_grid, cmap<span class="op">=</span>cmap_background)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"B"</span>].clabel(cs, fontsize<span class="op">=</span><span class="dv">10</span>, colors<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"B"</span>].axvline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">":"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"B"</span>].axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">":"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"B"</span>].text(<span class="op">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>, <span class="st">"B"</span>, transform<span class="op">=</span>ax[<span class="st">"B"</span>].transAxes, </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>              fontsize<span class="op">=</span><span class="dv">16</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, va<span class="op">=</span><span class="st">'top'</span>, ha<span class="op">=</span><span class="st">'right'</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>              )</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"B"</span>].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"B"</span>].set_xlabel(<span class="st">"DV"</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"B"</span>].set_ylabel(<span class="st">"Preference score"</span>)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># =================================</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot responses as a function of DV and pref:</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Get trials where pref and DV are opposed:</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co"># mismatch accept</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>mismatch_accept <span class="op">=</span> beh_data[(np.sign(beh_data[<span class="st">'dv'</span>]) <span class="op">!=</span> np.sign(beh_data[<span class="st">'preference_score'</span>])) <span class="op">&amp;</span> (beh_data[<span class="st">'response'</span>] <span class="op">==</span> <span class="dv">1</span>)]</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co"># mismatch reject</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>mismatch_reject<span class="op">=</span> beh_data[(np.sign(beh_data[<span class="st">'dv'</span>]) <span class="op">!=</span> np.sign(beh_data[<span class="st">'preference_score'</span>])) <span class="op">&amp;</span> (beh_data[<span class="st">'response'</span>] <span class="op">==</span> <span class="dv">0</span>)]</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the rest:</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>matched <span class="op">=</span> beh_data[(np.sign(beh_data[<span class="st">'dv'</span>]) <span class="op">==</span> np.sign(beh_data[<span class="st">'preference_score'</span>]))]</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot each mismatch</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"A"</span>].scatter(matched[<span class="st">'dv'</span>], matched[<span class="st">'preference_score'</span>], </span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span><span class="st">"grey"</span>, marker<span class="op">=</span><span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>,</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="ss">f'sgn(DV)=sgn(Preferences)'</span>)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"A"</span>].scatter(mismatch_reject[<span class="st">'dv'</span>], mismatch_reject[<span class="st">'preference_score'</span>], </span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span>cmap(<span class="dv">1</span>), edgecolors<span class="op">=</span><span class="st">'black'</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, s<span class="op">=</span><span class="dv">50</span>,</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="ss">f'Reject (N=</span><span class="sc">{</span>mismatch_reject<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">)'</span>, marker<span class="op">=</span><span class="st">'h'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"A"</span>].scatter(mismatch_accept[<span class="st">'dv'</span>], mismatch_accept[<span class="st">'preference_score'</span>], </span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>                color<span class="op">=</span>cmap(<span class="dv">0</span>), edgecolors<span class="op">=</span><span class="st">'black'</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, s<span class="op">=</span><span class="dv">50</span>,</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="ss">f'Accept (N=</span><span class="sc">{</span>mismatch_accept<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">)'</span>, marker<span class="op">=</span><span class="st">'v'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Decoration:</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"A"</span>].set_ylabel(<span class="st">"Preference score"</span>)</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"A"</span>].text(<span class="op">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>, <span class="st">"A"</span>, transform<span class="op">=</span>ax[<span class="st">"A"</span>].transAxes, </span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>              fontsize<span class="op">=</span><span class="dv">16</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, va<span class="op">=</span><span class="st">'top'</span>, ha<span class="op">=</span><span class="st">'right'</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>              )</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"A"</span>].axvline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">":"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"A"</span>].axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">":"</span>, color<span class="op">=</span><span class="st">"grey"</span>)</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"A"</span>].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>ax[<span class="st">"A"</span>].legend(frameon<span class="op">=</span><span class="va">False</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
-<div id="fig-pref-planning-interaction" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-pref-planning-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
-<a href="S1-supplementary_figures_tables_files/figure-html/fig-pref-planning-interaction-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Interaction between preferences and DV. (A) Shows participants responses as a function of decision values and preference scores. On the off diagonal quadrant (top left and bottom right), the dot color indicate whether participants accepted the reward (green triangles) or rejected the reward (yellow octogons). The numbers in the legend refer to the number of trials. Background color indicate predicted probability of accepting the offer under the preference model, contour line correspond to the labelled probability. (B) Shows the probabiltiy of accepting an offer (y axis) binned per decision values (x axis), separately for trials in which preference score is positive (top bars pointing down) or negative (bottom bars pointing up). In the same way as (A), the top left and bottom right quadrant show trials in which preferences and DV are opposed, while bottom left and top right quandrant show trials where preferences and DV are aligned. Bars colors reflects the probability of accepting to vizualize the influence of preferences sign under matched DV."><img src="S1-supplementary_figures_tables_files/figure-html/fig-pref-planning-interaction-output-1.png" class="img-fluid figure-img"></a>
+<div id="suppfig-pref-planning-interaction" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-suppfig figure">
+<div aria-describedby="suppfig-pref-planning-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
+<a href="S1-supplementary_figures_tables_files/figure-html/suppfig-pref-planning-interaction-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure S1: Interaction between preferences and DV. (A) Participants responses as a function of decision values of preference score. The response in the off-diagonal quadrants (top left and bottom right) are color coded per response given, to highlight that participants responses reflect the strongest signal (tend to accept despite DV being negative if preferences are high enough). (B) Fitted probability of accepting as a function of DV and preference score. Contours with annotations represent a probability of accepting. The shape of the contour lines highlight that participants choices reflect the modulation of DV by preference score. The contour trace indicate that when preference and DV are opposed, participants follow the strongest signal."><img src="S1-supplementary_figures_tables_files/figure-html/suppfig-pref-planning-interaction-output-1.png" class="img-fluid figure-img"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pref-planning-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Interaction between preferences and DV. (A) Shows participants responses as a function of decision values and preference scores. On the off diagonal quadrant (top left and bottom right), the dot color indicate whether participants accepted the reward (green triangles) or rejected the reward (yellow octogons). The numbers in the legend refer to the number of trials. Background color indicate predicted probability of accepting the offer under the preference model, contour line correspond to the labelled probability. (B) Shows the probabiltiy of accepting an offer (y axis) binned per decision values (x axis), separately for trials in which preference score is positive (top bars pointing down) or negative (bottom bars pointing up). In the same way as (A), the top left and bottom right quadrant show trials in which preferences and DV are opposed, while bottom left and top right quandrant show trials where preferences and DV are aligned. Bars colors reflects the probability of accepting to vizualize the influence of preferences sign under matched DV.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-suppfig" id="suppfig-pref-planning-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure S1: Interaction between preferences and DV. (A) Participants responses as a function of decision values of preference score. The response in the off-diagonal quadrants (top left and bottom right) are color coded per response given, to highlight that participants responses reflect the strongest signal (tend to accept despite DV being negative if preferences are high enough). (B) Fitted probability of accepting as a function of DV and preference score. Contours with annotations represent a probability of accepting. The shape of the contour lines highlight that participants choices reflect the modulation of DV by preference score. The contour trace indicate that when preference and DV are opposed, participants follow the strongest signal.
 </figcaption>
 </figure>
 </div>
 </div>
 </div></div>
-</section>
+<div id="8788749a" class="cell markdown">
 <section id="tables" class="level2">
 <h2 class="anchored" data-anchor-id="tables">Tables</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="f07bc6f1" class="cell" data-execution_count="6">
+</section>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell" data-tbl-cap="Main model comparison, comparing the fit of the preference, context, frequency and pure planning models" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the model comparison:</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>display(Markdown(model_comparison[[ <span class="st">"elpd_loo"</span>, <span class="st">"p_loo"</span>, <span class="st">"elpd_diff"</span>, <span class="st">"se"</span>, <span class="st">"dse"</span>]].to_markdown()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display cell-output-markdown">
+<div id="supptbl-model_comparison" class="cell-output cell-output-display cell-output-markdown quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-supptbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-supptbl quarto-uncaptioned" id="supptbl-model_comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table S1
+</figcaption>
+<div aria-describedby="supptbl-model_comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table table-sm table-striped small">
+<caption>Main model comparison, comparing the fit of the preference, context, frequency and pure planning models</caption>
 <colgroup>
 <col style="width: 24%">
 <col style="width: 17%">
@@ -478,41 +494,43 @@ Figure&nbsp;1: Interaction between preferences and DV. (A) Shows participants re
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Preference</td>
-<td style="text-align: right;">-1491.09</td>
-<td style="text-align: right;">253.49</td>
+<td style="text-align: right;">-1492.49</td>
+<td style="text-align: right;">256.526</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">48.6156</td>
+<td style="text-align: right;">48.7651</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Context</td>
-<td style="text-align: right;">-1657.64</td>
-<td style="text-align: right;">160.489</td>
-<td style="text-align: right;">166.546</td>
-<td style="text-align: right;">52.5677</td>
-<td style="text-align: right;">19.5649</td>
+<td style="text-align: right;">-1656.69</td>
+<td style="text-align: right;">159.175</td>
+<td style="text-align: right;">164.209</td>
+<td style="text-align: right;">52.4615</td>
+<td style="text-align: right;">19.671</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Frequency prior</td>
-<td style="text-align: right;">-2073.89</td>
-<td style="text-align: right;">77.7159</td>
-<td style="text-align: right;">582.798</td>
-<td style="text-align: right;">55.6318</td>
-<td style="text-align: right;">35.9077</td>
+<td style="text-align: right;">-2073.38</td>
+<td style="text-align: right;">77.0896</td>
+<td style="text-align: right;">580.889</td>
+<td style="text-align: right;">55.5712</td>
+<td style="text-align: right;">35.9363</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Planning</td>
-<td style="text-align: right;">-2078.47</td>
-<td style="text-align: right;">68.2293</td>
-<td style="text-align: right;">587.381</td>
-<td style="text-align: right;">55.5139</td>
-<td style="text-align: right;">36.031</td>
+<td style="text-align: right;">-2078.46</td>
+<td style="text-align: right;">68.3847</td>
+<td style="text-align: right;">585.976</td>
+<td style="text-align: right;">55.58</td>
+<td style="text-align: right;">36.1456</td>
 </tr>
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell" data-execution_count="7">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell" data-tbl-cap="Summary of the parameters of the preference model. The table displays the mean and 95% highest density interval (HDI) for the population level parameters assopciated with the planning values, the preference regressors and their interaction." data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the table as a markdown:</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>stats_summary <span class="op">=</span> az.summary(traces[<span class="st">'Preference'</span>], var_names<span class="op">=</span>[<span class="st">"beta_planning"</span>, <span class="st">"beta_pref"</span>, <span class="st">"beta_interaction"</span>], hdi_prob<span class="op">=</span><span class="fl">0.95</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creat the row names:</span></span>
@@ -523,14 +541,14 @@ Figure&nbsp;1: Interaction between preferences and DV. (A) Shows participants re
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>             <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_</span><span class="sc">{interaction}</span><span class="st">$"</span>]</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>stats_summary.index <span class="op">=</span> row_names</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>display(Markdown(stats_summary[[ <span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"hdi_2.5%"</span>, <span class="st">"hdi_97.5%"</span> ]].to_markdown()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="tbl-pref_model_param" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="7">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pref_model_param-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Summary of the parameters of the preference model. The table displays the mean and 95% highest density interval (HDI) for the population level parameters associated with the planning values, the preference regressors and their interaction.
+<div id="supptbl-pref_model_param" class="cell-output cell-output-display cell-output-markdown quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-supptbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-supptbl quarto-uncaptioned" id="supptbl-pref_model_param-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table S2
 </figcaption>
-<div aria-describedby="tbl-pref_model_param-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display cell-output-markdown">
-<table class="cell caption-top table table-sm table-striped small">
+<div aria-describedby="supptbl-pref_model_param-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table table-sm table-striped small">
+<caption>Summary of the parameters of the preference model. The table displays the mean and 95% highest density interval (HDI) for the population level parameters assopciated with the planning values, the preference regressors and their interaction.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -543,132 +561,129 @@ Table&nbsp;1: Summary of the parameters of the preference model. The table displ
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\beta_{plan}\)</span></td>
-<td style="text-align: right;">2.095</td>
-<td style="text-align: right;">0.243</td>
-<td style="text-align: right;">1.629</td>
-<td style="text-align: right;">2.582</td>
+<td style="text-align: right;">2.072</td>
+<td style="text-align: right;">0.242</td>
+<td style="text-align: right;">1.614</td>
+<td style="text-align: right;">2.573</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\beta_{O=1}\)</span></td>
-<td style="text-align: right;">-2.395</td>
-<td style="text-align: right;">0.958</td>
-<td style="text-align: right;">-4.361</td>
-<td style="text-align: right;">-0.605</td>
+<td style="text-align: right;">-2.374</td>
+<td style="text-align: right;">0.971</td>
+<td style="text-align: right;">-4.232</td>
+<td style="text-align: right;">-0.426</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\beta_{O=2}\)</span></td>
-<td style="text-align: right;">-1.613</td>
-<td style="text-align: right;">0.935</td>
-<td style="text-align: right;">-3.405</td>
-<td style="text-align: right;">0.178</td>
+<td style="text-align: right;">-1.625</td>
+<td style="text-align: right;">0.938</td>
+<td style="text-align: right;">-3.535</td>
+<td style="text-align: right;">0.092</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\beta_{O=3}\)</span></td>
-<td style="text-align: right;">1.662</td>
-<td style="text-align: right;">0.921</td>
-<td style="text-align: right;">-0.152</td>
-<td style="text-align: right;">3.405</td>
+<td style="text-align: right;">1.627</td>
+<td style="text-align: right;">0.945</td>
+<td style="text-align: right;">-0.22</td>
+<td style="text-align: right;">3.453</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\beta_{O=4}\)</span></td>
-<td style="text-align: right;">2.968</td>
-<td style="text-align: right;">0.96</td>
-<td style="text-align: right;">1.235</td>
-<td style="text-align: right;">4.975</td>
+<td style="text-align: right;">2.923</td>
+<td style="text-align: right;">0.976</td>
+<td style="text-align: right;">1.054</td>
+<td style="text-align: right;">4.842</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\beta_{CC=1}\)</span></td>
-<td style="text-align: right;">0.733</td>
-<td style="text-align: right;">1.146</td>
-<td style="text-align: right;">-1.549</td>
-<td style="text-align: right;">2.81</td>
+<td style="text-align: right;">0.765</td>
+<td style="text-align: right;">1.161</td>
+<td style="text-align: right;">-1.488</td>
+<td style="text-align: right;">3.105</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\beta_{CC=2}\)</span></td>
-<td style="text-align: right;">-0.181</td>
-<td style="text-align: right;">1.146</td>
-<td style="text-align: right;">-2.402</td>
-<td style="text-align: right;">2.022</td>
+<td style="text-align: right;">-0.127</td>
+<td style="text-align: right;">1.165</td>
+<td style="text-align: right;">-2.482</td>
+<td style="text-align: right;">2.144</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\beta_{FC=1}\)</span></td>
-<td style="text-align: right;">0.443</td>
-<td style="text-align: right;">1.165</td>
-<td style="text-align: right;">-1.882</td>
-<td style="text-align: right;">2.77</td>
+<td style="text-align: right;">0.457</td>
+<td style="text-align: right;">1.149</td>
+<td style="text-align: right;">-1.86</td>
+<td style="text-align: right;">2.557</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\beta_{FC=1}\)</span></td>
-<td style="text-align: right;">0.2</td>
-<td style="text-align: right;">1.166</td>
-<td style="text-align: right;">-2.045</td>
-<td style="text-align: right;">2.609</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">1.149</td>
+<td style="text-align: right;">-2.051</td>
+<td style="text-align: right;">2.359</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\beta_{E=0}\)</span></td>
-<td style="text-align: right;">-4.472</td>
-<td style="text-align: right;">0.952</td>
-<td style="text-align: right;">-6.255</td>
-<td style="text-align: right;">-2.558</td>
+<td style="text-align: right;">-4.438</td>
+<td style="text-align: right;">0.935</td>
+<td style="text-align: right;">-6.247</td>
+<td style="text-align: right;">-2.627</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\beta_{E=1}\)</span></td>
-<td style="text-align: right;">-0.467</td>
-<td style="text-align: right;">0.777</td>
-<td style="text-align: right;">-1.95</td>
-<td style="text-align: right;">1.036</td>
+<td style="text-align: right;">-0.48</td>
+<td style="text-align: right;">0.781</td>
+<td style="text-align: right;">-1.994</td>
+<td style="text-align: right;">1.076</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\beta_{E=2}\)</span></td>
-<td style="text-align: right;">0.002</td>
-<td style="text-align: right;">0.739</td>
-<td style="text-align: right;">-1.452</td>
-<td style="text-align: right;">1.419</td>
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">-1.473</td>
+<td style="text-align: right;">1.492</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\beta_{E=3}\)</span></td>
-<td style="text-align: right;">0.228</td>
-<td style="text-align: right;">0.742</td>
-<td style="text-align: right;">-1.193</td>
-<td style="text-align: right;">1.697</td>
+<td style="text-align: right;">0.203</td>
+<td style="text-align: right;">0.748</td>
+<td style="text-align: right;">-1.228</td>
+<td style="text-align: right;">1.688</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\beta_{E=4}\)</span></td>
-<td style="text-align: right;">0.331</td>
-<td style="text-align: right;">0.749</td>
-<td style="text-align: right;">-1.084</td>
-<td style="text-align: right;">1.833</td>
+<td style="text-align: right;">0.3</td>
+<td style="text-align: right;">0.758</td>
+<td style="text-align: right;">-1.186</td>
+<td style="text-align: right;">1.799</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\beta_{E=5}\)</span></td>
-<td style="text-align: right;">0.823</td>
-<td style="text-align: right;">0.762</td>
-<td style="text-align: right;">-0.652</td>
-<td style="text-align: right;">2.321</td>
+<td style="text-align: right;">0.793</td>
+<td style="text-align: right;">0.769</td>
+<td style="text-align: right;">-0.602</td>
+<td style="text-align: right;">2.44</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><span class="math inline">\(\beta_{E=6}\)</span></td>
-<td style="text-align: right;">4.234</td>
-<td style="text-align: right;">0.968</td>
-<td style="text-align: right;">2.209</td>
-<td style="text-align: right;">6.021</td>
+<td style="text-align: right;">4.195</td>
+<td style="text-align: right;">0.962</td>
+<td style="text-align: right;">2.363</td>
+<td style="text-align: right;">6.132</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\beta_{interaction}\)</span></td>
-<td style="text-align: right;">1.706</td>
-<td style="text-align: right;">0.717</td>
-<td style="text-align: right;">0.271</td>
-<td style="text-align: right;">3.102</td>
+<td style="text-align: right;">1.306</td>
+<td style="text-align: right;">0.508</td>
+<td style="text-align: right;">0.258</td>
+<td style="text-align: right;">2.256</td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
 </figure>
+</div>
 </div></div>
-</div></div>
-</section>
-</section>
      </main>
 <!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
