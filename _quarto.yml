@@ -5,14 +5,29 @@ project:
     - "!./internal/"
 
 execute:
-  enabled: false
+  enabled: true
 
 format:
   html:
     toc: true
     comments:
-      hypothesis: true
+      hypothesis: false
   docx: default
   jats: default
   plos-pdf: default
 
+crossref:
+  custom:
+    - kind: float
+      key: suppfig
+      latex-env: suppfig
+      reference-prefix: Figure S
+      space-before-numbering: false
+      latex-list-of-description: Supplementary Figure
+    - kind: float
+      key: supptbl
+      latex-env: supptbl
+      reference-prefix: Table S
+      space-before-numbering: false
+      latex-list-of-description: Supplementary Table
+      caption-location: top
