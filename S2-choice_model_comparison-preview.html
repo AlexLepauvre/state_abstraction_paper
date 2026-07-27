@@ -207,10 +207,7 @@
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#supplementary-2-choice-model-comparison" id="toc-supplementary-2-choice-model-comparison" class="nav-link active" data-scroll-target="#supplementary-2-choice-model-comparison">Supplementary 2: Choice model comparison</a>
-  <ul class="collapse">
-  <li><a href="#preference-model-comparison" id="toc-preference-model-comparison" class="nav-link" data-scroll-target="#preference-model-comparison">Preference model comparison</a></li>
-  </ul></li>
+  <li><a href="#preference-model-comparison" id="toc-preference-model-comparison" class="nav-link active" data-scroll-target="#preference-model-comparison">Preference model comparison</a></li>
   <li><a href="#preparing-the-data" id="toc-preparing-the-data" class="nav-link" data-scroll-target="#preparing-the-data">Preparing the data:</a></li>
   <li><a href="#fitting-the-full-model" id="toc-fitting-the-full-model" class="nav-link" data-scroll-target="#fitting-the-full-model">Fitting the full model</a></li>
   <li><a href="#compute-models-removing-each-factors-from-the-preferences" id="toc-compute-models-removing-each-factors-from-the-preferences" class="nav-link" data-scroll-target="#compute-models-removing-each-factors-from-the-preferences">Compute models removing each factors from the preferences:</a></li>
@@ -226,13 +223,10 @@
 <main class="content quarto-banner-title-block" id="quarto-document-content">      
 
        <div id="f624059a" class="cell markdown">
-<section id="supplementary-2-choice-model-comparison" class="level1">
-<h1>Supplementary 2: Choice model comparison</h1>
 <section id="preference-model-comparison" class="level2">
 <h2 class="anchored" data-anchor-id="preference-model-comparison">Preference model comparison</h2>
 <p>To investigate the relationship between task structures and participants preferences, we fitted a model in which we fitted a latent preference score computed as the weighted sum of regressors associated with each factors of our task (offers, energy, current and future costs) where the weight associated with each are estimated from participants data. In addition, the model comprised a fixed effect for the decision values derived from reinforcement learning (RL) backward induction method to represent the behaviour of an optimal planner, as well as an interaction between the decision values and the entropy of the preferences scores, to investigate whether participants reliance on planning depends on the strength of their preferences.</p>
 <p>This model was observed to fit the data best, showing that participants behaviour reflects the integration of a planning component together with priors reflecting the structure of the task, shedding light on the structure of the priors themselves. To further show that participants priors reflect the whole structure of the task, we modelled the data removing one experimental factor from the preferences fitting one at a time and compared to the full model, to show that our results cannot be explained by the fact that participants’s priors do not reflect a single nor a subset of experimental factors.</p>
-</section>
 </section>
 </div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="68b0c10c" class="cell" data-execution_count="1">

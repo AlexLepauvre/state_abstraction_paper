@@ -161,6 +161,9 @@
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-aace5a68aa1f55e68671977e4802b583.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
      <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -207,8 +210,7 @@
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#supplementary-3-parameters-recovery" id="toc-supplementary-3-parameters-recovery" class="nav-link active" data-scroll-target="#supplementary-3-parameters-recovery">Supplementary 3: Parameters recovery</a></li>
-  <li><a href="#preparing-the-data" id="toc-preparing-the-data" class="nav-link" data-scroll-target="#preparing-the-data">Preparing the data</a></li>
+  <li><a href="#preparing-the-data" id="toc-preparing-the-data" class="nav-link active" data-scroll-target="#preparing-the-data">Preparing the data</a></li>
   <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation">Simulation</a></li>
   <li><a href="#fitting-the-model-and-comparing-estimated-to-known-parameters" id="toc-fitting-the-model-and-comparing-estimated-to-known-parameters" class="nav-link" data-scroll-target="#fitting-the-model-and-comparing-estimated-to-known-parameters">Fitting the model and comparing estimated to known parameters</a></li>
   <li><a href="#group-level-parameters" id="toc-group-level-parameters" class="nav-link" data-scroll-target="#group-level-parameters">Group level parameters</a></li>
@@ -221,10 +223,7 @@
 <main class="content quarto-banner-title-block" id="quarto-document-content">      
 
        <div id="f624059a" class="cell markdown">
-<section id="supplementary-3-parameters-recovery" class="level1">
-<h1>Supplementary 3: Parameters recovery</h1>
 <p>In the main text, we have observed that our preference model, describing participants responses as a mixture of forward planning, state-features-dependent preferences and the interaction between the two. This is a rather complex model with preference parameters being estimated as latent variable, and entailing an additional entropy transformation in the interaction term. To establish that despite the complexity of the model, it is still capable of accurately estimate all parameters, we perform a parameter recovery analysis in which we simulate data using the mean parameters recovered from the original data. We then fit the same model to the simulated data. We can then compare the estimated parameters from the simulated data against ground truth to establish the model capacity to identify parameters correctly.</p>
-</section>
 </div>
 <div id="825efc41" class="cell markdown">
 <section id="preparing-the-data" class="level2">
@@ -420,8 +419,16 @@ NUTS: [beta_intercept, sigma_intercept, beta_planning, sigma_planning, beta_pref
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"4f299923edc34e9aa6e8aac93e57d6d4","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"7fa59f59f329420bb86c746614f169b9","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 1117 seconds.
+The rhat statistic is larger than 1.01 for some parameters. This indicates problems during sampling. See https://arxiv.org/abs/1903.08008 for details
+The effective sample size per chain is smaller than 100 for some parameters.  A higher number is needed for reliable rhat and ess computation. See https://arxiv.org/abs/1903.08008 for details</code></pre>
 </div>
 </div></div>
 <div id="aeaea98f" class="cell markdown">
@@ -430,47 +437,52 @@ NUTS: [beta_intercept, sigma_intercept, beta_planning, sigma_planning, beta_pref
 <p>To test whether the model is able to retrieve group level parameters, we can compare the fitted parameters from the simulated to the parameters retrieved by the model from real data.</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="suppfig-population_parameter_recovery" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-suppfig-population_parameter_recovery" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot group level parameters:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the fitted parameters from the real model:</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># posterior_orig = idata_orig.posterior[param].values.reshape(-1, idata_orig.posterior[param].shape[-1])</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ax[fig_key[i]].violinplot(posterior_orig, positions=range(posterior_orig.shape[-1]), widths=0.8,</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                 showmeans=False, showmedians=True,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                 showextrema=False, side="high");</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot parameters fitted to the simulated data:</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    posterior_sim <span class="op">=</span> idata.posterior[param].values.reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                       showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                       showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].hlines(np.mean(np.array(ground_truth_params[param]), axis<span class="op">=</span><span class="dv">0</span>), </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                          xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                          xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                          color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_xlabel(<span class="st">"P(x)"</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> i <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].legend()</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                                       rotation<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-population_parameter_recovery" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-suppfig figure">
-<div aria-describedby="suppfig-population_parameter_recovery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot group level parameters:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the fitted parameters from the real model:</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># posterior_orig = idata_orig.posterior[param].values.reshape(-1, idata_orig.posterior[param].shape[-1])</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ax[fig_key[i]].violinplot(posterior_orig, positions=range(posterior_orig.shape[-1]), widths=0.8,</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                 showmeans=False, showmedians=True,</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                 showextrema=False, side="high");</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot parameters fitted to the simulated data:</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    posterior_sim <span class="op">=</span> idata.posterior[param].values.reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                       showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                       showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].hlines(np.mean(np.array(ground_truth_params[param]), axis<span class="op">=</span><span class="dv">0</span>), </span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                          xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                          xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                          color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_xlabel(<span class="st">"P(x)"</span>)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> i <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].legend()</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>                                       rotation<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div aria-describedby="suppfig-population_parameter_recovery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-population_parameter_recovery-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure S1: Population level parameters recovery"><img src="S3-parameters_recovery_files/figure-html/suppfig-population_parameter_recovery-output-1.png" class="img-fluid figure-img"></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-suppfig quarto-uncaptioned" id="suppfig-population_parameter_recovery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure S1
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-suppfig" id="suppfig-population_parameter_recovery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure S1: Population level parameters recovery
 </figcaption>
 </figure>
+</div>
+</div>
 </div></div>
 <div id="b82d5f45" class="cell markdown">
 <section id="single-subject-parameters" class="level2">
@@ -478,46 +490,528 @@ Figure S1
 <p>In addition, we investigate the fit of single subjects parameters against the known ground truth. These should also align:</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="suppfig-single_subject_parameter_recovery" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each subject:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, sub <span class="kw">in</span> <span class="bu">enumerate</span>(beh_data[<span class="st">"vpn"</span>].unique()):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ii, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot parameters fitted to the simulated data:</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        posterior_sim <span class="op">=</span> idata.posterior[param <span class="op">+</span> <span class="st">"_sub"</span>].values[:, :, i, :].reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                        showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                        showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot the ground truth parameter:</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].hlines(ground_truth_params[param][i], </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                               xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                               xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                               color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_xlabel(<span class="st">"P(x)"</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ii <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> ii <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].legend()</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>                                        rotation<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        plt.suptitle(<span class="ss">f"Subject </span><span class="sc">{</span>sub<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="suppfig-single_subject_parameter_recovery" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-suppfig figure">
 <div aria-describedby="suppfig-single_subject_parameter_recovery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each subject:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, sub <span class="kw">in</span> <span class="bu">enumerate</span>(beh_data[<span class="st">"vpn"</span>].unique()):</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ii, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot parameters fitted to the simulated data:</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        posterior_sim <span class="op">=</span> idata.posterior[param <span class="op">+</span> <span class="st">"_sub"</span>].values[:, :, i, :].reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                        showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                        showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot the ground truth parameter:</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].hlines(ground_truth_params[param][i], </span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                               xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                               xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                               color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_xlabel(<span class="st">"P(x)"</span>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ii <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> ii <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].legend()</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                                        rotation<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>        plt.suptitle(<span class="ss">f"Subject </span><span class="sc">{</span>sub<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-1.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(a): Single subjects parameters recovery"><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-1.png" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Single subjects parameters recovery
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-2.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(b): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-2.png" id="suppfig-single_subject_parameter_recovery-2" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-3.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(c): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-3.png" id="suppfig-single_subject_parameter_recovery-3" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-4.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(d): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-4.png" id="suppfig-single_subject_parameter_recovery-4" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-5.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(e): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-5.png" id="suppfig-single_subject_parameter_recovery-5" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(e)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-6.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(f): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-6.png" id="suppfig-single_subject_parameter_recovery-6" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(f)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-7.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(g): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-7.png" id="suppfig-single_subject_parameter_recovery-7" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(g)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-8" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-8.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(h): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-8.png" id="suppfig-single_subject_parameter_recovery-8" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(h)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-9" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-9.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(i): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-9.png" id="suppfig-single_subject_parameter_recovery-9" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(i)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-10" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-10.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(j): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-10.png" id="suppfig-single_subject_parameter_recovery-10" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(j)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-11" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-11.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(k): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-11.png" id="suppfig-single_subject_parameter_recovery-11" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(k)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-12" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-12.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(l): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-12.png" id="suppfig-single_subject_parameter_recovery-12" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(l)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-13" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-13.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(m): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-13.png" id="suppfig-single_subject_parameter_recovery-13" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(m)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-14" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-14.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(n): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-14.png" id="suppfig-single_subject_parameter_recovery-14" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(n)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-15" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-15.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(o): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-15.png" id="suppfig-single_subject_parameter_recovery-15" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(o)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-16" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-16.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(p): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-16.png" id="suppfig-single_subject_parameter_recovery-16" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(p)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-17" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-17.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(q): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-17.png" id="suppfig-single_subject_parameter_recovery-17" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(q)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-18" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-18.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(r): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-18.png" id="suppfig-single_subject_parameter_recovery-18" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(r)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-19" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-19.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(s): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-19.png" id="suppfig-single_subject_parameter_recovery-19" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(s)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-20" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-20.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(t): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-20.png" id="suppfig-single_subject_parameter_recovery-20" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(t)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-21" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-21.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(u): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-21.png" id="suppfig-single_subject_parameter_recovery-21" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(u)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-22" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-22.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(v): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-22.png" id="suppfig-single_subject_parameter_recovery-22" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-22-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(v)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-23" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-23.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(w): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-23.png" id="suppfig-single_subject_parameter_recovery-23" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(w)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-24" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-24-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-24.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(x): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-24.png" id="suppfig-single_subject_parameter_recovery-24" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-24-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(x)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-25" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-25.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(y): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-25.png" id="suppfig-single_subject_parameter_recovery-25" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(y)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-26" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-26.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(z): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-26.png" id="suppfig-single_subject_parameter_recovery-26" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(z)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-27" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-27-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-27.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;({): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-27.png" id="suppfig-single_subject_parameter_recovery-27" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-27-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+({)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-28" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-28-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-28.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(|): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-28.png" id="suppfig-single_subject_parameter_recovery-28" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-28-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(|)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-29" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-29-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-29.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(}): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-29.png" id="suppfig-single_subject_parameter_recovery-29" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-29-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(})
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-30" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-30-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-30.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(~): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-30.png" id="suppfig-single_subject_parameter_recovery-30" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-30-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(~)
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-31" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-31-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-31.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-31.png" id="suppfig-single_subject_parameter_recovery-31" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-31-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+()
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-32" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-32-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-32.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-32.png" id="suppfig-single_subject_parameter_recovery-32" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-32-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+()
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-33" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-33-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-33.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-33.png" id="suppfig-single_subject_parameter_recovery-33" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-33-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+()
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-34" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-34-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-34.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-34.png" id="suppfig-single_subject_parameter_recovery-34" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-34-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+()
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-35" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-35-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-35.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-35.png" id="suppfig-single_subject_parameter_recovery-35" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-35-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+()
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-36" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-36-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-36.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-36.png" id="suppfig-single_subject_parameter_recovery-36" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-36-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+()
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-37" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-37-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-37.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-37.png" id="suppfig-single_subject_parameter_recovery-37" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-37-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+()
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-38" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-38-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-38.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-38.png" id="suppfig-single_subject_parameter_recovery-38" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-38-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+()
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-39" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-39-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-39.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-39.png" id="suppfig-single_subject_parameter_recovery-39" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-39-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+()
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div id="suppfig-single_subject_parameter_recovery-40" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-suppfig figure">
+<div aria-describedby="suppfig-single_subject_parameter_recovery-40-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-40.png" class="lightbox" data-gallery="suppfig-single_subject_parameter_recovery" title="Figure S2&nbsp;(): "><img src="S3-parameters_recovery_files/figure-html/suppfig-single_subject_parameter_recovery-output-40.png" id="suppfig-single_subject_parameter_recovery-40" class="img-fluid figure-img" data-ref-parent="suppfig-single_subject_parameter_recovery"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-suppfig" id="suppfig-single_subject_parameter_recovery-40-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+()
+</figcaption>
+</figure>
+</div>
+</div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-suppfig quarto-uncaptioned" id="suppfig-single_subject_parameter_recovery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure S2
 </figcaption>
 </figure>
+</div></div>
 </div></div>
 <div id="d4974aef" class="cell markdown">
 <p>Across all participants, the ground truth parameters is well within the credible intervals of the retrieved parameters from the data, indicating that our model is indeed capable of recovering the parameters of the underlying generative model.</p>
@@ -927,6 +1421,37 @@ Figure S2
       }
     }
   });
-  </script>  </div> <!-- /content --> 
+  </script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script> 
   
 </body></html>
