@@ -552,7 +552,11 @@ of the fit at different \(k\)):
 \begin{aligned}
 P(A)_t =& \frac{\sum_{i=t-k}^{t-1}x_i \times w_i}{\sum_{i=t-k}^{t-1}w_i}
 \end{aligned}
-}\end{equation} And \(w=[1, 2, ..., k]\)
+}\end{equation}
+
+Where \(x_i\) denotes the action taken on trial i coded as accept or
+reject, and \(w=[1, 2, ..., k]\) so that the weights increase linearly
+from 1 for the oldest included trial to \(k\) for the most recent trial.
 
 \textsubscript{Source:
 \href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
@@ -805,7 +809,7 @@ would expect participants' RT to reflect the strength of their
 preferences, as stronger preferences should be associated with less
 planning, hence faster RT.
 
-(Ott et al. 2022a) showed that response times were slower when the
+Ott et al. (2022a) showed that response times were slower when the
 planning-derived values of accepting and rejecting were similar, and
 that this conflict effect depended on task context, being stronger for
 intermediate than for extreme offers. Under our hypothesis, this context
@@ -1045,15 +1049,14 @@ Notebook}}
 
 }
 
-\caption{\label{fig-returns}Single participants fit and performances (A)
-Model fit for each participant, color coded per model of best fit. (B)
+\caption{\label{fig-returns}Fitted parameters and performances (A)
 Correlation between participants return and the fitted
 \(\beta_{planning}\) parameter. Each dot represent a single participant,
 the line is a correlation fitted using optimal least square, legend
-indicates pearson correlation alongside p value. (C) Correlation between
+indicates pearson correlation alongside p value. (B) Correlation between
 participants performances and the average preference entropy. Same
-convention as (B). (C) Correlation between participants performances and
-\(\beta_{modulation}\). Same convention as (B)}
+convention as (A). (C) Correlation between participants performances and
+\(\beta_{modulation}\). Same convention as (A)}
 
 \end{figure}%
 

@@ -583,12 +583,98 @@ Neuroscience, Faculty of Psychology</institution>
       trials, assuming temporally discounted effects of past actions
       (see Supplementary 1 for exploration of the fit at different
       <inline-formula><alternatives><tex-math><![CDATA[k]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>k</mml:mi></mml:math></alternatives></inline-formula>):</p>
-          <p><styled-content id="eq-mvavg"><disp-formula><alternatives><tex-math><![CDATA[
+          <p>
+            <styled-content id="eq-mvavg">
+              <disp-formula>
+                <alternatives>
+                  <tex-math><![CDATA[
       \begin{aligned}
       P(A)_t =& \frac{\sum_{i=t-k}^{t-1}x_i \times w_i}{\sum_{i=t-k}^{t-1}w_i}
       \end{aligned}
-       \qquad(4)]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="block"><mml:mrow><mml:mtable><mml:mtr><mml:mtd columnalign="right" style="text-align: right; padding-right: 0"><mml:mi>P</mml:mi><mml:mo stretchy="false" form="prefix">(</mml:mo><mml:mi>A</mml:mi><mml:msub><mml:mo stretchy="false" form="postfix">)</mml:mo><mml:mi>t</mml:mi></mml:msub><mml:mo>=</mml:mo></mml:mtd><mml:mtd columnalign="left" style="text-align: left; padding-left: 0"><mml:mfrac><mml:mrow><mml:munderover><mml:mo>∑</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mi>t</mml:mi><mml:mo>−</mml:mo><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mo>−</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:munderover><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>×</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow><mml:mrow><mml:munderover><mml:mo>∑</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mi>t</mml:mi><mml:mo>−</mml:mo><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mo>−</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:munderover><mml:msub><mml:mi>w</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:mfrac></mml:mtd></mml:mtr></mml:mtable><mml:mspace width="2.0em"/><mml:mo stretchy="false" form="prefix">(</mml:mo><mml:mn>4</mml:mn><mml:mo stretchy="false" form="postfix">)</mml:mo></mml:mrow></mml:math></alternatives></disp-formula></styled-content>
-      And <inline-formula><alternatives><tex-math><![CDATA[w=[1, 2, ..., k]]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>w</mml:mi><mml:mo>=</mml:mo><mml:mo stretchy="false" form="prefix">[</mml:mo><mml:mn>1</mml:mn><mml:mo>,</mml:mo><mml:mn>2</mml:mn><mml:mo>,</mml:mo><mml:mi>.</mml:mi><mml:mi>.</mml:mi><mml:mi>.</mml:mi><mml:mo>,</mml:mo><mml:mi>k</mml:mi><mml:mo stretchy="false" form="postfix">]</mml:mo></mml:mrow></mml:math></alternatives></inline-formula></p>
+       \qquad(4)]]></tex-math>
+                  <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="block">
+                    <mml:mrow>
+                      <mml:mtable>
+                        <mml:mtr>
+                          <mml:mtd columnalign="right" style="text-align: right; padding-right: 0">
+                            <mml:mi>P</mml:mi>
+                            <mml:mo stretchy="false" form="prefix">(</mml:mo>
+                            <mml:mi>A</mml:mi>
+                            <mml:msub>
+                              <mml:mo stretchy="false" form="postfix">)</mml:mo>
+                              <mml:mi>t</mml:mi>
+                            </mml:msub>
+                            <mml:mo>=</mml:mo>
+                          </mml:mtd>
+                          <mml:mtd columnalign="left" style="text-align: left; padding-left: 0">
+                            <mml:mfrac>
+                              <mml:mrow>
+                                <mml:munderover>
+                                  <mml:mo>∑</mml:mo>
+                                  <mml:mrow>
+                                    <mml:mi>i</mml:mi>
+                                    <mml:mo>=</mml:mo>
+                                    <mml:mi>t</mml:mi>
+                                    <mml:mo>−</mml:mo>
+                                    <mml:mi>k</mml:mi>
+                                  </mml:mrow>
+                                  <mml:mrow>
+                                    <mml:mi>t</mml:mi>
+                                    <mml:mo>−</mml:mo>
+                                    <mml:mn>1</mml:mn>
+                                  </mml:mrow>
+                                </mml:munderover>
+                                <mml:msub>
+                                  <mml:mi>x</mml:mi>
+                                  <mml:mi>i</mml:mi>
+                                </mml:msub>
+                                <mml:mo>×</mml:mo>
+                                <mml:msub>
+                                  <mml:mi>w</mml:mi>
+                                  <mml:mi>i</mml:mi>
+                                </mml:msub>
+                              </mml:mrow>
+                              <mml:mrow>
+                                <mml:munderover>
+                                  <mml:mo>∑</mml:mo>
+                                  <mml:mrow>
+                                    <mml:mi>i</mml:mi>
+                                    <mml:mo>=</mml:mo>
+                                    <mml:mi>t</mml:mi>
+                                    <mml:mo>−</mml:mo>
+                                    <mml:mi>k</mml:mi>
+                                  </mml:mrow>
+                                  <mml:mrow>
+                                    <mml:mi>t</mml:mi>
+                                    <mml:mo>−</mml:mo>
+                                    <mml:mn>1</mml:mn>
+                                  </mml:mrow>
+                                </mml:munderover>
+                                <mml:msub>
+                                  <mml:mi>w</mml:mi>
+                                  <mml:mi>i</mml:mi>
+                                </mml:msub>
+                              </mml:mrow>
+                            </mml:mfrac>
+                          </mml:mtd>
+                        </mml:mtr>
+                      </mml:mtable>
+                      <mml:mspace width="2.0em"/>
+                      <mml:mo stretchy="false" form="prefix">(</mml:mo>
+                      <mml:mn>4</mml:mn>
+                      <mml:mo stretchy="false" form="postfix">)</mml:mo>
+                    </mml:mrow>
+                  </mml:math>
+                </alternatives>
+              </disp-formula>
+            </styled-content>
+          </p>
+          <p>Where <inline-formula><alternatives><tex-math><![CDATA[x_i]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></alternatives></inline-formula>
+      denotes the action taken on trial i coded as accept or reject, and
+      <inline-formula><alternatives><tex-math><![CDATA[w=[1, 2, ..., k]]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>w</mml:mi><mml:mo>=</mml:mo><mml:mo stretchy="false" form="prefix">[</mml:mo><mml:mn>1</mml:mn><mml:mo>,</mml:mo><mml:mn>2</mml:mn><mml:mo>,</mml:mo><mml:mi>.</mml:mi><mml:mi>.</mml:mi><mml:mi>.</mml:mi><mml:mo>,</mml:mo><mml:mi>k</mml:mi><mml:mo stretchy="false" form="postfix">]</mml:mo></mml:mrow></mml:math></alternatives></inline-formula>
+      so that the weights increase linearly from 1 for the oldest
+      included trial to <inline-formula><alternatives><tex-math><![CDATA[k]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>k</mml:mi></mml:math></alternatives></inline-formula>
+      for the most recent trial.</p>
         </sec>
         <sec id="context-model">
           <title>2.3.3 Context model</title>
@@ -1252,11 +1338,12 @@ Neuroscience, Faculty of Psychology</institution>
     participants’ RT to reflect the strength of their preferences, as
     stronger preferences should be associated with less planning, hence
     faster RT.</p>
-        <p>(<xref alt="Ott et al. 2022a" rid="ref-ott2022forward" ref-type="bibr">Ott
-    et al. 2022a</xref>) showed that response times were slower when the
-    planning-derived values of accepting and rejecting were similar, and
-    that this conflict effect depended on task context, being stronger
-    for intermediate than for extreme offers. Under our hypothesis, this
+        <p>Ott et al.
+    (<xref alt="2022a" rid="ref-ott2022forward" ref-type="bibr">2022a</xref>)
+    showed that response times were slower when the planning-derived
+    values of accepting and rejecting were similar, and that this
+    conflict effect depended on task context, being stronger for
+    intermediate than for extreme offers. Under our hypothesis, this
     context dependence should arise from a more general principle: the
     influence of planning conflict on response time should depend on the
     strength of participants’ task-structured preferences. When
@@ -1571,17 +1658,16 @@ Neuroscience, Faculty of Psychology</institution>
     same subject is removed.</p>
         <fig id="fig-returns">
           <caption>
-            <p>Figure 4: Single participants fit and performances (A)
-      Model fit for each participant, color coded per model of best fit.
-      (B) Correlation between participants return and the fitted
+            <p>Figure 4: Fitted parameters and performances (A)
+      Correlation between participants return and the fitted
       <inline-formula><alternatives><tex-math><![CDATA[\beta_{planning}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:mi>n</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>g</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
       parameter. Each dot represent a single participant, the line is a
       correlation fitted using optimal least square, legend indicates
-      pearson correlation alongside p value. (C) Correlation between
+      pearson correlation alongside p value. (B) Correlation between
       participants performances and the average preference entropy. Same
-      convention as (B). (C) Correlation between participants
+      convention as (A). (C) Correlation between participants
       performances and <inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>.
-      Same convention as (B)</p>
+      Same convention as (A)</p>
           </caption>
           <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-returns-output-1.png"/>
         </fig>
@@ -4883,12 +4969,98 @@ beh_data['dv_14'] = beh_data['dv'].to_numpy() * (beh_data['is_1'].to_numpy() + b
       trials, assuming temporally discounted effects of past actions
       (see Supplementary 1 for exploration of the fit at different
       <inline-formula><alternatives><tex-math><![CDATA[k]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>k</mml:mi></mml:math></alternatives></inline-formula>):</p>
-              <p><styled-content id="eq-mvavg-nb-article"><disp-formula><alternatives><tex-math><![CDATA[
+              <p>
+                <styled-content id="eq-mvavg-nb-article">
+                  <disp-formula>
+                    <alternatives>
+                      <tex-math><![CDATA[
       \begin{aligned}
       P(A)_t =& \frac{\sum_{i=t-k}^{t-1}x_i \times w_i}{\sum_{i=t-k}^{t-1}w_i}
       \end{aligned}
-       \qquad(4)]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="block"><mml:mrow><mml:mtable><mml:mtr><mml:mtd columnalign="right" style="text-align: right; padding-right: 0"><mml:mi>P</mml:mi><mml:mo stretchy="false" form="prefix">(</mml:mo><mml:mi>A</mml:mi><mml:msub><mml:mo stretchy="false" form="postfix">)</mml:mo><mml:mi>t</mml:mi></mml:msub><mml:mo>=</mml:mo></mml:mtd><mml:mtd columnalign="left" style="text-align: left; padding-left: 0"><mml:mfrac><mml:mrow><mml:munderover><mml:mo>∑</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mi>t</mml:mi><mml:mo>−</mml:mo><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mo>−</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:munderover><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>×</mml:mo><mml:msub><mml:mi>w</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow><mml:mrow><mml:munderover><mml:mo>∑</mml:mo><mml:mrow><mml:mi>i</mml:mi><mml:mo>=</mml:mo><mml:mi>t</mml:mi><mml:mo>−</mml:mo><mml:mi>k</mml:mi></mml:mrow><mml:mrow><mml:mi>t</mml:mi><mml:mo>−</mml:mo><mml:mn>1</mml:mn></mml:mrow></mml:munderover><mml:msub><mml:mi>w</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:mrow></mml:mfrac></mml:mtd></mml:mtr></mml:mtable><mml:mspace width="2.0em"/><mml:mo stretchy="false" form="prefix">(</mml:mo><mml:mn>4</mml:mn><mml:mo stretchy="false" form="postfix">)</mml:mo></mml:mrow></mml:math></alternatives></disp-formula></styled-content>
-      And <inline-formula><alternatives><tex-math><![CDATA[w=[1, 2, ..., k]]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>w</mml:mi><mml:mo>=</mml:mo><mml:mo stretchy="false" form="prefix">[</mml:mo><mml:mn>1</mml:mn><mml:mo>,</mml:mo><mml:mn>2</mml:mn><mml:mo>,</mml:mo><mml:mi>.</mml:mi><mml:mi>.</mml:mi><mml:mi>.</mml:mi><mml:mo>,</mml:mo><mml:mi>k</mml:mi><mml:mo stretchy="false" form="postfix">]</mml:mo></mml:mrow></mml:math></alternatives></inline-formula></p>
+       \qquad(4)]]></tex-math>
+                      <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="block">
+                        <mml:mrow>
+                          <mml:mtable>
+                            <mml:mtr>
+                              <mml:mtd columnalign="right" style="text-align: right; padding-right: 0">
+                                <mml:mi>P</mml:mi>
+                                <mml:mo stretchy="false" form="prefix">(</mml:mo>
+                                <mml:mi>A</mml:mi>
+                                <mml:msub>
+                                  <mml:mo stretchy="false" form="postfix">)</mml:mo>
+                                  <mml:mi>t</mml:mi>
+                                </mml:msub>
+                                <mml:mo>=</mml:mo>
+                              </mml:mtd>
+                              <mml:mtd columnalign="left" style="text-align: left; padding-left: 0">
+                                <mml:mfrac>
+                                  <mml:mrow>
+                                    <mml:munderover>
+                                      <mml:mo>∑</mml:mo>
+                                      <mml:mrow>
+                                        <mml:mi>i</mml:mi>
+                                        <mml:mo>=</mml:mo>
+                                        <mml:mi>t</mml:mi>
+                                        <mml:mo>−</mml:mo>
+                                        <mml:mi>k</mml:mi>
+                                      </mml:mrow>
+                                      <mml:mrow>
+                                        <mml:mi>t</mml:mi>
+                                        <mml:mo>−</mml:mo>
+                                        <mml:mn>1</mml:mn>
+                                      </mml:mrow>
+                                    </mml:munderover>
+                                    <mml:msub>
+                                      <mml:mi>x</mml:mi>
+                                      <mml:mi>i</mml:mi>
+                                    </mml:msub>
+                                    <mml:mo>×</mml:mo>
+                                    <mml:msub>
+                                      <mml:mi>w</mml:mi>
+                                      <mml:mi>i</mml:mi>
+                                    </mml:msub>
+                                  </mml:mrow>
+                                  <mml:mrow>
+                                    <mml:munderover>
+                                      <mml:mo>∑</mml:mo>
+                                      <mml:mrow>
+                                        <mml:mi>i</mml:mi>
+                                        <mml:mo>=</mml:mo>
+                                        <mml:mi>t</mml:mi>
+                                        <mml:mo>−</mml:mo>
+                                        <mml:mi>k</mml:mi>
+                                      </mml:mrow>
+                                      <mml:mrow>
+                                        <mml:mi>t</mml:mi>
+                                        <mml:mo>−</mml:mo>
+                                        <mml:mn>1</mml:mn>
+                                      </mml:mrow>
+                                    </mml:munderover>
+                                    <mml:msub>
+                                      <mml:mi>w</mml:mi>
+                                      <mml:mi>i</mml:mi>
+                                    </mml:msub>
+                                  </mml:mrow>
+                                </mml:mfrac>
+                              </mml:mtd>
+                            </mml:mtr>
+                          </mml:mtable>
+                          <mml:mspace width="2.0em"/>
+                          <mml:mo stretchy="false" form="prefix">(</mml:mo>
+                          <mml:mn>4</mml:mn>
+                          <mml:mo stretchy="false" form="postfix">)</mml:mo>
+                        </mml:mrow>
+                      </mml:math>
+                    </alternatives>
+                  </disp-formula>
+                </styled-content>
+              </p>
+              <p>Where <inline-formula><alternatives><tex-math><![CDATA[x_i]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>x</mml:mi><mml:mi>i</mml:mi></mml:msub></mml:math></alternatives></inline-formula>
+      denotes the action taken on trial i coded as accept or reject, and
+      <inline-formula><alternatives><tex-math><![CDATA[w=[1, 2, ..., k]]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>w</mml:mi><mml:mo>=</mml:mo><mml:mo stretchy="false" form="prefix">[</mml:mo><mml:mn>1</mml:mn><mml:mo>,</mml:mo><mml:mn>2</mml:mn><mml:mo>,</mml:mo><mml:mi>.</mml:mi><mml:mi>.</mml:mi><mml:mi>.</mml:mi><mml:mo>,</mml:mo><mml:mi>k</mml:mi><mml:mo stretchy="false" form="postfix">]</mml:mo></mml:mrow></mml:math></alternatives></inline-formula>
+      so that the weights increase linearly from 1 for the oldest
+      included trial to <inline-formula><alternatives><tex-math><![CDATA[k]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>k</mml:mi></mml:math></alternatives></inline-formula>
+      for the most recent trial.</p>
             </sec>
             <sec id="cell-10-nb-article" specific-use="notebook-content">
     </sec>
@@ -5754,11 +5926,12 @@ beh_data['preference_score'] = np.mean(traces['Preference'].posterior["preferenc
     participants’ RT to reflect the strength of their preferences, as
     stronger preferences should be associated with less planning, hence
     faster RT.</p>
-            <p>(<xref alt="Ott et al. 2022a" rid="ref-ott2022forward-nb-article" ref-type="bibr">Ott
-    et al. 2022a</xref>) showed that response times were slower when the
-    planning-derived values of accepting and rejecting were similar, and
-    that this conflict effect depended on task context, being stronger
-    for intermediate than for extreme offers. Under our hypothesis, this
+            <p>Ott et al.
+    (<xref alt="2022a" rid="ref-ott2022forward-nb-article" ref-type="bibr">2022a</xref>)
+    showed that response times were slower when the planning-derived
+    values of accepting and rejecting were similar, and that this
+    conflict effect depended on task context, being stronger for
+    intermediate than for extreme offers. Under our hypothesis, this
     context dependence should arise from a more general principle: the
     influence of planning conflict on response time should depend on the
     strength of participants’ task-structured preferences. When
@@ -6510,17 +6683,16 @@ plt.tight_layout();</code>
             <boxed-text>
               <fig id="fig-returns-nb-article">
                 <caption>
-                  <p>Figure 4: Single participants fit and performances
-        (A) Model fit for each participant, color coded per model of
-        best fit. (B) Correlation between participants return and the
-        fitted <inline-formula><alternatives><tex-math><![CDATA[\beta_{planning}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:mi>n</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>g</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
+                  <p>Figure 4: Fitted parameters and performances (A)
+        Correlation between participants return and the fitted
+        <inline-formula><alternatives><tex-math><![CDATA[\beta_{planning}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:mi>n</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>g</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
         parameter. Each dot represent a single participant, the line is
         a correlation fitted using optimal least square, legend
-        indicates pearson correlation alongside p value. (C) Correlation
+        indicates pearson correlation alongside p value. (B) Correlation
         between participants performances and the average preference
-        entropy. Same convention as (B). (C) Correlation between
+        entropy. Same convention as (A). (C) Correlation between
         participants performances and <inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>.
-        Same convention as (B)</p>
+        Same convention as (A)</p>
                 </caption>
                 <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-returns-output-1.png"/>
               </fig>
