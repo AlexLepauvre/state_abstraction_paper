@@ -8,7 +8,7 @@
     <meta name="author" content="Alex Lepauvre">
     <meta name="author" content="Florian Ott">
     <meta name="author" content="Stefan Kiebel">
-    <meta name="dcterms.date" content="2026-07-27">
+    <meta name="dcterms.date" content="2026-07-28">
     <meta name="keywords" content="Decision making, Reinforcement learning">
 
     <title>Task-structure preferences</title>
@@ -202,10 +202,10 @@
 <meta name="citation_author" content="Alex Lepauvre">
 <meta name="citation_author" content="Florian Ott">
 <meta name="citation_author" content="Stefan Kiebel">
-<meta name="citation_publication_date" content="2026-07-27">
-<meta name="citation_cover_date" content="2026-07-27">
+<meta name="citation_publication_date" content="2026-07-28">
+<meta name="citation_cover_date" content="2026-07-28">
 <meta name="citation_year" content="2026">
-<meta name="citation_online_date" content="2026-07-27">
+<meta name="citation_online_date" content="2026-07-28">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=Forward planning driven by context-dependant conflict processing in anterior cingulate cortex;,citation_author=Florian Ott;,citation_author=Eric Legler;,citation_author=Stefan J Kiebel;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_doi=10.1016/j.neuroimage.2022.119222;,citation_volume=256;,citation_journal_title=NeuroImage;,citation_publisher=Elsevier;">
 <meta name="citation_reference" content="citation_title=Forward planning driven by context-dependent conflict processing in anterior cingulate cortex - analysis code and datasets;,citation_author=Florian Ott;,citation_author=Eric Legler;,citation_author=Stefan J Kiebel;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_fulltext_html_url=https://zenodo.org/records/6328296;,citation_doi=10.5281/zenodo.6328296;,citation_publisher=zenodo;">
@@ -268,6 +268,9 @@
 <meta name="citation_reference" content="citation_title=Suboptimality in perceptual decision making;,citation_author=Dobromir Rahnev;,citation_author=Rachel N Denison;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_volume=41;,citation_journal_title=Behavioral and brain sciences;,citation_publisher=Cambridge University Press;">
 <meta name="citation_reference" content="citation_title=The heuristics-and-biases inventory: An open-source tool to explore individual differences in rationality;,citation_author=Vincent Berthet;,citation_author=Vincent De Gardelle;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_volume=14;,citation_journal_title=Frontiers in Psychology;,citation_publisher=Frontiers Media SA;">
 <meta name="citation_reference" content="citation_title=Homo heuristicus: Why biased minds make better inferences;,citation_author=Gerd Gigerenzer;,citation_author=Henry Brighton;,citation_publication_date=2009;,citation_cover_date=2009;,citation_year=2009;,citation_issue=1;,citation_volume=1;,citation_journal_title=Topics in cognitive science;,citation_publisher=Wiley Online Library;">
+<meta name="citation_reference" content="citation_title=Rational use of cognitive resources in human planning;,citation_author=Frederick Callaway;,citation_author=Bas Van Opheusden;,citation_author=Sayan Gul;,citation_author=Priyam Das;,citation_author=Paul M Krueger;,citation_author=Thomas L Griffiths;,citation_author=Falk Lieder;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_issue=8;,citation_volume=6;,citation_journal_title=Nature human behaviour;,citation_publisher=Nature Publishing Group UK London;">
+<meta name="citation_reference" content="citation_title=Information theory of decisions and actions;,citation_author=Naftali Tishby;,citation_author=Daniel Polani;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;,citation_inbook_title=Perception-action cycle: Models, architectures, and hardware;">
+<meta name="citation_reference" content="citation_title=Dopaminergic balance between reward maximization and policy complexity;,citation_author=Naama Parush;,citation_author=Naftali Tishby;,citation_author=Hagai Bergman;,citation_publication_date=2011;,citation_cover_date=2011;,citation_year=2011;,citation_volume=5;,citation_journal_title=Frontiers in Systems Neuroscience;,citation_publisher=Frontiers Research Foundation;">
 </head>
 
   <body class="quarto-notebook quarto-light">
@@ -324,7 +327,7 @@
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">July 27, 2026</p>
+              <p class="date">July 28, 2026</p>
             </div>
           </div>
           
@@ -393,7 +396,7 @@
 <section id="introduction" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
 <p>A central idea in Bayesian accounts of perception and sensorimotor control is that the brain does not rely on current sensory evidence alone <span class="citation" data-cites="knill2004bayesian lee2003hierarchical rao1999predictive clark2013whatever friston2010free">(<a href="#ref-knill2004bayesian" role="doc-biblioref">Knill and Pouget 2004</a>; <a href="#ref-lee2003hierarchical" role="doc-biblioref">Lee and Mumford 2003</a>; <a href="#ref-rao1999predictive" role="doc-biblioref">Rao and Ballard 1999</a>; <a href="#ref-clark2013whatever" role="doc-biblioref">Clark 2013</a>; <a href="#ref-friston2010free" role="doc-biblioref">Friston 2010</a>)</span> because sensory evidence is often noisy, incomplete, or costly to acquire with high precision. Prior information can reduce this uncertainty by providing an efficient summary of regularities learned from experience and from the statistical structure of the environment. The Bayesian solution is therefore to combine current evidence with prior information. As formulated in the ‘Bayesian brain hypothesis’, the influence of prior information should depend on uncertainty: when current evidence is unreliable, behavior should rely more strongly on the prior. Conversely, when current evidence is reliable, it should dominate behavior. For example, <span class="citation" data-cites="kording2004bayesian">Körding and Wolpert (<a href="#ref-kording2004bayesian" role="doc-biblioref">2004</a>)</span> provided a canonical demonstration of this principle, showing that participants combine learned priors with sensory feedback according to their relative uncertainty.</p>
-<p>A similar logic may apply to planning-based decision making. In this case, the role of sensory evidence is taken by an internally generated estimate of action value. In sequential decision tasks, such estimates are assumed to be generated by internal forward planning, which provides state-specific information about the long-value of choosing an action. However, generating these estimates is assumed to be computationally costly because it requires evaluating future outcomes in complex and dynamic environments. In analogy to the Bayesian view on perception, agents may therefore combine their evidence, i.e.&nbsp;their internal estimates, with stored prior information about which actions are usually appropriate in a given task. In this view, action selection reflects a balance between a costly state-specific estimate and a stored prior tendency to act in a particular way. This idea has been applied previously in a Bayesian account of the balance between habitual and goal-directed control, in which habitual tendencies were modelled as priors over policies that are balanced against goal-directed information about current outcome contingencies <span class="citation" data-cites="schwobel2021balancing schwobel2024joint">(<a href="#ref-schwobel2021balancing" role="doc-biblioref">Schwöbel et al. 2021</a>, <a href="#ref-schwobel2024joint" role="doc-biblioref">2024</a>)</span>. This approach also resonates with resource-rational accounts of planning, which postulates that the brain adapts its planning computations to the costs and benefits of using its relatively limited cognitive resources <span class="citation" data-cites="gershman2015computational lai2021policy lai2024human">(<a href="#ref-gershman2015computational" role="doc-biblioref">Gershman et al. 2015</a>; <a href="#ref-lai2021policy" role="doc-biblioref">Lai and Gershman 2021</a>, <a href="#ref-lai2024human" role="doc-biblioref">2024</a>)</span>.</p>
+<p>A similar logic may apply to planning-based decision making. In this case, the role of sensory evidence is taken by an internally generated estimate of action value. In sequential decision tasks, such estimates are assumed to be generated by internal forward planning, which provides state-specific information about the long-value of choosing an action. However, generating these estimates is assumed to be computationally costly because it requires evaluating future outcomes in complex and dynamic environments. In analogy to the Bayesian view on perception, agents may therefore combine their evidence, i.e.&nbsp;their internal estimates, with stored prior information about which actions are usually appropriate in a given task. In this view, action selection reflects a balance between a costly state-specific estimate and a stored prior tendency to act in a particular way. This idea has been applied previously in a Bayesian account of the balance between habitual and goal-directed control, in which habitual tendencies were modelled as priors over policies that are balanced against goal-directed information about current outcome contingencies <span class="citation" data-cites="schwobel2021balancing schwobel2024joint">(<a href="#ref-schwobel2021balancing" role="doc-biblioref">Schwöbel et al. 2021</a>, <a href="#ref-schwobel2024joint" role="doc-biblioref">2024</a>)</span>. This approach also resonates with resource-rational accounts of planning, which postulates that the brain adapts its planning computations to the costs and benefits of using its relatively limited cognitive resources <span class="citation" data-cites="gershman2015computational lai2021policy callaway2022rational tishby2010information parush2011dopaminergic">(<a href="#ref-gershman2015computational" role="doc-biblioref">Gershman et al. 2015</a>; <a href="#ref-lai2021policy" role="doc-biblioref">Lai and Gershman 2021</a>; <a href="#ref-callaway2022rational" role="doc-biblioref">Callaway et al. 2022</a>; <a href="#ref-tishby2010information" role="doc-biblioref">Tishby and Polani 2010</a>; <a href="#ref-parush2011dopaminergic" role="doc-biblioref">Parush et al. 2011</a>)</span>.</p>
 <p>Building on Bayesian accounts of prior–evidence integration and resource-rational accounts of costly planning, we assume that choices in complex sequential decision making reflect the integration of two sources of information about action. First, participants have acquired, for example during training, task-structured preferences that reflect regularities in the task structure and their own experience within the task. Second, as is typically modelled in reinforcement learning, for each trial, participants use forward planning to derive values for each available action in an online fashion. Assuming a Bayesian approach, we hypothesize that these two sources are integrated by weighting the contribution of planning against preferences by their respective uncertainties. This hypothesis implies that on trials with strong preferences, these should guide choices and produce faster responses because less planning is needed. On trials with weak or uncertain preferences, decision making should be more weighted towards forward planning and consequently, response times should be increased due to the increase in computations.</p>
 <p>In this paper, we test this hypothesis in a complex sequential decision-making task, using choice model comparisons and response-time analyses. Specifically, we use optimal forward planning as a benchmark and ask whether participants’ deviations from this benchmark are systematic and better explained by task-structured preferences. We compare against several alternative models of how participants may combine planning-derived decision values with potential preferences. Our results show that participants’ choices are best captured by a model that combines planning-derived decision values with state-dependent preferences constructed from multiple task features. We further show in additional analyses that these preferences interact with planning such that choices are guided more strongly by planning when preferences are weak, and more strongly by preferences when they are decisive. Together, these findings suggest that, in complex sequential decision problems, costly forward planning is integrated with structured, task-informed preferences that enable faster and less computationally demanding choices when they provide a clear action tendency.</p>
 </section>
@@ -2163,6 +2166,9 @@ Barr, Dale J, Roger Levy, Christoph Scheepers, and Harry J Tily. 2013. <span>“
 <div id="ref-berthet2023heuristics" class="csl-entry" role="listitem">
 Berthet, Vincent, and Vincent De Gardelle. 2023. <span>“The Heuristics-and-Biases Inventory: An Open-Source Tool to Explore Individual Differences in Rationality.”</span> <em>Frontiers in Psychology</em> 14: 1145246.
 </div>
+<div id="ref-callaway2022rational" class="csl-entry" role="listitem">
+Callaway, Frederick, Bas Van Opheusden, Sayan Gul, et al. 2022. <span>“Rational Use of Cognitive Resources in Human Planning.”</span> <em>Nature Human Behaviour</em> 6 (8): 1112–25.
+</div>
 <div id="ref-Capretto2022" class="csl-entry" role="listitem">
 Capretto, Tomás, Camen Piho, Ravin Kumar, Jacob Westfall, Tal Yarkoni, and Osvaldo A Martin. 2022. <span>“Bambi: A Simple Interface for Fitting Bayesian Linear Models in Python.”</span> <em>Journal of Statistical Software</em> 103 (15): 1–29. <a href="https://doi.org/10.18637/jss.v103.i15">https://doi.org/10.18637/jss.v103.i15</a>.
 </div>
@@ -2226,6 +2232,9 @@ Ott, Florian, Eric Legler, and Stefan J Kiebel. 2022b. <em>Forward Planning Driv
 <div id="ref-ott2020dynamic" class="csl-entry" role="listitem">
 Ott, Florian, Dimitrije Marković, Alexander Strobel, and Stefan J Kiebel. 2020. <span>“Dynamic Integration of Forward Planning and Heuristic Preferences During Multiple Goal Pursuit.”</span> <em>PLoS Computational Biology</em> 16 (2): e1007685.
 </div>
+<div id="ref-parush2011dopaminergic" class="csl-entry" role="listitem">
+Parush, Naama, Naftali Tishby, and Hagai Bergman. 2011. <span>“Dopaminergic Balance Between Reward Maximization and Policy Complexity.”</span> <em>Frontiers in Systems Neuroscience</em> 5: 22.
+</div>
 <div id="ref-rahnev2018suboptimality" class="csl-entry" role="listitem">
 Rahnev, Dobromir, and Rachel N Denison. 2018. <span>“Suboptimality in Perceptual Decision Making.”</span> <em>Behavioral and Brain Sciences</em> 41: e223.
 </div>
@@ -2249,6 +2258,9 @@ Singmann, Henrik, and David Kellen. 2019. <span>“An Introduction to Mixed Mode
 </div>
 <div id="ref-sutton1998reinforcement" class="csl-entry" role="listitem">
 <span class="nocase">Sutton, Richard S, Andrew G Barto, et al.</span> 1998. <em>Reinforcement Learning: An Introduction</em>. Vol. 1. MIT press Cambridge.
+</div>
+<div id="ref-tishby2010information" class="csl-entry" role="listitem">
+Tishby, Naftali, and Daniel Polani. 2010. <span>“Information Theory of Decisions and Actions.”</span> In <em>Perception-Action Cycle: Models, Architectures, and Hardware</em>. Springer.
 </div>
 <div id="ref-tsetsos2016economic" class="csl-entry" role="listitem">
 Tsetsos, Konstantinos, Rani Moran, James Moreland, Nick Chater, Marius Usher, and Christopher Summerfield. 2016. <span>“Economic Irrationality Is Optimal During Noisy Decision Making.”</span> <em>Proceedings of the National Academy of Sciences</em> 113 (11): 3102–7.

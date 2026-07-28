@@ -146,8 +146,13 @@ Neuroscience, Faculty of Psychology</institution>
   (<xref alt="Gershman et al. 2015" rid="ref-gershman2015computational" ref-type="bibr">Gershman
   et al. 2015</xref>;
   <xref alt="Lai and Gershman 2021" rid="ref-lai2021policy" ref-type="bibr">Lai
-  and Gershman 2021</xref>,
-  <xref alt="2024" rid="ref-lai2024human" ref-type="bibr">2024</xref>).</p>
+  and Gershman 2021</xref>;
+  <xref alt="Callaway et al. 2022" rid="ref-callaway2022rational" ref-type="bibr">Callaway
+  et al. 2022</xref>;
+  <xref alt="Tishby and Polani 2010" rid="ref-tishby2010information" ref-type="bibr">Tishby
+  and Polani 2010</xref>;
+  <xref alt="Parush et al. 2011" rid="ref-parush2011dopaminergic" ref-type="bibr">Parush
+  et al. 2011</xref>).</p>
       <p>Building on Bayesian accounts of prior–evidence integration and
   resource-rational accounts of costly planning, we assume that choices
   in complex sequential decision making reflect the integration of two
@@ -3434,6 +3439,26 @@ Neuroscience, Faculty of Psychology</institution>
           <lpage>1131</lpage>
         </element-citation>
       </ref>
+      <ref id="ref-tishby2010information">
+        <element-citation publication-type="chapter">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tishby</surname>
+              <given-names>Naftali</given-names>
+            </name>
+            <name>
+              <surname>Polani</surname>
+              <given-names>Daniel</given-names>
+            </name>
+          </person-group>
+          <article-title>Information theory of decisions and actions</article-title>
+          <source>Perception-action cycle: Models, architectures, and hardware</source>
+          <publisher-name>Springer</publisher-name>
+          <year iso-8601-date="2010">2010</year>
+          <fpage>601</fpage>
+          <lpage>636</lpage>
+        </element-citation>
+      </ref>
       <ref id="ref-berthet2023heuristics">
         <element-citation publication-type="article-journal">
           <person-group person-group-type="author">
@@ -4045,6 +4070,93 @@ Neuroscience, Faculty of Psychology</institution>
           <lpage>143</lpage>
         </element-citation>
       </ref>
+      <ref id="ref-callaway2022rational">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Callaway</surname>
+              <given-names>Frederick</given-names>
+            </name>
+            <name>
+              <surname>Van Opheusden</surname>
+              <given-names>Bas</given-names>
+            </name>
+            <name>
+              <surname>Gul</surname>
+              <given-names>Sayan</given-names>
+            </name>
+            <name>
+              <surname>Das</surname>
+              <given-names>Priyam</given-names>
+            </name>
+            <name>
+              <surname>Krueger</surname>
+              <given-names>Paul M</given-names>
+            </name>
+            <name>
+              <surname>Griffiths</surname>
+              <given-names>Thomas L</given-names>
+            </name>
+            <name>
+              <surname>Lieder</surname>
+              <given-names>Falk</given-names>
+            </name>
+          </person-group>
+          <article-title>Rational use of cognitive resources in human planning</article-title>
+          <source>Nature human behaviour</source>
+          <publisher-name>Nature Publishing Group UK London</publisher-name>
+          <year iso-8601-date="2022">2022</year>
+          <volume>6</volume>
+          <issue>8</issue>
+          <fpage>1112</fpage>
+          <lpage>1125</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-tishby2010information">
+        <element-citation publication-type="chapter">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Tishby</surname>
+              <given-names>Naftali</given-names>
+            </name>
+            <name>
+              <surname>Polani</surname>
+              <given-names>Daniel</given-names>
+            </name>
+          </person-group>
+          <article-title>Information theory of decisions and actions</article-title>
+          <source>Perception-action cycle: Models, architectures, and hardware</source>
+          <publisher-name>Springer</publisher-name>
+          <year iso-8601-date="2010">2010</year>
+          <fpage>601</fpage>
+          <lpage>636</lpage>
+        </element-citation>
+      </ref>
+      <ref id="ref-parush2011dopaminergic">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Parush</surname>
+              <given-names>Naama</given-names>
+            </name>
+            <name>
+              <surname>Tishby</surname>
+              <given-names>Naftali</given-names>
+            </name>
+            <name>
+              <surname>Bergman</surname>
+              <given-names>Hagai</given-names>
+            </name>
+          </person-group>
+          <article-title>Dopaminergic balance between reward maximization and policy complexity</article-title>
+          <source>Frontiers in Systems Neuroscience</source>
+          <publisher-name>Frontiers Research Foundation</publisher-name>
+          <year iso-8601-date="2011">2011</year>
+          <volume>5</volume>
+          <fpage>22</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
     </ref-list>
   </back>
   <sub-article article-type="notebook" id="nb-13-nb-article">
@@ -4186,8 +4298,13 @@ Neuroscience, Faculty of Psychology</institution>
   (<xref alt="Gershman et al. 2015" rid="ref-gershman2015computational-nb-article" ref-type="bibr">Gershman
   et al. 2015</xref>;
   <xref alt="Lai and Gershman 2021" rid="ref-lai2021policy-nb-article" ref-type="bibr">Lai
-  and Gershman 2021</xref>,
-  <xref alt="2024" rid="ref-lai2024human-nb-article" ref-type="bibr">2024</xref>).</p>
+  and Gershman 2021</xref>;
+  <xref alt="Callaway et al. 2022" rid="ref-callaway2022rational-nb-article" ref-type="bibr">Callaway
+  et al. 2022</xref>;
+  <xref alt="Tishby and Polani 2010" rid="ref-tishby2010information-nb-article" ref-type="bibr">Tishby
+  and Polani 2010</xref>;
+  <xref alt="Parush et al. 2011" rid="ref-parush2011dopaminergic-nb-article" ref-type="bibr">Parush
+  et al. 2011</xref>).</p>
           <p>Building on Bayesian accounts of prior–evidence integration and
   resource-rational accounts of costly planning, we assume that choices
   in complex sequential decision making reflect the integration of two
@@ -9137,6 +9254,26 @@ plt.show()</code>
             <lpage>1131</lpage>
           </element-citation>
         </ref>
+        <ref id="ref-tishby2010information-nb-article">
+          <element-citation publication-type="chapter">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Tishby</surname>
+                <given-names>Naftali</given-names>
+              </name>
+              <name>
+                <surname>Polani</surname>
+                <given-names>Daniel</given-names>
+              </name>
+            </person-group>
+            <article-title>Information theory of decisions and actions</article-title>
+            <source>Perception-action cycle: Models, architectures, and hardware</source>
+            <publisher-name>Springer</publisher-name>
+            <year iso-8601-date="2010">2010</year>
+            <fpage>601</fpage>
+            <lpage>636</lpage>
+          </element-citation>
+        </ref>
         <ref id="ref-berthet2023heuristics-nb-article">
           <element-citation publication-type="article-journal">
             <person-group person-group-type="author">
@@ -9746,6 +9883,93 @@ plt.show()</code>
             <issue>1</issue>
             <fpage>107</fpage>
             <lpage>143</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-callaway2022rational-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Callaway</surname>
+                <given-names>Frederick</given-names>
+              </name>
+              <name>
+                <surname>Van Opheusden</surname>
+                <given-names>Bas</given-names>
+              </name>
+              <name>
+                <surname>Gul</surname>
+                <given-names>Sayan</given-names>
+              </name>
+              <name>
+                <surname>Das</surname>
+                <given-names>Priyam</given-names>
+              </name>
+              <name>
+                <surname>Krueger</surname>
+                <given-names>Paul M</given-names>
+              </name>
+              <name>
+                <surname>Griffiths</surname>
+                <given-names>Thomas L</given-names>
+              </name>
+              <name>
+                <surname>Lieder</surname>
+                <given-names>Falk</given-names>
+              </name>
+            </person-group>
+            <article-title>Rational use of cognitive resources in human planning</article-title>
+            <source>Nature human behaviour</source>
+            <publisher-name>Nature Publishing Group UK London</publisher-name>
+            <year iso-8601-date="2022">2022</year>
+            <volume>6</volume>
+            <issue>8</issue>
+            <fpage>1112</fpage>
+            <lpage>1125</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-tishby2010information-nb-article">
+          <element-citation publication-type="chapter">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Tishby</surname>
+                <given-names>Naftali</given-names>
+              </name>
+              <name>
+                <surname>Polani</surname>
+                <given-names>Daniel</given-names>
+              </name>
+            </person-group>
+            <article-title>Information theory of decisions and actions</article-title>
+            <source>Perception-action cycle: Models, architectures, and hardware</source>
+            <publisher-name>Springer</publisher-name>
+            <year iso-8601-date="2010">2010</year>
+            <fpage>601</fpage>
+            <lpage>636</lpage>
+          </element-citation>
+        </ref>
+        <ref id="ref-parush2011dopaminergic-nb-article">
+          <element-citation publication-type="article-journal">
+            <person-group person-group-type="author">
+              <name>
+                <surname>Parush</surname>
+                <given-names>Naama</given-names>
+              </name>
+              <name>
+                <surname>Tishby</surname>
+                <given-names>Naftali</given-names>
+              </name>
+              <name>
+                <surname>Bergman</surname>
+                <given-names>Hagai</given-names>
+              </name>
+            </person-group>
+            <article-title>Dopaminergic balance between reward maximization and policy complexity</article-title>
+            <source>Frontiers in Systems Neuroscience</source>
+            <publisher-name>Frontiers Research Foundation</publisher-name>
+            <year iso-8601-date="2011">2011</year>
+            <volume>5</volume>
+            <fpage>22</fpage>
+            <lpage/>
           </element-citation>
         </ref>
       </ref-list>
