@@ -6,6 +6,12 @@ import arviz
 from typing import Optional
 from scipy.special import logit
 
+n_samples = 1000
+n_warmup = 1000
+n_chains = 4
+
+rng = np.random.default_rng(615)
+
 
 def hierarchical_binomial_regression(
         y: np.array,
@@ -464,7 +470,7 @@ def preference_model(
     y : np.array [N samples, ]
         Observed binary data (1, 0...)
     decision_values : np.array [N samples, ]
-        Decision values to regress onto the observed data
+        DV to regress onto the observed data
     pref_regressors : np.array [N samples, M regressors]
         Regressor to fit participants preference for. We can have M regressors
     subject_index : np.array  [N samples, ]
@@ -478,7 +484,7 @@ def preference_model(
     b_prior_mean : Optional[float], optional
         Prior mean of each beta parameters, by default 0
     b_prior_sigma : Optional[float], optional
-        Prior variance of the population level distribution of the beta, by default 2
+        Prior variance of the population level distribution of the beta, by default 2`
     s_prior_sigma : Optional[float], optional
         Prior between subjects variance, by default 2
     n_drawss : Optional[int], optional
@@ -490,7 +496,6 @@ def preference_model(
     tuple[pm.Model, arviz.InferenceData]
         pm.model : pymc model object
         idata : arviz inference data
-    """
     '''
     # Get dimensions:
     n_obs = y.shape[0]
@@ -555,8 +560,9 @@ def preference_model(
         # Convert the bias back onto probability space:
         pi_prior = pm.Deterministic("pi_prior", pm.math.sigmoid(preference))
 
-        # Compute the entropy:
-        entropy = pm.Deterministic("entropy", -pi_prior * pm.math.log(pi_prior) - (1-pi_prior) * pm.math.log(1 - pi_prior))
+        # Compute the normalized entropy (defined between 0 and 1):
+        max_entropy = -0.5 * np.log(0.5) - (1-0.5) * np.log(1 - 0.5)
+        entropy = pm.Deterministic("entropy", (-pi_prior * pm.math.log(pi_prior) - (1-pi_prior) * pm.math.log(1 - pi_prior)) / max_entropy)
         
         # Eta parameter is the weighted sum of the intercept, the bias, the planning values and 
         # the interaction between the entropy of the bias and the planning
@@ -575,11 +581,16 @@ def preference_model(
 
         # Sampling:
         idata = pm.sample(
-            draws=1000,
-            tune=1000,
-            chains=4,
+            draws=n_samples,
+            tune=n_warmup,
+            chains=n_chains,
             target_accept=0.85,
             idata_kwargs={"log_likelihood": True},
+            random_seed=615
         )
-
+        # Sample posterior predictive for later model checking:
+        idata.extend(pm.sample_posterior_predictive(idata, 
+                                                    var_names=["p", "y"],
+                                                    random_seed=615),                                                    
+                                                    )
     return idata
