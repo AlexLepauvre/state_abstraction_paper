@@ -109,7 +109,7 @@
       }      
     </style>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script>
+    <script>
     window.document.addEventListener("DOMContentLoaded", function () {
 
       var header = window.document.querySelector("#quarto-embed-header");
@@ -164,10 +164,7 @@
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
-     <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>  
+     
       </head>
 
   <body class="quarto-notebook quarto-light">
@@ -236,95 +233,92 @@
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Stats</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pymc <span class="im">as</span> pm</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> arviz <span class="im">as</span> az</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> bambi <span class="im">as</span> bmb</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> bernoulli</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom packages:</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stabst.MarkovDecisionProcess <span class="im">import</span> MDP</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stabst.TaskConfig <span class="im">import</span> LimitedEnergyTask</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stabst.utils <span class="im">import</span> avg_reduce_mdp, abstract2ground_value</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utilities.models <span class="im">import</span> preference_model</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> arviz <span class="im">as</span> az</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> expit</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> bernoulli</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom packages:</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stabst.MarkovDecisionProcess <span class="im">import</span> MDP</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stabst.TaskConfig <span class="im">import</span> LimitedEnergyTask</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> utilities.models <span class="im">import</span> preference_model</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> entropy(p):</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>p <span class="op">*</span> np.log(p) <span class="op">-</span> (<span class="dv">1</span><span class="op">-</span>p) <span class="op">*</span> np.log(<span class="dv">1</span><span class="op">-</span>p)</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> entropy(p):</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>p <span class="op">*</span> np.log(p) <span class="op">-</span> (<span class="dv">1</span><span class="op">-</span>p) <span class="op">*</span> np.log(<span class="dv">1</span><span class="op">-</span>p)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the data if needed:</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">'./data/raw_data/all_participants_data.csv'</span>):</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">'./data/raw_data'</span>):</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        os.makedirs(<span class="st">'./data/raw_data'</span>)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/fmott/context_dependent_planning/4d239b721749adabb8fe8f1d8ac2d1ecdeba17cf/data/behaviour/data_all_participants_20220215120148.csv'</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    os.system(<span class="ss">f'wget </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss"> -O ./data/raw_data/all_participants_data.csv'</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the data if needed:</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">'./data/raw_data/all_participants_data.csv'</span>):</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(<span class="st">'./data/raw_data'</span>):</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        os.makedirs(<span class="st">'./data/raw_data'</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/fmott/context_dependent_planning/4d239b721749adabb8fe8f1d8ac2d1ecdeba17cf/data/behaviour/data_all_participants_20220215120148.csv'</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    os.system(<span class="ss">f'wget </span><span class="sc">{</span>url<span class="sc">}</span><span class="ss"> -O ./data/raw_data/all_participants_data.csv'</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data:</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>beh_data <span class="op">=</span> pd.read_csv(<span class="st">'./data/raw_data/all_participants_data.csv'</span>)</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data:</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>beh_data <span class="op">=</span> pd.read_csv(<span class="st">'./data/raw_data/all_participants_data.csv'</span>)</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co"># ===================================================================</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preprocessing:</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove nans:</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>beh_data <span class="op">=</span> beh_data.dropna()</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove timeout:</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>beh_data <span class="op">=</span> beh_data[beh_data[<span class="st">"timeout"</span>] <span class="op">==</span> <span class="dv">0</span>]</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip responses: 1 = accept:</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">"response"</span>] <span class="op">=</span> (beh_data[<span class="st">"response"</span>] <span class="op">==</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Make trial 1 based</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">"trial"</span>] <span class="op">=</span> beh_data[<span class="st">"trial"</span>] <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate future cost based on the transitions:</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>transitions_costs <span class="op">=</span> {</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>: [<span class="dv">1</span>, <span class="dv">1</span>],</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: [<span class="dv">2</span>, <span class="dv">1</span>],</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: [<span class="dv">1</span>, <span class="dv">2</span>],</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: [<span class="dv">2</span>, <span class="dv">2</span>]</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">"fc"</span>] <span class="op">=</span> [transitions_costs[row[<span class="st">"transition"</span>]][<span class="dv">1</span>] <span class="cf">for</span> _, row <span class="kw">in</span> beh_data.iterrows()]</span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical costs regressor</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'is_lc'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy_cost'</span>] <span class="op">==</span> <span class="dv">1</span>).astype(<span class="bu">int</span>).to_numpy()</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'is_hc'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy_cost'</span>] <span class="op">==</span> <span class="dv">2</span>).astype(<span class="bu">int</span>).to_numpy()</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical future costs regressor</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'is_lfc'</span>] <span class="op">=</span> (beh_data[<span class="st">'fc'</span>] <span class="op">==</span> <span class="dv">1</span>).astype(<span class="bu">int</span>).to_numpy()</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'is_hfc'</span>] <span class="op">=</span> (beh_data[<span class="st">'fc'</span>] <span class="op">==</span> <span class="dv">2</span>).astype(<span class="bu">int</span>).to_numpy()</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical energy regressor:</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_0'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">0</span>).to_numpy()</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_1'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">1</span>).to_numpy()</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_2'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">2</span>).to_numpy()</span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_3'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">3</span>).to_numpy()</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_4'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">4</span>).to_numpy()</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_5'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">5</span>).to_numpy()</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_6'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">6</span>).to_numpy()</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co"># ===================================================================</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Data preprocessing:</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove nans:</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>beh_data <span class="op">=</span> beh_data.dropna()</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove timeout:</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>beh_data <span class="op">=</span> beh_data[beh_data[<span class="st">"timeout"</span>] <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Flip responses: 1 = accept:</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">"response"</span>] <span class="op">=</span> (beh_data[<span class="st">"response"</span>] <span class="op">==</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Make trial 1 based</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">"trial"</span>] <span class="op">=</span> beh_data[<span class="st">"trial"</span>] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate future cost based on the transitions:</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>transitions_costs <span class="op">=</span> {</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>: [<span class="dv">1</span>, <span class="dv">1</span>],</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: [<span class="dv">2</span>, <span class="dv">1</span>],</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>: [<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    <span class="dv">3</span>: [<span class="dv">2</span>, <span class="dv">2</span>]</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">"fc"</span>] <span class="op">=</span> [transitions_costs[row[<span class="st">"transition"</span>]][<span class="dv">1</span>] <span class="cf">for</span> _, row <span class="kw">in</span> beh_data.iterrows()]</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical costs regressor</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'is_lc'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy_cost'</span>] <span class="op">==</span> <span class="dv">1</span>).astype(<span class="bu">int</span>).to_numpy()</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'is_hc'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy_cost'</span>] <span class="op">==</span> <span class="dv">2</span>).astype(<span class="bu">int</span>).to_numpy()</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical future costs regressor</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'is_lfc'</span>] <span class="op">=</span> (beh_data[<span class="st">'fc'</span>] <span class="op">==</span> <span class="dv">1</span>).astype(<span class="bu">int</span>).to_numpy()</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'is_hfc'</span>] <span class="op">=</span> (beh_data[<span class="st">'fc'</span>] <span class="op">==</span> <span class="dv">2</span>).astype(<span class="bu">int</span>).to_numpy()</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorical energy regressor:</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_0'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">0</span>).to_numpy()</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_1'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">1</span>).to_numpy()</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_2'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">2</span>).to_numpy()</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_3'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">3</span>).to_numpy()</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_4'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">4</span>).to_numpy()</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_5'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">5</span>).to_numpy()</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'e_is_6'</span>] <span class="op">=</span> (beh_data[<span class="st">'energy'</span>] <span class="op">==</span> <span class="dv">6</span>).to_numpy()</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Random effects</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>subj_idx_raw, subj_labels <span class="op">=</span> pd.factorize(beh_data[<span class="st">"vpn"</span>])</span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Random effects</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>subj_idx_raw, subj_labels <span class="op">=</span> pd.factorize(beh_data[<span class="st">"vpn"</span>])</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co"># ===================================================================</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute decision values:</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the task and its parameters (transition probability, reward...):</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>task <span class="op">=</span> LimitedEnergyTask(O<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], p_offer<span class="op">=</span>[<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>] <span class="op">*</span> <span class="dv">4</span>)</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>task.build()</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Create full MDP and compute solution for later reference:</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>task_mdp <span class="op">=</span> MDP(task.states, task.tp, task.r, gamma, s2i<span class="op">=</span>task.s2i)</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>V_full, Q_full <span class="op">=</span> task_mdp.backward_induction()</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Add decision values to the data frame:</span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>dv <span class="op">=</span> Q_full[:, <span class="dv">1</span>] <span class="op">-</span> Q_full[:, <span class="dv">0</span>]</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each trial to set DV:</span></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>dv_trials <span class="op">=</span> []</span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> trial_i, trial <span class="kw">in</span> beh_data.iterrows():</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>    e, o, cc, t <span class="op">=</span> trial.energy, trial.reward, trial.energy_cost, trial.trial</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>    fc <span class="op">=</span> transitions_costs[trial.transition][<span class="dv">1</span>]</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>    dv_trials.append(dv[task.s2i[(e, o, cc, fc, t)]])</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'dv'</span>] <span class="op">=</span> dv_trials</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="co"># ===================================================================</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute decision values:</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the task and its parameters (transition probability, reward...):</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>task <span class="op">=</span> LimitedEnergyTask(O<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], p_offer<span class="op">=</span>[<span class="dv">1</span><span class="op">/</span><span class="dv">4</span>] <span class="op">*</span> <span class="dv">4</span>)</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>task.build()</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Create full MDP and compute solution for later reference:</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>task_mdp <span class="op">=</span> MDP(task.states, task.tp, task.r, gamma, s2i<span class="op">=</span>task.s2i)</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>V_full, Q_full <span class="op">=</span> task_mdp.backward_induction()</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Add decision values to the data frame:</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>dv <span class="op">=</span> Q_full[:, <span class="dv">1</span>] <span class="op">-</span> Q_full[:, <span class="dv">0</span>]</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each trial to set DV:</span></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>dv_trials <span class="op">=</span> []</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> trial_i, trial <span class="kw">in</span> beh_data.iterrows():</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    e, o, cc, t <span class="op">=</span> trial.energy, trial.reward, trial.energy_cost, trial.trial</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    fc <span class="op">=</span> transitions_costs[trial.transition][<span class="dv">1</span>]</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    dv_trials.append(dv[task.s2i[(e, o, cc, fc, t)]])</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>beh_data[<span class="st">'dv'</span>] <span class="op">=</span> dv_trials</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 <div id="87cad2c6" class="cell markdown">
 <section id="simulation" class="level2">
@@ -400,7 +394,7 @@
 </div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="43b15f6b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> os.path.exists(<span class="st">"./data/bids/limited_energy/derivatives/control_models/preferences_model_trace.nc"</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> os.path.exists(<span class="st">"./data/bids/limited_energy/derivatives/control_models/simulation_preferences_model_trace.nc"</span>):</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    idata <span class="op">=</span> az.from_netcdf(<span class="st">"./data/bids/limited_energy/derivatives/control_models/simulation_preferences_model_trace.nc"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    idata <span class="op">=</span> preference_model(</span>
@@ -412,24 +406,6 @@
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save the trace to file:</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    az.to_netcdf(idata, <span class="st">"./data/bids/limited_energy/derivatives/control_models/simulation_preferences_model_trace.nc"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Initializing NUTS using jitter+adapt_diag...
-Multiprocess sampling (4 chains in 4 jobs)
-NUTS: [beta_intercept, sigma_intercept, beta_planning, sigma_planning, beta_pref, sigma_pref, beta_interaction, sigma_interaction, z_intercept, z_planning, z_biases, z_interaction]</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"7fa59f59f329420bb86c746614f169b9","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 1117 seconds.
-The rhat statistic is larger than 1.01 for some parameters. This indicates problems during sampling. See https://arxiv.org/abs/1903.08008 for details
-The effective sample size per chain is smaller than 100 for some parameters.  A higher number is needed for reliable rhat and ess computation. See https://arxiv.org/abs/1903.08008 for details</code></pre>
-</div>
 </div></div>
 <div id="aeaea98f" class="cell markdown">
 <section id="group-level-parameters" class="level3">
@@ -438,39 +414,57 @@ The effective sample size per chain is smaller than 100 for some parameters.  A 
 </section>
 </div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-suppfig-population_parameter_recovery" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot group level parameters:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the fitted parameters from the real model:</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># posterior_orig = idata_orig.posterior[param].values.reshape(-1, idata_orig.posterior[param].shape[-1])</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ax[fig_key[i]].violinplot(posterior_orig, positions=range(posterior_orig.shape[-1]), widths=0.8,</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                 showmeans=False, showmedians=True,</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#                 showextrema=False, side="high");</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot parameters fitted to the simulated data:</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    posterior_sim <span class="op">=</span> idata.posterior[param].values.reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                       showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                       showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].hlines(np.mean(np.array(ground_truth_params[param]), axis<span class="op">=</span><span class="dv">0</span>), </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                          xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                          xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                          color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_xlabel(<span class="st">"P(x)"</span>)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> i <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].legend()</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                                       rotation<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot group level parameters:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">8</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot parameters fitted to the simulated data:</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    posterior_sim <span class="op">=</span> idata.posterior[param].values.reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                       showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                       showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get 95% CI and plot it:</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(np.squeeze(posterior_sim).shape) <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        ci <span class="op">=</span> az.hdi(posterior_sim)[<span class="dv">0</span>]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].hlines(ci, </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                        xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                        xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"grey"</span>, linestyle<span class="op">=</span><span class="st">':'</span>, label<span class="op">=</span><span class="st">"95%CI"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> iii, reg <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">range</span>(posterior_sim.shape[<span class="dv">1</span>])):</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            ci <span class="op">=</span> az.hdi(posterior_sim[:, reg])</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> iii <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                ax[fig_key[i]].hlines(ci, </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                                    xmin<span class="op">=</span>iii, </span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                                    xmax<span class="op">=</span>iii<span class="op">+</span><span class="fl">0.25</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>                                    color<span class="op">=</span><span class="st">"grey"</span>, linestyle<span class="op">=</span><span class="st">':'</span>, label<span class="op">=</span><span class="st">"95%CI"</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>                ax[fig_key[i]].hlines(ci, </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>                    xmin<span class="op">=</span>iii, </span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>                    xmax<span class="op">=</span>iii<span class="op">+</span><span class="fl">0.25</span>,</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                    color<span class="op">=</span><span class="st">"grey"</span>, linestyle<span class="op">=</span><span class="st">':'</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot ground truth:</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].hlines(np.mean(np.array(ground_truth_params[param]), axis<span class="op">=</span><span class="dv">0</span>), </span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>                          xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>                          xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>                          color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    ax[fig_key[i]].set_xlabel(<span class="st">"P(x)"</span>)</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> i <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].legend()</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[i]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>                                       <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>                                       rotation<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="suppfig-population_parameter_recovery" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-suppfig figure">
@@ -491,38 +485,58 @@ Figure S1: Population level parameters recovery
 </section>
 </div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each subject:</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, sub <span class="kw">in</span> <span class="bu">enumerate</span>(beh_data[<span class="st">"vpn"</span>].unique()):</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ii, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot parameters fitted to the simulated data:</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        posterior_sim <span class="op">=</span> idata.posterior[param <span class="op">+</span> <span class="st">"_sub"</span>].values[:, :, i, :].reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                        showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                        showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot the ground truth parameter:</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].hlines(ground_truth_params[param][i], </span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                               xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                               xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                               color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_xlabel(<span class="st">"P(x)"</span>)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ii <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> ii <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].legend()</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>                                        rotation<span class="op">=</span><span class="dv">20</span>)</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        plt.suptitle(<span class="ss">f"Subject </span><span class="sc">{</span>sub<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each subject:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, sub <span class="kw">in</span> <span class="bu">enumerate</span>(beh_data[<span class="st">"vpn"</span>].unique()):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplot_mosaic(<span class="st">"ABCCCCCC"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    fig_key <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ii, param <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">"beta_planning"</span>, <span class="st">"beta_interaction"</span>, <span class="st">"beta_pref"</span>]):</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot parameters fitted to the simulated data:</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        posterior_sim <span class="op">=</span> idata.posterior[param <span class="op">+</span> <span class="st">"_sub"</span>].values[:, :, i, :].reshape(<span class="op">-</span><span class="dv">1</span>, idata_orig.posterior[param].shape[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].violinplot(posterior_sim, positions<span class="op">=</span><span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]), widths<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                        showmeans<span class="op">=</span><span class="va">False</span>, showmedians<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                        showextrema<span class="op">=</span><span class="va">False</span>, side<span class="op">=</span><span class="st">"high"</span>)<span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get 95% CI and plot it:</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(np.squeeze(posterior_sim).shape) <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            ci <span class="op">=</span> az.hdi(posterior_sim)[<span class="dv">0</span>]</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].hlines(ci, </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                            xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                            xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                            color<span class="op">=</span><span class="st">"grey"</span>, linestyle<span class="op">=</span><span class="st">':'</span>, label<span class="op">=</span><span class="st">"95%CI"</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> iii, reg <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">range</span>(posterior_sim.shape[<span class="dv">1</span>])):</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                ci <span class="op">=</span> az.hdi(posterior_sim[:, reg])</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> iii <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                    ax[fig_key[ii]].hlines(ci, </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                                        xmin<span class="op">=</span>iii, </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                                        xmax<span class="op">=</span>iii<span class="op">+</span><span class="fl">0.25</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                                        color<span class="op">=</span><span class="st">"grey"</span>, linestyle<span class="op">=</span><span class="st">':'</span>, label<span class="op">=</span><span class="st">"95%CI"</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                    ax[fig_key[ii]].hlines(ci, </span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>                        xmin<span class="op">=</span>iii, </span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>                        xmax<span class="op">=</span>iii<span class="op">+</span><span class="fl">0.25</span>,</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"grey"</span>, linestyle<span class="op">=</span><span class="st">':'</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot the ground truth parameter:</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].hlines(ground_truth_params[param][i], </span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>                               xmin<span class="op">=</span>[iii <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>                               xmax<span class="op">=</span>[iii<span class="op">+</span><span class="fl">0.25</span> <span class="cf">for</span> iii <span class="kw">in</span> <span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>])], </span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>                               color<span class="op">=</span><span class="st">"green"</span>, label<span class="op">=</span><span class="st">"Ground truth"</span>)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_title(param.split(<span class="st">"_"</span>)[<span class="dv">1</span>])</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].spines[[<span class="st">'right'</span>, <span class="st">'top'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>        ax[fig_key[ii]].set_xlabel(<span class="st">"P(x)"</span>)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ii <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_ylabel(<span class="st">"Parameter value"</span>)</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> ii <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].legend()</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> param <span class="op">==</span> <span class="st">"beta_pref"</span>:</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticks(<span class="bu">range</span>(posterior_sim.shape[<span class="op">-</span><span class="dv">1</span>]))</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>            ax[fig_key[ii]].set_xticklabels([<span class="st">"O=1"</span>, <span class="st">"O=2"</span>, <span class="st">"O=3"</span>, <span class="st">"O=4"</span>, </span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"CC=1"</span>, <span class="st">"CC=2"</span>, </span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"FC=1"</span>, <span class="st">"FC=2"</span>,</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"E=0"</span>, <span class="st">"E=1"</span>, <span class="st">"E=2"</span>, <span class="st">"E=3"</span>, <span class="st">"E=4"</span>, <span class="st">"E=5"</span>, <span class="st">"E=6"</span>], </span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>                                        rotation<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>        plt.suptitle(<span class="ss">f"Subject </span><span class="sc">{</span>sub<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="suppfig-single_subject_parameter_recovery" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-suppfig figure">
 <div aria-describedby="suppfig-single_subject_parameter_recovery-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1016,13 +1030,8 @@ Figure S2
 <div id="d4974aef" class="cell markdown">
 <p>Across all participants, the ground truth parameters is well within the credible intervals of the retrieved parameters from the data, indicating that our model is indeed capable of recovering the parameters of the underlying generative model.</p>
 </div>
-<div id="2b436a89" class="cell markdown">
-
-</div>
      </main>
-<!-- /main column -->  <script type="application/vnd.jupyter.widget-state+json">
-{"state":{"4f299923edc34e9aa6e8aac93e57d6d4":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/output","_model_module_version":"1.0.0","_model_name":"OutputModel","_view_count":null,"_view_module":"@jupyter-widgets/output","_view_module_version":"1.0.0","_view_name":"OutputView","layout":"IPY_MODEL_cc33dba1719040e384ea2ac32ab7531c","msg_id":"c7958546-61934316126aa2b78c74b8c7_341534_6","outputs":[{"data":{"text/html":"<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">                                                                                                                   \n <span style=\"font-weight: bold\"> Progress                  </span> <span style=\"font-weight: bold\"> Draws </span> <span style=\"font-weight: bold\"> Divergences </span> <span style=\"font-weight: bold\"> Step size </span> <span style=\"font-weight: bold\"> Grad evals </span> <span style=\"font-weight: bold\"> Sampling Speed </span> <span style=\"font-weight: bold\"> Elapsed </span> <span style=\"font-weight: bold\"> Remaining </span> \n ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━</span><span style=\"color: #3a3a3a; text-decoration-color: #3a3a3a\">╺━━━━━━━━━━━━━</span>   917     0             0.045       127          1.81 draws/s     0:08:26   0:10:38    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━</span><span style=\"color: #3a3a3a; text-decoration-color: #3a3a3a\">╺━━━━━━━━━━━━━</span>   904     0             0.039       127          1.79 draws/s     0:08:26   0:11:16    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━</span><span style=\"color: #3a3a3a; text-decoration-color: #3a3a3a\">╺━━━━━━━━━━━━━</span>   881     0             0.045       127          1.74 draws/s     0:08:26   0:11:20    \n  <span style=\"color: #1f77b4; text-decoration-color: #1f77b4\">━━━━━━━━━━━</span><span style=\"color: #3a3a3a; text-decoration-color: #3a3a3a\">╺━━━━━━━━━━━━━</span>   908     0             0.048       127          1.79 draws/s     0:08:26   0:11:07    \n                                                                                                                   \n</pre>\n","text/plain":"                                                                                                                   \n \u001b[1m \u001b[0m\u001b[1mProgress                 \u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mDraws\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mDivergences\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mStep size\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mGrad evals\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mSampling Speed\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mElapsed\u001b[0m\u001b[1m \u001b[0m \u001b[1m \u001b[0m\u001b[1mRemaining\u001b[0m\u001b[1m \u001b[0m \n ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── \n  \u001b[38;2;31;119;180m━━━━━━━━━━━\u001b[0m\u001b[38;5;237m╺\u001b[0m\u001b[38;5;237m━━━━━━━━━━━━━\u001b[0m   917     0             0.045       127          1.81 draws/s     0:08:26   0:10:38    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━\u001b[0m\u001b[38;5;237m╺\u001b[0m\u001b[38;5;237m━━━━━━━━━━━━━\u001b[0m   904     0             0.039       127          1.79 draws/s     0:08:26   0:11:16    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━\u001b[0m\u001b[38;5;237m╺\u001b[0m\u001b[38;5;237m━━━━━━━━━━━━━\u001b[0m   881     0             0.045       127          1.74 draws/s     0:08:26   0:11:20    \n  \u001b[38;2;31;119;180m━━━━━━━━━━━\u001b[0m\u001b[38;5;237m╺\u001b[0m\u001b[38;5;237m━━━━━━━━━━━━━\u001b[0m   908     0             0.048       127          1.79 draws/s     0:08:26   0:11:07    \n                                                                                                                   \n"},"metadata":{},"output_type":"display_data"}],"tabbable":null,"tooltip":null}},"cc33dba1719040e384ea2ac32ab7531c":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}},"version_major":2,"version_minor":0}
-</script>  <script id="quarto-html-after-body" type="application/javascript">
+<!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
