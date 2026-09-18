@@ -226,19 +226,40 @@ when preference-based guidance is uncertain.</p>
       <p>We tested our hypothesis on a dataset where participants performed
   a complex sequential decision making task (Ott et al.
   (<xref alt="2022b" rid="ref-ott2022forward-data" ref-type="bibr">2022b</xref>),
-  see <xref alt="Section 4.1" rid="sec-data-desgin">Section 4.1</xref>
-  for the full description of the design). In each trial, participants
-  had to decide whether to accept or reject an offer varying between 1
-  and 4 points, where accepting an offer incurred and energy cost
-  between 1 and 2 points, and rejecting an offer incurred a gain of one
-  energy point. Energy cost associated with accepting an offer changed
-  every 4 trials (referred to as trials segment) and participants were
-  informed of the current and future trials segment. This task is highly
+  see <xref alt="Figure 1" rid="fig-design">Figure 1</xref> and
+  <xref alt="Section 4.1" rid="sec-data-desgin">Section 4.1</xref> for
+  the full description of the design). In each trial, participants had
+  to decide whether to accept or reject an offer varying between 1 and 4
+  points, where accepting an offer incurred and energy cost between 1
+  and 2 points, and rejecting an offer incurred a gain of one energy
+  point. Energy cost associated with accepting an offer changed every 4
+  trials (referred to as trials segment) and participants were informed
+  of the current and future trials segment. This task is highly
   structure, as each trial consists of a combination of 4 factors
   (offer, energy, current and future costs), all of which have to be
   taken into account to maximize return, making this dataset ideal to
   test our prediction that participants combine forward-planning with
   preferences reflecting the structure of the task.</p>
+      <fig id="fig-design">
+        <caption>
+          <p>Figure 1: Experimental design: (A) Single trial
+    procedure, each frame represents a step within the trial with
+    duration of each step above. Top row depicts participants accepting;
+    bottom row depicts participants rejecting. In each trial,
+    participants are presented with N golden cups; the number of cups
+    symbolizes the amount of reward. The blue bar represents energy
+    level; yellow bar represents accumulated reward so far, lightning
+    symbols at the bottom right of each frame represent current cost
+    (left) and future cost (right). (B) Between trial costs
+    dependencies. A segment consists of 4 trials and the cost in each
+    segment is fixed. Participants are aware of the cost in the current
+    and future 4 trials but not beyond. (C) Transition structure. Cost
+    can transition from low cost (LC) to high cost (HC), LC to LC, HC to
+    LC and HC to HC. Reproduced from Ott et al.
+    (<xref alt="2022a" rid="ref-ott2022forward" ref-type="bibr">2022a</xref>)</p>
+        </caption>
+        <graphic mimetype="image" mime-subtype="jpeg" xlink:href="images/experimental_design.jpg"/>
+      </fig>
       <p>Performance indicates that participants were able to perform the
   task well. Participants provided responses with an average reaction
   time (RT) of 0.90s <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
@@ -282,7 +303,7 @@ when preference-based guidance is uncertain.</p>
     (<inline-formula><alternatives><tex-math><![CDATA[\Delta ELPD_{pref - planning}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi mathvariant="normal">Δ</mml:mi><mml:mi>E</mml:mi><mml:mi>L</mml:mi><mml:mi>P</mml:mi><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>f</mml:mi><mml:mo>−</mml:mo><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:mi>n</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>g</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=586.28
     <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
     55.56 s.e., see
-    <xref alt="Figure 1" rid="fig-choicemdl">Figure 1</xref> A),
+    <xref alt="Figure 2" rid="fig-choicemdl">Figure 2</xref> A),
     indicating that deviations from optimal behavior are not purely
     stochastic. Furthermore, our results indicate that participants’
     biases do not reflect a frequency prior
@@ -293,19 +314,19 @@ when preference-based guidance is uncertain.</p>
     <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
     52.62). Rather, participants exhibit preferences that reflect the
     task structure, as the Preference model provided the best fit (see
-    <xref alt="Figure 1" rid="fig-choicemdl">Figure 1</xref> A).</p>
+    <xref alt="Figure 2" rid="fig-choicemdl">Figure 2</xref> A).</p>
         <p>This result is highly consistent across participants: the
     preference model provided the best fit for 34 out of 40 participants
-    (see <xref alt="Figure 1" rid="fig-choicemdl">Figure 1</xref> B).
+    (see <xref alt="Figure 2" rid="fig-choicemdl">Figure 2</xref> B).
     The improved fit of the preference model is reflected in
-    <xref alt="Figure 1" rid="fig-choicemdl">Figure 1</xref> C, showing
+    <xref alt="Figure 2" rid="fig-choicemdl">Figure 2</xref> C, showing
     the proportion of correct choice predictions separately for each
     model and offer values. Here, the data show that the proportion of
     matches is on average higher for the preference compared to all
     other models.</p>
         <p>The estimated factor-level preference weights associated with
     each task factor reveal structured biases in participants’ behavior
-    (see <xref alt="Figure 1" rid="fig-choicemdl">Figure 1</xref> D and
+    (see <xref alt="Figure 2" rid="fig-choicemdl">Figure 2</xref> D and
     <xref alt="Table S2" rid="supptbl-pref_model_param">Table S2</xref>
     for the posterior of each fitted parameter). Participants tend to
     reject low offers (1 and 2) more frequently than optimal forward
@@ -333,7 +354,7 @@ when preference-based guidance is uncertain.</p>
     low.</p>
         <fig id="fig-choicemdl">
           <caption>
-            <p>Figure 1: Choice-model comparison and fitted
+            <p>Figure 2: Choice-model comparison and fitted
       factor-level preference weights (A) Model comparison showing the
       expected log pointwise predictive density (ELPD) for each model
       (Preference, Offer-context, Frequency-prior and Planning models).
@@ -367,7 +388,7 @@ when preference-based guidance is uncertain.</p>
     planning-derived DV and were more strongly guided by the preference
     score.</p>
         <p>This modulation is illustrated in
-    <xref alt="Figure 2" rid="fig-pref-planning-interaction">Figure 2</xref>
+    <xref alt="Figure 3" rid="fig-pref-planning-interaction">Figure 3</xref>
     A, where we plotted the fitted probability of accepting as a
     function of planning-derived DV for different preference scores.
     Reflecting the main effect of preference score, the logistic curve
@@ -380,12 +401,12 @@ when preference-based guidance is uncertain.</p>
     preference score deviates further from zero (in either direction)
     reflecting reduced reliance on forward planning as preferences’
     uncertainty decreases.
-    <xref alt="Figure 2" rid="fig-pref-planning-interaction">Figure 2</xref>
+    <xref alt="Figure 3" rid="fig-pref-planning-interaction">Figure 3</xref>
     B and C show the observed probability of accepting an offer as a
     function of DV, separately when preference scores were positive
-    (<xref alt="Figure 2" rid="fig-pref-planning-interaction">Figure 2</xref>
+    (<xref alt="Figure 3" rid="fig-pref-planning-interaction">Figure 3</xref>
     B) and negative
-    (<xref alt="Figure 2" rid="fig-pref-planning-interaction">Figure 2</xref>
+    (<xref alt="Figure 3" rid="fig-pref-planning-interaction">Figure 3</xref>
     C). This further shows the effect of preferences on participants’
     response choice: participants accept an offer at lower DV when
     preference scores are positive than when preference scores are
@@ -395,7 +416,7 @@ when preference-based guidance is uncertain.</p>
     of DV and preference score).</p>
         <fig id="fig-pref-planning-interaction">
           <caption>
-            <p>Figure 2: Relationship between preference score and
+            <p>Figure 3: Relationship between preference score and
       DV. (A) Fitted probability of accepting an offer as a function of
       DV, separately for preference score of [-4, -2, -1, 0, 1, 2, 4],
       to highlight the modulation of preference scores on the influence
@@ -436,16 +457,16 @@ when preference-based guidance is uncertain.</p>
         <p>In line with these predictions, we observed a positive
     correlation between <inline-formula><alternatives><tex-math><![CDATA[\beta_{plan}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
     and return (r=0.58, p&lt;0.001,
-    <xref alt="Figure 3" rid="fig-returns">Figure 3</xref> A), showing
+    <xref alt="Figure 4" rid="fig-returns">Figure 4</xref> A), showing
     that participants who rely more on forward planning get larger
     returns. Furthermore, <inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
     is strongly and positively correlated with return (r=0.66,
-    p&lt;0.001, <xref alt="Figure 3" rid="fig-returns">Figure 3</xref>
+    p&lt;0.001, <xref alt="Figure 4" rid="fig-returns">Figure 4</xref>
     C). However, contrary to our prediction, we observed a negative
     though only marginally significant correlation between preference
     entropy and return (r=-0.29, p=0.072,
-    <xref alt="Figure 3" rid="fig-returns">Figure 3</xref> B). Visual
-    inspection of <xref alt="Figure 3" rid="fig-returns">Figure 3</xref>
+    <xref alt="Figure 4" rid="fig-returns">Figure 4</xref> B). Visual
+    inspection of <xref alt="Figure 4" rid="fig-returns">Figure 4</xref>
     B revealed that the correlation appears to be driven from the
     participant with very low return (2.63 s.d. from population mean).
     When removing this participant, the correlation between preference
@@ -455,7 +476,7 @@ when preference-based guidance is uncertain.</p>
     is removed.</p>
         <fig id="fig-returns">
           <caption>
-            <p>Figure 3: Relationship between fitted parameters and
+            <p>Figure 4: Relationship between fitted parameters and
       task performance (A) Correlation between participants’ total
       return and their fitted forward planning sensitivity
       <inline-formula><alternatives><tex-math><![CDATA[\beta_{plan}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
@@ -481,7 +502,7 @@ when preference-based guidance is uncertain.</p>
     associated with different factors of the task such as the offer, the
     current cost context, and upcoming transitions. Importantly, not all
     features of the task are weighted equally.
-    <xref alt="Figure 1" rid="fig-choicemdl">Figure 1</xref> C shows
+    <xref alt="Figure 2" rid="fig-choicemdl">Figure 2</xref> C shows
     that the parameters associated with offers and energy weigh strongly
     in participants’ preference scores compared to costs (both current
     and future). The fitted factor-level preference weights already
@@ -496,7 +517,7 @@ when preference-based guidance is uncertain.</p>
     changes when participants are assumed to ignore one specific source
     of task information, such as offer value, action costs, or future
     transitions.</p>
-        <p><xref alt="Figure 4" rid="fig-task-features">Figure 4</xref> A
+        <p><xref alt="Figure 5" rid="fig-task-features">Figure 5</xref> A
     shows the change in model fit when each preference factor was
     removed separately from the full preference model. Each reduced
     model omitted the preference term for one experimental factor while
@@ -515,7 +536,7 @@ when preference-based guidance is uncertain.</p>
     48.62 s.e.).</p>
         <fig id="fig-task-features">
           <caption>
-            <p>Figure 4: Contribution of task factors to
+            <p>Figure 5: Contribution of task factors to
       preference-based choice and performance. (A) Predictive
       contribution of individual preference factors. Difference in fit
       between the full Preference model and models in which each of the
@@ -557,7 +578,7 @@ when preference-based guidance is uncertain.</p>
     each task factor. To do so, we derived policies from reduced forward
     planning models in which one task factor was ignored and computed
     their return loss relative to the optimal policy
-    (<xref alt="Figure 4" rid="fig-task-features">Figure 4</xref> B, see
+    (<xref alt="Figure 5" rid="fig-task-features">Figure 5</xref> B, see
     <xref alt="Section 4.5" rid="sec-factor-relevance-analysis">Section 4.5</xref>).
     Our results show that ignoring current and future costs when
     planning leads only to minimal losses (0.78% and 0.98%
@@ -572,7 +593,7 @@ when preference-based guidance is uncertain.</p>
     a result, it can deplete energy in low-energy states as its behavior
     is driven by offer levels. The large reward sensitivity of energy is
     not mirrored in
-    <xref alt="Figure 4" rid="fig-task-features">Figure 4</xref> A
+    <xref alt="Figure 5" rid="fig-task-features">Figure 5</xref> A
     because that analysis measures the additional predictive
     contribution of preference terms after accounting for
     planning-derived decision-values. Energy is already strongly
@@ -591,11 +612,11 @@ when preference-based guidance is uncertain.</p>
     <xref alt="Section 4.5" rid="sec-factor-relevance-analysis">Section 4.5</xref>).
     The full preference policy produced a return loss of 28.34%,
     indicating that preferences did not fully replace forward planning,
-    see <xref alt="Figure 4" rid="fig-task-features">Figure 4</xref> C.
+    see <xref alt="Figure 5" rid="fig-task-features">Figure 5</xref> C.
     However, this loss was smaller than the loss of a stochastic policy
     (dashed line), showing that the fitted preferences captured task
     structure that was relevant for return maximization
-    (<xref alt="Figure 4" rid="fig-task-features">Figure 4</xref> C).
+    (<xref alt="Figure 5" rid="fig-task-features">Figure 5</xref> C).
     Removing current or future cost from the preference policy produced
     little additional loss relative to the full preference policy (29.72
     and 28.38 respectively). In contrast, removing offer value led to a
@@ -622,7 +643,7 @@ when preference-based guidance is uncertain.</p>
     explore whether this might be contributing to an underlying
     mechanism for learning participants’ preferences, we computed the
     factor-dependent marginal action probability under the optimal
-    policy. <xref alt="Figure 4" rid="fig-task-features">Figure 4</xref>
+    policy. <xref alt="Figure 5" rid="fig-task-features">Figure 5</xref>
     D plots the factor-level preferences parameters side-by-side with
     the marginal action probability, showing that participants’
     preferences reflect relatively closely the factor-level specific
@@ -673,7 +694,7 @@ when preference-based guidance is uncertain.</p>
     0.46]) and (iii) the modulation effect between the two
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.06,
-    0.13], see <xref alt="Figure 5" rid="fig-rt">Figure 5</xref> A).
+    0.13], see <xref alt="Figure 6" rid="fig-rt">Figure 6</xref> A).
     This result extends previous findings showing that participants do
     not rely on forward planning to the same extent across all states of
     the task. Our results suggest that rather than splitting the task in
@@ -682,7 +703,7 @@ when preference-based guidance is uncertain.</p>
     forward planning across states instead reflects the fact that
     participants engage in forward planning more when preferences are
     weak. Specifically, as can be seen in
-    <xref alt="Figure 5" rid="fig-rt">Figure 5</xref> B, forward
+    <xref alt="Figure 6" rid="fig-rt">Figure 6</xref> B, forward
     planning depends less on forward planning conflict when preferences
     entropy is low (blue line), but more so when preferences entropy is
     larger (orange and green lines).</p>
@@ -695,7 +716,7 @@ when preference-based guidance is uncertain.</p>
     0.46]) and (iii) the modulatory effect between the two
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.06,
-    0.13], see <xref alt="Figure 5" rid="fig-rt">Figure 5</xref> A).
+    0.13], see <xref alt="Figure 6" rid="fig-rt">Figure 6</xref> A).
     This result extends on previous findings showing that participants
     do not rely on planning to the same extent across all states of the
     task. Our results suggest that rather than splitting the task in
@@ -705,11 +726,11 @@ when preference-based guidance is uncertain.</p>
     et al. 2022a</xref>), the differential amount of planning across
     states instead reflects the fact that participants engage in
     planning more when preferences are weak. The positive modulatory
-    effect (see <xref alt="Figure 5" rid="fig-rt">Figure 5</xref> A)
+    effect (see <xref alt="Figure 6" rid="fig-rt">Figure 6</xref> A)
     between conflict and entropy of preferences indicates that the
     reliance on planning is modulated by the strength of participants’
     preferences. Specifically, as can be seen in
-    <xref alt="Figure 5" rid="fig-rt">Figure 5</xref> B, planning
+    <xref alt="Figure 6" rid="fig-rt">Figure 6</xref> B, planning
     depends less on conflict when preferences are strong (blue line),
     but more so when preferences are weaker (orange and green
     lines).</p>
@@ -723,7 +744,7 @@ when preference-based guidance is uncertain.</p>
     suggesting reduced reliance on planning-derived values.</p>
         <fig id="fig-rt">
           <caption>
-            <p>Figure 5: RT evidence for preference-modulated forward
+            <p>Figure 6: RT evidence for preference-modulated forward
       planning. (A) Posterior distributions of the fitted response-time
       effects, including forward planning conflict, preference entropy,
       and their interaction. (B) Posterior predictive curves depicting
@@ -892,7 +913,7 @@ when preference-based guidance is uncertain.</p>
   task phase and does not capture updating of these preferences. The
   similarity between preferences and factor levels-dependent marginal
   action probabilities (see
-  <xref alt="Figure 4" rid="fig-task-features">Figure 4</xref> D)
+  <xref alt="Figure 5" rid="fig-task-features">Figure 5</xref> D)
   suggests that preferences might arise by keeping track of actions
   performed at each level of each factor under an approximately optimal
   policy. For example, this may have happened in the initial training
@@ -962,7 +983,7 @@ when preference-based guidance is uncertain.</p>
     The study was approved by the Institutional Review Board of the
     Technische Universität Dresden and conducted in accordance with
     ethical standards of the Declaration of Helsinki.</p>
-        <p><xref alt="Figure 6" rid="fig-design">Figure 6</xref> shows a
+        <p><xref alt="Figure 1" rid="fig-design">Figure 1</xref> shows a
     schematic representation of the task. Participants were instructed
     to gather as many points as possible throughout the task. In each
     trial, they were presented with an offer associated with a reward of
@@ -974,36 +995,16 @@ when preference-based guidance is uncertain.</p>
     energy could range from 0 (depleted energy) to 6 (max energy).
     Offers varied in each trial following a uniform distribution. Costs
     remained fixed for 4 consecutive trials, which we refer to as a
-    segment (see <xref alt="Figure 6" rid="fig-design">Figure 6</xref>
+    segment (see <xref alt="Figure 1" rid="fig-design">Figure 1</xref>
     B), and participants were informed of the price of the current
     segment and the next segment. The cost of the next segment was
     pseudorandomized to equate the probability of each transition (from
     current HC or LC to future HC or LC, see
-    <xref alt="Figure 6" rid="fig-design">Figure 6</xref> C) and ensure
+    <xref alt="Figure 1" rid="fig-design">Figure 1</xref> C) and ensure
     that each transition occurred 15 times. When participants accepted
     an offer that they could not afford (current energy level below
     current cost), no reward was awarded and a warning was
     displayed.</p>
-        <fig id="fig-design">
-          <caption>
-            <p>Figure 6: EExperimental design: (A) Single trial
-      procedure, each frame represents a step within the trial with
-      duration of each step above. Top row depicts participants
-      accepting; bottom row depicts participants rejecting. In each
-      trial, participants are presented with N golden cups; the number
-      of cups symbolizes the amount of reward. The blue bar represents
-      energy level; yellow bar represents accumulated reward so far,
-      lightning symbols at the bottom right of each frame represent
-      current cost (left) and future cost (right). (B) Between trial
-      costs dependencies. A segment consists of 4 trials and the cost in
-      each segment is fixed. Participants are aware of the cost in the
-      current and future 4 trials but not beyond. (C) Transition
-      structure. Cost can transition from low cost (LC) to high cost
-      (HC), LC to LC, HC to LC and HC to HC. Reproduced from Ott et al.
-      (<xref alt="2022a" rid="ref-ott2022forward" ref-type="bibr">2022a</xref>)</p>
-          </caption>
-          <graphic mimetype="image" mime-subtype="jpeg" xlink:href="images/experimental_design.jpg"/>
-        </fig>
         <p>Accordingly, each trial was defined by several task factors: the
     current offer, the participant’s current energy level, the current
     cost of accepting, and the cost in the upcoming segment.
@@ -4449,7 +4450,7 @@ when preference-based guidance is uncertain.</p>
       </ref>
     </ref-list>
   </back>
-  <sub-article article-type="notebook" id="nb-12-nb-article">
+  <sub-article article-type="notebook" id="nb-13-nb-article">
     <front-stub>
       <title-group>
         <article-title>Task-structured preferences guide forward planning in
@@ -5247,19 +5248,40 @@ sd_ne = np.std(n_e_0)  / 240 * 100</code>
           <p>We tested our hypothesis on a dataset where participants performed
   a complex sequential decision making task (Ott et al.
   (<xref alt="2022b" rid="ref-ott2022forward-data-nb-article" ref-type="bibr">2022b</xref>),
-  see <xref alt="Section 4.1" rid="sec-data-desgin-nb-article">Section 4.1</xref>
-  for the full description of the design). In each trial, participants
-  had to decide whether to accept or reject an offer varying between 1
-  and 4 points, where accepting an offer incurred and energy cost
-  between 1 and 2 points, and rejecting an offer incurred a gain of one
-  energy point. Energy cost associated with accepting an offer changed
-  every 4 trials (referred to as trials segment) and participants were
-  informed of the current and future trials segment. This task is highly
+  see <xref alt="Figure 1" rid="fig-design-nb-article">Figure 1</xref> and
+  <xref alt="Section 4.1" rid="sec-data-desgin-nb-article">Section 4.1</xref> for
+  the full description of the design). In each trial, participants had
+  to decide whether to accept or reject an offer varying between 1 and 4
+  points, where accepting an offer incurred and energy cost between 1
+  and 2 points, and rejecting an offer incurred a gain of one energy
+  point. Energy cost associated with accepting an offer changed every 4
+  trials (referred to as trials segment) and participants were informed
+  of the current and future trials segment. This task is highly
   structure, as each trial consists of a combination of 4 factors
   (offer, energy, current and future costs), all of which have to be
   taken into account to maximize return, making this dataset ideal to
   test our prediction that participants combine forward-planning with
   preferences reflecting the structure of the task.</p>
+          <fig id="fig-design-nb-article">
+            <caption>
+              <p>Figure 1: Experimental design: (A) Single trial
+    procedure, each frame represents a step within the trial with
+    duration of each step above. Top row depicts participants accepting;
+    bottom row depicts participants rejecting. In each trial,
+    participants are presented with N golden cups; the number of cups
+    symbolizes the amount of reward. The blue bar represents energy
+    level; yellow bar represents accumulated reward so far, lightning
+    symbols at the bottom right of each frame represent current cost
+    (left) and future cost (right). (B) Between trial costs
+    dependencies. A segment consists of 4 trials and the cost in each
+    segment is fixed. Participants are aware of the cost in the current
+    and future 4 trials but not beyond. (C) Transition structure. Cost
+    can transition from low cost (LC) to high cost (HC), LC to LC, HC to
+    LC and HC to HC. Reproduced from Ott et al.
+    (<xref alt="2022a" rid="ref-ott2022forward-nb-article" ref-type="bibr">2022a</xref>)</p>
+            </caption>
+            <graphic mimetype="image" mime-subtype="jpeg" xlink:href="images/experimental_design.jpg"/>
+          </fig>
           <p>Performance indicates that participants were able to perform the
   task well. Participants provided responses with an average reaction
   time (RT) of 0.90s <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
@@ -5303,7 +5325,7 @@ sd_ne = np.std(n_e_0)  / 240 * 100</code>
     (<inline-formula><alternatives><tex-math><![CDATA[\Delta ELPD_{pref - planning}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi mathvariant="normal">Δ</mml:mi><mml:mi>E</mml:mi><mml:mi>L</mml:mi><mml:mi>P</mml:mi><mml:msub><mml:mi>D</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>f</mml:mi><mml:mo>−</mml:mo><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi><mml:mi>n</mml:mi><mml:mi>i</mml:mi><mml:mi>n</mml:mi><mml:mi>g</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=586.28
     <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
     55.56 s.e., see
-    <xref alt="Figure 1" rid="fig-choicemdl-nb-article">Figure 1</xref> A),
+    <xref alt="Figure 2" rid="fig-choicemdl-nb-article">Figure 2</xref> A),
     indicating that deviations from optimal behavior are not purely
     stochastic. Furthermore, our results indicate that participants’
     biases do not reflect a frequency prior
@@ -5314,19 +5336,19 @@ sd_ne = np.std(n_e_0)  / 240 * 100</code>
     <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
     52.62). Rather, participants exhibit preferences that reflect the
     task structure, as the Preference model provided the best fit (see
-    <xref alt="Figure 1" rid="fig-choicemdl-nb-article">Figure 1</xref> A).</p>
+    <xref alt="Figure 2" rid="fig-choicemdl-nb-article">Figure 2</xref> A).</p>
             <p>This result is highly consistent across participants: the
     preference model provided the best fit for 34 out of 40 participants
-    (see <xref alt="Figure 1" rid="fig-choicemdl-nb-article">Figure 1</xref> B).
+    (see <xref alt="Figure 2" rid="fig-choicemdl-nb-article">Figure 2</xref> B).
     The improved fit of the preference model is reflected in
-    <xref alt="Figure 1" rid="fig-choicemdl-nb-article">Figure 1</xref> C, showing
+    <xref alt="Figure 2" rid="fig-choicemdl-nb-article">Figure 2</xref> C, showing
     the proportion of correct choice predictions separately for each
     model and offer values. Here, the data show that the proportion of
     matches is on average higher for the preference compared to all
     other models.</p>
             <p>The estimated factor-level preference weights associated with
     each task factor reveal structured biases in participants’ behavior
-    (see <xref alt="Figure 1" rid="fig-choicemdl-nb-article">Figure 1</xref> D and
+    (see <xref alt="Figure 2" rid="fig-choicemdl-nb-article">Figure 2</xref> D and
     <xref alt="Table S2" rid="supptbl-pref_model_param-nb-article">Table S2</xref>
     for the posterior of each fitted parameter). Participants tend to
     reject low offers (1 and 2) more frequently than optimal forward
@@ -5571,7 +5593,7 @@ ax["D"].text(0.05, 0.48, "D", transform=fig.transFigure,
             <boxed-text>
               <fig id="fig-choicemdl-nb-article">
                 <caption>
-                  <p>Figure 1: Choice-model comparison and fitted
+                  <p>Figure 2: Choice-model comparison and fitted
         factor-level preference weights (A) Model comparison showing the
         expected log pointwise predictive density (ELPD) for each model
         (Preference, Offer-context, Frequency-prior and Planning
@@ -5613,7 +5635,7 @@ ci_interaction = az.hdi(traces['Preference'].posterior["beta_interaction"].value
     planning-derived DV and were more strongly guided by the preference
     score.</p>
             <p>This modulation is illustrated in
-    <xref alt="Figure 2" rid="fig-pref-planning-interaction-nb-article">Figure 2</xref>
+    <xref alt="Figure 3" rid="fig-pref-planning-interaction-nb-article">Figure 3</xref>
     A, where we plotted the fitted probability of accepting as a
     function of planning-derived DV for different preference scores.
     Reflecting the main effect of preference score, the logistic curve
@@ -5626,12 +5648,12 @@ ci_interaction = az.hdi(traces['Preference'].posterior["beta_interaction"].value
     preference score deviates further from zero (in either direction)
     reflecting reduced reliance on forward planning as preferences’
     uncertainty decreases.
-    <xref alt="Figure 2" rid="fig-pref-planning-interaction-nb-article">Figure 2</xref>
+    <xref alt="Figure 3" rid="fig-pref-planning-interaction-nb-article">Figure 3</xref>
     B and C show the observed probability of accepting an offer as a
     function of DV, separately when preference scores were positive
-    (<xref alt="Figure 2" rid="fig-pref-planning-interaction-nb-article">Figure 2</xref>
+    (<xref alt="Figure 3" rid="fig-pref-planning-interaction-nb-article">Figure 3</xref>
     B) and negative
-    (<xref alt="Figure 2" rid="fig-pref-planning-interaction-nb-article">Figure 2</xref>
+    (<xref alt="Figure 3" rid="fig-pref-planning-interaction-nb-article">Figure 3</xref>
     C). This further shows the effect of preferences on participants’
     response choice: participants accept an offer at lower DV when
     preference scores are positive than when preference scores are
@@ -5726,7 +5748,7 @@ ax["B"].text(0.04, 0.33, "C", transform=fig.transFigure,
             <boxed-text>
               <fig id="fig-pref-planning-interaction-nb-article">
                 <caption>
-                  <p>Figure 2: Relationship between preference score and
+                  <p>Figure 3: Relationship between preference score and
         DV. (A) Fitted probability of accepting an offer as a function
         of DV, separately for preference score of [-4, -2, -1, 0, 1, 2,
         4], to highlight the modulation of preference scores on the
@@ -5822,16 +5844,16 @@ r_interaction_no_outlier, pval_interaction_no_outlier = r.statistic, r.pvalue</c
             <p>In line with these predictions, we observed a positive
     correlation between <inline-formula><alternatives><tex-math><![CDATA[\beta_{plan}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
     and return (r=0.58, p&lt;0.001,
-    <xref alt="Figure 3" rid="fig-returns-nb-article">Figure 3</xref> A), showing
+    <xref alt="Figure 4" rid="fig-returns-nb-article">Figure 4</xref> A), showing
     that participants who rely more on forward planning get larger
     returns. Furthermore, <inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
     is strongly and positively correlated with return (r=0.66,
-    p&lt;0.001, <xref alt="Figure 3" rid="fig-returns-nb-article">Figure 3</xref>
+    p&lt;0.001, <xref alt="Figure 4" rid="fig-returns-nb-article">Figure 4</xref>
     C). However, contrary to our prediction, we observed a negative
     though only marginally significant correlation between preference
     entropy and return (r=-0.29, p=0.072,
-    <xref alt="Figure 3" rid="fig-returns-nb-article">Figure 3</xref> B). Visual
-    inspection of <xref alt="Figure 3" rid="fig-returns-nb-article">Figure 3</xref>
+    <xref alt="Figure 4" rid="fig-returns-nb-article">Figure 4</xref> B). Visual
+    inspection of <xref alt="Figure 4" rid="fig-returns-nb-article">Figure 4</xref>
     B revealed that the correlation appears to be driven from the
     participant with very low return (2.63 s.d. from population mean).
     When removing this participant, the correlation between preference
@@ -5903,7 +5925,7 @@ plt.tight_layout();</code>
             <boxed-text>
               <fig id="fig-returns-nb-article">
                 <caption>
-                  <p>Figure 3: Relationship between fitted parameters and
+                  <p>Figure 4: Relationship between fitted parameters and
         task performance (A) Correlation between participants’ total
         return and their fitted forward planning sensitivity
         <inline-formula><alternatives><tex-math><![CDATA[\beta_{plan}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>
@@ -5933,7 +5955,7 @@ plt.tight_layout();</code>
     associated with different factors of the task such as the offer, the
     current cost context, and upcoming transitions. Importantly, not all
     features of the task are weighted equally.
-    <xref alt="Figure 1" rid="fig-choicemdl-nb-article">Figure 1</xref> C shows
+    <xref alt="Figure 2" rid="fig-choicemdl-nb-article">Figure 2</xref> C shows
     that the parameters associated with offers and energy weigh strongly
     in participants’ preference scores compared to costs (both current
     and future). The fitted factor-level preference weights already
@@ -6035,7 +6057,7 @@ else:
 model_comparison = az.compare(traces_reduced)</code>
           </sec>
           <sec id="cell-24-nb-article" specific-use="notebook-content">
-            <p><xref alt="Figure 4" rid="fig-task-features-nb-article">Figure 4</xref> A
+            <p><xref alt="Figure 5" rid="fig-task-features-nb-article">Figure 5</xref> A
     shows the change in model fit when each preference factor was
     removed separately from the full preference model. Each reduced
     model omitted the preference term for one experimental factor while
@@ -6321,7 +6343,7 @@ ax["D"].text(0.05, 0.48, "D", transform=fig.transFigure,
             <boxed-text>
               <fig id="fig-task-features-nb-article">
                 <caption>
-                  <p>Figure 4: Contribution of task factors to
+                  <p>Figure 5: Contribution of task factors to
         preference-based choice and performance. (A) Predictive
         contribution of individual preference factors. Difference in fit
         between the full Preference model and models in which each of
@@ -6368,7 +6390,7 @@ ax["D"].text(0.05, 0.48, "D", transform=fig.transFigure,
     each task factor. To do so, we derived policies from reduced forward
     planning models in which one task factor was ignored and computed
     their return loss relative to the optimal policy
-    (<xref alt="Figure 4" rid="fig-task-features-nb-article">Figure 4</xref> B, see
+    (<xref alt="Figure 5" rid="fig-task-features-nb-article">Figure 5</xref> B, see
     <xref alt="Section 4.5" rid="sec-factor-relevance-analysis-nb-article">Section 4.5</xref>).
     Our results show that ignoring current and future costs when
     planning leads only to minimal losses (0.78% and 0.98%
@@ -6383,7 +6405,7 @@ ax["D"].text(0.05, 0.48, "D", transform=fig.transFigure,
     a result, it can deplete energy in low-energy states as its behavior
     is driven by offer levels. The large reward sensitivity of energy is
     not mirrored in
-    <xref alt="Figure 4" rid="fig-task-features-nb-article">Figure 4</xref> A
+    <xref alt="Figure 5" rid="fig-task-features-nb-article">Figure 5</xref> A
     because that analysis measures the additional predictive
     contribution of preference terms after accounting for
     planning-derived decision-values. Energy is already strongly
@@ -6402,11 +6424,11 @@ ax["D"].text(0.05, 0.48, "D", transform=fig.transFigure,
     <xref alt="Section 4.5" rid="sec-factor-relevance-analysis-nb-article">Section 4.5</xref>).
     The full preference policy produced a return loss of 28.34%,
     indicating that preferences did not fully replace forward planning,
-    see <xref alt="Figure 4" rid="fig-task-features-nb-article">Figure 4</xref> C.
+    see <xref alt="Figure 5" rid="fig-task-features-nb-article">Figure 5</xref> C.
     However, this loss was smaller than the loss of a stochastic policy
     (dashed line), showing that the fitted preferences captured task
     structure that was relevant for return maximization
-    (<xref alt="Figure 4" rid="fig-task-features-nb-article">Figure 4</xref> C).
+    (<xref alt="Figure 5" rid="fig-task-features-nb-article">Figure 5</xref> C).
     Removing current or future cost from the preference policy produced
     little additional loss relative to the full preference policy (29.72
     and 28.38 respectively). In contrast, removing offer value led to a
@@ -6433,7 +6455,7 @@ ax["D"].text(0.05, 0.48, "D", transform=fig.transFigure,
     explore whether this might be contributing to an underlying
     mechanism for learning participants’ preferences, we computed the
     factor-dependent marginal action probability under the optimal
-    policy. <xref alt="Figure 4" rid="fig-task-features-nb-article">Figure 4</xref>
+    policy. <xref alt="Figure 5" rid="fig-task-features-nb-article">Figure 5</xref>
     D plots the factor-level preferences parameters side-by-side with
     the marginal action probability, showing that participants’
     preferences reflect relatively closely the factor-level specific
@@ -6538,7 +6560,7 @@ ci_interaction = az.hdi(traces_RT['RT = Conflict x H(Pref)'].posterior["conflict
     0.46]) and (iii) the modulation effect between the two
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.06,
-    0.13], see <xref alt="Figure 5" rid="fig-rt-nb-article">Figure 5</xref> A).
+    0.13], see <xref alt="Figure 6" rid="fig-rt-nb-article">Figure 6</xref> A).
     This result extends previous findings showing that participants do
     not rely on forward planning to the same extent across all states of
     the task. Our results suggest that rather than splitting the task in
@@ -6547,7 +6569,7 @@ ci_interaction = az.hdi(traces_RT['RT = Conflict x H(Pref)'].posterior["conflict
     forward planning across states instead reflects the fact that
     participants engage in forward planning more when preferences are
     weak. Specifically, as can be seen in
-    <xref alt="Figure 5" rid="fig-rt-nb-article">Figure 5</xref> B, forward
+    <xref alt="Figure 6" rid="fig-rt-nb-article">Figure 6</xref> B, forward
     planning depends less on forward planning conflict when preferences
     entropy is low (blue line), but more so when preferences entropy is
     larger (orange and green lines).</p>
@@ -6560,7 +6582,7 @@ ci_interaction = az.hdi(traces_RT['RT = Conflict x H(Pref)'].posterior["conflict
     0.46]) and (iii) the modulatory effect between the two
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.06,
-    0.13], see <xref alt="Figure 5" rid="fig-rt-nb-article">Figure 5</xref> A).
+    0.13], see <xref alt="Figure 6" rid="fig-rt-nb-article">Figure 6</xref> A).
     This result extends on previous findings showing that participants
     do not rely on planning to the same extent across all states of the
     task. Our results suggest that rather than splitting the task in
@@ -6570,11 +6592,11 @@ ci_interaction = az.hdi(traces_RT['RT = Conflict x H(Pref)'].posterior["conflict
     et al. 2022a</xref>), the differential amount of planning across
     states instead reflects the fact that participants engage in
     planning more when preferences are weak. The positive modulatory
-    effect (see <xref alt="Figure 5" rid="fig-rt-nb-article">Figure 5</xref> A)
+    effect (see <xref alt="Figure 6" rid="fig-rt-nb-article">Figure 6</xref> A)
     between conflict and entropy of preferences indicates that the
     reliance on planning is modulated by the strength of participants’
     preferences. Specifically, as can be seen in
-    <xref alt="Figure 5" rid="fig-rt-nb-article">Figure 5</xref> B, planning
+    <xref alt="Figure 6" rid="fig-rt-nb-article">Figure 6</xref> B, planning
     depends less on conflict when preferences are strong (blue line),
     but more so when preferences are weaker (orange and green
     lines).</p>
@@ -6649,7 +6671,7 @@ ax["B"].text(0.44, 0.98, "B", transform=fig.transFigure,
             <boxed-text>
               <fig id="fig-rt-nb-article">
                 <caption>
-                  <p>Figure 5: RT evidence for preference-modulated
+                  <p>Figure 6: RT evidence for preference-modulated
         forward planning. (A) Posterior distributions of the fitted
         response-time effects, including forward planning conflict,
         preference entropy, and their interaction. (B) Posterior
@@ -6822,7 +6844,7 @@ ax["B"].text(0.44, 0.98, "B", transform=fig.transFigure,
   task phase and does not capture updating of these preferences. The
   similarity between preferences and factor levels-dependent marginal
   action probabilities (see
-  <xref alt="Figure 4" rid="fig-task-features-nb-article">Figure 4</xref> D)
+  <xref alt="Figure 5" rid="fig-task-features-nb-article">Figure 5</xref> D)
   suggests that preferences might arise by keeping track of actions
   performed at each level of each factor under an approximately optimal
   policy. For example, this may have happened in the initial training
@@ -6894,7 +6916,7 @@ ax["B"].text(0.44, 0.98, "B", transform=fig.transFigure,
     The study was approved by the Institutional Review Board of the
     Technische Universität Dresden and conducted in accordance with
     ethical standards of the Declaration of Helsinki.</p>
-            <p><xref alt="Figure 6" rid="fig-design-nb-article">Figure 6</xref> shows a
+            <p><xref alt="Figure 1" rid="fig-design-nb-article">Figure 1</xref> shows a
     schematic representation of the task. Participants were instructed
     to gather as many points as possible throughout the task. In each
     trial, they were presented with an offer associated with a reward of
@@ -6906,36 +6928,16 @@ ax["B"].text(0.44, 0.98, "B", transform=fig.transFigure,
     energy could range from 0 (depleted energy) to 6 (max energy).
     Offers varied in each trial following a uniform distribution. Costs
     remained fixed for 4 consecutive trials, which we refer to as a
-    segment (see <xref alt="Figure 6" rid="fig-design-nb-article">Figure 6</xref>
+    segment (see <xref alt="Figure 1" rid="fig-design-nb-article">Figure 1</xref>
     B), and participants were informed of the price of the current
     segment and the next segment. The cost of the next segment was
     pseudorandomized to equate the probability of each transition (from
     current HC or LC to future HC or LC, see
-    <xref alt="Figure 6" rid="fig-design-nb-article">Figure 6</xref> C) and ensure
+    <xref alt="Figure 1" rid="fig-design-nb-article">Figure 1</xref> C) and ensure
     that each transition occurred 15 times. When participants accepted
     an offer that they could not afford (current energy level below
     current cost), no reward was awarded and a warning was
     displayed.</p>
-            <fig id="fig-design-nb-article">
-              <caption>
-                <p>Figure 6: EExperimental design: (A) Single trial
-      procedure, each frame represents a step within the trial with
-      duration of each step above. Top row depicts participants
-      accepting; bottom row depicts participants rejecting. In each
-      trial, participants are presented with N golden cups; the number
-      of cups symbolizes the amount of reward. The blue bar represents
-      energy level; yellow bar represents accumulated reward so far,
-      lightning symbols at the bottom right of each frame represent
-      current cost (left) and future cost (right). (B) Between trial
-      costs dependencies. A segment consists of 4 trials and the cost in
-      each segment is fixed. Participants are aware of the cost in the
-      current and future 4 trials but not beyond. (C) Transition
-      structure. Cost can transition from low cost (LC) to high cost
-      (HC), LC to LC, HC to LC and HC to HC. Reproduced from Ott et al.
-      (<xref alt="2022a" rid="ref-ott2022forward-nb-article" ref-type="bibr">2022a</xref>)</p>
-              </caption>
-              <graphic mimetype="image" mime-subtype="jpeg" xlink:href="images/experimental_design.jpg"/>
-            </fig>
             <p>Accordingly, each trial was defined by several task factors: the
     current offer, the participant’s current energy level, the current
     cost of accepting, and the cost in the upcoming segment.
