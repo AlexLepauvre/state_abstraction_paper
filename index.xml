@@ -224,10 +224,8 @@ when preference-based guidance is uncertain.</p>
     <sec id="results">
       <title>2 Results</title>
       <p>We tested our hypothesis on a previously published dataset in which
-  participants
-  (N=<monospace>{python} f"{n_participants:.0f}"</monospace>)
-  performed a sequential decision-making task with a large state space
-  (Ott et al.
+  participants (N=40) performed a sequential decision-making task with a
+  large state space (Ott et al.
   (<xref alt="2022b" rid="ref-ott2022forward-data" ref-type="bibr">2022b</xref>),
   see <xref alt="Figure 1" rid="fig-design">Figure 1</xref> and
   <xref alt="Section 4.1" rid="sec-data-desgin">Section 4.1</xref> for
@@ -582,9 +580,9 @@ when preference-based guidance is uncertain.</p>
     planning models in which one task factor was ignored and computed
     their return loss relative to the optimal policy
     (<xref alt="Figure 5" rid="fig-task-features">Figure 5</xref> B, see
-    <xref alt="Section 4.5" rid="sec-factor-relevance-analysis">Section 4.5</xref>).
-    Our results show that ignoring current and future costs when
-    planning leads only to minimal losses (0.78% and 0.98%
+    <xref alt="Section 4.5" rid="sec-factor-relevance-analysis">Section 4.5</xref>
+    for more details). Our results show that ignoring current and future
+    costs when planning leads only to minimal losses (0.78% and 0.98%
     respectively), while ignoring the offer level leads to a 13.94%
     loss. The biggest loss is incurred when ignoring energy levels. This
     leads to a loss in returns of 72.04%, which is even larger than a
@@ -975,10 +973,7 @@ when preference-based guidance is uncertain.</p>
       <sec id="sec-data-desgin">
         <title>4.1 Data</title>
         <p>The data used in this study were published by Ott and colleagues
-    (2022a). In this study,
-    <monospace>{python} f"{n_participants:.0f}"</monospace>
-    participants
-    (<monospace>{python} f"{n_female:.0f}, mean age={mean_age:.1f}, SD={std_age:.1f}"</monospace>)
+    (2022a). In this study, 40 participants (22, mean age=24.4, SD=4.6)
     took part in a sequential decision-making task
     (<xref alt="Ott et al. 2022a" rid="ref-ott2022forward" ref-type="bibr">Ott
     et al. 2022a</xref>,
@@ -2385,35 +2380,35 @@ when preference-based guidance is uncertain.</p>
               <tbody>
                 <tr>
                   <td align="left">Preference</td>
-                  <td align="right">-1492.49</td>
-                  <td align="right">256.526</td>
+                  <td align="right">-1492.47</td>
+                  <td align="right">256.484</td>
                   <td align="right">0</td>
-                  <td align="right">48.7651</td>
+                  <td align="right">48.7583</td>
                   <td align="right">0</td>
                 </tr>
                 <tr>
                   <td align="left">Context</td>
-                  <td align="right">-1656.69</td>
-                  <td align="right">159.175</td>
-                  <td align="right">164.209</td>
-                  <td align="right">52.4615</td>
-                  <td align="right">19.671</td>
+                  <td align="right">-1657.96</td>
+                  <td align="right">160.738</td>
+                  <td align="right">165.486</td>
+                  <td align="right">52.6188</td>
+                  <td align="right">19.6029</td>
                 </tr>
                 <tr>
                   <td align="left">Frequency prior</td>
-                  <td align="right">-2073.38</td>
-                  <td align="right">77.0896</td>
-                  <td align="right">580.889</td>
-                  <td align="right">55.5712</td>
-                  <td align="right">35.9363</td>
+                  <td align="right">-2073.86</td>
+                  <td align="right">77.4975</td>
+                  <td align="right">581.384</td>
+                  <td align="right">55.6579</td>
+                  <td align="right">35.8832</td>
                 </tr>
                 <tr>
                   <td align="left">Planning</td>
-                  <td align="right">-2078.46</td>
-                  <td align="right">68.3847</td>
-                  <td align="right">585.976</td>
-                  <td align="right">55.58</td>
-                  <td align="right">36.1456</td>
+                  <td align="right">-2078.76</td>
+                  <td align="right">68.6015</td>
+                  <td align="right">586.285</td>
+                  <td align="right">55.5599</td>
+                  <td align="right">36.001</td>
                 </tr>
               </tbody>
             </table>
@@ -2461,10 +2456,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">2.072</td>
-                  <td align="right">0.242</td>
-                  <td align="right">1.614</td>
-                  <td align="right">2.573</td>
+                  <td align="right">2.082</td>
+                  <td align="right">0.248</td>
+                  <td align="right">1.603</td>
+                  <td align="right">2.577</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2484,10 +2479,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">-2.374</td>
-                  <td align="right">0.971</td>
-                  <td align="right">-4.232</td>
-                  <td align="right">-0.426</td>
+                  <td align="right">-2.371</td>
+                  <td align="right">0.987</td>
+                  <td align="right">-4.194</td>
+                  <td align="right">-0.381</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2507,10 +2502,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">-1.625</td>
-                  <td align="right">0.938</td>
-                  <td align="right">-3.535</td>
-                  <td align="right">0.092</td>
+                  <td align="right">-1.611</td>
+                  <td align="right">0.955</td>
+                  <td align="right">-3.537</td>
+                  <td align="right">0.17</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2530,10 +2525,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">1.627</td>
-                  <td align="right">0.945</td>
-                  <td align="right">-0.22</td>
-                  <td align="right">3.453</td>
+                  <td align="right">1.656</td>
+                  <td align="right">0.958</td>
+                  <td align="right">-0.092</td>
+                  <td align="right">3.611</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2553,10 +2548,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">2.923</td>
-                  <td align="right">0.976</td>
-                  <td align="right">1.054</td>
-                  <td align="right">4.842</td>
+                  <td align="right">2.955</td>
+                  <td align="right">0.985</td>
+                  <td align="right">1.161</td>
+                  <td align="right">4.979</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2577,10 +2572,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">0.765</td>
-                  <td align="right">1.161</td>
-                  <td align="right">-1.488</td>
-                  <td align="right">3.105</td>
+                  <td align="right">0.724</td>
+                  <td align="right">1.166</td>
+                  <td align="right">-1.592</td>
+                  <td align="right">2.884</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2601,10 +2596,34 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">-0.127</td>
+                  <td align="right">-0.178</td>
+                  <td align="right">1.164</td>
+                  <td align="right">-2.516</td>
+                  <td align="right">1.955</td>
+                </tr>
+                <tr>
+                  <td align="left">
+                    <inline-formula>
+                      <alternatives>
+                        <tex-math><![CDATA[\beta_{FC=1}]]></tex-math>
+                        <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
+                          <mml:msub>
+                            <mml:mi>β</mml:mi>
+                            <mml:mrow>
+                              <mml:mi>F</mml:mi>
+                              <mml:mi>C</mml:mi>
+                              <mml:mo>=</mml:mo>
+                              <mml:mn>1</mml:mn>
+                            </mml:mrow>
+                          </mml:msub>
+                        </mml:math>
+                      </alternatives>
+                    </inline-formula>
+                  </td>
+                  <td align="right">0.416</td>
                   <td align="right">1.165</td>
-                  <td align="right">-2.482</td>
-                  <td align="right">2.144</td>
+                  <td align="right">-1.866</td>
+                  <td align="right">2.711</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2625,34 +2644,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">0.457</td>
-                  <td align="right">1.149</td>
-                  <td align="right">-1.86</td>
-                  <td align="right">2.557</td>
-                </tr>
-                <tr>
-                  <td align="left">
-                    <inline-formula>
-                      <alternatives>
-                        <tex-math><![CDATA[\beta_{FC=1}]]></tex-math>
-                        <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
-                          <mml:msub>
-                            <mml:mi>β</mml:mi>
-                            <mml:mrow>
-                              <mml:mi>F</mml:mi>
-                              <mml:mi>C</mml:mi>
-                              <mml:mo>=</mml:mo>
-                              <mml:mn>1</mml:mn>
-                            </mml:mrow>
-                          </mml:msub>
-                        </mml:math>
-                      </alternatives>
-                    </inline-formula>
-                  </td>
-                  <td align="right">0.21</td>
-                  <td align="right">1.149</td>
-                  <td align="right">-2.051</td>
-                  <td align="right">2.359</td>
+                  <td align="right">0.176</td>
+                  <td align="right">1.164</td>
+                  <td align="right">-2.219</td>
+                  <td align="right">2.381</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2672,10 +2667,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">-4.438</td>
-                  <td align="right">0.935</td>
-                  <td align="right">-6.247</td>
-                  <td align="right">-2.627</td>
+                  <td align="right">-4.429</td>
+                  <td align="right">0.932</td>
+                  <td align="right">-6.266</td>
+                  <td align="right">-2.666</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2695,10 +2690,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">-0.48</td>
-                  <td align="right">0.781</td>
-                  <td align="right">-1.994</td>
-                  <td align="right">1.076</td>
+                  <td align="right">-0.442</td>
+                  <td align="right">0.774</td>
+                  <td align="right">-1.88</td>
+                  <td align="right">1.137</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2718,10 +2713,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">-0.02</td>
-                  <td align="right">0.75</td>
-                  <td align="right">-1.473</td>
-                  <td align="right">1.492</td>
+                  <td align="right">0.018</td>
+                  <td align="right">0.732</td>
+                  <td align="right">-1.397</td>
+                  <td align="right">1.421</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2741,10 +2736,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">0.203</td>
-                  <td align="right">0.748</td>
-                  <td align="right">-1.228</td>
-                  <td align="right">1.688</td>
+                  <td align="right">0.237</td>
+                  <td align="right">0.733</td>
+                  <td align="right">-1.069</td>
+                  <td align="right">1.747</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2764,10 +2759,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">0.3</td>
-                  <td align="right">0.758</td>
-                  <td align="right">-1.186</td>
-                  <td align="right">1.799</td>
+                  <td align="right">0.337</td>
+                  <td align="right">0.74</td>
+                  <td align="right">-0.991</td>
+                  <td align="right">1.856</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2787,10 +2782,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">0.793</td>
-                  <td align="right">0.769</td>
-                  <td align="right">-0.602</td>
-                  <td align="right">2.44</td>
+                  <td align="right">0.829</td>
+                  <td align="right">0.753</td>
+                  <td align="right">-0.569</td>
+                  <td align="right">2.323</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2810,10 +2805,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">4.195</td>
+                  <td align="right">4.248</td>
                   <td align="right">0.962</td>
-                  <td align="right">2.363</td>
-                  <td align="right">6.132</td>
+                  <td align="right">2.465</td>
+                  <td align="right">6.186</td>
                 </tr>
                 <tr>
                   <td align="left">
@@ -2841,10 +2836,10 @@ when preference-based guidance is uncertain.</p>
                       </alternatives>
                     </inline-formula>
                   </td>
-                  <td align="right">1.306</td>
-                  <td align="right">0.508</td>
-                  <td align="right">0.258</td>
-                  <td align="right">2.256</td>
+                  <td align="right">1.264</td>
+                  <td align="right">0.513</td>
+                  <td align="right">0.308</td>
+                  <td align="right">2.294</td>
                 </tr>
               </tbody>
             </table>
@@ -4453,7 +4448,7 @@ when preference-based guidance is uncertain.</p>
       </ref>
     </ref-list>
   </back>
-  <sub-article article-type="notebook" id="nb-9-nb-article">
+  <sub-article article-type="notebook" id="nb-8-nb-article">
     <front-stub>
       <title-group>
         <article-title>Task-structured preferences guide forward planning in
@@ -5249,10 +5244,8 @@ sd_ne = np.std(n_e_0)  / 240 * 100</code>
         <sec id="results-nb-article">
           <title>2 Results</title>
           <p>We tested our hypothesis on a previously published dataset in which
-  participants
-  (N=<monospace>{python} f"{n_participants:.0f}"</monospace>)
-  performed a sequential decision-making task with a large state space
-  (Ott et al.
+  participants (N=40) performed a sequential decision-making task with a
+  large state space (Ott et al.
   (<xref alt="2022b" rid="ref-ott2022forward-data-nb-article" ref-type="bibr">2022b</xref>),
   see <xref alt="Figure 1" rid="fig-design-nb-article">Figure 1</xref> and
   <xref alt="Section 4.1" rid="sec-data-desgin-nb-article">Section 4.1</xref> for
@@ -6397,9 +6390,9 @@ ax["D"].text(0.05, 0.48, "D", transform=fig.transFigure,
     planning models in which one task factor was ignored and computed
     their return loss relative to the optimal policy
     (<xref alt="Figure 5" rid="fig-task-features-nb-article">Figure 5</xref> B, see
-    <xref alt="Section 4.5" rid="sec-factor-relevance-analysis-nb-article">Section 4.5</xref>).
-    Our results show that ignoring current and future costs when
-    planning leads only to minimal losses (0.78% and 0.98%
+    <xref alt="Section 4.5" rid="sec-factor-relevance-analysis-nb-article">Section 4.5</xref>
+    for more details). Our results show that ignoring current and future
+    costs when planning leads only to minimal losses (0.78% and 0.98%
     respectively), while ignoring the offer level leads to a 13.94%
     loss. The biggest loss is incurred when ignoring energy levels. This
     leads to a loss in returns of 72.04%, which is even larger than a
@@ -6542,7 +6535,7 @@ NUTS: [sigma, Intercept, conflict, entropy, conflict:entropy, 1|vpn_sigma, 1|vpn
               <preformat/>
             </boxed-text>
             <boxed-text>
-              <preformat>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 96 seconds.
+              <preformat>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 51 seconds.
 The rhat statistic is larger than 1.01 for some parameters. This indicates problems during sampling. See https://arxiv.org/abs/1903.08008 for details</preformat>
             </boxed-text>
           </sec>
@@ -6911,10 +6904,7 @@ ax["B"].text(0.44, 0.98, "B", transform=fig.transFigure,
           <sec id="sec-data-desgin-nb-article">
             <title>4.1 Data</title>
             <p>The data used in this study were published by Ott and colleagues
-    (2022a). In this study,
-    <monospace>{python} f"{n_participants:.0f}"</monospace>
-    participants
-    (<monospace>{python} f"{n_female:.0f}, mean age={mean_age:.1f}, SD={std_age:.1f}"</monospace>)
+    (2022a). In this study, 40 participants (22, mean age=24.4, SD=4.6)
     took part in a sequential decision-making task
     (<xref alt="Ott et al. 2022a" rid="ref-ott2022forward-nb-article" ref-type="bibr">Ott
     et al. 2022a</xref>,
@@ -8415,35 +8405,35 @@ display(Markdown(model_comparison[[ "elpd_loo", "p_loo", "elpd_diff", "se", "dse
                     <tbody>
                       <tr>
                         <td align="left">Preference</td>
-                        <td align="right">-1492.49</td>
-                        <td align="right">256.526</td>
+                        <td align="right">-1492.47</td>
+                        <td align="right">256.484</td>
                         <td align="right">0</td>
-                        <td align="right">48.7651</td>
+                        <td align="right">48.7583</td>
                         <td align="right">0</td>
                       </tr>
                       <tr>
                         <td align="left">Context</td>
-                        <td align="right">-1656.69</td>
-                        <td align="right">159.175</td>
-                        <td align="right">164.209</td>
-                        <td align="right">52.4615</td>
-                        <td align="right">19.671</td>
+                        <td align="right">-1657.96</td>
+                        <td align="right">160.738</td>
+                        <td align="right">165.486</td>
+                        <td align="right">52.6188</td>
+                        <td align="right">19.6029</td>
                       </tr>
                       <tr>
                         <td align="left">Frequency prior</td>
-                        <td align="right">-2073.38</td>
-                        <td align="right">77.0896</td>
-                        <td align="right">580.889</td>
-                        <td align="right">55.5712</td>
-                        <td align="right">35.9363</td>
+                        <td align="right">-2073.86</td>
+                        <td align="right">77.4975</td>
+                        <td align="right">581.384</td>
+                        <td align="right">55.6579</td>
+                        <td align="right">35.8832</td>
                       </tr>
                       <tr>
                         <td align="left">Planning</td>
-                        <td align="right">-2078.46</td>
-                        <td align="right">68.3847</td>
-                        <td align="right">585.976</td>
-                        <td align="right">55.58</td>
-                        <td align="right">36.1456</td>
+                        <td align="right">-2078.76</td>
+                        <td align="right">68.6015</td>
+                        <td align="right">586.285</td>
+                        <td align="right">55.5599</td>
+                        <td align="right">36.001</td>
                       </tr>
                     </tbody>
                   </table>
@@ -8503,10 +8493,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">2.072</td>
-                        <td align="right">0.242</td>
-                        <td align="right">1.614</td>
-                        <td align="right">2.573</td>
+                        <td align="right">2.082</td>
+                        <td align="right">0.248</td>
+                        <td align="right">1.603</td>
+                        <td align="right">2.577</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8526,10 +8516,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">-2.374</td>
-                        <td align="right">0.971</td>
-                        <td align="right">-4.232</td>
-                        <td align="right">-0.426</td>
+                        <td align="right">-2.371</td>
+                        <td align="right">0.987</td>
+                        <td align="right">-4.194</td>
+                        <td align="right">-0.381</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8549,10 +8539,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">-1.625</td>
-                        <td align="right">0.938</td>
-                        <td align="right">-3.535</td>
-                        <td align="right">0.092</td>
+                        <td align="right">-1.611</td>
+                        <td align="right">0.955</td>
+                        <td align="right">-3.537</td>
+                        <td align="right">0.17</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8572,10 +8562,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">1.627</td>
-                        <td align="right">0.945</td>
-                        <td align="right">-0.22</td>
-                        <td align="right">3.453</td>
+                        <td align="right">1.656</td>
+                        <td align="right">0.958</td>
+                        <td align="right">-0.092</td>
+                        <td align="right">3.611</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8595,10 +8585,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">2.923</td>
-                        <td align="right">0.976</td>
-                        <td align="right">1.054</td>
-                        <td align="right">4.842</td>
+                        <td align="right">2.955</td>
+                        <td align="right">0.985</td>
+                        <td align="right">1.161</td>
+                        <td align="right">4.979</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8619,10 +8609,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">0.765</td>
-                        <td align="right">1.161</td>
-                        <td align="right">-1.488</td>
-                        <td align="right">3.105</td>
+                        <td align="right">0.724</td>
+                        <td align="right">1.166</td>
+                        <td align="right">-1.592</td>
+                        <td align="right">2.884</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8643,10 +8633,34 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">-0.127</td>
+                        <td align="right">-0.178</td>
+                        <td align="right">1.164</td>
+                        <td align="right">-2.516</td>
+                        <td align="right">1.955</td>
+                      </tr>
+                      <tr>
+                        <td align="left">
+                          <inline-formula>
+                            <alternatives>
+                              <tex-math><![CDATA[\beta_{FC=1}]]></tex-math>
+                              <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
+                                <mml:msub>
+                                  <mml:mi>β</mml:mi>
+                                  <mml:mrow>
+                                    <mml:mi>F</mml:mi>
+                                    <mml:mi>C</mml:mi>
+                                    <mml:mo>=</mml:mo>
+                                    <mml:mn>1</mml:mn>
+                                  </mml:mrow>
+                                </mml:msub>
+                              </mml:math>
+                            </alternatives>
+                          </inline-formula>
+                        </td>
+                        <td align="right">0.416</td>
                         <td align="right">1.165</td>
-                        <td align="right">-2.482</td>
-                        <td align="right">2.144</td>
+                        <td align="right">-1.866</td>
+                        <td align="right">2.711</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8667,34 +8681,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">0.457</td>
-                        <td align="right">1.149</td>
-                        <td align="right">-1.86</td>
-                        <td align="right">2.557</td>
-                      </tr>
-                      <tr>
-                        <td align="left">
-                          <inline-formula>
-                            <alternatives>
-                              <tex-math><![CDATA[\beta_{FC=1}]]></tex-math>
-                              <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
-                                <mml:msub>
-                                  <mml:mi>β</mml:mi>
-                                  <mml:mrow>
-                                    <mml:mi>F</mml:mi>
-                                    <mml:mi>C</mml:mi>
-                                    <mml:mo>=</mml:mo>
-                                    <mml:mn>1</mml:mn>
-                                  </mml:mrow>
-                                </mml:msub>
-                              </mml:math>
-                            </alternatives>
-                          </inline-formula>
-                        </td>
-                        <td align="right">0.21</td>
-                        <td align="right">1.149</td>
-                        <td align="right">-2.051</td>
-                        <td align="right">2.359</td>
+                        <td align="right">0.176</td>
+                        <td align="right">1.164</td>
+                        <td align="right">-2.219</td>
+                        <td align="right">2.381</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8714,10 +8704,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">-4.438</td>
-                        <td align="right">0.935</td>
-                        <td align="right">-6.247</td>
-                        <td align="right">-2.627</td>
+                        <td align="right">-4.429</td>
+                        <td align="right">0.932</td>
+                        <td align="right">-6.266</td>
+                        <td align="right">-2.666</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8737,10 +8727,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">-0.48</td>
-                        <td align="right">0.781</td>
-                        <td align="right">-1.994</td>
-                        <td align="right">1.076</td>
+                        <td align="right">-0.442</td>
+                        <td align="right">0.774</td>
+                        <td align="right">-1.88</td>
+                        <td align="right">1.137</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8760,10 +8750,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">-0.02</td>
-                        <td align="right">0.75</td>
-                        <td align="right">-1.473</td>
-                        <td align="right">1.492</td>
+                        <td align="right">0.018</td>
+                        <td align="right">0.732</td>
+                        <td align="right">-1.397</td>
+                        <td align="right">1.421</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8783,10 +8773,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">0.203</td>
-                        <td align="right">0.748</td>
-                        <td align="right">-1.228</td>
-                        <td align="right">1.688</td>
+                        <td align="right">0.237</td>
+                        <td align="right">0.733</td>
+                        <td align="right">-1.069</td>
+                        <td align="right">1.747</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8806,10 +8796,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">0.3</td>
-                        <td align="right">0.758</td>
-                        <td align="right">-1.186</td>
-                        <td align="right">1.799</td>
+                        <td align="right">0.337</td>
+                        <td align="right">0.74</td>
+                        <td align="right">-0.991</td>
+                        <td align="right">1.856</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8829,10 +8819,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">0.793</td>
-                        <td align="right">0.769</td>
-                        <td align="right">-0.602</td>
-                        <td align="right">2.44</td>
+                        <td align="right">0.829</td>
+                        <td align="right">0.753</td>
+                        <td align="right">-0.569</td>
+                        <td align="right">2.323</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8852,10 +8842,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">4.195</td>
+                        <td align="right">4.248</td>
                         <td align="right">0.962</td>
-                        <td align="right">2.363</td>
-                        <td align="right">6.132</td>
+                        <td align="right">2.465</td>
+                        <td align="right">6.186</td>
                       </tr>
                       <tr>
                         <td align="left">
@@ -8883,10 +8873,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                             </alternatives>
                           </inline-formula>
                         </td>
-                        <td align="right">1.306</td>
-                        <td align="right">0.508</td>
-                        <td align="right">0.258</td>
-                        <td align="right">2.256</td>
+                        <td align="right">1.264</td>
+                        <td align="right">0.513</td>
+                        <td align="right">0.308</td>
+                        <td align="right">2.294</td>
                       </tr>
                     </tbody>
                   </table>
@@ -10742,6 +10732,8 @@ model_comparison = az.compare(traces)</code>
           <preformat>/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
   warnings.warn(
 /home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(
+/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
   warnings.warn(</preformat>
         </boxed-text>
       </sec>
@@ -10869,35 +10861,35 @@ display(Markdown(model_comparison[[ "elpd_loo", "p_loo", "elpd_diff", "se", "dse
                 <tbody>
                   <tr>
                     <td align="left">Preference</td>
-                    <td align="right">-1492.49</td>
-                    <td align="right">256.526</td>
+                    <td align="right">-1492.47</td>
+                    <td align="right">256.484</td>
                     <td align="right">0</td>
-                    <td align="right">48.7651</td>
+                    <td align="right">48.7583</td>
                     <td align="right">0</td>
                   </tr>
                   <tr>
                     <td align="left">Context</td>
-                    <td align="right">-1656.69</td>
-                    <td align="right">159.175</td>
-                    <td align="right">164.209</td>
-                    <td align="right">52.4615</td>
-                    <td align="right">19.671</td>
+                    <td align="right">-1657.96</td>
+                    <td align="right">160.738</td>
+                    <td align="right">165.486</td>
+                    <td align="right">52.6188</td>
+                    <td align="right">19.6029</td>
                   </tr>
                   <tr>
                     <td align="left">Frequency prior</td>
-                    <td align="right">-2073.38</td>
-                    <td align="right">77.0896</td>
-                    <td align="right">580.889</td>
-                    <td align="right">55.5712</td>
-                    <td align="right">35.9363</td>
+                    <td align="right">-2073.86</td>
+                    <td align="right">77.4975</td>
+                    <td align="right">581.384</td>
+                    <td align="right">55.6579</td>
+                    <td align="right">35.8832</td>
                   </tr>
                   <tr>
                     <td align="left">Planning</td>
-                    <td align="right">-2078.46</td>
-                    <td align="right">68.3847</td>
-                    <td align="right">585.976</td>
-                    <td align="right">55.58</td>
-                    <td align="right">36.1456</td>
+                    <td align="right">-2078.76</td>
+                    <td align="right">68.6015</td>
+                    <td align="right">586.285</td>
+                    <td align="right">55.5599</td>
+                    <td align="right">36.001</td>
                   </tr>
                 </tbody>
               </table>
@@ -10956,10 +10948,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">2.072</td>
-                    <td align="right">0.242</td>
-                    <td align="right">1.614</td>
-                    <td align="right">2.573</td>
+                    <td align="right">2.082</td>
+                    <td align="right">0.248</td>
+                    <td align="right">1.603</td>
+                    <td align="right">2.577</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -10979,10 +10971,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">-2.374</td>
-                    <td align="right">0.971</td>
-                    <td align="right">-4.232</td>
-                    <td align="right">-0.426</td>
+                    <td align="right">-2.371</td>
+                    <td align="right">0.987</td>
+                    <td align="right">-4.194</td>
+                    <td align="right">-0.381</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11002,10 +10994,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">-1.625</td>
-                    <td align="right">0.938</td>
-                    <td align="right">-3.535</td>
-                    <td align="right">0.092</td>
+                    <td align="right">-1.611</td>
+                    <td align="right">0.955</td>
+                    <td align="right">-3.537</td>
+                    <td align="right">0.17</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11025,10 +11017,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">1.627</td>
-                    <td align="right">0.945</td>
-                    <td align="right">-0.22</td>
-                    <td align="right">3.453</td>
+                    <td align="right">1.656</td>
+                    <td align="right">0.958</td>
+                    <td align="right">-0.092</td>
+                    <td align="right">3.611</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11048,10 +11040,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">2.923</td>
-                    <td align="right">0.976</td>
-                    <td align="right">1.054</td>
-                    <td align="right">4.842</td>
+                    <td align="right">2.955</td>
+                    <td align="right">0.985</td>
+                    <td align="right">1.161</td>
+                    <td align="right">4.979</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11072,10 +11064,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">0.765</td>
-                    <td align="right">1.161</td>
-                    <td align="right">-1.488</td>
-                    <td align="right">3.105</td>
+                    <td align="right">0.724</td>
+                    <td align="right">1.166</td>
+                    <td align="right">-1.592</td>
+                    <td align="right">2.884</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11096,10 +11088,34 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">-0.127</td>
+                    <td align="right">-0.178</td>
+                    <td align="right">1.164</td>
+                    <td align="right">-2.516</td>
+                    <td align="right">1.955</td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      <inline-formula>
+                        <alternatives>
+                          <tex-math><![CDATA[\beta_{FC=1}]]></tex-math>
+                          <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
+                            <mml:msub>
+                              <mml:mi>β</mml:mi>
+                              <mml:mrow>
+                                <mml:mi>F</mml:mi>
+                                <mml:mi>C</mml:mi>
+                                <mml:mo>=</mml:mo>
+                                <mml:mn>1</mml:mn>
+                              </mml:mrow>
+                            </mml:msub>
+                          </mml:math>
+                        </alternatives>
+                      </inline-formula>
+                    </td>
+                    <td align="right">0.416</td>
                     <td align="right">1.165</td>
-                    <td align="right">-2.482</td>
-                    <td align="right">2.144</td>
+                    <td align="right">-1.866</td>
+                    <td align="right">2.711</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11120,34 +11136,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">0.457</td>
-                    <td align="right">1.149</td>
-                    <td align="right">-1.86</td>
-                    <td align="right">2.557</td>
-                  </tr>
-                  <tr>
-                    <td align="left">
-                      <inline-formula>
-                        <alternatives>
-                          <tex-math><![CDATA[\beta_{FC=1}]]></tex-math>
-                          <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
-                            <mml:msub>
-                              <mml:mi>β</mml:mi>
-                              <mml:mrow>
-                                <mml:mi>F</mml:mi>
-                                <mml:mi>C</mml:mi>
-                                <mml:mo>=</mml:mo>
-                                <mml:mn>1</mml:mn>
-                              </mml:mrow>
-                            </mml:msub>
-                          </mml:math>
-                        </alternatives>
-                      </inline-formula>
-                    </td>
-                    <td align="right">0.21</td>
-                    <td align="right">1.149</td>
-                    <td align="right">-2.051</td>
-                    <td align="right">2.359</td>
+                    <td align="right">0.176</td>
+                    <td align="right">1.164</td>
+                    <td align="right">-2.219</td>
+                    <td align="right">2.381</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11167,10 +11159,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">-4.438</td>
-                    <td align="right">0.935</td>
-                    <td align="right">-6.247</td>
-                    <td align="right">-2.627</td>
+                    <td align="right">-4.429</td>
+                    <td align="right">0.932</td>
+                    <td align="right">-6.266</td>
+                    <td align="right">-2.666</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11190,10 +11182,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">-0.48</td>
-                    <td align="right">0.781</td>
-                    <td align="right">-1.994</td>
-                    <td align="right">1.076</td>
+                    <td align="right">-0.442</td>
+                    <td align="right">0.774</td>
+                    <td align="right">-1.88</td>
+                    <td align="right">1.137</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11213,10 +11205,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">-0.02</td>
-                    <td align="right">0.75</td>
-                    <td align="right">-1.473</td>
-                    <td align="right">1.492</td>
+                    <td align="right">0.018</td>
+                    <td align="right">0.732</td>
+                    <td align="right">-1.397</td>
+                    <td align="right">1.421</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11236,10 +11228,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">0.203</td>
-                    <td align="right">0.748</td>
-                    <td align="right">-1.228</td>
-                    <td align="right">1.688</td>
+                    <td align="right">0.237</td>
+                    <td align="right">0.733</td>
+                    <td align="right">-1.069</td>
+                    <td align="right">1.747</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11259,10 +11251,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">0.3</td>
-                    <td align="right">0.758</td>
-                    <td align="right">-1.186</td>
-                    <td align="right">1.799</td>
+                    <td align="right">0.337</td>
+                    <td align="right">0.74</td>
+                    <td align="right">-0.991</td>
+                    <td align="right">1.856</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11282,10 +11274,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">0.793</td>
-                    <td align="right">0.769</td>
-                    <td align="right">-0.602</td>
-                    <td align="right">2.44</td>
+                    <td align="right">0.829</td>
+                    <td align="right">0.753</td>
+                    <td align="right">-0.569</td>
+                    <td align="right">2.323</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11305,10 +11297,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">4.195</td>
+                    <td align="right">4.248</td>
                     <td align="right">0.962</td>
-                    <td align="right">2.363</td>
-                    <td align="right">6.132</td>
+                    <td align="right">2.465</td>
+                    <td align="right">6.186</td>
                   </tr>
                   <tr>
                     <td align="left">
@@ -11336,10 +11328,10 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         </alternatives>
                       </inline-formula>
                     </td>
-                    <td align="right">1.306</td>
-                    <td align="right">0.508</td>
-                    <td align="right">0.258</td>
-                    <td align="right">2.256</td>
+                    <td align="right">1.264</td>
+                    <td align="right">0.513</td>
+                    <td align="right">0.308</td>
+                    <td align="right">2.294</td>
                   </tr>
                 </tbody>
               </table>

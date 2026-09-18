@@ -339,9 +339,8 @@ choices when they provide a clear action tendency.
 \section{Results}\label{results}
 
 We tested our hypothesis on a previously published dataset in which
-participants (N=\texttt{\{python\}\ f"\{n\_participants:.0f\}"})
-performed a sequential decision-making task with a large state space
-(Ott et al. (2022b), see Figure~\ref{fig-design} and
+participants (N=40) performed a sequential decision-making task with a
+large state space (Ott et al. (2022b), see Figure~\ref{fig-design} and
 Section~\ref{sec-data-desgin} for the full description of the design).
 On each trial, participants chose whether to accept or reject an offer
 worth 1-4 points. Accepting an offer yielded its reward but incurred and
@@ -464,7 +463,7 @@ bias towards accepting offers when costs are low.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-choicemdl-output-1.png}}
+\includegraphics[width=7.66667in,height=9.95833in]{index_files/figure-pdf/fig-choicemdl-output-1.png}
 
 }
 
@@ -586,7 +585,7 @@ the same subject is removed.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-returns-output-1.png}}
+\includegraphics[width=7.66667in,height=3.19792in]{index_files/figure-pdf/fig-returns-output-1.png}
 
 }
 
@@ -644,7 +643,7 @@ and \(\Delta ELPD_{full - FC}\)=27.35 \(\pm\) 48.62 s.e.).
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-task-features-output-1.png}}
+\includegraphics[width=7.94792in,height=6.61458in]{index_files/figure-pdf/fig-task-features-output-1.png}
 
 }
 
@@ -687,24 +686,24 @@ step, we quantified how strongly optimal return depends on each task
 factor. To do so, we derived policies from reduced forward planning
 models in which one task factor was ignored and computed their return
 loss relative to the optimal policy (Figure~\ref{fig-task-features} B,
-see Section~\ref{sec-factor-relevance-analysis}). Our results show that
-ignoring current and future costs when planning leads only to minimal
-losses (0.78\% and 0.98\% respectively), while ignoring the offer level
-leads to a 13.94\% loss. The biggest loss is incurred when ignoring
-energy levels. This leads to a loss in returns of 72.04\%, which is even
-larger than a purely stochastic policy (i.e., equal probability of
-accepting and rejecting an offer on each trial). This indicates that
-reward maximization under forward planning is highly sensitive to
-energy. This large loss reflects the structure of the task. A policy
-that ignores energy cannot adapt choices to the current energy budget.
-As a result, it can deplete energy in low-energy states as its behavior
-is driven by offer levels. The large reward sensitivity of energy is not
-mirrored in Figure~\ref{fig-task-features} A because that analysis
-measures the additional predictive contribution of preference terms
-after accounting for planning-derived decision-values. Energy is already
-strongly reflected by the forward planning component, so removing
-energy-related preference terms has a smaller effect on model fit than
-its relevance for optimal return would suggest.
+see Section~\ref{sec-factor-relevance-analysis} for more details). Our
+results show that ignoring current and future costs when planning leads
+only to minimal losses (0.78\% and 0.98\% respectively), while ignoring
+the offer level leads to a 13.94\% loss. The biggest loss is incurred
+when ignoring energy levels. This leads to a loss in returns of 72.04\%,
+which is even larger than a purely stochastic policy (i.e., equal
+probability of accepting and rejecting an offer on each trial). This
+indicates that reward maximization under forward planning is highly
+sensitive to energy. This large loss reflects the structure of the task.
+A policy that ignores energy cannot adapt choices to the current energy
+budget. As a result, it can deplete energy in low-energy states as its
+behavior is driven by offer levels. The large reward sensitivity of
+energy is not mirrored in Figure~\ref{fig-task-features} A because that
+analysis measures the additional predictive contribution of preference
+terms after accounting for planning-derived decision-values. Energy is
+already strongly reflected by the forward planning component, so
+removing energy-related preference terms has a smaller effect on model
+fit than its relevance for optimal return would suggest.
 
 Further, we asked whether the fitted preferences could support adaptive
 choice when forward planning is absent. If preferences capture useful
@@ -831,7 +830,7 @@ values.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-pdf/fig-rt-output-2.png}}
+\includegraphics[width=7.67708in,height=4.40625in]{index_files/figure-pdf/fig-rt-output-2.png}
 
 }
 
@@ -1017,13 +1016,11 @@ integrated with forward planning.
 \subsection{Data}\label{sec-data-desgin}
 
 The data used in this study were published by Ott and colleagues
-(2022a). In this study, \texttt{\{python\}\ f"\{n\_participants:.0f\}"}
-participants
-(\texttt{\{python\}\ f"\{n\_female:.0f\},\ mean\ age=\{mean\_age:.1f\},\ SD=\{std\_age:.1f\}"})
-took part in a sequential decision-making task (Ott et al. 2022a,
-2022b). The study was approved by the Institutional Review Board of the
-Technische Universität Dresden and conducted in accordance with ethical
-standards of the Declaration of Helsinki.
+(2022a). In this study, 40 participants (22, mean age=24.4, SD=4.6) took
+part in a sequential decision-making task (Ott et al. 2022a, 2022b). The
+study was approved by the Institutional Review Board of the Technische
+Universität Dresden and conducted in accordance with ethical standards
+of the Declaration of Helsinki.
 
 Figure~\ref{fig-design} shows a schematic representation of the task.
 Participants were instructed to gather as many points as possible
@@ -1808,10 +1805,10 @@ dse
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Preference & -1492.49 & 256.526 & 0 & 48.7651 & 0 \\
-Context & -1656.69 & 159.175 & 164.209 & 52.4615 & 19.671 \\
-Frequency prior & -2073.38 & 77.0896 & 580.889 & 55.5712 & 35.9363 \\
-Planning & -2078.46 & 68.3847 & 585.976 & 55.58 & 36.1456 \\
+Preference & -1492.47 & 256.484 & 0 & 48.7583 & 0 \\
+Context & -1657.96 & 160.738 & 165.486 & 52.6188 & 19.6029 \\
+Frequency prior & -2073.86 & 77.4975 & 581.384 & 55.6579 & 35.8832 \\
+Planning & -2078.76 & 68.6015 & 586.285 & 55.5599 & 36.001 \\
 \end{longtable}
 
 }
@@ -1839,23 +1836,23 @@ preference regressors and their interaction.}\tabularnewline
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(\beta_{plan}\) & 2.072 & 0.242 & 1.614 & 2.573 \\
-\(\beta_{O=1}\) & -2.374 & 0.971 & -4.232 & -0.426 \\
-\(\beta_{O=2}\) & -1.625 & 0.938 & -3.535 & 0.092 \\
-\(\beta_{O=3}\) & 1.627 & 0.945 & -0.22 & 3.453 \\
-\(\beta_{O=4}\) & 2.923 & 0.976 & 1.054 & 4.842 \\
-\(\beta_{CC=1}\) & 0.765 & 1.161 & -1.488 & 3.105 \\
-\(\beta_{CC=2}\) & -0.127 & 1.165 & -2.482 & 2.144 \\
-\(\beta_{FC=1}\) & 0.457 & 1.149 & -1.86 & 2.557 \\
-\(\beta_{FC=1}\) & 0.21 & 1.149 & -2.051 & 2.359 \\
-\(\beta_{E=0}\) & -4.438 & 0.935 & -6.247 & -2.627 \\
-\(\beta_{E=1}\) & -0.48 & 0.781 & -1.994 & 1.076 \\
-\(\beta_{E=2}\) & -0.02 & 0.75 & -1.473 & 1.492 \\
-\(\beta_{E=3}\) & 0.203 & 0.748 & -1.228 & 1.688 \\
-\(\beta_{E=4}\) & 0.3 & 0.758 & -1.186 & 1.799 \\
-\(\beta_{E=5}\) & 0.793 & 0.769 & -0.602 & 2.44 \\
-\(\beta_{E=6}\) & 4.195 & 0.962 & 2.363 & 6.132 \\
-\(\beta_{interaction}\) & 1.306 & 0.508 & 0.258 & 2.256 \\
+\(\beta_{plan}\) & 2.082 & 0.248 & 1.603 & 2.577 \\
+\(\beta_{O=1}\) & -2.371 & 0.987 & -4.194 & -0.381 \\
+\(\beta_{O=2}\) & -1.611 & 0.955 & -3.537 & 0.17 \\
+\(\beta_{O=3}\) & 1.656 & 0.958 & -0.092 & 3.611 \\
+\(\beta_{O=4}\) & 2.955 & 0.985 & 1.161 & 4.979 \\
+\(\beta_{CC=1}\) & 0.724 & 1.166 & -1.592 & 2.884 \\
+\(\beta_{CC=2}\) & -0.178 & 1.164 & -2.516 & 1.955 \\
+\(\beta_{FC=1}\) & 0.416 & 1.165 & -1.866 & 2.711 \\
+\(\beta_{FC=1}\) & 0.176 & 1.164 & -2.219 & 2.381 \\
+\(\beta_{E=0}\) & -4.429 & 0.932 & -6.266 & -2.666 \\
+\(\beta_{E=1}\) & -0.442 & 0.774 & -1.88 & 1.137 \\
+\(\beta_{E=2}\) & 0.018 & 0.732 & -1.397 & 1.421 \\
+\(\beta_{E=3}\) & 0.237 & 0.733 & -1.069 & 1.747 \\
+\(\beta_{E=4}\) & 0.337 & 0.74 & -0.991 & 1.856 \\
+\(\beta_{E=5}\) & 0.829 & 0.753 & -0.569 & 2.323 \\
+\(\beta_{E=6}\) & 4.248 & 0.962 & 2.465 & 6.186 \\
+\(\beta_{interaction}\) & 1.264 & 0.513 & 0.308 & 2.294 \\
 \end{longtable}
 
 }
@@ -1889,7 +1886,7 @@ planning regressor.
 
 \centering{
 
-\includegraphics[width=7.72917in,height=6.69792in]{index_files/figure-latex/S2-choice_model_comparison-suppfig-preference_model_comparison-output-1.png}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/S2-choice_model_comparison-suppfig-preference_model_comparison-output-1.png}}
 
 }
 
@@ -1980,7 +1977,7 @@ data the best:
 
 \centering{
 
-\includegraphics[width=6.59375in,height=6.69792in]{index_files/figure-latex/S2-choice_model_comparison-suppfig-frequency_model_comparison-output-1.png}
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/S2-choice_model_comparison-suppfig-frequency_model_comparison-output-1.png}}
 
 }
 
