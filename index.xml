@@ -4450,7 +4450,7 @@ when preference-based guidance is uncertain.</p>
       </ref>
     </ref-list>
   </back>
-  <sub-article article-type="notebook" id="nb-13-nb-article">
+  <sub-article article-type="notebook" id="nb-8-nb-article">
     <front-stub>
       <title-group>
         <article-title>Task-structured preferences guide forward planning in
@@ -12919,35 +12919,6 @@ for i, sub in enumerate(beh_data["vpn"].unique()):
   indicating that our model is indeed capable of recovering the
   parameters of the underlying generative model.</p>
         </sec>
-      </sec>
-    </body>
-    <back>
-</back>
-  </sub-article>
-  <sub-article article-type="notebook" id="nb-8-nb-4">
-    <front-stub>
-      <title-group>
-        <article-title>Supplementary 4: Posterior predictive
-checks</article-title>
-      </title-group>
-    </front-stub>
-    <body>
-      <sec id="f624059a-nb-4" specific-use="notebook-content">
-        <p>IN PROGRESS</p>
-      </sec>
-    </body>
-    <back>
-</back>
-  </sub-article>
-  <sub-article article-type="notebook" id="nb-10-nb-5">
-    <front-stub>
-      <title-group>
-        <article-title>Supplementary 5: models differentiability</article-title>
-      </title-group>
-    </front-stub>
-    <body>
-      <sec id="f624059a-nb-5" specific-use="notebook-content">
-        <p>WIP</p>
       </sec>
     </body>
     <back>
