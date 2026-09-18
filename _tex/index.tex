@@ -338,21 +338,29 @@ choices when they provide a clear action tendency.
 
 \section{Results}\label{results}
 
-We tested our hypothesis on a dataset where participants performed a
-complex sequential decision making task (Ott et al. (2022b), see
-Figure~\ref{fig-design} and Section~\ref{sec-data-desgin} for the full
-description of the design). In each trial, participants had to decide
-whether to accept or reject an offer varying between 1 and 4 points,
-where accepting an offer incurred and energy cost between 1 and 2
-points, and rejecting an offer incurred a gain of one energy point.
-Energy cost associated with accepting an offer changed every 4 trials
-(referred to as trials segment) and participants were informed of the
-current and future trials segment. This task is highly structure, as
-each trial consists of a combination of 4 factors (offer, energy,
-current and future costs), all of which have to be taken into account to
-maximize return, making this dataset ideal to test our prediction that
-participants combine forward-planning with preferences reflecting the
+We tested our hypothesis on a previously published dataset in which
+participants (N=\texttt{\{python\}\ f"\{n\_participants:.0f\}"})
+performed a sequential decision-making task with a large state space
+(Ott et al. (2022b), see Figure~\ref{fig-design} and
+Section~\ref{sec-data-desgin} for the full description of the design).
+On each trial, participants chose whether to accept or reject an offer
+worth 1-4 points. Accepting an offer yielded its reward but incurred and
+energy cost of 1 or 2 points, whereas rejecting yielded no reward but
+replenished 1 energy point. Costs remained fixed within blocks of four
+trials (segments), and participants were informed of both the current
+and the upcoming segment's cost. Each trial was therefore defined by a
+combination of four task factors (offer value, energy level, current
+cost, and future cost), all of which must be integrated to maximize
+return. This makes the dataset well suited to test our prediction that
+participants combine forward planning with preferences reflecting the
 structure of the task.
+
+Performance indicates that participants were able to perform the task
+well. Participants provided responses with an average reaction time (RT)
+of 0.90s \(\pm\) 0.26 (s.d.) and failed to give their response before
+time out in only 0.27\% \(\pm\) 0.56 (s.d.) out of 240 trials. On
+average, participants gathered a total of 332.43 \(\pm\) 6.64 points
+throughout the experiment.
 
 \begin{figure}
 
@@ -378,36 +386,30 @@ HC to HC. Reproduced from Ott et al. (2022a)}
 
 \end{figure}%
 
-Performance indicates that participants were able to perform the task
-well. Participants provided responses with an average reaction time (RT)
-of 0.90s \(\pm\) 0.26 (s.d.) and failed to give their response before
-time out in only 0.27\% \(\pm\) 0.56 (s.d.) out of 240 trials. On
-average, participants gathered 332.43 \(\pm\) 6.64 points throughout the
-experiment.
-
 \subsection{Choice behavior}\label{choice-behavior}
 
 To test whether and how participants choice behavior deviates from
 optimal planning, we compared four Bayesian hierarchical logistic
-regression models of participants accept/reject choices (see
-Section~\ref{sec-choice-behavior-modeling-method} for detailed
-explanation). All models shared the same planning component: decision
-values (DV) obtained by backward induction on the task Markov Decision
-Process (MDP), reflecting the difference in long term value between
-accepting and rejecting an offer in each state under the optimal policy.
-The Planning model contained only DV as a regressor assumed deviations
-were unsystematic noise, serving as a benchmark. The three other models
-differed in how they accounted for deviations from this benchmark. The
-Frequency-prior model assumed deviations reflect a recency bias towards
-recently chosen actions. The Offer-context model, the best fitting model
-from Ott et al. (2022a), assumed that participants plan to different
-extents in extreme versus intermediate offers. Finally, the Preference
-model, impelementing our main hypothesis, combined the planning
-component with a state-dependent preference score, contructed by
-assigning weights to the levels of each task factor (offer, energy,
-current and future costs) and summing them, as well as a modulation term
-testing whether the influence of planning depends on the entropy of the
-preference score.
+regression models of participants accept/reject choices. All models
+shared the same planning component: decision values (DV) obtained by
+backward induction on the task Markov Decision Process (MDP), reflecting
+the difference in long term value between accepting and rejecting an
+offer in each state under the optimal policy. The Planning model
+contained only DV as a regressor, testing whether deviations are
+unsystematic noise. The three other models differed in how they
+accounted for deviations from this benchmark. The Frequency-prior model
+assumed deviations reflect a recency bias towards recently chosen
+actions. The Offer-context model, previously found to account the best
+for the observed data among 21 competing models by Ott et al. (2022a),
+assumed that participants plan to different extents in extreme versus
+intermediate offers. Finally, the Preference model, impelementing our
+main hypothesis, combined the planning component with a state-dependent
+preference score, contructed by assigning weights to the levels of each
+task factor (offer, energy, current and future costs) and summing them,
+as well as a modulation term testing whether the influence of planning
+depends on the entropy of the preference score (see
+Section~\ref{sec-choice-behavior-modeling-method} for a full description
+of our modeling approach).
 
 Model comparison revealed that participants' deviations from optimal
 forward planning were indeed systematic. Replicating Ott et al. (2022a),

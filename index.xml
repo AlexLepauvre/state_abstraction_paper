@@ -223,23 +223,34 @@ when preference-based guidance is uncertain.</p>
     </sec>
     <sec id="results">
       <title>2 Results</title>
-      <p>We tested our hypothesis on a dataset where participants performed
-  a complex sequential decision making task (Ott et al.
+      <p>We tested our hypothesis on a previously published dataset in which
+  participants
+  (N=<monospace>{python} f"{n_participants:.0f}"</monospace>)
+  performed a sequential decision-making task with a large state space
+  (Ott et al.
   (<xref alt="2022b" rid="ref-ott2022forward-data" ref-type="bibr">2022b</xref>),
   see <xref alt="Figure 1" rid="fig-design">Figure 1</xref> and
   <xref alt="Section 4.1" rid="sec-data-desgin">Section 4.1</xref> for
-  the full description of the design). In each trial, participants had
-  to decide whether to accept or reject an offer varying between 1 and 4
-  points, where accepting an offer incurred and energy cost between 1
-  and 2 points, and rejecting an offer incurred a gain of one energy
-  point. Energy cost associated with accepting an offer changed every 4
-  trials (referred to as trials segment) and participants were informed
-  of the current and future trials segment. This task is highly
-  structure, as each trial consists of a combination of 4 factors
-  (offer, energy, current and future costs), all of which have to be
-  taken into account to maximize return, making this dataset ideal to
-  test our prediction that participants combine forward-planning with
-  preferences reflecting the structure of the task.</p>
+  the full description of the design). On each trial, participants chose
+  whether to accept or reject an offer worth 1-4 points. Accepting an
+  offer yielded its reward but incurred and energy cost of 1 or 2
+  points, whereas rejecting yielded no reward but replenished 1 energy
+  point. Costs remained fixed within blocks of four trials (segments),
+  and participants were informed of both the current and the upcoming
+  segment’s cost. Each trial was therefore defined by a combination of
+  four task factors (offer value, energy level, current cost, and future
+  cost), all of which must be integrated to maximize return. This makes
+  the dataset well suited to test our prediction that participants
+  combine forward planning with preferences reflecting the structure of
+  the task.</p>
+      <p>Performance indicates that participants were able to perform the
+  task well. Participants provided responses with an average reaction
+  time (RT) of 0.90s <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
+  0.26 (s.d.) and failed to give their response before time out in only
+  0.27% <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
+  0.56 (s.d.) out of 240 trials. On average, participants gathered a
+  total of 332.43 <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
+  6.64 points throughout the experiment.</p>
       <fig id="fig-design">
         <caption>
           <p>Figure 1: Experimental design: (A) Single trial
@@ -260,32 +271,22 @@ when preference-based guidance is uncertain.</p>
         </caption>
         <graphic mimetype="image" mime-subtype="jpeg" xlink:href="images/experimental_design.jpg"/>
       </fig>
-      <p>Performance indicates that participants were able to perform the
-  task well. Participants provided responses with an average reaction
-  time (RT) of 0.90s <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-  0.26 (s.d.) and failed to give their response before time out in only
-  0.27% <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-  0.56 (s.d.) out of 240 trials. On average, participants gathered
-  332.43 <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-  6.64 points throughout the experiment.</p>
       <sec id="choice-behavior">
         <title>2.1 Choice behavior</title>
         <p>To test whether and how participants choice behavior deviates
     from optimal planning, we compared four Bayesian hierarchical
-    logistic regression models of participants accept/reject choices
-    (see
-    <xref alt="Section 4.3" rid="sec-choice-behavior-modeling-method">Section 4.3</xref>
-    for detailed explanation). All models shared the same planning
-    component: decision values (DV) obtained by backward induction on
-    the task Markov Decision Process (MDP), reflecting the difference in
-    long term value between accepting and rejecting an offer in each
-    state under the optimal policy. The Planning model contained only DV
-    as a regressor assumed deviations were unsystematic noise, serving
-    as a benchmark. The three other models differed in how they
-    accounted for deviations from this benchmark. The Frequency-prior
-    model assumed deviations reflect a recency bias towards recently
-    chosen actions. The Offer-context model, the best fitting model from
-    Ott et al.
+    logistic regression models of participants accept/reject choices.
+    All models shared the same planning component: decision values (DV)
+    obtained by backward induction on the task Markov Decision Process
+    (MDP), reflecting the difference in long term value between
+    accepting and rejecting an offer in each state under the optimal
+    policy. The Planning model contained only DV as a regressor, testing
+    whether deviations are unsystematic noise. The three other models
+    differed in how they accounted for deviations from this benchmark.
+    The Frequency-prior model assumed deviations reflect a recency bias
+    towards recently chosen actions. The Offer-context model, previously
+    found to account the best for the observed data among 21 competing
+    models by Ott et al.
     (<xref alt="2022a" rid="ref-ott2022forward" ref-type="bibr">2022a</xref>),
     assumed that participants plan to different extents in extreme
     versus intermediate offers. Finally, the Preference model,
@@ -294,7 +295,9 @@ when preference-based guidance is uncertain.</p>
     weights to the levels of each task factor (offer, energy, current
     and future costs) and summing them, as well as a modulation term
     testing whether the influence of planning depends on the entropy of
-    the preference score.</p>
+    the preference score (see
+    <xref alt="Section 4.3" rid="sec-choice-behavior-modeling-method">Section 4.3</xref>
+    for a full description of our modeling approach).</p>
         <p>Model comparison revealed that participants’ deviations from
     optimal forward planning were indeed systematic. Replicating Ott et
     al.
@@ -4450,7 +4453,7 @@ when preference-based guidance is uncertain.</p>
       </ref>
     </ref-list>
   </back>
-  <sub-article article-type="notebook" id="nb-8-nb-article">
+  <sub-article article-type="notebook" id="nb-9-nb-article">
     <front-stub>
       <title-group>
         <article-title>Task-structured preferences guide forward planning in
@@ -5245,23 +5248,34 @@ sd_ne = np.std(n_e_0)  / 240 * 100</code>
 </sec>
         <sec id="results-nb-article">
           <title>2 Results</title>
-          <p>We tested our hypothesis on a dataset where participants performed
-  a complex sequential decision making task (Ott et al.
+          <p>We tested our hypothesis on a previously published dataset in which
+  participants
+  (N=<monospace>{python} f"{n_participants:.0f}"</monospace>)
+  performed a sequential decision-making task with a large state space
+  (Ott et al.
   (<xref alt="2022b" rid="ref-ott2022forward-data-nb-article" ref-type="bibr">2022b</xref>),
   see <xref alt="Figure 1" rid="fig-design-nb-article">Figure 1</xref> and
   <xref alt="Section 4.1" rid="sec-data-desgin-nb-article">Section 4.1</xref> for
-  the full description of the design). In each trial, participants had
-  to decide whether to accept or reject an offer varying between 1 and 4
-  points, where accepting an offer incurred and energy cost between 1
-  and 2 points, and rejecting an offer incurred a gain of one energy
-  point. Energy cost associated with accepting an offer changed every 4
-  trials (referred to as trials segment) and participants were informed
-  of the current and future trials segment. This task is highly
-  structure, as each trial consists of a combination of 4 factors
-  (offer, energy, current and future costs), all of which have to be
-  taken into account to maximize return, making this dataset ideal to
-  test our prediction that participants combine forward-planning with
-  preferences reflecting the structure of the task.</p>
+  the full description of the design). On each trial, participants chose
+  whether to accept or reject an offer worth 1-4 points. Accepting an
+  offer yielded its reward but incurred and energy cost of 1 or 2
+  points, whereas rejecting yielded no reward but replenished 1 energy
+  point. Costs remained fixed within blocks of four trials (segments),
+  and participants were informed of both the current and the upcoming
+  segment’s cost. Each trial was therefore defined by a combination of
+  four task factors (offer value, energy level, current cost, and future
+  cost), all of which must be integrated to maximize return. This makes
+  the dataset well suited to test our prediction that participants
+  combine forward planning with preferences reflecting the structure of
+  the task.</p>
+          <p>Performance indicates that participants were able to perform the
+  task well. Participants provided responses with an average reaction
+  time (RT) of 0.90s <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
+  0.26 (s.d.) and failed to give their response before time out in only
+  0.27% <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
+  0.56 (s.d.) out of 240 trials. On average, participants gathered a
+  total of 332.43 <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
+  6.64 points throughout the experiment.</p>
           <fig id="fig-design-nb-article">
             <caption>
               <p>Figure 1: Experimental design: (A) Single trial
@@ -5282,32 +5296,22 @@ sd_ne = np.std(n_e_0)  / 240 * 100</code>
             </caption>
             <graphic mimetype="image" mime-subtype="jpeg" xlink:href="images/experimental_design.jpg"/>
           </fig>
-          <p>Performance indicates that participants were able to perform the
-  task well. Participants provided responses with an average reaction
-  time (RT) of 0.90s <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-  0.26 (s.d.) and failed to give their response before time out in only
-  0.27% <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-  0.56 (s.d.) out of 240 trials. On average, participants gathered
-  332.43 <inline-formula><alternatives><tex-math><![CDATA[\pm]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-  6.64 points throughout the experiment.</p>
           <sec id="choice-behavior-nb-article">
             <title>2.1 Choice behavior</title>
             <p>To test whether and how participants choice behavior deviates
     from optimal planning, we compared four Bayesian hierarchical
-    logistic regression models of participants accept/reject choices
-    (see
-    <xref alt="Section 4.3" rid="sec-choice-behavior-modeling-method-nb-article">Section 4.3</xref>
-    for detailed explanation). All models shared the same planning
-    component: decision values (DV) obtained by backward induction on
-    the task Markov Decision Process (MDP), reflecting the difference in
-    long term value between accepting and rejecting an offer in each
-    state under the optimal policy. The Planning model contained only DV
-    as a regressor assumed deviations were unsystematic noise, serving
-    as a benchmark. The three other models differed in how they
-    accounted for deviations from this benchmark. The Frequency-prior
-    model assumed deviations reflect a recency bias towards recently
-    chosen actions. The Offer-context model, the best fitting model from
-    Ott et al.
+    logistic regression models of participants accept/reject choices.
+    All models shared the same planning component: decision values (DV)
+    obtained by backward induction on the task Markov Decision Process
+    (MDP), reflecting the difference in long term value between
+    accepting and rejecting an offer in each state under the optimal
+    policy. The Planning model contained only DV as a regressor, testing
+    whether deviations are unsystematic noise. The three other models
+    differed in how they accounted for deviations from this benchmark.
+    The Frequency-prior model assumed deviations reflect a recency bias
+    towards recently chosen actions. The Offer-context model, previously
+    found to account the best for the observed data among 21 competing
+    models by Ott et al.
     (<xref alt="2022a" rid="ref-ott2022forward-nb-article" ref-type="bibr">2022a</xref>),
     assumed that participants plan to different extents in extreme
     versus intermediate offers. Finally, the Preference model,
@@ -5316,7 +5320,9 @@ sd_ne = np.std(n_e_0)  / 240 * 100</code>
     weights to the levels of each task factor (offer, energy, current
     and future costs) and summing them, as well as a modulation term
     testing whether the influence of planning depends on the entropy of
-    the preference score.</p>
+    the preference score (see
+    <xref alt="Section 4.3" rid="sec-choice-behavior-modeling-method-nb-article">Section 4.3</xref>
+    for a full description of our modeling approach).</p>
             <p>Model comparison revealed that participants’ deviations from
     optimal forward planning were indeed systematic. Replicating Ott et
     al.
