@@ -224,7 +224,7 @@
 \title{Task-structured preferences guide forward planning in sequential
 decision-making}
 \author{Alex Lepauvre \and Florian Ott \and Stefan Kiebel}
-\date{2026-09-17}
+\date{2026-09-18}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -336,605 +336,62 @@ forward planning is integrated with structured, task-informed
 preferences that enable faster and less computationally demanding
 choices when they provide a clear action tendency.
 
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\section{Methods}\label{methods}
-
-\subsection{Data}\label{data}
-
-To test our hypothesis, we reused data from a previously published study
-by Ott and colleagues (2022a), in which 40 participants (22, mean
-age=24.4, SD=4.6) took part in a sequential decision-making task (Ott et
-al. 2022a, 2022b). The study was approved by the Institutional Review
-Board of the Technische Universität Dresden and conducted in accordance
-with ethical standards of the Declaration of Helsinki.
-
-Figure~\ref{fig-design} shows a schematic representation of the task.
-Participants were instructed to gather as many points as possible
-throughout the task. In each trial, they were presented with an offer
-associated with a reward of either 1, 2, 3 or 4 points, which they could
-either accept or reject. To accept the offer in a trial, participants
-had to pay an energy cost of either 1 or 2 energy points (low cost, LC
-and high cost, HC respectively). When they rejected the offer, they
-gained 1 energy point. Participants' energy level was capped at 6, so
-their energy could range from 0 (depleted energy) to 6 (max energy).
-Offers varied in each trial following a uniform distribution. Costs
-remained fixed for 4 consecutive trials, which we refer to as a segment
-(see Figure~\ref{fig-design} B), and participants were informed of the
-price of the current segment and the next segment. The cost of the next
-segment was pseudorandomized to equate the probability of each
-transition (from current HC or LC to future HC or LC, see
-Figure~\ref{fig-design} C) and ensure that each transition occurred 15
-times. When participants accepted an offer that they could not afford
-(current energy level below current cost), no reward was awarded and a
-warning was displayed.
-
-\begin{figure}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio,alt={Experimental design}]{images/experimental_design.jpg}}
-
-}
-
-\caption{\label{fig-design}EExperimental design: (A) Single trial
-procedure, each frame represents a step within the trial with duration
-of each step above. Top row depicts participants accepting; bottom row
-depicts participants rejecting. In each trial, participants are
-presented with N golden cups; the number of cups symbolizes the amount
-of reward. The blue bar represents energy level; yellow bar represents
-accumulated reward so far, lightning symbols at the bottom right of each
-frame represent current cost (left) and future cost (right). (B) Between
-trial costs dependencies. A segment consists of 4 trials and the cost in
-each segment is fixed. Participants are aware of the cost in the current
-and future 4 trials but not beyond. (C) Transition structure. Cost can
-transition from low cost (LC) to high cost (HC), LC to LC, HC to LC and
-HC to HC. Reproduced from Ott et al. (2022a)}
-
-\end{figure}%
-
-Accordingly, each trial was defined by several task factors: the current
-offer, the participant's current energy level, the current cost of
-accepting, and the cost in the upcoming segment. Participants had to
-decide whether to accept or reject the offer under the specific
-combination of these factors. Because accepting uses up energy while
-rejecting replenished it, each choice also changed the state in which
-the participant entered subsequent trials. Maximizing overall return was
-therefore non-trivial and required considering the future consequences
-of current choices.
-
-At the start of each trial, a fixation cross was presented for 0.5 s in
-the middle of the screen. Then, an offer appeared represented by the
-number of ``cups'' presented in the middle of the screen, and choice
-options were presented on each side of the screen, surrounded by a black
-frame. Participants had 5 s to provide an answer, by selecting either
-option (accept or reject), in which case the frame around the chosen
-option disappeared. Following their choice, the resulting change in
-energy and points was displayed (green indicating an increase in point
-and/or energy, red indicating a decrease in energy) for 1s. The trial
-ended with an inter-trial interval (ITI) ranging from 2 to 5 s
-(uniformly sampled, rounded to the first decimal) in which the offer
-disappeared, and unframed choice options remained on screen. If
-participants took longer than 5 s to provide their answer, a warning
-message was displayed and the next trial started.
-
-Following their choice, the resulting change in energy and points was
-displayed (green indicating an increase in point and/or energy, red
-indicating a decrease in energy) for 1s. The trial ended with an
-inter-trial interval (ITI) ranging from 2 to 5 s (uniformly sampled,
-rounded to the first decimal) in which the offer disappeared, and
-unframed choice options remained on screen. If participants took longer
-than 5 s to provide their answer, a warning message was displayed and
-the next trial started.
-
-To familiarize themselves with the task, participants conducted a
-training session of 144 trials, corresponding to 36 segments.
-Participants then completed 240 trials (60 segments) which are included
-in subsequent analyses. Participants started with an energy budget of 3,
-and their reward points were accumulated throughout the entire
-experiment. The trials sequence was pseudorandomized, such that each
-costs transitions (LC to LC, LC to HC, HC to LC and HC to HC, see
-Figure\,1 C) occurred equally often within the training and test
-sessions, resulting in 9 repetitions of each transition in the training
-session and 15 in the experiment. In addition, the offer sequence was
-selected such that the frequency of each offer was matched across costs
-transitions. The sequence of costs' transitions and offers was kept the
-same across participants. Participants were offered two to three minutes
-breaks every 20 segments. The test sessions lasted around 40 min.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsection{Forward planning
-component}\label{sec-forward_planning_component}
-
-To model optimal behavior in the task, we operationalized our task as a
-Markov Decision Process (MDP) with the following tuples:
-
-\[
-MDP = (S, A, P, R)
-\]
-
-Where \(S\) represents all possible states in our task, where each state
-\(s\) consists of a combination of the experimental variables in our
-task: \(S=E \times O \times CC \times FC \times T\), with energy
-\(E={0, 1, ..., 6}\), offer \(O={1, 2, 3, 4}\), current segment cost
-\(CC={1, 2}\), future segment cost \(FC={1, 2}\) and trial
-\(T={1, 2,..., 13}\). Time steps (i.e.~trials) had to be incorporated in
-the state space to account for the cost being trial dependent. \(A\) is
-the set of possible actions in our task (\(accept=1, reject=0\)), \(P\)
-is the transitional probability from a given state to all other states
-(\(P=P_{\forall s \in S}(s'|s, a)\)), and \(R\) is the reward function
-characterizing the reward participants can obtain in a given state for
-each action (\(R=R_{\forall s \in S}(s|a)\)).
-
-While optimal behavior would require considering outcomes up until the
-end of the task, we modelled forward planning over a limited horizon,
-following the approach used by Ott et al. (2022a). Participants had
-explicit information about the current and upcoming segment,
-corresponding to an eight-trial horizon. Solving the MDP only over these
-eight trials would implicitly treat the task as ending after the
-upcoming segment, leading the optimal policy to spend all remaining
-energy by the end of that horizon. To avoid this terminal artefact, we
-included one additional segment beyond the known horizon. Thus, action
-values were computed over a twelve-trial planning horizon, with a
-terminal value set after the twelfth trial, yielding 13 time points in
-the dynamic-programming solution. In the first 8 trials, the probability
-of the next state reflects the offer-related stochasticity, while costs
-are known. For trials beyond the known horizon, the uncertainty
-associated with the offer is compounded by the uncertainty related to
-the next cost transition (see Ott et al. 2022a for more details).
-
-We applied backward induction to compute the long-term value associated
-with each action in any given state (i.e.~the \(Q\) function {Sutton et
-al.} 1998). Participants maximizing return should choose the action with
-the largest value. As there were only two possible actions in our task
-(accept or reject), we computed decision values (DV) as:
-
-\[
-DV_s = Q(s, a=1) - Q(s, a=0)
-\]
-
-In states where the DV are negative, participants should reject, and in
-states where DV are positive, participants should accept the offer.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsection{Modelling of participants
-responses}\label{modelling-of-participants-responses}
-
-Participants responses were modeled using a logistic regression:
-
-\begin{equation}\protect\phantomsection\label{eq-logistic_reg}{
-P(a=1) = \sigma(\eta)
-}\end{equation}
-
-where \(\sigma(x)=\frac{1}{1+e^-x}\) denotes the logistic sigmoid.
-
-Participants' responses were modelled using Bayesian hierarchical
-logistic regressions that estimate the probability of accepting the
-current offer. We compared four models that differed in which sources of
-information were allowed to influence this probability. All models
-included planning-derived DV as a benchmark estimate of optimal action
-value. The models differed in how they accounted for systematic
-deviations from this forward planning benchmark: as unstructured noise,
-recent action frequencies, the Offer-context structure identified in the
-original analysis by Ott et al. (2022a), or task-specific preferences.
-This comparison builds on previous work by including the best-fitting
-model among the 21 models tested by ott2022forward as a strong reference
-model. We then asked whether a factorized preference account could
-explain participants' choices better than this previous account.
-Additional parametrizations, reduced models, and robustness checks are
-described in the model-comparison section below and reported in the
-supplementary material. Formally, these differences were implemented by
-changing the predictors included in the linear predictor \(\eta\). We
-describe the models in turn, starting with the planning model and then
-adding increasingly structured accounts of participants' deviations from
-optimal forward planning.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsubsection{Planning model}\label{planning-model}
-
-To establish a benchmark, we first asked whether participants' choices
-could be explained by optimal forward planning alone. In this pure
-Planning model, participants' responses were modelled only as a function
-of the planning-derived DV:
-
-\begin{equation}\protect\phantomsection\label{eq-planning-model}{
-\begin{aligned}
-\eta_{planning} &= \beta_{plan} \times DV
-\end{aligned}
-}\end{equation}
-
-This model captures the possibility that participants' deviations from
-optimal forward planning are unsystematic. Under this account,
-alternative models with additional regressors should not yield better
-predictive accuracy once model complexity is taken into account. Any
-improvement of the subsequent models would therefore indicate that
-deviations from the forward planning benchmark contain systematic
-structure.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsubsection{Frequency-prior model}\label{frequency-prior-model}
-
-Alternatively, participants' deviations from optimality might reflect a
-recency bias, whereby choice on a given trial is biased towards the most
-frequent action in recent history. Recent accounts of forward planning
-consider that priors consist of a state independent recency bias
-(Schwöbel et al. 2021, 2024; Kuperwajs and Ma 2021). Similarly, under
-the policy compression framework, the optimal policy integrates forward
-planning and marginal action probability across states (Lai and Gershman
-2021, 2024). To test whether in our task participants' responses are
-biased towards most frequent action taken in previous trials, and
-approximate the policy compression framework, we fitted a
-Frequency-prior model, which models participants' responses as a
-function of DV combined with a recency bias:
-
-\begin{equation}\protect\phantomsection\label{eq-frequency-model}{
-\begin{aligned}
-\eta_{frequency} =& \beta_{plan} \times DV + \beta_{prior} \times P(A)
-\end{aligned}
-}\end{equation}
-
-We computed \(P(A)_t\) in each trial \(t\) using a linearly decaying
-moving average going back \(k=20\) trials, assuming temporally
-discounted effects of past actions (see
-\quartosuppfigref{suppfig-frequency_model_comparison} for exploration of
-the fit at different \(k\)):
-
-\begin{equation}\protect\phantomsection\label{eq-mvavg}{
-\begin{aligned}
-P(A)_t =& \frac{\sum_{i=t-k}^{t-1}x_i \times w_i}{\sum_{i=t-k}^{t-1}w_i}
-\end{aligned}
-}\end{equation}
-
-Where \(x_i\) denotes the action taken on trial i coded as accept or
-reject, and \(w=[1, 2, ..., k]\) so that the weights increase linearly
-from 1 for the oldest included trial to \(k\) for the most recent trial.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsubsection{Offer-context model}\label{offer-context-model}
-
-In addition, we used the best-fitting model (among 21 models) from Ott
-et al. (2022a), to test whether participants treat states clusters as
-separate contexts in which they plan to different extents. We refer to
-this model as the Offer-context model. Here, the forward planning
-component (DV) is split between extreme and intermediate offers (offers
-{[}1, 4{]} and {[}2, 3{]} respectively) to reflect the fact that
-participants treat those as separate contexts, with different control
-requirements. In addition, the model comprises offer specific and energy
-related flexible biases regressors:
-
-\begin{equation}\protect\phantomsection\label{eq-context-model}{
-\begin{aligned}
-\eta_{context} =& \beta_{plan23} \times DV_{23} + \beta_{plan14} \times DV_{14} + \\
-&\beta_{O1}\mathbf{I}_{O1} + \beta_{O2}\mathbf{I}_{O2} + \beta_{O3}\mathbf{I}_{O3} + \beta_{O4}\mathbf{I}_{O4} + \\
-&\beta_{basic}\mathbf{I}_{basic} + \beta_{maxE}\mathbf{I}_{maxE} + \\
-&\beta_{minE_{LC}}\mathbf{I}_{minE_{LC}} + \beta_{minE_{HC}}\mathbf{I}_{minE_{HC}} 
-\end{aligned}
-}\end{equation}
-
-\(\mathbf{I}\) indicate dummy regressors encoding specific experimental
-conditions: \(\mathbf{I}_{basic}\) encodes trials where energy is
-sufficient to accept the offer and inferior to 6, \(\mathbf{I}_{maxE}\)
-encodes trials where energy is equal to 6, \(\mathbf{I}_{minE_{LC}}\)
-for trials where energy is too low to accept the offer when cost is low,
-\(\mathbf{I}_{minE_{HC}}\) for trials where energy is too low to accept
-the offer when cost is high, \(\mathbf{I}_{O1-4}\) for trials with offer
-1-4 where energy is sufficient to accept. Following Ott et al. (2022a),
-these regressors meant to account for edge cases within the state space
-were not included in the Frequency-prior model as it was aimed to test
-whether participants' biases from optimal behavior can be uniquely
-explained by a frequency bias. These were also not included in the
-preference model below, as these regressors consist of a linear
-combination of the preference factors of the model and would therefore
-be redundant.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsubsection{Preferences model}\label{preferences-model}
-
-Finally, we developed a task-specific preference model (Preference model
-for short) to test whether participants' choices reflect the integration
-of forward planning with task-specific preferences. The model contains
-three components. First, as in all other models, choices depend on the
-planning-derived DV. Second, choices depend on a state-dependent,
-task-specific preference score. This preference score is constructed by
-assigning preference weights to the levels of the main task factors
-namely offer, energy, current cost, and future cost. We refer to these
-as factor-level preferences (i.e., the preference weight associated with
-a given level of a given factor). The score is then computed as the sum
-of the corresponding factor-level preferences for the current state.
-Third, the model includes a modulation term that tests whether the
-influence of forward planning depends on the uncertainty of the
-preference score. We quantified this uncertainty as the entropy of the
-preference score (preference entropy). The model therefore tests the
-prediction that participants rely more on forward planning when their
-preferences are weak or uncertain:
-
-\begin{equation}\protect\phantomsection\label{eq-preference_model}{
-\begin{aligned}
-\eta_{pref} &= \beta_{plan} \times DV + pref + \beta_{modulation} \times(H(pref) \times DV)
-\end{aligned}
-}\end{equation}
-
-Where: \[
-\begin{aligned}
-pref = \mathbf{X_{pref}}\mathbf{\beta}
-\end{aligned}
-\]
-
-And \(H(pref)\) is the entropy of the preference score:
-
-\begin{equation}\protect\phantomsection\label{eq-entropy}{
-\begin{aligned}
-H(pref) = -\sigma(pref) * log(\sigma(pref)) - (1-\sigma(pref)) * log(1-\sigma(pref))
-\end{aligned}
-}\end{equation}
-
-With:
-
-\begin{equation}\protect\phantomsection\label{eq-entropy}{
-\begin{aligned}
-\sigma(x) = \frac{1}{1+e^{-x}}
-\end{aligned}
-}\end{equation}
-
-Participants' factor-level preferences are estimated as latent
-variables. \(\mathbf{X_{pref}}\) is a \([M \times N]\) (M=measurements,
-N=experimental levels) matrix dummy coding each factor of the
-experimental setup (energy, offer, current and future costs) and
-\(\mathbf{\beta}\) is a vector of weights estimated for each level of
-each factor.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsection{Model fitting and
-comparison}\label{model-fitting-and-comparison}
-
-MModels were fitted to participants' response data using Bayesian
-hierarchical logistic regressions implemented using PYMC ({Abril-Pla et
-al.} 2023) and Bambi (Capretto et al. 2022). We excluded trials where
-participants did not provide a response or if reaction time (RT)
-exceeded the response window (5 s). Across models, the following
-parameters were modeled hierarchically, with separate participant-level
-estimates drawn from group-level distributions:
-\(\beta_{plan},\ \beta_{plan23},\ \beta_{plan14},\ \beta_{pref},\ \beta_{modulation},\ \beta_{basic},\ \beta_{O1},\ \beta_{O1},\ \beta_{O2},\ \beta_{O3},\ \beta_{O4}\),
-while the remaining parameters were fixed across participants. For all
-parameters, we used weakly informative hyperprior distributions
-\(\mu \sim \mathcal{N}(0, 2)\) and \(\sigma \sim Halfnormal(0, 2)\). All
-models were fitted using 4 chains of 2000 samples each (1000 warmups),
-resulting in 4000 samples in total. We report the mean of the posterior
-and the 95\% credible interval for the estimated parameters in the text.
-
-We used Pareto-smoothed importance sampling to approximate leave-one-out
-cross-validation (PSIS-LOO, Vehtari et al. 2017) to estimate the
-expected log pointwise predictive density (ELPD) which we used to
-compare the fit of these different models accounting for model
-complexity. Furthermore, we performed model comparison within each
-single subject to estimate the robustness of the best-fitting model in
-our population sample, by computing the sum of the pointwise predictive
-accuracy for each participant and model, yielding a score for each
-participant and model.
-
-Note that each of the four main models was compared against alternative
-parameterizations to ensure the robustness of our findings and rule out
-alternative explanations. For example, the Frequency-prior model was
-tested with varying temporal integration windows (see
-\quartosuppfigref{suppfig-frequency_model_comparison} and
-\quartosupptblref{supptbl-frequency_model_comparison}), and the
-Offer-context model was selected from a previous study (Ott et al.
-2022a) after comparison with 21 alternatives. Similarly, reduced
-versions of the Preference model were tested against the full model by
-removing each component (forward planning, preference and modulation) as
-well as individual task factors (or a total of 7 alternative prefernece
-models,see \quartosuppfigref{suppfig-preference_model_comparison} and
-\quartosupptblref{supptbl-preferences_model_comparison}). For clarity,
-we focus on the four best-fitting models (Planning, Frequency prior,
-Offer-context, and Preference models) in the main text, with comparisons
-to all alternatives detailed in the supplementary material.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsection{Experimental factors relevance
-analysis}\label{experimental-factors-relevance-analysis}
-
-The Preference model estimates factor-level preference weights for each
-task factor (energy, offer, current and future costs), revealing that
-participants' deviations from optimal forward planning are more strongly
-driven by some factors of the task (energy and offers) than others
-(current and future costs). To quantify the behavioral contribution of
-each factor, we compared the full preference model to reduced models in
-which all factor-level preference regressors from one task factor were
-removed. A large decrease in predictive accuracy after removing a factor
-indicates that preferences associated with this factor explain a
-substantial part of participants' choices beyond the planning-derived
-values.
-
-The observation that participants' deviation from optimal forward
-planning is systematically influenced by specific task factors raises
-the question of whether preferences constitute unhelpful biases
-(suboptimal tendencies without adaptive value in the task) or whether
-they reflect a structured yet simplified solution to the task. In other
-words, could participants' preferences constitute a low-dimensional
-decomposition of an approximation of the optimal policy, providing a
-cheap alternative to guide behavior in the absence of forward planning?
-To test this hypothesis, we conducted a series of analyses to test
-whether weights of the factors in participants' preferences relate to
-the structure of the task.
-
-First, we asked whether the factors that are strongly weighted in
-participants' preference scores are more relevant for reward
-maximization. For this purpose, we constructed reduced versions of the
-full MDP described in Section~\ref{sec-forward_planning_component},
-where one task factor (such as offer, energy\ldots) was omitted by
-averaging transition probabilities and rewards across the levels of that
-factor. For each reduced MDP, we computed the state action value
-function (\(Q_{reduced}\)) and mapped it back onto the full MDP by
-assigning the aggregated states' values to their corresponding original
-states. Using this mapping, we derived a policy from the reduced MDP and
-calculated its expected return in the full MDP. This analysis measures
-the reward sensitivity of each task factor: if ignoring a factor leads
-to a large loss in return, optimal behavior depends strongly on
-information about that factor.
-
-Second, we asked whether participants' preferences themselves define a
-useful policy in the absence of forward planning. We derived policies
-from the preference score of the full Preference model and from reduced
-Preference models in which one task factor was omitted. We then computed
-the expected return of each preference-based policy relative to the
-optimal policy. If task-specific preferences provide an adaptive
-approximation to optimal choice, the full preference policy should
-outperform a stochastic policy and removing behaviorally important
-factors should reduce expected return.
-
-Finally, we explored a possible source of these preferences. Within the
-policy-compression framework, compressed policies can be described in
-terms of marginal action probabilities (Lai and Gershman 2021). We
-therefore computed, under the optimal policy, the probability of
-accepting under each level of each task factor after marginalizing over
-all other factors. For example, we computed the frequency with which an
-offer of 1 should be accepted across all energy and cost states. We then
-compared these factor-specific marginal action probabilities with the
-fitted preference weights. A close correspondence would suggest that
-participants' preferences may approximate feature-specific marginal
-action tendencies of the optimal policy.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsection{Reaction times analysis}\label{reaction-times-analysis}
-
-In our task, exact computation of optimal policy is prohibitively
-expensive, given the size of the task's state space (1,456 states), the
-forward planning horizon, and the highly probabilistic nature of the
-task. Preferences derived from task knowledge or from task experience
-are presumably readily available to the participants or require minimal
-computation. A part of our hypothesis is that instead of systematically
-evaluating all future outcomes before making a choice, participants
-consider the entropy of their preferences to determine how much they
-should engage in forward planning. If so, we would expect participants'
-RT to reflect the entropy of their preferences, as more certain
-preferences should be associated with less forward planning, resulting
-in faster RT.
-
-Ott et al. (2022a) showed that response times were slower when the
-planning-derived DV for accepting and rejecting were similar, and that
-this forward planning conflict effect was greater for intermediate than
-for extreme offers. We reinterpret this context dependence as a
-consequence of preference entropy. Intermediate offers tend to generate
-weaker preference signals, whereas extreme offers tend to produce
-clearer action tendencies. Accordingly, we expected forward planning
-conflict to slow responses most when preferences were weak.
-
-To test whether the effect of forward planning conflict should depend on
-preference entropy, we modelled participants' RTs as a function of
-forward planning conflict (i.e.~\(conflict = - |DV|\)), preference
-entropy (fitted in the Preference model) and the modulation of forward
-planning by preference entropy:
-
-\begin{equation}\protect\phantomsection\label{eq-RT-model}{
-log(RT) = \beta_{conflict} * Conflict + \beta_{pref} * H(pref) + \beta_{modulation} * (Conflict : H(pref))
-}\end{equation}
-
-We predicted a positive modulation, such that forward planning conflict
-would be associated with longer RTs when preference entropy was high,
-that is, when preferences were weak or uncertain.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
 \section{Results}\label{results}
 
+We tested our hypothesis on a dataset where participants performed a
+complex sequential decision making task (Ott et al. (2022b), see
+Section~\ref{sec-data-desgin} for the full description of the design).
+In each trial, participants had to decide whether to accept or reject an
+offer varying between 1 and 4 points, where accepting an offer incurred
+and energy cost between 1 and 2 points, and rejecting an offer incurred
+a gain of one energy point. Energy cost associated with accepting an
+offer changed every 4 trials (referred to as trials segment) and
+participants were informed of the current and future trials segment.
+This task is highly structure, as each trial consists of a combination
+of 4 factors (offer, energy, current and future costs), all of which
+have to be taken into account to maximize return, making this dataset
+ideal to test our prediction that participants combine forward-planning
+with preferences reflecting the structure of the task.
+
 Performance indicates that participants were able to perform the task
-well. Participants provided responses with an average reaction time of
-0.90s \(\pm\) 0.26 (s.d.) and failed to give their response before time
-out in only 0.27\% \(\pm\) 0.56 (s.d.) out of 240 trials. On average,
-participants gathered 332.43 \(\pm\) 6.64 points throughout the
+well. Participants provided responses with an average reaction time (RT)
+of 0.90s \(\pm\) 0.26 (s.d.) and failed to give their response before
+time out in only 0.27\% \(\pm\) 0.56 (s.d.) out of 240 trials. On
+average, participants gathered 332.43 \(\pm\) 6.64 points throughout the
 experiment.
 
-\subsection{Choice behaviour}\label{choice-behaviour}
+\subsection{Choice behavior}\label{choice-behavior}
 
-We first compared the four choice models to test whether participants'
-deviations from optimal forward planning were systematic. The Planning
-model served as the benchmark, because it predicts choices from
-planning-derived DV alone. Replicating Ott et al. (2022a), this
-benchmark provided the poorest fit
+To test whether and how participants choice behavior deviates from
+optimal planning, we compared four Bayesian hierarchical logistic
+regression models of participants accept/reject choices (see
+Section~\ref{sec-choice-behavior-modeling-method} for detailed
+explanation). All models shared the same planning component: decision
+values (DV) obtained by backward induction on the task Markov Decision
+Process (MDP), reflecting the difference in long term value between
+accepting and rejecting an offer in each state under the optimal policy.
+The Planning model contained only DV as a regressor assumed deviations
+were unsystematic noise, serving as a benchmark. The three other models
+differed in how they accounted for deviations from this benchmark. The
+Frequency-prior model assumed deviations reflect a recency bias towards
+recently chosen actions. The Offer-context model, the best fitting model
+from Ott et al. (2022a), assumed that participants plan to different
+extents in extreme versus intermediate offers. Finally, the Preference
+model, impelementing our main hypothesis, combined the planning
+component with a state-dependent preference score, contructed by
+assigning weights to the levels of each task factor (offer, energy,
+current and future costs) and summing them, as well as a modulation term
+testing whether the influence of planning depends on the entropy of the
+preference score.
+
+Model comparison revealed that participants' deviations from optimal
+forward planning were indeed systematic. Replicating Ott et al. (2022a),
+the Planning model provided the poorest fit
 (\(\Delta ELPD_{pref - planning}\)=586.28 \(\pm\) 55.56 s.e., see
-Figure~\ref{fig-choicemdl} A), indicating that participants' choices
-were not explained by planning-derived DV alone. Furthermore, our
-results indicate that participants' biases do not reflect a frequency
-prior (\(\Delta ELPD_{pref - frequency}\)=581.38 \(\pm\) 55.66), nor a
+Figure~\ref{fig-choicemdl} A), indicating that deviations from optimal
+behavior are not purely stochastic. Furthermore, our results indicate
+that participants' biases do not reflect a frequency prior
+(\(\Delta ELPD_{pref - frequency}\)=581.38 \(\pm\) 55.66), nor a
 splitting of the task into separate contexts
 (\(\Delta ELPD_{pref - context}\)=165.49 \(\pm\) 52.62). Rather,
 participants exhibit preferences that reflect the task structure, as the
@@ -976,10 +433,6 @@ the success of the Preference model. Finally, costs (both current and
 future) exert a weaker influence on participants' behavior, with a mild
 bias towards accepting offers when costs are low.
 
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
 \begin{figure}[H]
 
 \centering{
@@ -1006,14 +459,6 @@ indicate medians, and dotted lines indicate the 2.5\% and 97.5\%
 quantiles. Dots indicate participant-level mean estimates.}
 
 \end{figure}%
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
 
 We then proceeded to test the central prediction that the influence of
 forward planning should depend on preference uncertainty, quantified as
@@ -1050,10 +495,6 @@ when preference scores are negative (see
 participants' responses and fitted values as a function of DV and
 preference score).
 
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
 \begin{figure}[H]
 
 \centering{
@@ -1077,14 +518,6 @@ This asymmetry arises because negative preference scores are more often
 associated with states in which forward planning also favors rejection.}
 
 \end{figure}%
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
 
 We next asked whether the fitted forward planning and preference-related
 quantities were relevant not only for predicting trial-by-trial choices,
@@ -1122,10 +555,6 @@ between preference entropy and return is not marginally significant
 planning (r=0.47, p=0.003) and modulation (r=0.60, p\textless0.001) when
 the same subject is removed.
 
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
 \begin{figure}[H]
 
 \centering{
@@ -1148,10 +577,6 @@ in (A).}
 
 \end{figure}%
 
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
 \subsection{Experimental factors
 relevance}\label{experimental-factors-relevance}
 
@@ -1170,18 +595,11 @@ participants' preference scores were structured primarily by offer value
 and energy. We further confirmed this pattern from a complementary
 model-comparison perspective. To do so, we compared the full Preference
 model with reduced models in which the factor-level preference was
-removed for one task factor at a time. This effectively tests how
-decision-making changes when participants are assumed to ignore one
-specific source of task information, such as offer value, action costs,
-or future transitions.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
+removed for one task factor at a time (see
+Section~\ref{sec-factor-relevance-analysis} for a description). This
+effectively tests how decision-making changes when participants are
+assumed to ignore one specific source of task information, such as offer
+value, action costs, or future transitions.
 
 Figure~\ref{fig-task-features} A shows the change in model fit when each
 preference factor was removed separately from the full preference model.
@@ -1194,22 +612,6 @@ fit. We found that offer (\(\Delta ELPD_{full - offer}\)=137.36 \(\pm\)
 responses, whereas costs-related preferences have a smaller impact on
 the overall fit (\(\Delta ELPD_{full - CC}\)=47.02 \(\pm\) 49.89 s.e.
 and \(\Delta ELPD_{full - FC}\)=27.35 \(\pm\) 48.62 s.e.).
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
 
 \begin{figure}[H]
 
@@ -1252,33 +654,30 @@ optimal policy; deviations indicate feature-specific biases.}
 
 \end{figure}%
 
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
 We further sought to determine whether the fitted preferences could
 serve as adaptive biases when forward planning is absent. As a first
 step, we quantified how strongly optimal return depends on each task
 factor. To do so, we derived policies from reduced forward planning
 models in which one task factor was ignored and computed their return
-loss relative to the optimal policy (Figure~\ref{fig-task-features} B).
-Our results show that ignoring current and future costs when planning
-leads only to minimal losses (0.78\% and 0.98\% respectively), while
-ignoring the offer level leads to a 13.94\% loss. The biggest loss is
-incurred when ignoring energy levels. This leads to a loss in returns of
-72.04\%, which is even larger than a purely stochastic policy (i.e.,
-equal probability of accepting and rejecting an offer on each trial).
-This indicates that reward maximization under forward planning is highly
-sensitive to energy. This large loss reflects the structure of the task.
-A policy that ignores energy cannot adapt choices to the current energy
-budget. As a result, it can deplete energy in low-energy states as its
-behavior is driven by offer levels. The large reward sensitivity of
-energy is not mirrored in Figure~\ref{fig-task-features} A because that
-analysis measures the additional predictive contribution of preference
-terms after accounting for planning-derived decision-values. Energy is
-already strongly reflected by the forward planning component, so
-removing energy-related preference terms has a smaller effect on model
-fit than its relevance for optimal return would suggest.
+loss relative to the optimal policy (Figure~\ref{fig-task-features} B,
+see Section~\ref{sec-factor-relevance-analysis}). Our results show that
+ignoring current and future costs when planning leads only to minimal
+losses (0.78\% and 0.98\% respectively), while ignoring the offer level
+leads to a 13.94\% loss. The biggest loss is incurred when ignoring
+energy levels. This leads to a loss in returns of 72.04\%, which is even
+larger than a purely stochastic policy (i.e., equal probability of
+accepting and rejecting an offer on each trial). This indicates that
+reward maximization under forward planning is highly sensitive to
+energy. This large loss reflects the structure of the task. A policy
+that ignores energy cannot adapt choices to the current energy budget.
+As a result, it can deplete energy in low-energy states as its behavior
+is driven by offer levels. The large reward sensitivity of energy is not
+mirrored in Figure~\ref{fig-task-features} A because that analysis
+measures the additional predictive contribution of preference terms
+after accounting for planning-derived decision-values. Energy is already
+strongly reflected by the forward planning component, so removing
+energy-related preference terms has a smaller effect on model fit than
+its relevance for optimal return would suggest.
 
 Further, we asked whether the fitted preferences could support adaptive
 choice when forward planning is absent. If preferences capture useful
@@ -1287,23 +686,23 @@ be suboptimal but still produce less return loss than a stochastic
 policy. In addition, removing task factors that strongly shape
 participants' preferences should reduce the return of these preference
 policies. To quantify this, we computed the expected return loss of
-policies derived from the preference score alone. The full preference
-policy produced a return loss of 28.34\%, indicating that preferences
-did not fully replace forward planning, see
-Figure~\ref{fig-task-features} C. However, this loss was smaller than
-the loss of a stochastic policy (dashed line), showing that the fitted
-preferences captured task structure that was relevant for return
-maximization (Figure~\ref{fig-task-features} C). Removing current or
-future cost from the preference policy produced little additional loss
-relative to the full preference policy (29.72 and 28.38 respectively).
-In contrast, removing offer value led to a substantial loss in return of
-51.52\%. The largest loss occurred when energy was removed (69.80\%
-loss), with performance falling below that of the stochastic policy.
-This suggests that an energy-blind preference policy is not merely less
-informative but can become systematically maladaptive by accepting
-attractive offers without regard to the current energy budget, making
-the agent more likely to run out of energy than under a stochastic
-policy.
+policies derived from the preference score alone (see
+Section~\ref{sec-factor-relevance-analysis}). The full preference policy
+produced a return loss of 28.34\%, indicating that preferences did not
+fully replace forward planning, see Figure~\ref{fig-task-features} C.
+However, this loss was smaller than the loss of a stochastic policy
+(dashed line), showing that the fitted preferences captured task
+structure that was relevant for return maximization
+(Figure~\ref{fig-task-features} C). Removing current or future cost from
+the preference policy produced little additional loss relative to the
+full preference policy (29.72 and 28.38 respectively). In contrast,
+removing offer value led to a substantial loss in return of 51.52\%. The
+largest loss occurred when energy was removed (69.80\% loss), with
+performance falling below that of the stochastic policy. This suggests
+that an energy-blind preference policy is not merely less informative
+but can become systematically maladaptive by accepting attractive offers
+without regard to the current energy budget, making the agent more
+likely to run out of energy than under a stochastic policy.
 
 Together, these results suggest that participants' preferences were not
 arbitrary biases, but adaptive approximations to optimal choice. They
@@ -1336,10 +735,6 @@ Nonetheless, the overall similarities between both variables suggest
 that these marginal action tendencies may have contributed to the
 formation of participants' task structured preferences.
 
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
 \subsection{Reaction times}\label{reaction-times}
 
 Under the proposed hypothesis, participants' reliance on forward
@@ -1354,15 +749,11 @@ value associated with each action is more clearly distinct (Ott et al.
 preference scores to attenuate the effect of forward planning conflict
 on RT: when participants' preferences provide a clear action tendency,
 forward planning conflict should have a weaker influence on response
-times.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
+times. To test this prediction, we modelled participants RT using the
+absolute decision value (referred to as decision conflict), as well as
+the preference score estimated from the choice behavior model, and the
+interaction between the two (see Section~\ref{sec-RT-model-method} for a
+description of the model).
 
 Indeed, we found that participants' RT was influenced by (i) forward
 planning conflict (\(\beta_{conflict}\)=0.11, \(CI_{95\%}\)={[}0.08,
@@ -1409,10 +800,6 @@ tendency, forward planning conflict had a weaker effect on response
 times (blue line), suggesting reduced reliance on planning-derived
 values.
 
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
 \begin{figure}[H]
 
 \centering{
@@ -1429,10 +816,6 @@ predicted RT as a function of forward planning conflict, separately for
 preference entropy of 0, 0.5 and 1.0.}
 
 \end{figure}%
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
 
 \section{Discussion}\label{discussion}
 
@@ -1602,15 +985,495 @@ manipulations could help disentangle the sources of task-specific
 preferences and clarify how structured priors are formed, adapted and
 integrated with forward planning.
 
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
+\section{Methods}\label{methods}
+
+\subsection{Data}\label{sec-data-desgin}
+
+The data used in this study were published by Ott and colleagues
+(2022a). In this study, \texttt{\{python\}\ f"\{n\_participants:.0f\}"}
+participants
+(\texttt{\{python\}\ f"\{n\_female:.0f\},\ mean\ age=\{mean\_age:.1f\},\ SD=\{std\_age:.1f\}"})
+took part in a sequential decision-making task (Ott et al. 2022a,
+2022b). The study was approved by the Institutional Review Board of the
+Technische Universität Dresden and conducted in accordance with ethical
+standards of the Declaration of Helsinki.
+
+Figure~\ref{fig-design} shows a schematic representation of the task.
+Participants were instructed to gather as many points as possible
+throughout the task. In each trial, they were presented with an offer
+associated with a reward of either 1, 2, 3 or 4 points, which they could
+either accept or reject. To accept the offer in a trial, participants
+had to pay an energy cost of either 1 or 2 energy points (low cost, LC
+and high cost, HC respectively). When they rejected the offer, they
+gained 1 energy point. Participants' energy level was capped at 6, so
+their energy could range from 0 (depleted energy) to 6 (max energy).
+Offers varied in each trial following a uniform distribution. Costs
+remained fixed for 4 consecutive trials, which we refer to as a segment
+(see Figure~\ref{fig-design} B), and participants were informed of the
+price of the current segment and the next segment. The cost of the next
+segment was pseudorandomized to equate the probability of each
+transition (from current HC or LC to future HC or LC, see
+Figure~\ref{fig-design} C) and ensure that each transition occurred 15
+times. When participants accepted an offer that they could not afford
+(current energy level below current cost), no reward was awarded and a
+warning was displayed.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={Experimental design}]{images/experimental_design.jpg}}
+
+}
+
+\caption{\label{fig-design}EExperimental design: (A) Single trial
+procedure, each frame represents a step within the trial with duration
+of each step above. Top row depicts participants accepting; bottom row
+depicts participants rejecting. In each trial, participants are
+presented with N golden cups; the number of cups symbolizes the amount
+of reward. The blue bar represents energy level; yellow bar represents
+accumulated reward so far, lightning symbols at the bottom right of each
+frame represent current cost (left) and future cost (right). (B) Between
+trial costs dependencies. A segment consists of 4 trials and the cost in
+each segment is fixed. Participants are aware of the cost in the current
+and future 4 trials but not beyond. (C) Transition structure. Cost can
+transition from low cost (LC) to high cost (HC), LC to LC, HC to LC and
+HC to HC. Reproduced from Ott et al. (2022a)}
+
+\end{figure}%
+
+Accordingly, each trial was defined by several task factors: the current
+offer, the participant's current energy level, the current cost of
+accepting, and the cost in the upcoming segment. Participants had to
+decide whether to accept or reject the offer under the specific
+combination of these factors. Because accepting uses up energy while
+rejecting replenished it, each choice also changed the state in which
+the participant entered subsequent trials. Maximizing overall return was
+therefore non-trivial and required considering the future consequences
+of current choices.
+
+At the start of each trial, a fixation cross was presented for 0.5 s in
+the middle of the screen. Then, an offer appeared represented by the
+number of ``cups'' presented in the middle of the screen, and choice
+options were presented on each side of the screen, surrounded by a black
+frame. Participants had 5 s to provide an answer, by selecting either
+option (accept or reject), in which case the frame around the chosen
+option disappeared. Following their choice, the resulting change in
+energy and points was displayed (green indicating an increase in point
+and/or energy, red indicating a decrease in energy) for 1s. The trial
+ended with an inter-trial interval (ITI) ranging from 2 to 5 s
+(uniformly sampled, rounded to the first decimal) in which the offer
+disappeared, and unframed choice options remained on screen. If
+participants took longer than 5 s to provide their answer, a warning
+message was displayed and the next trial started.
+
+Following their choice, the resulting change in energy and points was
+displayed (green indicating an increase in point and/or energy, red
+indicating a decrease in energy) for 1s. The trial ended with an
+inter-trial interval (ITI) ranging from 2 to 5 s (uniformly sampled,
+rounded to the first decimal) in which the offer disappeared, and
+unframed choice options remained on screen. If participants took longer
+than 5 s to provide their answer, a warning message was displayed and
+the next trial started.
+
+To familiarize themselves with the task, participants conducted a
+training session of 144 trials, corresponding to 36 segments.
+Participants then completed 240 trials (60 segments) which are included
+in subsequent analyses. Participants started with an energy budget of 3,
+and their reward points were accumulated throughout the entire
+experiment. The trials sequence was pseudorandomized, such that each
+costs transitions (LC to LC, LC to HC, HC to LC and HC to HC, see
+Figure\,1 C) occurred equally often within the training and test
+sessions, resulting in 9 repetitions of each transition in the training
+session and 15 in the experiment. In addition, the offer sequence was
+selected such that the frequency of each offer was matched across costs
+transitions. The sequence of costs' transitions and offers was kept the
+same across participants. Participants were offered two to three minutes
+breaks every 20 segments. The test sessions lasted around 40 min.
+
+\subsection{Forward planning
+component}\label{sec-forward_planning_component}
+
+To model optimal behavior in the task, we operationalized our task as a
+Markov Decision Process (MDP) with the following tuples:
+
+\[
+MDP = (S, A, P, R)
+\]
+
+Where \(S\) represents all possible states in our task, where each state
+\(s\) consists of a combination of the experimental variables in our
+task: \(S=E \times O \times CC \times FC \times T\), with energy
+\(E={0, 1, ..., 6}\), offer \(O={1, 2, 3, 4}\), current segment cost
+\(CC={1, 2}\), future segment cost \(FC={1, 2}\) and trial
+\(T={1, 2,..., 13}\). Time steps (i.e.~trials) had to be incorporated in
+the state space to account for the cost being trial dependent. \(A\) is
+the set of possible actions in our task (\(accept=1, reject=0\)), \(P\)
+is the transitional probability from a given state to all other states
+(\(P=P_{\forall s \in S}(s'|s, a)\)), and \(R\) is the reward function
+characterizing the reward participants can obtain in a given state for
+each action (\(R=R_{\forall s \in S}(s|a)\)).
+
+While optimal behavior would require considering outcomes up until the
+end of the task, we modelled forward planning over a limited horizon,
+following the approach used by Ott et al. (2022a). Participants had
+explicit information about the current and upcoming segment,
+corresponding to an eight-trial horizon. Solving the MDP only over these
+eight trials would implicitly treat the task as ending after the
+upcoming segment, leading the optimal policy to spend all remaining
+energy by the end of that horizon. To avoid this terminal artefact, we
+included one additional segment beyond the known horizon. Thus, action
+values were computed over a twelve-trial planning horizon, with a
+terminal value set after the twelfth trial, yielding 13 time points in
+the dynamic-programming solution. In the first 8 trials, the probability
+of the next state reflects the offer-related stochasticity, while costs
+are known. For trials beyond the known horizon, the uncertainty
+associated with the offer is compounded by the uncertainty related to
+the next cost transition (see Ott et al. 2022a for more details).
+
+We applied backward induction to compute the long-term value associated
+with each action in any given state (i.e.~the \(Q\) function {Sutton et
+al.} 1998). Participants maximizing return should choose the action with
+the largest value. As there were only two possible actions in our task
+(accept or reject), we computed decision values (DV) as:
+
+\[
+DV_s = Q(s, a=1) - Q(s, a=0)
+\]
+
+In states where the DV are negative, participants should reject, and in
+states where DV are positive, participants should accept the offer.
+
+\subsection{Modelling of participants
+responses}\label{sec-choice-behavior-modeling-method}
+
+Participants responses were modelled using a logistic regression:
+
+\begin{equation}\protect\phantomsection\label{eq-logistic_reg}{
+P(a=1) = \sigma(\eta)
+}\end{equation}
+
+where \(\sigma(x)=\frac{1}{1+e^-x}\) denotes the logistic sigmoid.
+
+Participants' responses were modelled using Bayesian hierarchical
+logistic regressions that estimate the probability of accepting the
+current offer. We compared four models that differed in which sources of
+information were allowed to influence this probability. All models
+included planning-derived DV as a benchmark estimate of optimal action
+value. The models differed in how they accounted for systematic
+deviations from this forward planning benchmark: as unstructured noise,
+recent action frequencies, the Offer-context structure identified in the
+original analysis by Ott et al. (2022a), or task-specific preferences.
+This comparison builds on previous work by including the best-fitting
+model among the 21 models tested by ott2022forward as a strong reference
+model. We then asked whether a factorized preference account could
+explain participants' choices better than this previous account.
+Additional parametrizations, reduced models, and robustness checks are
+described in the model-comparison section below and reported in the
+supplementary material. Formally, these differences were implemented by
+changing the predictors included in the linear predictor \(\eta\). We
+describe the models in turn, starting with the planning model and then
+adding increasingly structured accounts of participants' deviations from
+optimal forward planning.
+
+\subsubsection{Planning model}\label{planning-model}
+
+To establish a benchmark, we first asked whether participants' choices
+could be explained by optimal forward planning alone. In this pure
+Planning model, participants' responses were modelled only as a function
+of the planning-derived DV:
+
+\begin{equation}\protect\phantomsection\label{eq-planning-model}{
+\begin{aligned}
+\eta_{planning} &= \beta_{plan} \times DV
+\end{aligned}
+}\end{equation}
+
+This model captures the possibility that participants' deviations from
+optimal forward planning are unsystematic. Under this account,
+alternative models with additional regressors should not yield better
+predictive accuracy once model complexity is taken into account. Any
+improvement of the subsequent models would therefore indicate that
+deviations from the forward planning benchmark contain systematic
+structure.
+
+\subsubsection{Frequency-prior model}\label{frequency-prior-model}
+
+Alternatively, participants' deviations from optimality might reflect a
+recency bias, whereby choice on a given trial is biased towards the most
+frequent action in recent history. Recent accounts of forward planning
+consider that priors consist of a state independent recency bias
+(Schwöbel et al. 2021, 2024; Kuperwajs and Ma 2021). Similarly, under
+the policy compression framework, the optimal policy integrates forward
+planning and marginal action probability across states (Lai and Gershman
+2021, 2024). To test whether in our task participants' responses are
+biased towards most frequent action taken in previous trials, and
+approximate the policy compression framework, we fitted a
+Frequency-prior model, which models participants' responses as a
+function of DV combined with a recency bias:
+
+\begin{equation}\protect\phantomsection\label{eq-frequency-model}{
+\begin{aligned}
+\eta_{frequency} =& \beta_{plan} \times DV + \beta_{prior} \times P(A)
+\end{aligned}
+}\end{equation}
+
+We computed \(P(A)_t\) in each trial \(t\) using a linearly decaying
+moving average going back \(k=20\) trials, assuming temporally
+discounted effects of past actions (see
+\quartosuppfigref{suppfig-frequency_model_comparison} for exploration of
+the fit at different \(k\)):
+
+\begin{equation}\protect\phantomsection\label{eq-mvavg}{
+\begin{aligned}
+P(A)_t =& \frac{\sum_{i=t-k}^{t-1}x_i \times w_i}{\sum_{i=t-k}^{t-1}w_i}
+\end{aligned}
+}\end{equation}
+
+Where \(x_i\) denotes the action taken on trial i coded as accept or
+reject, and \(w=[1, 2, ..., k]\) so that the weights increase linearly
+from 1 for the oldest included trial to \(k\) for the most recent trial.
+
+\subsubsection{Offer-context model}\label{offer-context-model}
+
+In addition, we used the best-fitting model (among 21 models) from Ott
+et al. (2022a), to test whether participants treat states clusters as
+separate contexts in which they plan to different extents. We refer to
+this model as the Offer-context model. Here, the forward planning
+component (DV) is split between extreme and intermediate offers (offers
+{[}1, 4{]} and {[}2, 3{]} respectively) to reflect the fact that
+participants treat those as separate contexts, with different control
+requirements. In addition, the model comprises offer specific and energy
+related flexible biases regressors:
+
+\begin{equation}\protect\phantomsection\label{eq-context-model}{
+\begin{aligned}
+\eta_{context} =& \beta_{plan23} \times DV_{23} + \beta_{plan14} \times DV_{14} + \\
+&\beta_{O1}\mathbf{I}_{O1} + \beta_{O2}\mathbf{I}_{O2} + \beta_{O3}\mathbf{I}_{O3} + \beta_{O4}\mathbf{I}_{O4} + \\
+&\beta_{basic}\mathbf{I}_{basic} + \beta_{maxE}\mathbf{I}_{maxE} + \\
+&\beta_{minE_{LC}}\mathbf{I}_{minE_{LC}} + \beta_{minE_{HC}}\mathbf{I}_{minE_{HC}} 
+\end{aligned}
+}\end{equation}
+
+\(\mathbf{I}\) indicate dummy regressors encoding specific experimental
+conditions: \(\mathbf{I}_{basic}\) encodes trials where energy is
+sufficient to accept the offer and inferior to 6, \(\mathbf{I}_{maxE}\)
+encodes trials where energy is equal to 6, \(\mathbf{I}_{minE_{LC}}\)
+for trials where energy is too low to accept the offer when cost is low,
+\(\mathbf{I}_{minE_{HC}}\) for trials where energy is too low to accept
+the offer when cost is high, \(\mathbf{I}_{O1-4}\) for trials with offer
+1-4 where energy is sufficient to accept. Following Ott et al. (2022a),
+these regressors meant to account for edge cases within the state space
+were not included in the Frequency-prior model as it was aimed to test
+whether participants' biases from optimal behavior can be uniquely
+explained by a frequency bias. These were also not included in the
+preference model below, as these regressors consist of a linear
+combination of the preference factors of the model and would therefore
+be redundant.
+
+\subsubsection{Preferences model}\label{preferences-model}
+
+Finally, we developed a task-specific preference model (Preference model
+for short) to test whether participants' choices reflect the integration
+of forward planning with task-specific preferences. The model contains
+three components. First, as in all other models, choices depend on the
+planning-derived DV. Second, choices depend on a state-dependent,
+task-specific preference score. This preference score is constructed by
+assigning preference weights to the levels of the main task factors
+namely offer, energy, current cost, and future cost. We refer to these
+as factor-level preferences (i.e., the preference weight associated with
+a given level of a given factor). The score is then computed as the sum
+of the corresponding factor-level preferences for the current state.
+Third, the model includes a modulation term that tests whether the
+influence of forward planning depends on the uncertainty of the
+preference score. We quantified this uncertainty as the entropy of the
+preference score (preference entropy). The model therefore tests the
+prediction that participants rely more on forward planning when their
+preferences are weak or uncertain:
+
+\begin{equation}\protect\phantomsection\label{eq-preference_model}{
+\begin{aligned}
+\eta_{pref} &= \beta_{plan} \times DV + pref + \beta_{modulation} \times(H(pref) \times DV)
+\end{aligned}
+}\end{equation}
+
+Where: \[
+\begin{aligned}
+pref = \mathbf{X_{pref}}\mathbf{\beta}
+\end{aligned}
+\]
+
+And \(H(pref)\) is the entropy of the preference score:
+
+\begin{equation}\protect\phantomsection\label{eq-entropy}{
+\begin{aligned}
+H(pref) = -\sigma(pref) * log(\sigma(pref)) - (1-\sigma(pref)) * log(1-\sigma(pref))
+\end{aligned}
+}\end{equation}
+
+With:
+
+\begin{equation}\protect\phantomsection\label{eq-entropy}{
+\begin{aligned}
+\sigma(x) = \frac{1}{1+e^{-x}}
+\end{aligned}
+}\end{equation}
+
+Participants' factor-level preferences are estimated as latent
+variables. \(\mathbf{X_{pref}}\) is a \([M \times N]\) (M=measurements,
+N=experimental levels) matrix dummy coding each factor of the
+experimental setup (energy, offer, current and future costs) and
+\(\mathbf{\beta}\) is a vector of weights estimated for each level of
+each factor.
+
+\subsection{Model fitting and
+comparison}\label{model-fitting-and-comparison}
+
+Models were fitted to participants' response data using Bayesian
+hierarchical logistic regressions implemented using PYMC ({Abril-Pla et
+al.} 2023) and Bambi (Capretto et al. 2022). We excluded trials where
+participants did not provide a response or if RT exceeded the response
+window (5 s). Across models, the following parameters were modelled
+hierarchically, with separate participant-level estimates drawn from
+group-level distributions:
+\(\beta_{plan},\ \beta_{plan23},\ \beta_{plan14},\ \beta_{pref},\ \beta_{modulation},\ \beta_{basic},\ \beta_{O1},\ \beta_{O1},\ \beta_{O2},\ \beta_{O3},\ \beta_{O4}\),
+while the remaining parameters were fixed across participants. For all
+parameters, we used weakly informative hyperprior distributions
+\(\mu \sim \mathcal{N}(0, 2)\) and \(\sigma \sim Halfnormal(0, 2)\). All
+models were fitted using 4 chains of 2000 samples each (1000 warmups),
+resulting in 4000 samples in total. We report the mean of the posterior
+and the 95\% credible interval for the estimated parameters in the text.
+
+We used Pareto-smoothed importance sampling to approximate leave-one-out
+cross-validation (PSIS-LOO, Vehtari et al. 2017) to estimate the
+expected log pointwise predictive density (ELPD) which we used to
+compare the fit of these different models accounting for model
+complexity. Furthermore, we performed model comparison within each
+single subject to estimate the robustness of the best-fitting model in
+our population sample, by computing the sum of the pointwise predictive
+accuracy for each participant and model, yielding a score for each
+participant and model.
+
+Note that each of the four main models was compared against alternative
+parameterizations to ensure the robustness of our findings and rule out
+alternative explanations. For example, the Frequency-prior model was
+tested with varying temporal integration windows (see
+\quartosuppfigref{suppfig-frequency_model_comparison} and
+\quartosupptblref{supptbl-frequency_model_comparison}), and the
+Offer-context model was selected from a previous study (Ott et al.
+2022a) after comparison with 21 alternatives. Similarly, reduced
+versions of the Preference model were tested against the full model by
+removing each component (forward planning, preference and modulation) as
+well as individual task factors (or a total of 7 alternative prefernece
+models,see \quartosuppfigref{suppfig-preference_model_comparison} and
+\quartosupptblref{supptbl-preferences_model_comparison}). For clarity,
+we focus on the four best-fitting models (Planning, Frequency prior,
+Offer-context, and Preference models) in the main text, with comparisons
+to all alternatives detailed in the supplementary material.
+
+\subsection{Experimental factors relevance
+analysis}\label{sec-factor-relevance-analysis}
+
+The Preference model estimates factor-level preference weights for each
+task factor (energy, offer, current and future costs), revealing that
+participants' deviations from optimal forward planning are more strongly
+driven by some factors of the task (energy and offers) than others
+(current and future costs). To quantify the behavioral contribution of
+each factor, we compared the full preference model to reduced models in
+which all factor-level preference regressors from one task factor were
+removed. A large decrease in predictive accuracy after removing a factor
+indicates that preferences associated with this factor explain a
+substantial part of participants' choices beyond the planning-derived
+values.
+
+The observation that participants' deviation from optimal forward
+planning is systematically influenced by specific task factors raises
+the question of whether preferences constitute unhelpful biases
+(suboptimal tendencies without adaptive value in the task) or whether
+they reflect a structured yet simplified solution to the task. In other
+words, could participants' preferences constitute a low-dimensional
+decomposition of an approximation of the optimal policy, providing a
+cheap alternative to guide behavior in the absence of forward planning?
+To test this hypothesis, we conducted a series of analyses to test
+whether weights of the factors in participants' preferences relate to
+the structure of the task.
+
+First, we asked whether the factors that are strongly weighted in
+participants' preference scores are more relevant for reward
+maximization. For this purpose, we constructed reduced versions of the
+full MDP described in Section~\ref{sec-forward_planning_component},
+where one task factor (such as offer, energy\ldots) was omitted by
+averaging transition probabilities and rewards across the levels of that
+factor. For each reduced MDP, we computed the state action value
+function (\(Q_{reduced}\)) and mapped it back onto the full MDP by
+assigning the aggregated states' values to their corresponding original
+states. Using this mapping, we derived a policy from the reduced MDP and
+calculated its expected return in the full MDP. This analysis measures
+the reward sensitivity of each task factor: if ignoring a factor leads
+to a large loss in return, optimal behavior depends strongly on
+information about that factor.
+
+Second, we asked whether participants' preferences themselves define a
+useful policy in the absence of forward planning. We derived policies
+from the preference score of the full Preference model and from reduced
+Preference models in which one task factor was omitted. We then computed
+the expected return of each preference-based policy relative to the
+optimal policy. If task-specific preferences provide an adaptive
+approximation to optimal choice, the full preference policy should
+outperform a stochastic policy and removing behaviorally important
+factors should reduce expected return.
+
+Finally, we explored a possible source of these preferences. Within the
+policy-compression framework, compressed policies can be described in
+terms of marginal action probabilities (Lai and Gershman 2021). We
+therefore computed, under the optimal policy, the probability of
+accepting under each level of each task factor after marginalizing over
+all other factors. For example, we computed the frequency with which an
+offer of 1 should be accepted across all energy and cost states. We then
+compared these factor-specific marginal action probabilities with the
+fitted preference weights. A close correspondence would suggest that
+participants' preferences may approximate feature-specific marginal
+action tendencies of the optimal policy.
+
+\subsection{Reaction times analysis}\label{sec-RT-model-method}
+
+In our task, exact computation of optimal policy is prohibitively
+expensive, given the size of the task's state space (1,456 states), the
+forward planning horizon, and the highly probabilistic nature of the
+task. Preferences derived from task knowledge or from task experience
+are presumably readily available to the participants or require minimal
+computation. A part of our hypothesis is that instead of systematically
+evaluating all future outcomes before making a choice, participants
+consider the entropy of their preferences to determine how much they
+should engage in forward planning. If so, we would expect participants'
+RT to reflect the entropy of their preferences, as more certain
+preferences should be associated with less forward planning, resulting
+in faster RT.
+
+Ott et al. (2022a) showed that response times were slower when the
+planning-derived DV for accepting and rejecting were similar, and that
+this forward planning conflict effect was greater for intermediate than
+for extreme offers. We reinterpret this context dependence as a
+consequence of preference entropy. Intermediate offers tend to generate
+weaker preference signals, whereas extreme offers tend to produce
+clearer action tendencies. Accordingly, we expected forward planning
+conflict to slow responses most when preferences were weak.
+
+To test whether the effect of forward planning conflict should depend on
+preference entropy, we modelled participants' RTs as a function of
+forward planning conflict (i.e.~\(conflict = - |DV|\)), preference
+entropy (fitted in the Preference model) and the modulation of forward
+planning by preference entropy:
+
+\begin{equation}\protect\phantomsection\label{eq-RT-model}{
+log(RT) = \beta_{conflict} * Conflict + \beta_{pref} * H(pref) + \beta_{modulation} * (Conflict : H(pref))
+}\end{equation}
+
+We predicted a positive modulation, such that forward planning conflict
+would be associated with longer RTs when preference entropy was high,
+that is, when preferences were weak or uncertain.
 
 \section{Acknowledgements}\label{acknowledgements}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
 
 \section{Contribution statement}\label{contribution-statement}
 
@@ -1620,10 +1483,6 @@ Methodology: A.L., S.K.; Project management: A.L.; Resources: S.K.;
 Software: A.L.; Supervision: S.K.; Validation: A.L.; Visualization:
 A.L., S.K.; Writing - original draft: A.L., S.K.; Writing - review \&
 editing: A.L., F.O., S.K.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
 
 \section{Data and code statement}\label{data-and-code-statement}
 
@@ -1635,423 +1494,7 @@ we've created a custom toolbox to implement reinforcement learning
 algorithm, which can be found here:
 https://github.com/AlexLepauvre/state-abstraction
 
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
 \section{References}\label{references}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\section{Supplementary material}\label{supplementary-material}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsection{Supplementary figures:}\label{supplementary-figures}
-
-\begin{suppfig}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/S1-supplementary_figures_tables-suppfig-pref-planning-interaction-output-1.png}}
-
-}
-
-\caption{\label{suppfig-pref-planning-interaction}Interaction between
-preferences and DV. (A) Participants responses as a function of decision
-values of preference score. The response in the off-diagonal quadrants
-(top left and bottom right) are color coded per response given, to
-highlight that participants responses reflect the strongest signal (tend
-to accept despite DV being negative if preferences are high enough). (B)
-Fitted probability of accepting as a function of DV and preference
-score. Contours with annotations represent a probability of accepting.
-The shape of the contour lines highlight that participants choices
-reflect the modulation of DV by preference score. The contour trace
-indicate that when preference and DV are opposed, participants follow
-the strongest signal.}
-
-\end{suppfig}%
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsection{Supplementary tables:}\label{supplementary-tables}
-
-\begin{supptbl}
-
-\caption{\label{supptbl-model_comparison}}
-
-\centering{
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2429}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1714}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1857}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1286}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1286}}@{}}
-\caption{Main model comparison, comparing the fit of the preference,
-context, frequency and pure planning models}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-p\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_diff
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-se
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-dse
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-p\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_diff
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-se
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-dse
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Preference & -1492.49 & 256.526 & 0 & 48.7651 & 0 \\
-Context & -1656.69 & 159.175 & 164.209 & 52.4615 & 19.671 \\
-Frequency prior & -2073.38 & 77.0896 & 580.889 & 55.5712 & 35.9363 \\
-Planning & -2078.46 & 68.3847 & 585.976 & 55.58 & 36.1456 \\
-\end{longtable}
-
-}
-
-\end{supptbl}%
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\begin{supptbl}
-
-\caption{\label{supptbl-pref_model_param}}
-
-\centering{
-
-\begin{longtable}[]{@{}lrrrr@{}}
-\caption{Summary of the parameters of the preference model. The table
-displays the mean and 95\% highest density interval (HDI) for the
-population level parameters assopciated with the planning values, the
-preference regressors and their interaction.}\tabularnewline
-\toprule\noalign{}
-& mean & sd & hdi\_2.5\% & hdi\_97.5\% \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-& mean & sd & hdi\_2.5\% & hdi\_97.5\% \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\(\beta_{plan}\) & 2.072 & 0.242 & 1.614 & 2.573 \\
-\(\beta_{O=1}\) & -2.374 & 0.971 & -4.232 & -0.426 \\
-\(\beta_{O=2}\) & -1.625 & 0.938 & -3.535 & 0.092 \\
-\(\beta_{O=3}\) & 1.627 & 0.945 & -0.22 & 3.453 \\
-\(\beta_{O=4}\) & 2.923 & 0.976 & 1.054 & 4.842 \\
-\(\beta_{CC=1}\) & 0.765 & 1.161 & -1.488 & 3.105 \\
-\(\beta_{CC=2}\) & -0.127 & 1.165 & -2.482 & 2.144 \\
-\(\beta_{FC=1}\) & 0.457 & 1.149 & -1.86 & 2.557 \\
-\(\beta_{FC=1}\) & 0.21 & 1.149 & -2.051 & 2.359 \\
-\(\beta_{E=0}\) & -4.438 & 0.935 & -6.247 & -2.627 \\
-\(\beta_{E=1}\) & -0.48 & 0.781 & -1.994 & 1.076 \\
-\(\beta_{E=2}\) & -0.02 & 0.75 & -1.473 & 1.492 \\
-\(\beta_{E=3}\) & 0.203 & 0.748 & -1.228 & 1.688 \\
-\(\beta_{E=4}\) & 0.3 & 0.758 & -1.186 & 1.799 \\
-\(\beta_{E=5}\) & 0.793 & 0.769 & -0.602 & 2.44 \\
-\(\beta_{E=6}\) & 4.195 & 0.962 & 2.363 & 6.132 \\
-\(\beta_{interaction}\) & 1.306 & 0.508 & 0.258 & 2.256 \\
-\end{longtable}
-
-}
-
-\end{supptbl}%
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsection{Supplementary model
-comparison}\label{supplementary-model-comparison}
-
-\subsubsection{Preferences model
-comparison:}\label{preferences-model-comparison}
-
-The preference model was observed to fit the data best, showing that
-participants behaviour reflects the integration of a planning component
-together with priors reflecting the structure of the task, shedding
-light on the structure of the priors themselves. To further show that
-participants priors reflect the whole structure of the task, we modelled
-the data removing one experimental factor from the preferences fitting
-one at a time and compared to the full model, to show that our results
-cannot be explained by the fact that participants's priors do not
-reflect a single nor a subset of experimental factors. To further show
-that participants reliance on planning is modulated by the strength of
-their preferenecs, a model without the modulatory effect was fitted to
-highlight the increase in fit associated with the modulatory effect of
-preferences entropy on DV. Finally, to show that participants response
-is best explained by a combination of planning and preference component,
-we also fitted a model with only the preference component omitting the
-planning regressor.
-
-\begin{suppfig}
-
-\centering{
-
-\includegraphics[width=7.72917in,height=6.69792in]{index_files/figure-latex/S2-choice_model_comparison-suppfig-preference_model_comparison-output-1.png}
-
-}
-
-\caption{\label{suppfig-preference_model_comparison}Results of
-preferences model comparison. Model abbreviations: (No\_interaction)
-model comprising planning and preference component, without interaction
-between the two, (No\_FC) model where future cost factor was omitted
-from preferences, (No\_CC) model where future cost factor was omitted
-from preferences, (No\_Planning) model where DV was omitted,
-(No\_Energy) model where energy factor was omitted from preferences,
-(No\_Offer) model where offer factor was omitted from preferences}
-
-\end{suppfig}%
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\begin{supptbl}
-
-\caption{\label{supptbl-preferences_model_comparison}}
-
-\centering{
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.3117}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1558}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1169}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1688}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1169}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1299}}@{}}
-\caption{Results of the comparison between different preferences
-models}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-p\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_diff
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-se
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-dse
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-p\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_diff
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-se
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-dse
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-full\_preferences\_model & -1492.47 & 256.484 & 0 & 48.7583 & 0 \\
-No\_Modulation & -1501.44 & 245.861 & 8.9671 & 48.9103 & 5.28966 \\
-No\_FC & -1517.79 & 227.725 & 25.3217 & 48.5354 & 7.61146 \\
-No\_CC & -1539.49 & 262.803 & 47.0195 & 49.8892 & 9.74314 \\
-No\_Planning & -1581.23 & 217.308 & 88.758 & 48.8039 & 17.3434 \\
-No\_Energy & -1626.44 & 211.155 & 133.971 & 51.5682 & 17.7893 \\
-No\_Offer & -1629.84 & 235.203 & 137.365 & 54.4382 & 19.2265 \\
-\end{longtable}
-
-}
-
-\end{supptbl}%
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsubsection{Frequency model
-comparison:}\label{frequency-model-comparison}
-
-In the main text, we compared the preference model with a model in which
-priors are computed based on action frequency. In this model, the priors
-are computed using a linearly decaying moving average, discounting
-actions that occured further in the past. We presented the results
-obtained when the priors are derived from the 20 previous trials. This
-number of trials was selected by exploring priors witk
-\(k=[2, 5, 10, 15, 20, 30, 50]\) to identify the values that fit the
-data the best:
-
-\begin{suppfig}
-
-\centering{
-
-\includegraphics[width=6.59375in,height=6.69792in]{index_files/figure-latex/S2-choice_model_comparison-suppfig-frequency_model_comparison-output-1.png}
-
-}
-
-\caption{\label{suppfig-frequency_model_comparison}Results of frequency
-model comparison, comparing the temporal integration window, going back
-k={[}2, 5, 10, 15, 20, 30, 50{]}}
-
-\end{suppfig}%
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\begin{supptbl}
-
-\caption{\label{supptbl-frequency_model_comparison}}
-
-\centering{
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2121}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1818}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1364}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1970}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1364}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1364}}@{}}
-\caption{Results of the frequency model comparisons with different
-temporal integration windows}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-p\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_diff
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-se
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-dse
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-p\_loo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-elpd\_diff
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-se
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-dse
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Linear, k=20 & -2069.6 & 78.3873 & 0 & 55.6858 & 0 \\
-Linear, k=15 & -2073.74 & 74.2703 & 4.13799 & 55.8878 & 5.24083 \\
-Linear, k=2 & -2074.98 & 75.5677 & 5.37448 & 55.6833 & 6.29665 \\
-Linear, k=5 & -2076.3 & 78.84 & 6.69933 & 55.6484 & 5.58139 \\
-Linear, k=10 & -2077.34 & 74.0643 & 7.73213 & 55.5341 & 5.65329 \\
-Linear, k=50 & -2080.71 & 78.7902 & 11.1052 & 55.7161 & 5.09526 \\
-Linear, k=30 & -2081.1 & 75.786 & 11.4922 & 55.7602 & 5.46973 \\
-\end{longtable}
-
-}
-
-\end{supptbl}%
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-\subsection{Parameters recovery:}\label{parameters-recovery}
-
-In the main text, the preference model was observed to fit participants
-behaviour the best, supporting the hypothesis that participants decision
-reflects the integration of forward planning with state dependent
-preferences. The preferences model is rather complex, with preference
-parameters being estimated as latent variable, and entailing an
-additional entropy transformation in the interaction term. To establish
-that despite the complexity of the model, it is still capable of
-accurately estimate all parameters, we perform a parameter recovery
-analysis in which we simulate data using the mean parameters recovered
-from the original data. We then fit the same model to the simulated
-data. We can then compare the estimated parameters from the simulated
-data against ground truth to establish the model capacity to identify
-parameters correctly.
-
-\begin{suppfig}
-
-\centering{
-
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/S3-parameters_recovery-suppfig-population_parameter_recovery-output-1.png}}
-
-}
-
-\caption{\label{suppfig-population_parameter_recovery}Population level
-parameters recovery}
-
-\end{suppfig}%
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
-
-Across all participants, the ground truth parameters is well within the
-credible intervals of the retrieved parameters from the data, indicating
-that our model is indeed capable of recovering the parameters of the
-underlying generative model.
-
-\textsubscript{Source:
-\href{https://AlexLepauvre.github.io/state_abstraction_paper/index.ipynb.html}{Article
-Notebook}}
 
 \protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}
@@ -2285,6 +1728,358 @@ Bayesian Model Evaluation Using Leave-One-Out Cross-Validation and
 WAIC.''} \emph{Statistics and Computing} 27 (5): 1413--32.
 
 \end{CSLReferences}
+
+\section{Supplementary material}\label{supplementary-material}
+
+\subsection{Supplementary figures:}\label{supplementary-figures}
+
+\begin{suppfig}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/S1-supplementary_figures_tables-suppfig-pref-planning-interaction-output-1.png}}
+
+}
+
+\caption{\label{suppfig-pref-planning-interaction}Interaction between
+preferences and DV. (A) Participants responses as a function of decision
+values of preference score. The response in the off-diagonal quadrants
+(top left and bottom right) are color coded per response given, to
+highlight that participants responses reflect the strongest signal (tend
+to accept despite DV being negative if preferences are high enough). (B)
+Fitted probability of accepting as a function of DV and preference
+score. Contours with annotations represent a probability of accepting.
+The shape of the contour lines highlight that participants choices
+reflect the modulation of DV by preference score. The contour trace
+indicate that when preference and DV are opposed, participants follow
+the strongest signal.}
+
+\end{suppfig}%
+
+\subsection{Supplementary tables:}\label{supplementary-tables}
+
+\begin{supptbl}
+
+\caption{\label{supptbl-model_comparison}}
+
+\centering{
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1714}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1857}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1286}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1286}}@{}}
+\caption{Main model comparison, comparing the fit of the preference,
+context, frequency and pure planning models}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_diff
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+se
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+dse
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_diff
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+se
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+dse
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Preference & -1492.49 & 256.526 & 0 & 48.7651 & 0 \\
+Context & -1656.69 & 159.175 & 164.209 & 52.4615 & 19.671 \\
+Frequency prior & -2073.38 & 77.0896 & 580.889 & 55.5712 & 35.9363 \\
+Planning & -2078.46 & 68.3847 & 585.976 & 55.58 & 36.1456 \\
+\end{longtable}
+
+}
+
+\end{supptbl}%
+
+\begin{supptbl}
+
+\caption{\label{supptbl-pref_model_param}}
+
+\centering{
+
+\begin{longtable}[]{@{}lrrrr@{}}
+\caption{Summary of the parameters of the preference model. The table
+displays the mean and 95\% highest density interval (HDI) for the
+population level parameters assopciated with the planning values, the
+preference regressors and their interaction.}\tabularnewline
+\toprule\noalign{}
+& mean & sd & hdi\_2.5\% & hdi\_97.5\% \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& mean & sd & hdi\_2.5\% & hdi\_97.5\% \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\beta_{plan}\) & 2.072 & 0.242 & 1.614 & 2.573 \\
+\(\beta_{O=1}\) & -2.374 & 0.971 & -4.232 & -0.426 \\
+\(\beta_{O=2}\) & -1.625 & 0.938 & -3.535 & 0.092 \\
+\(\beta_{O=3}\) & 1.627 & 0.945 & -0.22 & 3.453 \\
+\(\beta_{O=4}\) & 2.923 & 0.976 & 1.054 & 4.842 \\
+\(\beta_{CC=1}\) & 0.765 & 1.161 & -1.488 & 3.105 \\
+\(\beta_{CC=2}\) & -0.127 & 1.165 & -2.482 & 2.144 \\
+\(\beta_{FC=1}\) & 0.457 & 1.149 & -1.86 & 2.557 \\
+\(\beta_{FC=1}\) & 0.21 & 1.149 & -2.051 & 2.359 \\
+\(\beta_{E=0}\) & -4.438 & 0.935 & -6.247 & -2.627 \\
+\(\beta_{E=1}\) & -0.48 & 0.781 & -1.994 & 1.076 \\
+\(\beta_{E=2}\) & -0.02 & 0.75 & -1.473 & 1.492 \\
+\(\beta_{E=3}\) & 0.203 & 0.748 & -1.228 & 1.688 \\
+\(\beta_{E=4}\) & 0.3 & 0.758 & -1.186 & 1.799 \\
+\(\beta_{E=5}\) & 0.793 & 0.769 & -0.602 & 2.44 \\
+\(\beta_{E=6}\) & 4.195 & 0.962 & 2.363 & 6.132 \\
+\(\beta_{interaction}\) & 1.306 & 0.508 & 0.258 & 2.256 \\
+\end{longtable}
+
+}
+
+\end{supptbl}%
+
+\subsection{Supplementary model
+comparison}\label{supplementary-model-comparison}
+
+\subsubsection{Preferences model
+comparison:}\label{preferences-model-comparison}
+
+The preference model was observed to fit the data best, showing that
+participants behavior reflects the integration of a planning component
+together with priors reflecting the structure of the task, shedding
+light on the structure of the priors themselves. To further show that
+participants priors reflect the whole structure of the task, we modelled
+the data removing one experimental factor from the preferences fitting
+one at a time and compared to the full model, to show that our results
+cannot be explained by the fact that participants's priors do not
+reflect a single nor a subset of experimental factors. To further show
+that participants reliance on planning is modulated by the strength of
+their preferenecs, a model without the modulatory effect was fitted to
+highlight the increase in fit associated with the modulatory effect of
+preferences entropy on DV. Finally, to show that participants response
+is best explained by a combination of planning and preference component,
+we also fitted a model with only the preference component omitting the
+planning regressor.
+
+\begin{suppfig}
+
+\centering{
+
+\includegraphics[width=7.72917in,height=6.69792in]{index_files/figure-latex/S2-choice_model_comparison-suppfig-preference_model_comparison-output-1.png}
+
+}
+
+\caption{\label{suppfig-preference_model_comparison}Results of
+preferences model comparison. Model abbreviations: (No\_interaction)
+model comprising planning and preference component, without interaction
+between the two, (No\_FC) model where future cost factor was omitted
+from preferences, (No\_CC) model where future cost factor was omitted
+from preferences, (No\_Planning) model where DV was omitted,
+(No\_Energy) model where energy factor was omitted from preferences,
+(No\_Offer) model where offer factor was omitted from preferences}
+
+\end{suppfig}%
+
+\begin{supptbl}
+
+\caption{\label{supptbl-preferences_model_comparison}}
+
+\centering{
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.3117}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1558}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1169}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1688}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1169}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1299}}@{}}
+\caption{Results of the comparison between different preferences
+models}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_diff
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+se
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+dse
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_diff
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+se
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+dse
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+full\_preferences\_model & -1492.47 & 256.484 & 0 & 48.7583 & 0 \\
+No\_Modulation & -1501.44 & 245.861 & 8.9671 & 48.9103 & 5.28966 \\
+No\_FC & -1517.79 & 227.725 & 25.3217 & 48.5354 & 7.61146 \\
+No\_CC & -1539.49 & 262.803 & 47.0195 & 49.8892 & 9.74314 \\
+No\_Planning & -1581.23 & 217.308 & 88.758 & 48.8039 & 17.3434 \\
+No\_Energy & -1626.44 & 211.155 & 133.971 & 51.5682 & 17.7893 \\
+No\_Offer & -1629.84 & 235.203 & 137.365 & 54.4382 & 19.2265 \\
+\end{longtable}
+
+}
+
+\end{supptbl}%
+
+\subsubsection{Frequency model
+comparison:}\label{frequency-model-comparison}
+
+In the main text, we compared the preference model with a model in which
+priors are computed based on action frequency. In this model, the priors
+are computed using a linearly decaying moving average, discounting
+actions that occured further in the past. We presented the results
+obtained when the priors are derived from the 20 previous trials. This
+number of trials was selected by exploring priors witk
+\(k=[2, 5, 10, 15, 20, 30, 50]\) to identify the values that fit the
+data the best:
+
+\begin{suppfig}
+
+\centering{
+
+\includegraphics[width=6.59375in,height=6.69792in]{index_files/figure-latex/S2-choice_model_comparison-suppfig-frequency_model_comparison-output-1.png}
+
+}
+
+\caption{\label{suppfig-frequency_model_comparison}Results of frequency
+model comparison, comparing the temporal integration window, going back
+k={[}2, 5, 10, 15, 20, 30, 50{]}}
+
+\end{suppfig}%
+
+\begin{supptbl}
+
+\caption{\label{supptbl-frequency_model_comparison}}
+
+\centering{
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2121}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1818}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1364}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1970}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1364}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1364}}@{}}
+\caption{Results of the frequency model comparisons with different
+temporal integration windows}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_diff
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+se
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+dse
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p\_loo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+elpd\_diff
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+se
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+dse
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Linear, k=20 & -2069.6 & 78.3873 & 0 & 55.6858 & 0 \\
+Linear, k=15 & -2073.74 & 74.2703 & 4.13799 & 55.8878 & 5.24083 \\
+Linear, k=2 & -2074.98 & 75.5677 & 5.37448 & 55.6833 & 6.29665 \\
+Linear, k=5 & -2076.3 & 78.84 & 6.69933 & 55.6484 & 5.58139 \\
+Linear, k=10 & -2077.34 & 74.0643 & 7.73213 & 55.5341 & 5.65329 \\
+Linear, k=50 & -2080.71 & 78.7902 & 11.1052 & 55.7161 & 5.09526 \\
+Linear, k=30 & -2081.1 & 75.786 & 11.4922 & 55.7602 & 5.46973 \\
+\end{longtable}
+
+}
+
+\end{supptbl}%
+
+\subsection{Parameters recovery:}\label{parameters-recovery}
+
+In the main text, the preference model was observed to fit participants
+behavior the best, supporting the hypothesis that participants decision
+reflects the integration of forward planning with state dependent
+preferences. The preferences model is rather complex, with preference
+parameters being estimated as latent variable, and entailing an
+additional entropy transformation in the interaction term. To establish
+that despite the complexity of the model, it is still capable of
+accurately estimate all parameters, we perform a parameter recovery
+analysis in which we simulate data using the mean parameters recovered
+from the original data. We then fit the same model to the simulated
+data. We can then compare the estimated parameters from the simulated
+data against ground truth to establish the model capacity to identify
+parameters correctly.
+
+\begin{suppfig}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/S3-parameters_recovery-suppfig-population_parameter_recovery-output-1.png}}
+
+}
+
+\caption{\label{suppfig-population_parameter_recovery}Population level
+parameters recovery}
+
+\end{suppfig}%
+
+Across all participants, the ground truth parameters is well within the
+credible intervals of the retrieved parameters from the data, indicating
+that our model is indeed capable of recovering the parameters of the
+underlying generative model.
 
 
 
