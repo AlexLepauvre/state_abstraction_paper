@@ -45,15 +45,14 @@ administration</role>
 acquisition</role>
           <role vocab="https://credit.niso.org" vocab-term="investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">investigation</role>
           <role>writing - review &amp; editing</role>
-          <xref ref-type="aff" rid="aff-1">a</xref>
         </contrib>
         <contrib contrib-type="author">
           <contrib-id contrib-id-type="orcid">0000-0002-5052-1117</contrib-id>
           <name>
             <surname>Kiebel</surname>
-            <given-names>Stefan</given-names>
+            <given-names>Stefan J.</given-names>
           </name>
-          <string-name>Stefan Kiebel</string-name>
+          <string-name>Stefan J. Kiebel</string-name>
           <role vocab="https://credit.niso.org" vocab-term="conceptualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/conceptualization/">conceptualization</role>
           <role vocab="https://credit.niso.org" vocab-term="funding acquisition" vocab-term-identifier="https://credit.niso.org/contributor-roles/funding-acquisition/">funding
 acquisition</role>
@@ -4448,7 +4447,7 @@ when preference-based guidance is uncertain.</p>
       </ref>
     </ref-list>
   </back>
-  <sub-article article-type="notebook" id="nb-8-nb-article">
+  <sub-article article-type="notebook" id="nb-9-nb-article">
     <front-stub>
       <title-group>
         <article-title>Task-structured preferences guide forward planning in
@@ -4491,15 +4490,14 @@ administration</role>
 acquisition</role>
           <role vocab="https://credit.niso.org" vocab-term="investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">investigation</role>
           <role>writing - review &amp; editing</role>
-          <xref ref-type="aff" rid="aff-1-nb-article">a</xref>
         </contrib>
         <contrib contrib-type="author">
           <contrib-id contrib-id-type="orcid">0000-0002-5052-1117</contrib-id>
           <name>
             <surname>Kiebel</surname>
-            <given-names>Stefan</given-names>
+            <given-names>Stefan J.</given-names>
           </name>
-          <string-name>Stefan Kiebel</string-name>
+          <string-name>Stefan J. Kiebel</string-name>
           <role vocab="https://credit.niso.org" vocab-term="conceptualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/conceptualization/">conceptualization</role>
           <role vocab="https://credit.niso.org" vocab-term="funding acquisition" vocab-term-identifier="https://credit.niso.org/contributor-roles/funding-acquisition/">funding
 acquisition</role>
