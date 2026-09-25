@@ -224,7 +224,7 @@
 \title{Task-structured preferences guide forward planning in sequential
 decision-making}
 \author{Alex Lepauvre \and Florian Ott \and Stefan Kiebel}
-\date{2026-09-18}
+\date{2026-09-25}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -304,21 +304,27 @@ using its relatively limited cognitive resources (Gershman et al. 2015;
 Lai and Gershman 2021; Callaway et al. 2022; Tishby and Polani 2010;
 Parush et al. 2011).
 
-This leads to the central hypothesis of the present study: choice
-behavior in complex sequential decision-making integrates two sources of
-action guidance. First, participants may rely on task-specific
-preferences that summarize regularities learned from task structure or
-experience. Second, they may use forward planning, as for example
-typically modelled by reinforcement learning, to compute state-specific
-action values on the current trial. Assuming a Bayesian approach, we
-hypothesize that these two sources are integrated by weighting the
-contribution of forward planning against preferences by their respective
-uncertainties. This hypothesis implies that on trials where uncertainty
-about preferences is low, choices should be guided mainly by the
-preferences, producing faster responses because less forward planning is
-needed. On trials with less certain preferences, decision making should
-be more weighted towards forward planning and consequently, response
-times should be increased due to the increase in computations.
+However, it remains unclear how such prior-like action tendencies are
+structured in complex sequential decision-making tasks and whether their
+uncertainty determines reliance on forward planning. In particular, it
+is unknown whether agents can exploit multiple features of the task to
+form structured preferences that regulate the influence of
+planning-derived values. This leads to the central hypothesis of the
+present study: choice behavior in complex sequential decision-making
+integrates two sources of action guidance. First, participants may rely
+on task-specific preferences that summarize regularities learned from
+task structure or experience. Second, they may use forward planning, as
+for example typically modelled by reinforcement learning, to compute
+state-specific action values on the current trial. Assuming a Bayesian
+approach, we hypothesize that these two sources are integrated by
+weighting the contribution of forward planning against preferences by
+their respective uncertainties. This hypothesis implies that on trials
+where uncertainty about preferences is low, choices should be guided
+mainly by the preferences, producing faster responses because less
+forward planning is needed. On trials with less certain preferences,
+decision making should be more weighted towards forward planning and
+consequently, response times should be increased due to the increase in
+computations.
 
 In this paper, we test this hypothesis in a complex sequential
 decision-making task, using choice model comparisons and response-time
@@ -463,7 +469,7 @@ bias towards accepting offers when costs are low.
 
 \centering{
 
-\includegraphics[width=7.66667in,height=9.95833in]{index_files/figure-pdf/fig-choicemdl-output-1.png}
+\includegraphics[width=7.66667in,height=9.95833in]{index_files/figure-pdf/fig-choicemdl-output-2.png}
 
 }
 
@@ -475,14 +481,15 @@ closer to 0 indicate better fit. See Table S1 for additional model
 comparisons results. (B) Participant-wise best-fitting models. Each
 participant is color-coded according to the model with the highest
 predictive accuracy. The Preference model provided the best fit for 34
-of 40 participants. (C) Observed and model-predicted probability of
-accepting, shown separately for each offer level and model. Points
-indicate participants' observed acceptance probabilities. (D) Estimated
-factor-level preference weights for the Preference model. Panels show
-weights for offer levels, current and future cost, and energy levels.
-Distributions show the group-level posterior estimates; central bars
-indicate medians, and dotted lines indicate the 2.5\% and 97.5\%
-quantiles. Dots indicate participant-level mean estimates.}
+of 40 participants. (C) Proportion of trials in which the model
+predicted responses match participants' responses, separately for each
+model and offer level. Dots represent single participants
+modelled/observed match proportions. (D) Estimated factor-level
+preference weights for the Preference model. Panels show weights for
+offer levels, current and future cost, and energy levels. Distributions
+show the group-level posterior estimates; central bars indicate medians,
+and dotted lines indicate the 2.5\% and 97.5\% quantiles. Dots indicate
+participant-level mean estimates.}
 
 \end{figure}%
 
@@ -490,8 +497,8 @@ We then proceeded to test the central prediction that the influence of
 forward planning should depend on preference uncertainty, quantified as
 the entropy of the action tendency implied by the preference score. The
 Preference model revealed a positive modulation of forward planning by
-preference entropy (\(\beta_{modulation}\)=1.26, \(CI_{95\%}\)={[}0.35,
-2.25{]}), indicating that planning-derived DV had a stronger influence
+preference entropy (\(\beta_{modulation}\)=1.26, \(CI_{95\%}\)={[}0.31,
+2.29{]}), indicating that planning-derived DV had a stronger influence
 on choices when preferences were more uncertain. Conversely, when
 preference had lower entropy, choices were less influenced by
 planning-derived DV and were more strongly guided by the preference
@@ -643,7 +650,7 @@ and \(\Delta ELPD_{full - FC}\)=27.35 \(\pm\) 48.62 s.e.).
 
 \centering{
 
-\includegraphics[width=7.94792in,height=6.61458in]{index_files/figure-pdf/fig-task-features-output-1.png}
+\includegraphics[width=7.94792in,height=6.61458in]{index_files/figure-pdf/fig-task-features-output-2.png}
 
 }
 
@@ -781,11 +788,15 @@ the preference score estimated from the choice behavior model, and the
 interaction between the two (see Section~\ref{sec-RT-model-method} for a
 description of the model).
 
+\begin{verbatim}
+A
+\end{verbatim}
+
 Indeed, we found that participants' RT was influenced by (i) forward
 planning conflict (\(\beta_{conflict}\)=0.11, \(CI_{95\%}\)={[}0.08,
-0.13{]}), (ii) preference entropy (\(\beta_{pref}\)=0.45,
-\(CI_{95\%}\)={[}0.37, 0.46{]}) and (iii) the modulation effect between
-the two (\(\beta_{modulation}\)=0.11, \(CI_{95\%}\)={[}0.06, 0.13{]},
+0.14{]}), (ii) preference entropy (\(\beta_{pref}\)=0.45,
+\(CI_{95\%}\)={[}0.35, 0.54{]}) and (iii) the modulation effect between
+the two (\(\beta_{modulation}\)=0.11, \(CI_{95\%}\)={[}0.06, 0.15{]},
 see Figure~\ref{fig-rt} A). This result extends previous findings
 showing that participants do not rely on forward planning to the same
 extent across all states of the task. Our results suggest that rather
@@ -799,10 +810,10 @@ conflict when preferences entropy is low (blue line), but more so when
 preferences entropy is larger (orange and green lines).
 
 Indeed, we found that participants' RT was influenced by (i) conflict
-(\(\beta_{conflict}\)=0.11, \(CI_{95\%}\)={[}0.08, 0.13{]}), (ii)
+(\(\beta_{conflict}\)=0.11, \(CI_{95\%}\)={[}0.08, 0.14{]}), (ii)
 entropy of preference score (\(\beta_{pref}\)=0.45,
-\(CI_{95\%}\)={[}0.37, 0.46{]}) and (iii) the modulatory effect between
-the two (\(\beta_{modulation}\)=0.11, \(CI_{95\%}\)={[}0.06, 0.13{]},
+\(CI_{95\%}\)={[}0.35, 0.54{]}) and (iii) the modulatory effect between
+the two (\(\beta_{modulation}\)=0.11, \(CI_{95\%}\)={[}0.06, 0.15{]},
 see Figure~\ref{fig-rt} A). This result extends on previous findings
 showing that participants do not rely on planning to the same extent
 across all states of the task. Our results suggest that rather than
@@ -1016,11 +1027,11 @@ integrated with forward planning.
 \subsection{Data}\label{sec-data-desgin}
 
 The data used in this study were published by Ott and colleagues
-(2022a). In this study, 40 participants (22, mean age=24.4, SD=4.6) took
-part in a sequential decision-making task (Ott et al. 2022a, 2022b). The
-study was approved by the Institutional Review Board of the Technische
-Universität Dresden and conducted in accordance with ethical standards
-of the Declaration of Helsinki.
+(2022a). In this study, 40 participants (22 female, mean age=24.4,
+SD=4.6) took part in a sequential decision-making task (Ott et al.
+2022a, 2022b). The study was approved by the Institutional Review Board
+of the Technische Universität Dresden and conducted in accordance with
+ethical standards of the Declaration of Helsinki.
 
 Figure~\ref{fig-design} shows a schematic representation of the task.
 Participants were instructed to gather as many points as possible
@@ -1364,7 +1375,7 @@ Offer-context model was selected from a previous study (Ott et al.
 2022a) after comparison with 21 alternatives. Similarly, reduced
 versions of the Preference model were tested against the full model by
 removing each component (forward planning, preference and modulation) as
-well as individual task factors (or a total of 7 alternative prefernece
+well as individual task factors (or a total of 7 alternative preference
 models,see \quartosuppfigref{suppfig-preference_model_comparison} and
 \quartosupptblref{supptbl-preferences_model_comparison}). For clarity,
 we focus on the four best-fitting models (Planning, Frequency prior,
@@ -1474,6 +1485,10 @@ would be associated with longer RTs when preference entropy was high,
 that is, when preferences were weak or uncertain.
 
 \section{Acknowledgements}\label{acknowledgements}
+
+The authors thank Qian Chu for their valuable comments and suggestions.
+This work was funded by the German Research Foundation (DFG, Deutsche
+Forschungsgemeinschaft), Ref: KI 1638/5-1, project number: 538763959.
 
 \section{Contribution statement}\label{contribution-statement}
 
@@ -1737,7 +1752,7 @@ WAIC.''} \emph{Statistics and Computing} 27 (5): 1413--32.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/S1-supplementary_figures_tables-suppfig-pref-planning-interaction-output-1.png}}
+\includegraphics[width=6.70833in,height=9.42708in]{index_files/figure-latex/S1-supplementary_figures_tables-suppfig-pref-planning-interaction-output-1.png}
 
 }
 
@@ -1824,7 +1839,7 @@ Planning & -2078.76 & 68.6015 & 586.285 & 55.5599 & 36.001 \\
 \begin{longtable}[]{@{}lrrrr@{}}
 \caption{Summary of the parameters of the preference model. The table
 displays the mean and 95\% highest density interval (HDI) for the
-population level parameters assopciated with the planning values, the
+population level parameters associated with the planning values, the
 preference regressors and their interaction.}\tabularnewline
 \toprule\noalign{}
 & mean & sd & hdi\_2.5\% & hdi\_97.5\% \\
@@ -1844,7 +1859,7 @@ preference regressors and their interaction.}\tabularnewline
 \(\beta_{CC=1}\) & 0.724 & 1.166 & -1.592 & 2.884 \\
 \(\beta_{CC=2}\) & -0.178 & 1.164 & -2.516 & 1.955 \\
 \(\beta_{FC=1}\) & 0.416 & 1.165 & -1.866 & 2.711 \\
-\(\beta_{FC=1}\) & 0.176 & 1.164 & -2.219 & 2.381 \\
+\(\beta_{FC=2}\) & 0.176 & 1.164 & -2.219 & 2.381 \\
 \(\beta_{E=0}\) & -4.429 & 0.932 & -6.266 & -2.666 \\
 \(\beta_{E=1}\) & -0.442 & 0.774 & -1.88 & 1.137 \\
 \(\beta_{E=2}\) & 0.018 & 0.732 & -1.397 & 1.421 \\
@@ -1852,7 +1867,7 @@ preference regressors and their interaction.}\tabularnewline
 \(\beta_{E=4}\) & 0.337 & 0.74 & -0.991 & 1.856 \\
 \(\beta_{E=5}\) & 0.829 & 0.753 & -0.569 & 2.323 \\
 \(\beta_{E=6}\) & 4.248 & 0.962 & 2.465 & 6.186 \\
-\(\beta_{interaction}\) & 1.264 & 0.513 & 0.308 & 2.294 \\
+\(\beta_{modulation}\) & 1.264 & 0.513 & 0.308 & 2.294 \\
 \end{longtable}
 
 }
@@ -1893,8 +1908,8 @@ planning regressor.
 \caption{\label{suppfig-preference_model_comparison}Results of
 preferences model comparison. Model abbreviations: (No\_interaction)
 model comprising planning and preference component, without interaction
-between the two, (No\_FC) model where future cost factor was omitted
-from preferences, (No\_CC) model where future cost factor was omitted
+between the two, (No\_CC) model where current cost factor was omitted
+from preferences, (No\_FC) model where future cost factor was omitted
 from preferences, (No\_Planning) model where DV was omitted,
 (No\_Energy) model where energy factor was omitted from preferences,
 (No\_Offer) model where offer factor was omitted from preferences}
@@ -1969,7 +1984,7 @@ priors are computed based on action frequency. In this model, the priors
 are computed using a linearly decaying moving average, discounting
 actions that occured further in the past. We presented the results
 obtained when the priors are derived from the 20 previous trials. This
-number of trials was selected by exploring priors witk
+number of trials was selected by exploring priors with
 \(k=[2, 5, 10, 15, 20, 30, 50]\) to identify the values that fit the
 data the best:
 

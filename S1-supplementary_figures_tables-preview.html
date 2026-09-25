@@ -447,7 +447,7 @@
 <div id="suppfig-pref-planning-interaction" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-suppfig figure">
 <div aria-describedby="suppfig-pref-planning-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
-<a href="S1-supplementary_figures_tables_files/figure-html/suppfig-pref-planning-interaction-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure S1: Interaction between preferences and DV. (A) Participants responses as a function of decision values of preference score. The response in the off-diagonal quadrants (top left and bottom right) are color coded per response given, to highlight that participants responses reflect the strongest signal (tend to accept despite DV being negative if preferences are high enough). (B) Fitted probability of accepting as a function of DV and preference score. Contours with annotations represent a probability of accepting. The shape of the contour lines highlight that participants choices reflect the modulation of DV by preference score. The contour trace indicate that when preference and DV are opposed, participants follow the strongest signal."><img src="S1-supplementary_figures_tables_files/figure-html/suppfig-pref-planning-interaction-output-1.png" class="img-fluid figure-img"></a>
+<a href="S1-supplementary_figures_tables_files/figure-html/suppfig-pref-planning-interaction-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure S1: Interaction between preferences and DV. (A) Participants responses as a function of decision values of preference score. The response in the off-diagonal quadrants (top left and bottom right) are color coded per response given, to highlight that participants responses reflect the strongest signal (tend to accept despite DV being negative if preferences are high enough). (B) Fitted probability of accepting as a function of DV and preference score. Contours with annotations represent a probability of accepting. The shape of the contour lines highlight that participants choices reflect the modulation of DV by preference score. The contour trace indicate that when preference and DV are opposed, participants follow the strongest signal."><img src="S1-supplementary_figures_tables_files/figure-html/suppfig-pref-planning-interaction-output-1.png" width="645" height="906" class="figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-suppfig" id="suppfig-pref-planning-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure S1: Interaction between preferences and DV. (A) Participants responses as a function of decision values of preference score. The response in the off-diagonal quadrants (top left and bottom right) are color coded per response given, to highlight that participants responses reflect the strongest signal (tend to accept despite DV being negative if preferences are high enough). (B) Fitted probability of accepting as a function of DV and preference score. Contours with annotations represent a probability of accepting. The shape of the contour lines highlight that participants choices reflect the modulation of DV by preference score. The contour trace indicate that when preference and DV are opposed, participants follow the strongest signal.
@@ -529,15 +529,15 @@ Table S1
 </figure>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell" data-tbl-cap="Summary of the parameters of the preference model. The table displays the mean and 95% highest density interval (HDI) for the population level parameters assopciated with the planning values, the preference regressors and their interaction." data-execution_count="7">
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell" data-tbl-cap="Summary of the parameters of the preference model. The table displays the mean and 95% highest density interval (HDI) for the population level parameters associated with the planning values, the preference regressors and their interaction." data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the table as a markdown:</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>stats_summary <span class="op">=</span> az.summary(traces[<span class="st">'Preference'</span>], var_names<span class="op">=</span>[<span class="st">"beta_planning"</span>, <span class="st">"beta_pref"</span>, <span class="st">"beta_interaction"</span>], hdi_prob<span class="op">=</span><span class="fl">0.95</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creat the row names:</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>row_names <span class="op">=</span> [<span class="st">"$</span><span class="ch">\\</span><span class="st">beta_</span><span class="sc">{plan}</span><span class="st">$"</span>, </span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{O=1}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{O=2}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{O=3}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{O=4}$"</span>, </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>             <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{CC=1}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{CC=2}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{FC=1}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{FC=1}$"</span>, </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>             <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{CC=1}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{CC=2}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{FC=1}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{FC=2}$"</span>, </span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>             <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{E=0}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{E=1}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{E=2}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{E=3}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{E=4}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{E=5}$"</span>, <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_{E=6}$"</span>, </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>             <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_</span><span class="sc">{interaction}</span><span class="st">$"</span>]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>             <span class="st">"$</span><span class="ch">\\</span><span class="st">beta_</span><span class="sc">{modulation}</span><span class="st">$"</span>]</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>stats_summary.index <span class="op">=</span> row_names</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>display(Markdown(stats_summary[[ <span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"hdi_2.5%"</span>, <span class="st">"hdi_97.5%"</span> ]].to_markdown()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="supptbl-pref_model_param" class="cell-output cell-output-display cell-output-markdown quarto-float quarto-figure quarto-figure-center anchored">
@@ -547,7 +547,7 @@ Table S2
 </figcaption>
 <div aria-describedby="supptbl-pref_model_param-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table table-sm table-striped small">
-<caption>Summary of the parameters of the preference model. The table displays the mean and 95% highest density interval (HDI) for the population level parameters assopciated with the planning values, the preference regressors and their interaction.</caption>
+<caption>Summary of the parameters of the preference model. The table displays the mean and 95% highest density interval (HDI) for the population level parameters associated with the planning values, the preference regressors and their interaction.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -615,7 +615,7 @@ Table S2
 <td style="text-align: right;">2.711</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\beta_{FC=1}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_{FC=2}\)</span></td>
 <td style="text-align: right;">0.176</td>
 <td style="text-align: right;">1.164</td>
 <td style="text-align: right;">-2.219</td>
@@ -671,7 +671,7 @@ Table S2
 <td style="text-align: right;">6.186</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\beta_{interaction}\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\beta_{modulation}\)</span></td>
 <td style="text-align: right;">1.264</td>
 <td style="text-align: right;">0.513</td>
 <td style="text-align: right;">0.308</td>

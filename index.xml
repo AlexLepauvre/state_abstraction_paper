@@ -188,22 +188,27 @@ when preference-based guidance is uncertain.</p>
   and Polani 2010</xref>;
   <xref alt="Parush et al. 2011" rid="ref-parush2011dopaminergic" ref-type="bibr">Parush
   et al. 2011</xref>).</p>
-      <p>This leads to the central hypothesis of the present study: choice
-  behavior in complex sequential decision-making integrates two sources
-  of action guidance. First, participants may rely on task-specific
-  preferences that summarize regularities learned from task structure or
-  experience. Second, they may use forward planning, as for example
-  typically modelled by reinforcement learning, to compute
-  state-specific action values on the current trial. Assuming a Bayesian
-  approach, we hypothesize that these two sources are integrated by
-  weighting the contribution of forward planning against preferences by
-  their respective uncertainties. This hypothesis implies that on trials
-  where uncertainty about preferences is low, choices should be guided
-  mainly by the preferences, producing faster responses because less
-  forward planning is needed. On trials with less certain preferences,
-  decision making should be more weighted towards forward planning and
-  consequently, response times should be increased due to the increase
-  in computations.</p>
+      <p>However, it remains unclear how such prior-like action tendencies
+  are structured in complex sequential decision-making tasks and whether
+  their uncertainty determines reliance on forward planning. In
+  particular, it is unknown whether agents can exploit multiple features
+  of the task to form structured preferences that regulate the influence
+  of planning-derived values. This leads to the central hypothesis of
+  the present study: choice behavior in complex sequential
+  decision-making integrates two sources of action guidance. First,
+  participants may rely on task-specific preferences that summarize
+  regularities learned from task structure or experience. Second, they
+  may use forward planning, as for example typically modelled by
+  reinforcement learning, to compute state-specific action values on the
+  current trial. Assuming a Bayesian approach, we hypothesize that these
+  two sources are integrated by weighting the contribution of forward
+  planning against preferences by their respective uncertainties. This
+  hypothesis implies that on trials where uncertainty about preferences
+  is low, choices should be guided mainly by the preferences, producing
+  faster responses because less forward planning is needed. On trials
+  with less certain preferences, decision making should be more weighted
+  towards forward planning and consequently, response times should be
+  increased due to the increase in computations.</p>
       <p>In this paper, we test this hypothesis in a complex sequential
   decision-making task, using choice model comparisons and response-time
   analyses. Specifically, we use optimal forward planning as a reference
@@ -364,17 +369,17 @@ when preference-based guidance is uncertain.</p>
       best-fitting models. Each participant is color-coded according to
       the model with the highest predictive accuracy. The Preference
       model provided the best fit for 34 of 40 participants. (C)
-      Observed and model-predicted probability of accepting, shown
-      separately for each offer level and model. Points indicate
-      participants’ observed acceptance probabilities. (D) Estimated
-      factor-level preference weights for the Preference model. Panels
-      show weights for offer levels, current and future cost, and energy
-      levels. Distributions show the group-level posterior estimates;
-      central bars indicate medians, and dotted lines indicate the 2.5%
-      and 97.5% quantiles. Dots indicate participant-level mean
-      estimates.</p>
+      Proportion of trials in which the model predicted responses match
+      participants’ responses, separately for each model and offer
+      level. Dots represent single participants modelled/observed match
+      proportions. (D) Estimated factor-level preference weights for the
+      Preference model. Panels show weights for offer levels, current
+      and future cost, and energy levels. Distributions show the
+      group-level posterior estimates; central bars indicate medians,
+      and dotted lines indicate the 2.5% and 97.5% quantiles. Dots
+      indicate participant-level mean estimates.</p>
           </caption>
-          <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-choicemdl-output-1.png"/>
+          <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-choicemdl-output-2.png"/>
         </fig>
         <p>We then proceeded to test the central prediction that the
     influence of forward planning should depend on preference
@@ -382,8 +387,8 @@ when preference-based guidance is uncertain.</p>
     implied by the preference score. The Preference model revealed a
     positive modulation of forward planning by preference entropy
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=1.26,
-    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.35,
-    2.25]), indicating that planning-derived DV had a stronger influence
+    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.31,
+    2.29]), indicating that planning-derived DV had a stronger influence
     on choices when preferences were more uncertain. Conversely, when
     preference had lower entropy, choices were less influenced by
     planning-derived DV and were more strongly guided by the preference
@@ -571,7 +576,7 @@ when preference-based guidance is uncertain.</p>
       in the optimal policy; deviations indicate feature-specific
       biases.</p>
           </caption>
-          <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-task-features-output-1.png"/>
+          <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-task-features-output-2.png"/>
         </fig>
         <p>We further sought to determine whether the fitted preferences
     could serve as adaptive biases when forward planning is absent. As a
@@ -687,15 +692,16 @@ when preference-based guidance is uncertain.</p>
     and the interaction between the two (see
     <xref alt="Section 4.6" rid="sec-RT-model-method">Section 4.6</xref>
     for a description of the model).</p>
+        <preformat>A</preformat>
         <p>Indeed, we found that participants’ RT was influenced by (i)
     forward planning conflict (<inline-formula><alternatives><tex-math><![CDATA[\beta_{conflict}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>c</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi><mml:mi>f</mml:mi><mml:mi>l</mml:mi><mml:mi>i</mml:mi><mml:mi>c</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.08,
-    0.13]), (ii) preference entropy (<inline-formula><alternatives><tex-math><![CDATA[\beta_{pref}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>f</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.45,
-    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.37,
-    0.46]) and (iii) the modulation effect between the two
+    0.14]), (ii) preference entropy (<inline-formula><alternatives><tex-math><![CDATA[\beta_{pref}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>f</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.45,
+    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.35,
+    0.54]) and (iii) the modulation effect between the two
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.06,
-    0.13], see <xref alt="Figure 6" rid="fig-rt">Figure 6</xref> A).
+    0.15], see <xref alt="Figure 6" rid="fig-rt">Figure 6</xref> A).
     This result extends previous findings showing that participants do
     not rely on forward planning to the same extent across all states of
     the task. Our results suggest that rather than splitting the task in
@@ -711,13 +717,13 @@ when preference-based guidance is uncertain.</p>
         <p>Indeed, we found that participants’ RT was influenced by (i)
     conflict (<inline-formula><alternatives><tex-math><![CDATA[\beta_{conflict}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>c</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi><mml:mi>f</mml:mi><mml:mi>l</mml:mi><mml:mi>i</mml:mi><mml:mi>c</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.08,
-    0.13]), (ii) entropy of preference score
+    0.14]), (ii) entropy of preference score
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{pref}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>f</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.45,
-    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.37,
-    0.46]) and (iii) the modulatory effect between the two
+    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.35,
+    0.54]) and (iii) the modulatory effect between the two
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.06,
-    0.13], see <xref alt="Figure 6" rid="fig-rt">Figure 6</xref> A).
+    0.15], see <xref alt="Figure 6" rid="fig-rt">Figure 6</xref> A).
     This result extends on previous findings showing that participants
     do not rely on planning to the same extent across all states of the
     task. Our results suggest that rather than splitting the task in
@@ -973,8 +979,8 @@ when preference-based guidance is uncertain.</p>
       <sec id="sec-data-desgin">
         <title>4.1 Data</title>
         <p>The data used in this study were published by Ott and colleagues
-    (2022a). In this study, 40 participants (22, mean age=24.4, SD=4.6)
-    took part in a sequential decision-making task
+    (2022a). In this study, 40 participants (22 female, mean age=24.4,
+    SD=4.6) took part in a sequential decision-making task
     (<xref alt="Ott et al. 2022a" rid="ref-ott2022forward" ref-type="bibr">Ott
     et al. 2022a</xref>,
     <xref alt="2022b" rid="ref-ott2022forward-data" ref-type="bibr">2022b</xref>).
@@ -2085,7 +2091,7 @@ when preference-based guidance is uncertain.</p>
     Similarly, reduced versions of the Preference model were tested
     against the full model by removing each component (forward planning,
     preference and modulation) as well as individual task factors (or a
-    total of 7 alternative prefernece models,see
+    total of 7 alternative preference models,see
     <xref alt="Figure S2" rid="suppfig-preference_model_comparison">Figure S2</xref>
     and
     <xref alt="Table S3" rid="supptbl-preferences_model_comparison">Table S3</xref>).
@@ -2299,6 +2305,10 @@ when preference-based guidance is uncertain.</p>
     </sec>
     <sec id="acknowledgements">
       <title>5 Acknowledgements</title>
+      <p>The authors thank Qian Chu for their valuable comments and
+  suggestions. This work was funded by the German Research Foundation
+  (DFG, Deutsche Forschungsgemeinschaft), Ref: KI 1638/5-1, project
+  number: 538763959.</p>
     </sec>
     <sec id="contribution-statement">
       <title>6 Contribution statement</title>
@@ -2422,7 +2432,7 @@ when preference-based guidance is uncertain.</p>
             <caption>
               <p>Summary of the parameters of the preference model. The
           table displays the mean and 95% highest density interval (HDI)
-          for the population level parameters assopciated with the
+          for the population level parameters associated with the
           planning values, the preference regressors and their
           interaction.</p>
             </caption>
@@ -2629,7 +2639,7 @@ when preference-based guidance is uncertain.</p>
                   <td align="left">
                     <inline-formula>
                       <alternatives>
-                        <tex-math><![CDATA[\beta_{FC=1}]]></tex-math>
+                        <tex-math><![CDATA[\beta_{FC=2}]]></tex-math>
                         <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
                           <mml:msub>
                             <mml:mi>β</mml:mi>
@@ -2637,7 +2647,7 @@ when preference-based guidance is uncertain.</p>
                               <mml:mi>F</mml:mi>
                               <mml:mi>C</mml:mi>
                               <mml:mo>=</mml:mo>
-                              <mml:mn>1</mml:mn>
+                              <mml:mn>2</mml:mn>
                             </mml:mrow>
                           </mml:msub>
                         </mml:math>
@@ -2814,18 +2824,17 @@ when preference-based guidance is uncertain.</p>
                   <td align="left">
                     <inline-formula>
                       <alternatives>
-                        <tex-math><![CDATA[\beta_{interaction}]]></tex-math>
+                        <tex-math><![CDATA[\beta_{modulation}]]></tex-math>
                         <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
                           <mml:msub>
                             <mml:mi>β</mml:mi>
                             <mml:mrow>
-                              <mml:mi>i</mml:mi>
-                              <mml:mi>n</mml:mi>
-                              <mml:mi>t</mml:mi>
-                              <mml:mi>e</mml:mi>
-                              <mml:mi>r</mml:mi>
+                              <mml:mi>m</mml:mi>
+                              <mml:mi>o</mml:mi>
+                              <mml:mi>d</mml:mi>
+                              <mml:mi>u</mml:mi>
+                              <mml:mi>l</mml:mi>
                               <mml:mi>a</mml:mi>
-                              <mml:mi>c</mml:mi>
                               <mml:mi>t</mml:mi>
                               <mml:mi>i</mml:mi>
                               <mml:mi>o</mml:mi>
@@ -2872,8 +2881,8 @@ when preference-based guidance is uncertain.</p>
               <p>Figure S2: Results of preferences model comparison.
         Model abbreviations: (No_interaction) model comprising planning
         and preference component, without interaction between the two,
-        (No_FC) model where future cost factor was omitted from
-        preferences, (No_CC) model where future cost factor was omitted
+        (No_CC) model where current cost factor was omitted from
+        preferences, (No_FC) model where future cost factor was omitted
         from preferences, (No_Planning) model where DV was omitted,
         (No_Energy) model where energy factor was omitted from
         preferences, (No_Offer) model where offer factor was omitted
@@ -2979,7 +2988,7 @@ when preference-based guidance is uncertain.</p>
       average, discounting actions that occured further in the past. We
       presented the results obtained when the priors are derived from
       the 20 previous trials. This number of trials was selected by
-      exploring priors witk <inline-formula><alternatives><tex-math><![CDATA[k=[2, 5, 10, 15, 20, 30, 50]]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>k</mml:mi><mml:mo>=</mml:mo><mml:mo stretchy="false" form="prefix">[</mml:mo><mml:mn>2</mml:mn><mml:mo>,</mml:mo><mml:mn>5</mml:mn><mml:mo>,</mml:mo><mml:mn>10</mml:mn><mml:mo>,</mml:mo><mml:mn>15</mml:mn><mml:mo>,</mml:mo><mml:mn>20</mml:mn><mml:mo>,</mml:mo><mml:mn>30</mml:mn><mml:mo>,</mml:mo><mml:mn>50</mml:mn><mml:mo stretchy="false" form="postfix">]</mml:mo></mml:mrow></mml:math></alternatives></inline-formula>
+      exploring priors with <inline-formula><alternatives><tex-math><![CDATA[k=[2, 5, 10, 15, 20, 30, 50]]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>k</mml:mi><mml:mo>=</mml:mo><mml:mo stretchy="false" form="prefix">[</mml:mo><mml:mn>2</mml:mn><mml:mo>,</mml:mo><mml:mn>5</mml:mn><mml:mo>,</mml:mo><mml:mn>10</mml:mn><mml:mo>,</mml:mo><mml:mn>15</mml:mn><mml:mo>,</mml:mo><mml:mn>20</mml:mn><mml:mo>,</mml:mo><mml:mn>30</mml:mn><mml:mo>,</mml:mo><mml:mn>50</mml:mn><mml:mo stretchy="false" form="postfix">]</mml:mo></mml:mrow></mml:math></alternatives></inline-formula>
       to identify the values that fit the data the best:</p>
           <fig id="suppfig-frequency_model_comparison">
             <caption>
@@ -4448,7 +4457,7 @@ when preference-based guidance is uncertain.</p>
       </ref>
     </ref-list>
   </back>
-  <sub-article article-type="notebook" id="nb-8-nb-article">
+  <sub-article article-type="notebook" id="nb-9-nb-article">
     <front-stub>
       <title-group>
         <article-title>Task-structured preferences guide forward planning in
@@ -4629,22 +4638,27 @@ when preference-based guidance is uncertain.</p>
   and Polani 2010</xref>;
   <xref alt="Parush et al. 2011" rid="ref-parush2011dopaminergic-nb-article" ref-type="bibr">Parush
   et al. 2011</xref>).</p>
-          <p>This leads to the central hypothesis of the present study: choice
-  behavior in complex sequential decision-making integrates two sources
-  of action guidance. First, participants may rely on task-specific
-  preferences that summarize regularities learned from task structure or
-  experience. Second, they may use forward planning, as for example
-  typically modelled by reinforcement learning, to compute
-  state-specific action values on the current trial. Assuming a Bayesian
-  approach, we hypothesize that these two sources are integrated by
-  weighting the contribution of forward planning against preferences by
-  their respective uncertainties. This hypothesis implies that on trials
-  where uncertainty about preferences is low, choices should be guided
-  mainly by the preferences, producing faster responses because less
-  forward planning is needed. On trials with less certain preferences,
-  decision making should be more weighted towards forward planning and
-  consequently, response times should be increased due to the increase
-  in computations.</p>
+          <p>However, it remains unclear how such prior-like action tendencies
+  are structured in complex sequential decision-making tasks and whether
+  their uncertainty determines reliance on forward planning. In
+  particular, it is unknown whether agents can exploit multiple features
+  of the task to form structured preferences that regulate the influence
+  of planning-derived values. This leads to the central hypothesis of
+  the present study: choice behavior in complex sequential
+  decision-making integrates two sources of action guidance. First,
+  participants may rely on task-specific preferences that summarize
+  regularities learned from task structure or experience. Second, they
+  may use forward planning, as for example typically modelled by
+  reinforcement learning, to compute state-specific action values on the
+  current trial. Assuming a Bayesian approach, we hypothesize that these
+  two sources are integrated by weighting the contribution of forward
+  planning against preferences by their respective uncertainties. This
+  hypothesis implies that on trials where uncertainty about preferences
+  is low, choices should be guided mainly by the preferences, producing
+  faster responses because less forward planning is needed. On trials
+  with less certain preferences, decision making should be more weighted
+  towards forward planning and consequently, response times should be
+  increased due to the increase in computations.</p>
           <p>In this paper, we test this hypothesis in a complex sequential
   decision-making task, using choice model comparisons and response-time
   analyses. Specifically, we use optimal forward planning as a reference
@@ -4911,7 +4925,7 @@ def truncate_colormap(cmap, min_val=0.0, max_val=1.0, n=256):
 
 # Set random seed for reproducibility:
 np.random.seed(42)
-warnings.filterwarnings("ignore")
+# warnings.filterwarnings("ignore")
 
 n_samples = 1000
 n_warmup = 1000
@@ -5206,6 +5220,20 @@ loos_df = pd.DataFrame({
 })
 # Sum within subject:
 loos_sub = loos_df.groupby('vpn').sum().reset_index()</code>
+          <boxed-text>
+            <preformat>/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(
+/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(
+/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(
+/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(
+/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(
+/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(</preformat>
+          </boxed-text>
         </sec>
         <sec id="cell-11-nb-article" specific-use="notebook-content">
           <code language="python"># ===================================================================
@@ -5590,6 +5618,10 @@ ax["D"].text(0.05, 0.48, "D", transform=fig.transFigure,
                 fontsize=16, fontweight='bold', va='top', ha='right'
                 );</code>
             <boxed-text>
+              <preformat>/tmp/ipykernel_369571/1265986268.py:15: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax["A"].set_xticklabels(ax["A"].get_xticklabels(),</preformat>
+            </boxed-text>
+            <boxed-text>
               <fig id="fig-choicemdl-nb-article">
                 <caption>
                   <p>Figure 2: Choice-model comparison and fitted
@@ -5601,24 +5633,25 @@ ax["D"].text(0.05, 0.48, "D", transform=fig.transFigure,
         best-fitting models. Each participant is color-coded according
         to the model with the highest predictive accuracy. The
         Preference model provided the best fit for 34 of 40
-        participants. (C) Observed and model-predicted probability of
-        accepting, shown separately for each offer level and model.
-        Points indicate participants’ observed acceptance probabilities.
-        (D) Estimated factor-level preference weights for the Preference
-        model. Panels show weights for offer levels, current and future
-        cost, and energy levels. Distributions show the group-level
-        posterior estimates; central bars indicate medians, and dotted
-        lines indicate the 2.5% and 97.5% quantiles. Dots indicate
+        participants. (C) Proportion of trials in which the model
+        predicted responses match participants’ responses, separately
+        for each model and offer level. Dots represent single
+        participants modelled/observed match proportions. (D) Estimated
+        factor-level preference weights for the Preference model. Panels
+        show weights for offer levels, current and future cost, and
+        energy levels. Distributions show the group-level posterior
+        estimates; central bars indicate medians, and dotted lines
+        indicate the 2.5% and 97.5% quantiles. Dots indicate
         participant-level mean estimates.</p>
                 </caption>
-                <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-choicemdl-output-1.png"/>
+                <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-choicemdl-output-2.png"/>
               </fig>
             </boxed-text>
           </sec>
           <sec id="cell-16-nb-article" specific-use="notebook-content">
             <code language="python"># Calculate the interaction confidence intervals:
 mu_interaction = traces['Preference'].posterior["beta_interaction"].values.flatten().mean()
-ci_interaction = az.hdi(traces['Preference'].posterior["beta_interaction"].values)[0]</code>
+ci_interaction = az.hdi(traces['Preference'].posterior["beta_interaction"].values.flatten(), hdi_prob=0.95)</code>
           </sec>
           <sec id="cell-17-nb-article" specific-use="notebook-content">
             <p>We then proceeded to test the central prediction that the
@@ -5627,8 +5660,8 @@ ci_interaction = az.hdi(traces['Preference'].posterior["beta_interaction"].value
     implied by the preference score. The Preference model revealed a
     positive modulation of forward planning by preference entropy
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=1.26,
-    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.35,
-    2.25]), indicating that planning-derived DV had a stronger influence
+    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.31,
+    2.29]), indicating that planning-derived DV had a stronger influence
     on choices when preferences were more uncertain. Conversely, when
     preference had lower entropy, choices were less influenced by
     planning-derived DV and were more strongly guided by the preference
@@ -6054,6 +6087,18 @@ else:
 
 # Compare against the full model:
 model_comparison = az.compare(traces_reduced)</code>
+            <boxed-text>
+              <preformat>/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(
+/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(
+/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(
+/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(
+/home/alex-lepauvre/miniforge3/envs/pymc_env/lib/python3.14/site-packages/arviz/stats/stats.py:782: UserWarning: Estimated shape parameter of Pareto distribution is greater than 0.70 for one or more samples. You should consider using a more robust model, this is because importance sampling is less likely to work well if the marginal posterior and LOO posterior are very different. This is more likely to happen with a non-robust model and highly influential observations.
+  warnings.warn(</preformat>
+            </boxed-text>
           </sec>
           <sec id="cell-24-nb-article" specific-use="notebook-content">
             <p><xref alt="Figure 5" rid="fig-task-features-nb-article">Figure 5</xref> A
@@ -6340,6 +6385,10 @@ ax["D"].text(0.05, 0.48, "D", transform=fig.transFigure,
               fontsize=16, fontweight='bold', va='top', ha='right'
               );</code>
             <boxed-text>
+              <preformat>/tmp/ipykernel_369571/3115461153.py:30: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax["B"].set_xticklabels(model_comparison.index[1:], rotation=30)</preformat>
+            </boxed-text>
+            <boxed-text>
               <fig id="fig-task-features-nb-article">
                 <caption>
                   <p>Figure 5: Contribution of task factors to
@@ -6378,7 +6427,7 @@ ax["D"].text(0.05, 0.48, "D", transform=fig.transFigure,
         policy; deviations indicate feature-specific
         biases.</p>
                 </caption>
-                <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-task-features-output-1.png"/>
+                <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/fig-task-features-output-2.png"/>
               </fig>
             </boxed-text>
           </sec>
@@ -6535,31 +6584,36 @@ NUTS: [sigma, Intercept, conflict, entropy, conflict:entropy, 1|vpn_sigma, 1|vpn
               <preformat/>
             </boxed-text>
             <boxed-text>
-              <preformat>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 51 seconds.
+              <preformat>Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 49 seconds.
 The rhat statistic is larger than 1.01 for some parameters. This indicates problems during sampling. See https://arxiv.org/abs/1903.08008 for details</preformat>
             </boxed-text>
           </sec>
           <sec id="cell-32-nb-article" specific-use="notebook-content">
             <code language="python"># Extract mean and CI of the fitted parameters:
 mu_conflict = traces_RT['RT = Conflict x H(Pref)'].posterior["conflict"].values.flatten().mean()
-ci_conflict = az.hdi(traces_RT['RT = Conflict x H(Pref)'].posterior["conflict"].values)[0]
+ci_conflict = az.hdi(traces_RT['RT = Conflict x H(Pref)'].posterior["conflict"].values.flatten(), hdi_prob=0.95)
 
 mu_pref = traces_RT['RT = Conflict x H(Pref)'].posterior["entropy"].values.flatten().mean()
-ci_pref = az.hdi(traces_RT['RT = Conflict x H(Pref)'].posterior["entropy"].values)[0]
+ci_pref = az.hdi(traces_RT['RT = Conflict x H(Pref)'].posterior["entropy"].values.flatten(), hdi_prob=0.95)
 
 mu_interaction = traces_RT['RT = Conflict x H(Pref)'].posterior["conflict:entropy"].values.flatten().mean()
-ci_interaction = az.hdi(traces_RT['RT = Conflict x H(Pref)'].posterior["conflict:entropy"].values)[0]</code>
+ci_interaction = az.hdi(traces_RT['RT = Conflict x H(Pref)'].posterior["conflict:entropy"].values.flatten(), hdi_prob=0.95)
+
+print("A")</code>
+            <boxed-text>
+              <preformat>A</preformat>
+            </boxed-text>
           </sec>
           <sec id="cell-33-nb-article" specific-use="notebook-content">
             <p>Indeed, we found that participants’ RT was influenced by (i)
     forward planning conflict (<inline-formula><alternatives><tex-math><![CDATA[\beta_{conflict}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>c</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi><mml:mi>f</mml:mi><mml:mi>l</mml:mi><mml:mi>i</mml:mi><mml:mi>c</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.08,
-    0.13]), (ii) preference entropy (<inline-formula><alternatives><tex-math><![CDATA[\beta_{pref}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>f</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.45,
-    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.37,
-    0.46]) and (iii) the modulation effect between the two
+    0.14]), (ii) preference entropy (<inline-formula><alternatives><tex-math><![CDATA[\beta_{pref}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>f</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.45,
+    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.35,
+    0.54]) and (iii) the modulation effect between the two
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.06,
-    0.13], see <xref alt="Figure 6" rid="fig-rt-nb-article">Figure 6</xref> A).
+    0.15], see <xref alt="Figure 6" rid="fig-rt-nb-article">Figure 6</xref> A).
     This result extends previous findings showing that participants do
     not rely on forward planning to the same extent across all states of
     the task. Our results suggest that rather than splitting the task in
@@ -6575,13 +6629,13 @@ ci_interaction = az.hdi(traces_RT['RT = Conflict x H(Pref)'].posterior["conflict
             <p>Indeed, we found that participants’ RT was influenced by (i)
     conflict (<inline-formula><alternatives><tex-math><![CDATA[\beta_{conflict}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>c</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi><mml:mi>f</mml:mi><mml:mi>l</mml:mi><mml:mi>i</mml:mi><mml:mi>c</mml:mi><mml:mi>t</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.08,
-    0.13]), (ii) entropy of preference score
+    0.14]), (ii) entropy of preference score
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{pref}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>p</mml:mi><mml:mi>r</mml:mi><mml:mi>e</mml:mi><mml:mi>f</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.45,
-    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.37,
-    0.46]) and (iii) the modulatory effect between the two
+    <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.35,
+    0.54]) and (iii) the modulatory effect between the two
     (<inline-formula><alternatives><tex-math><![CDATA[\beta_{modulation}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:msub><mml:mi>β</mml:mi><mml:mrow><mml:mi>m</mml:mi><mml:mi>o</mml:mi><mml:mi>d</mml:mi><mml:mi>u</mml:mi><mml:mi>l</mml:mi><mml:mi>a</mml:mi><mml:mi>t</mml:mi><mml:mi>i</mml:mi><mml:mi>o</mml:mi><mml:mi>n</mml:mi></mml:mrow></mml:msub></mml:math></alternatives></inline-formula>=0.11,
     <inline-formula><alternatives><tex-math><![CDATA[CI_{95\%}]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>C</mml:mi><mml:msub><mml:mi>I</mml:mi><mml:mrow><mml:mn>95</mml:mn><mml:mi>%</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math></alternatives></inline-formula>=[0.06,
-    0.13], see <xref alt="Figure 6" rid="fig-rt-nb-article">Figure 6</xref> A).
+    0.15], see <xref alt="Figure 6" rid="fig-rt-nb-article">Figure 6</xref> A).
     This result extends on previous findings showing that participants
     do not rely on planning to the same extent across all states of the
     task. Our results suggest that rather than splitting the task in
@@ -6904,8 +6958,8 @@ ax["B"].text(0.44, 0.98, "B", transform=fig.transFigure,
           <sec id="sec-data-desgin-nb-article">
             <title>4.1 Data</title>
             <p>The data used in this study were published by Ott and colleagues
-    (2022a). In this study, 40 participants (22, mean age=24.4, SD=4.6)
-    took part in a sequential decision-making task
+    (2022a). In this study, 40 participants (22 female, mean age=24.4,
+    SD=4.6) took part in a sequential decision-making task
     (<xref alt="Ott et al. 2022a" rid="ref-ott2022forward-nb-article" ref-type="bibr">Ott
     et al. 2022a</xref>,
     <xref alt="2022b" rid="ref-ott2022forward-data-nb-article" ref-type="bibr">2022b</xref>).
@@ -8030,7 +8084,7 @@ ax["B"].text(0.44, 0.98, "B", transform=fig.transFigure,
     Similarly, reduced versions of the Preference model were tested
     against the full model by removing each component (forward planning,
     preference and modulation) as well as individual task factors (or a
-    total of 7 alternative prefernece models,see
+    total of 7 alternative preference models,see
     <xref alt="Figure S2" rid="suppfig-preference_model_comparison-nb-article">Figure S2</xref>
     and
     <xref alt="Table S3" rid="supptbl-preferences_model_comparison-nb-article">Table S3</xref>).
@@ -8250,6 +8304,10 @@ ax["B"].text(0.44, 0.98, "B", transform=fig.transFigure,
         </sec>
         <sec id="acknowledgements-nb-article">
           <title>5 Acknowledgements</title>
+          <p>The authors thank Qian Chu for their valuable comments and
+  suggestions. This work was funded by the German Research Foundation
+  (DFG, Deutsche Forschungsgemeinschaft), Ref: KI 1638/5-1, project
+  number: 538763959.</p>
         </sec>
         <sec id="cell-47-nb-article" specific-use="notebook-content">
 </sec>
@@ -8446,9 +8504,9 @@ stats_summary = az.summary(traces['Preference'], var_names=["beta_planning", "be
 # Creat the row names:
 row_names = ["$\\beta_{plan}$", 
              "$\\beta_{O=1}$", "$\\beta_{O=2}$", "$\\beta_{O=3}$", "$\\beta_{O=4}$", 
-             "$\\beta_{CC=1}$", "$\\beta_{CC=2}$", "$\\beta_{FC=1}$", "$\\beta_{FC=1}$", 
+             "$\\beta_{CC=1}$", "$\\beta_{CC=2}$", "$\\beta_{FC=1}$", "$\\beta_{FC=2}$", 
              "$\\beta_{E=0}$", "$\\beta_{E=1}$", "$\\beta_{E=2}$", "$\\beta_{E=3}$", "$\\beta_{E=4}$", "$\\beta_{E=5}$", "$\\beta_{E=6}$", 
-             "$\\beta_{interaction}$"]
+             "$\\beta_{modulation}$"]
 stats_summary.index = row_names
 display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_markdown()))</code>
               <fig id="supptbl-pref_model_param-nb-article">
@@ -8459,7 +8517,7 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                   <caption>
                     <p>Summary of the parameters of the preference model. The
           table displays the mean and 95% highest density interval (HDI)
-          for the population level parameters assopciated with the
+          for the population level parameters associated with the
           planning values, the preference regressors and their
           interaction.</p>
                   </caption>
@@ -8666,7 +8724,7 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         <td align="left">
                           <inline-formula>
                             <alternatives>
-                              <tex-math><![CDATA[\beta_{FC=1}]]></tex-math>
+                              <tex-math><![CDATA[\beta_{FC=2}]]></tex-math>
                               <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
                                 <mml:msub>
                                   <mml:mi>β</mml:mi>
@@ -8674,7 +8732,7 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                                     <mml:mi>F</mml:mi>
                                     <mml:mi>C</mml:mi>
                                     <mml:mo>=</mml:mo>
-                                    <mml:mn>1</mml:mn>
+                                    <mml:mn>2</mml:mn>
                                   </mml:mrow>
                                 </mml:msub>
                               </mml:math>
@@ -8851,18 +8909,17 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                         <td align="left">
                           <inline-formula>
                             <alternatives>
-                              <tex-math><![CDATA[\beta_{interaction}]]></tex-math>
+                              <tex-math><![CDATA[\beta_{modulation}]]></tex-math>
                               <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
                                 <mml:msub>
                                   <mml:mi>β</mml:mi>
                                   <mml:mrow>
-                                    <mml:mi>i</mml:mi>
-                                    <mml:mi>n</mml:mi>
-                                    <mml:mi>t</mml:mi>
-                                    <mml:mi>e</mml:mi>
-                                    <mml:mi>r</mml:mi>
+                                    <mml:mi>m</mml:mi>
+                                    <mml:mi>o</mml:mi>
+                                    <mml:mi>d</mml:mi>
+                                    <mml:mi>u</mml:mi>
+                                    <mml:mi>l</mml:mi>
                                     <mml:mi>a</mml:mi>
-                                    <mml:mi>c</mml:mi>
                                     <mml:mi>t</mml:mi>
                                     <mml:mi>i</mml:mi>
                                     <mml:mi>o</mml:mi>
@@ -8917,8 +8974,8 @@ az.plot_compare(model_comparison);</code>
                       <p>Figure S2: Results of preferences model
           comparison. Model abbreviations: (No_interaction) model
           comprising planning and preference component, without
-          interaction between the two, (No_FC) model where future cost
-          factor was omitted from preferences, (No_CC) model where
+          interaction between the two, (No_CC) model where current cost
+          factor was omitted from preferences, (No_FC) model where
           future cost factor was omitted from preferences, (No_Planning)
           model where DV was omitted, (No_Energy) model where energy
           factor was omitted from preferences, (No_Offer) model where
@@ -9032,7 +9089,7 @@ display(Markdown(model_comparison[[ "elpd_loo", "p_loo", "elpd_diff", "se", "dse
       average, discounting actions that occured further in the past. We
       presented the results obtained when the priors are derived from
       the 20 previous trials. This number of trials was selected by
-      exploring priors witk <inline-formula><alternatives><tex-math><![CDATA[k=[2, 5, 10, 15, 20, 30, 50]]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>k</mml:mi><mml:mo>=</mml:mo><mml:mo stretchy="false" form="prefix">[</mml:mo><mml:mn>2</mml:mn><mml:mo>,</mml:mo><mml:mn>5</mml:mn><mml:mo>,</mml:mo><mml:mn>10</mml:mn><mml:mo>,</mml:mo><mml:mn>15</mml:mn><mml:mo>,</mml:mo><mml:mn>20</mml:mn><mml:mo>,</mml:mo><mml:mn>30</mml:mn><mml:mo>,</mml:mo><mml:mn>50</mml:mn><mml:mo stretchy="false" form="postfix">]</mml:mo></mml:mrow></mml:math></alternatives></inline-formula>
+      exploring priors with <inline-formula><alternatives><tex-math><![CDATA[k=[2, 5, 10, 15, 20, 30, 50]]]></tex-math><mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline"><mml:mrow><mml:mi>k</mml:mi><mml:mo>=</mml:mo><mml:mo stretchy="false" form="prefix">[</mml:mo><mml:mn>2</mml:mn><mml:mo>,</mml:mo><mml:mn>5</mml:mn><mml:mo>,</mml:mo><mml:mn>10</mml:mn><mml:mo>,</mml:mo><mml:mn>15</mml:mn><mml:mo>,</mml:mo><mml:mn>20</mml:mn><mml:mo>,</mml:mo><mml:mn>30</mml:mn><mml:mo>,</mml:mo><mml:mn>50</mml:mn><mml:mo stretchy="false" form="postfix">]</mml:mo></mml:mrow></mml:math></alternatives></inline-formula>
       to identify the values that fit the data the best:</p>
               <sec id="cell-suppfig-frequency_model_comparison-nb-article" specific-use="notebook-content">
                 <code language="python"># Compare the models:
@@ -10571,7 +10628,7 @@ plt.show()</code>
       </ref-list>
     </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-2-nb-1">
+  <sub-article article-type="notebook" id="nb-3-nb-1">
     <front-stub>
       <title-group>
         <article-title>Supplementary 1: figures and tables</article-title>
@@ -10902,9 +10959,9 @@ stats_summary = az.summary(traces['Preference'], var_names=["beta_planning", "be
 # Creat the row names:
 row_names = ["$\\beta_{plan}$", 
              "$\\beta_{O=1}$", "$\\beta_{O=2}$", "$\\beta_{O=3}$", "$\\beta_{O=4}$", 
-             "$\\beta_{CC=1}$", "$\\beta_{CC=2}$", "$\\beta_{FC=1}$", "$\\beta_{FC=1}$", 
+             "$\\beta_{CC=1}$", "$\\beta_{CC=2}$", "$\\beta_{FC=1}$", "$\\beta_{FC=2}$", 
              "$\\beta_{E=0}$", "$\\beta_{E=1}$", "$\\beta_{E=2}$", "$\\beta_{E=3}$", "$\\beta_{E=4}$", "$\\beta_{E=5}$", "$\\beta_{E=6}$", 
-             "$\\beta_{interaction}$"]
+             "$\\beta_{modulation}$"]
 stats_summary.index = row_names
 display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_markdown()))</code>
           <fig id="supptbl-pref_model_param-nb-1">
@@ -10915,8 +10972,8 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
               <caption>
                 <p>Summary of the parameters of the preference model. The table
         displays the mean and 95% highest density interval (HDI) for the
-        population level parameters assopciated with the planning
-        values, the preference regressors and their interaction.</p>
+        population level parameters associated with the planning values,
+        the preference regressors and their interaction.</p>
               </caption>
               <table>
                 <thead>
@@ -11121,7 +11178,7 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                     <td align="left">
                       <inline-formula>
                         <alternatives>
-                          <tex-math><![CDATA[\beta_{FC=1}]]></tex-math>
+                          <tex-math><![CDATA[\beta_{FC=2}]]></tex-math>
                           <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
                             <mml:msub>
                               <mml:mi>β</mml:mi>
@@ -11129,7 +11186,7 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                                 <mml:mi>F</mml:mi>
                                 <mml:mi>C</mml:mi>
                                 <mml:mo>=</mml:mo>
-                                <mml:mn>1</mml:mn>
+                                <mml:mn>2</mml:mn>
                               </mml:mrow>
                             </mml:msub>
                           </mml:math>
@@ -11306,18 +11363,17 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
                     <td align="left">
                       <inline-formula>
                         <alternatives>
-                          <tex-math><![CDATA[\beta_{interaction}]]></tex-math>
+                          <tex-math><![CDATA[\beta_{modulation}]]></tex-math>
                           <mml:math xmlns:mml="http://www.w3.org/1998/Math/MathML" display="inline">
                             <mml:msub>
                               <mml:mi>β</mml:mi>
                               <mml:mrow>
-                                <mml:mi>i</mml:mi>
-                                <mml:mi>n</mml:mi>
-                                <mml:mi>t</mml:mi>
-                                <mml:mi>e</mml:mi>
-                                <mml:mi>r</mml:mi>
+                                <mml:mi>m</mml:mi>
+                                <mml:mi>o</mml:mi>
+                                <mml:mi>d</mml:mi>
+                                <mml:mi>u</mml:mi>
+                                <mml:mi>l</mml:mi>
                                 <mml:mi>a</mml:mi>
-                                <mml:mi>c</mml:mi>
                                 <mml:mi>t</mml:mi>
                                 <mml:mi>i</mml:mi>
                                 <mml:mi>o</mml:mi>
@@ -11343,7 +11399,7 @@ display(Markdown(stats_summary[[ "mean", "sd", "hdi_2.5%", "hdi_97.5%" ]].to_mar
     <back>
 </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-4-nb-2">
+  <sub-article article-type="notebook" id="nb-5-nb-2">
     <front-stub>
       <title-group>
         <article-title>Supplementary 2: Choice model comparison</article-title>
@@ -11976,8 +12032,8 @@ az.plot_compare(model_comparison);</code>
                 <p>Figure S1: Results of preferences model comparison.
       Model abbreviations: (No_interaction) model comprising planning
       and preference component, without interaction between the two,
-      (No_FC) model where future cost factor was omitted from
-      preferences, (No_CC) model where future cost factor was omitted
+      (No_CC) model where current cost factor was omitted from
+      preferences, (No_FC) model where future cost factor was omitted
       from preferences, (No_Planning) model where DV was omitted,
       (No_Energy) model where energy factor was omitted from
       preferences, (No_Offer) model where offer factor was omitted from
@@ -12241,7 +12297,7 @@ display(Markdown(model_comparison[[ "elpd_loo", "p_loo", "elpd_diff", "se", "dse
     <back>
 </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-6-nb-3">
+  <sub-article article-type="notebook" id="nb-7-nb-3">
     <front-stub>
       <title-group>
         <article-title>Supplementary 3: Parameters recovery</article-title>
