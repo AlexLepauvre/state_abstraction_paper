@@ -788,10 +788,6 @@ the preference score estimated from the choice behavior model, and the
 interaction between the two (see Section~\ref{sec-RT-model-method} for a
 description of the model).
 
-\begin{verbatim}
-A
-\end{verbatim}
-
 Indeed, we found that participants' RT was influenced by (i) forward
 planning conflict (\(\beta_{conflict}\)=0.11, \(CI_{95\%}\)={[}0.08,
 0.14{]}), (ii) preference entropy (\(\beta_{pref}\)=0.45,
@@ -1164,7 +1160,13 @@ Participants responses were modelled using a logistic regression:
 P(a=1) = \sigma(\eta)
 }\end{equation}
 
-where \(\sigma(x)=\frac{1}{1+e^-x}\) denotes the logistic sigmoid.
+where
+
+\begin{equation}\protect\phantomsection\label{eq-logistic_sigmoid}{
+\sigma(x)=\frac{1}{1+e^-x}
+}\end{equation}
+
+denotes the logistic sigmoid.
 
 Participants' responses were modelled using Bayesian hierarchical
 logistic regressions that estimate the probability of accepting the
@@ -1322,13 +1324,8 @@ H(pref) = -\sigma(pref) * log(\sigma(pref)) - (1-\sigma(pref)) * log(1-\sigma(pr
 \end{aligned}
 }\end{equation}
 
-With:
-
-\begin{equation}\protect\phantomsection\label{eq-entropy}{
-\begin{aligned}
-\sigma(x) = \frac{1}{1+e^{-x}}
-\end{aligned}
-}\end{equation}
+and \(\sigma(x)\) is the logistic sigmoid defined in
+Equation~\ref{eq-logistic_sigmoid}.
 
 Participants' factor-level preferences are estimated as latent
 variables. \(\mathbf{X_{pref}}\) is a \([M \times N]\) (M=measurements,
@@ -1901,7 +1898,7 @@ planning regressor.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/S2-choice_model_comparison-suppfig-preference_model_comparison-output-1.png}}
+\includegraphics[width=7.72917in,height=6.69792in]{index_files/figure-latex/S2-choice_model_comparison-suppfig-preference_model_comparison-output-1.png}
 
 }
 
@@ -1965,7 +1962,7 @@ dse
 \endlastfoot
 full\_preferences\_model & -1492.47 & 256.484 & 0 & 48.7583 & 0 \\
 No\_Modulation & -1501.44 & 245.861 & 8.9671 & 48.9103 & 5.28966 \\
-No\_FC & -1517.79 & 227.725 & 25.3217 & 48.5354 & 7.61146 \\
+No\_FC & -1519.82 & 229.718 & 27.351 & 48.6187 & 7.56828 \\
 No\_CC & -1539.49 & 262.803 & 47.0195 & 49.8892 & 9.74314 \\
 No\_Planning & -1581.23 & 217.308 & 88.758 & 48.8039 & 17.3434 \\
 No\_Energy & -1626.44 & 211.155 & 133.971 & 51.5682 & 17.7893 \\
@@ -1992,7 +1989,7 @@ data the best:
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/S2-choice_model_comparison-suppfig-frequency_model_comparison-output-1.png}}
+\includegraphics[width=6.59375in,height=6.69792in]{index_files/figure-latex/S2-choice_model_comparison-suppfig-frequency_model_comparison-output-1.png}
 
 }
 

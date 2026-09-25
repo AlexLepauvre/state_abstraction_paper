@@ -591,8 +591,8 @@
 <span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="co"># ===================================================================</span></span>
 <span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Model without future costs related preferences:</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> os.path.exists(Path(control_models_path, <span class="st">"preferences_model_no_future_costs_trace.nc"</span>)):</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    idata <span class="op">=</span> az.from_netcdf(Path(control_models_path, <span class="st">"preferences_model_no_future_costs_trace.nc"</span>))</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> os.path.exists(Path(control_models_path, <span class="st">"preferences_model_no_fc_trace.nc"</span>)):</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    idata <span class="op">=</span> az.from_netcdf(Path(control_models_path, <span class="st">"preferences_model_no_fc_trace.nc"</span>))</span>
 <span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    traces[<span class="st">'No_FC'</span>] <span class="op">=</span> idata</span>
 <span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit the model without the future costs related preferences:</span></span>
@@ -608,7 +608,7 @@
 <span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the idata to the rest:</span></span>
 <span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>    traces[<span class="st">'No_FC'</span>] <span class="op">=</span> idata</span>
 <span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save the trace to file:</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    az.to_netcdf(traces[<span class="st">'No_FC'</span>], Path(control_models_path, <span class="st">"preferences_model_no_future_costs_trace.nc"</span>))</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>    az.to_netcdf(traces[<span class="st">'No_FC'</span>], Path(control_models_path, <span class="st">"preferences_model_no_fc_trace.nc"</span>))</span>
 <span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="co"># ===================================================================</span></span>
 <span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Model without energy related preferences:</span></span>
@@ -820,7 +820,7 @@
 <div id="suppfig-preference_model_comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-suppfig figure">
 <div aria-describedby="suppfig-preference_model_comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
-<a href="S2-choice_model_comparison_files/figure-html/suppfig-preference_model_comparison-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure S1: Results of preferences model comparison. Model abbreviations: (No_interaction) model comprising planning and preference component, without interaction between the two, (No_CC) model where current cost factor was omitted from preferences, (No_FC) model where future cost factor was omitted from preferences, (No_Planning) model where DV was omitted, (No_Energy) model where energy factor was omitted from preferences, (No_Offer) model where offer factor was omitted from preferences"><img src="S2-choice_model_comparison_files/figure-html/suppfig-preference_model_comparison-output-1.png" class="img-fluid figure-img"></a>
+<a href="S2-choice_model_comparison_files/figure-html/suppfig-preference_model_comparison-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure S1: Results of preferences model comparison. Model abbreviations: (No_interaction) model comprising planning and preference component, without interaction between the two, (No_CC) model where current cost factor was omitted from preferences, (No_FC) model where future cost factor was omitted from preferences, (No_Planning) model where DV was omitted, (No_Energy) model where energy factor was omitted from preferences, (No_Offer) model where offer factor was omitted from preferences"><img src="S2-choice_model_comparison_files/figure-html/suppfig-preference_model_comparison-output-1.png" width="743" height="644" class="figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-suppfig" id="suppfig-preference_model_comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure S1: Results of preferences model comparison. Model abbreviations: (No_interaction) model comprising planning and preference component, without interaction between the two, (No_CC) model where current cost factor was omitted from preferences, (No_FC) model where future cost factor was omitted from preferences, (No_Planning) model where DV was omitted, (No_Energy) model where energy factor was omitted from preferences, (No_Offer) model where offer factor was omitted from preferences
@@ -877,11 +877,11 @@ Table S1
 </tr>
 <tr class="odd">
 <td style="text-align: left;">No_FC</td>
-<td style="text-align: right;">-1517.79</td>
-<td style="text-align: right;">227.725</td>
-<td style="text-align: right;">25.3217</td>
-<td style="text-align: right;">48.5354</td>
-<td style="text-align: right;">7.61146</td>
+<td style="text-align: right;">-1519.82</td>
+<td style="text-align: right;">229.718</td>
+<td style="text-align: right;">27.351</td>
+<td style="text-align: right;">48.6187</td>
+<td style="text-align: right;">7.56828</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">No_CC</td>
@@ -969,7 +969,7 @@ Table S1
 <div id="suppfig-frequency_model_comparison" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-suppfig figure">
 <div aria-describedby="suppfig-frequency_model_comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
-<a href="S2-choice_model_comparison_files/figure-html/suppfig-frequency_model_comparison-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure S2: Results of frequency model comparison, comparing the temporal integration window, going back k=[2, 5, 10, 15, 20, 30, 50]"><img src="S2-choice_model_comparison_files/figure-html/suppfig-frequency_model_comparison-output-1.png" class="img-fluid figure-img"></a>
+<a href="S2-choice_model_comparison_files/figure-html/suppfig-frequency_model_comparison-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure S2: Results of frequency model comparison, comparing the temporal integration window, going back k=[2, 5, 10, 15, 20, 30, 50]"><img src="S2-choice_model_comparison_files/figure-html/suppfig-frequency_model_comparison-output-1.png" width="633" height="644" class="figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-suppfig" id="suppfig-frequency_model_comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure S2: Results of frequency model comparison, comparing the temporal integration window, going back k=[2, 5, 10, 15, 20, 30, 50]
