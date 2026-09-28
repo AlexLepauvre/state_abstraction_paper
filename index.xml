@@ -62,7 +62,8 @@ acquisition</role>
           <role vocab="https://credit.niso.org" vocab-term="visualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/visualization/">visualization</role>
           <role>writing - original draft</role>
           <role>writing - review &amp; editing</role>
-          <xref ref-type="aff" rid="aff-1">a</xref>
+          <xref ref-type="aff" rid="aff-2">b</xref>
+          <xref ref-type="aff" rid="aff-3">c</xref>
         </contrib>
       </contrib-group>
       <aff id="aff-1">
@@ -70,6 +71,27 @@ acquisition</role>
 Neuroscience, Faculty of Psychology</institution>
         <institution-wrap>
           <institution>TUD Dresden University of Technology</institution>
+          <institution-id institution-id-type="ROR">https://ror.org/042aqky30</institution-id>
+        </institution-wrap>
+        <addr-line>Dresden 01187</addr-line>
+        <country>DE</country>
+      </aff>
+      <aff id="aff-2">
+        <institution content-type="dept">Chair of Cognitive Computational
+Neuroscience, Faculty of Psychology</institution>
+        <institution-wrap>
+          <institution>TU Dresden University of Technology</institution>
+          <institution-id institution-id-type="ROR">https://ror.org/042aqky30</institution-id>
+        </institution-wrap>
+        <addr-line>Dresden 01187</addr-line>
+        <country>DE</country>
+      </aff>
+      <aff id="aff-3">
+        <institution content-type="dept">Centre for Tactile Internet with
+Human-in-the-Loop</institution>
+        <institution-wrap>
+          <institution>TU Dresden University of Technology Centre for Tactile
+Internet with Human-in-the-Loop</institution>
           <institution-id institution-id-type="ROR">https://ror.org/042aqky30</institution-id>
         </institution-wrap>
         <addr-line>Dresden 01187</addr-line>
@@ -2296,9 +2318,11 @@ when preference-based guidance is uncertain.</p>
     <sec id="acknowledgements">
       <title>5 Acknowledgements</title>
       <p>The authors thank Qian Chu for their valuable comments and
-  suggestions. This work was funded by the German Research Foundation
-  (DFG, Deutsche Forschungsgemeinschaft), Ref: KI 1638/5-1, project
-  number: 538763959.</p>
+  suggestions. This work was funded by the the German Research
+  Foundation (DFG, Deutsche Forschungsgemeinschaft) – 538763959 – and as
+  part of Germany’s Excellence Strategy – EXC 2050/2 – Project ID
+  390696704 – Cluster of Excellence ‘Centre for Tactile Internet with
+  Human-in-the-Loop’ (CeTI) of TUD Dresden University of Technology.</p>
     </sec>
     <sec id="contribution-statement">
       <title>6 Contribution statement</title>
@@ -4507,7 +4531,8 @@ acquisition</role>
           <role vocab="https://credit.niso.org" vocab-term="visualization" vocab-term-identifier="https://credit.niso.org/contributor-roles/visualization/">visualization</role>
           <role>writing - original draft</role>
           <role>writing - review &amp; editing</role>
-          <xref ref-type="aff" rid="aff-1-nb-article">a</xref>
+          <xref ref-type="aff" rid="aff-2-nb-article">b</xref>
+          <xref ref-type="aff" rid="aff-3-nb-article">c</xref>
         </contrib>
       </contrib-group>
       <aff id="aff-1-nb-article">
@@ -4515,6 +4540,27 @@ acquisition</role>
 Neuroscience, Faculty of Psychology</institution>
         <institution-wrap>
           <institution>TUD Dresden University of Technology</institution>
+          <institution-id institution-id-type="ROR">https://ror.org/042aqky30</institution-id>
+        </institution-wrap>
+        <addr-line>Dresden 01187</addr-line>
+        <country>DE</country>
+      </aff>
+      <aff id="aff-2-nb-article">
+        <institution content-type="dept">Chair of Cognitive Computational
+Neuroscience, Faculty of Psychology</institution>
+        <institution-wrap>
+          <institution>TU Dresden University of Technology</institution>
+          <institution-id institution-id-type="ROR">https://ror.org/042aqky30</institution-id>
+        </institution-wrap>
+        <addr-line>Dresden 01187</addr-line>
+        <country>DE</country>
+      </aff>
+      <aff id="aff-3-nb-article">
+        <institution content-type="dept">Centre for Tactile Internet with
+Human-in-the-Loop</institution>
+        <institution-wrap>
+          <institution>TU Dresden University of Technology Centre for Tactile
+Internet with Human-in-the-Loop</institution>
           <institution-id institution-id-type="ROR">https://ror.org/042aqky30</institution-id>
         </institution-wrap>
         <addr-line>Dresden 01187</addr-line>
@@ -8281,9 +8327,11 @@ ax["B"].text(0.44, 0.98, "B", transform=fig.transFigure,
         <sec id="acknowledgements-nb-article">
           <title>5 Acknowledgements</title>
           <p>The authors thank Qian Chu for their valuable comments and
-  suggestions. This work was funded by the German Research Foundation
-  (DFG, Deutsche Forschungsgemeinschaft), Ref: KI 1638/5-1, project
-  number: 538763959.</p>
+  suggestions. This work was funded by the the German Research
+  Foundation (DFG, Deutsche Forschungsgemeinschaft) – 538763959 – and as
+  part of Germany’s Excellence Strategy – EXC 2050/2 – Project ID
+  390696704 – Cluster of Excellence ‘Centre for Tactile Internet with
+  Human-in-the-Loop’ (CeTI) of TUD Dresden University of Technology.</p>
         </sec>
         <sec id="cell-47-nb-article" specific-use="notebook-content">
 </sec>
