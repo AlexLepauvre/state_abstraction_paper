@@ -209,10 +209,15 @@
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
 \hypersetup{
   pdftitle={Task-structured preferences guide forward planning in sequential decision-making},
   pdfauthor={Alex Lepauvre; Florian Ott; Stefan J. Kiebel},
-  pdfkeywords={Decision making, Reinforcement learning},
+  pdfkeywords={\xmpquote{Decision making}, \xmpquote{Reinforcement
+learning}},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -224,7 +229,7 @@
 \title{Task-structured preferences guide forward planning in sequential
 decision-making}
 \author{Alex Lepauvre \and Florian Ott \and Stefan J. Kiebel}
-\date{2026-09-28}
+\date{2026-10-02}
 \begin{document}
 \maketitle
 \begin{abstract}
