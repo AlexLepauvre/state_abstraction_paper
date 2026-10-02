@@ -1,8 +1,9 @@
 on:
   workflow_dispatch:
-  push:
-    branches: main
-
+  pull_request:
+    types:
+      - closed
+      
 name: Quarto Publish
 
 jobs:
