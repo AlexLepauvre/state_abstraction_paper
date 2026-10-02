@@ -1,6 +1,6 @@
 #  Task-structured preferences guide forward planning in sequential decision-making paper repository
 
-[![DOI](https://img.shields.io/badge/DOI-10.xxxx%2Fxxxxx-blue)](https://doi.org/10.xxxx/xxxxx)
+[![DOI](https://img.shields.io/badge/DOI-10.64898/2026.09.25.754065-blue)](https://doi.org/10.64898/2026.09.25.754065)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Quarto](https://img.shields.io/badge/Built%20with-Quarto-4D4D4D?logo=quarto)](https://quarto.org)
 
@@ -19,7 +19,7 @@ pipeline used to generate the results and figures for the paper:
 
 > **Task-structured preferences guide forward planning in sequential decision-making paper repository**
 > Alex Lepauvre, Florian Ott, Stefan Kiebel
-> BioRxiv, 2026. DOI: [10.xxxx/xxxxx](https://doi.org/10.xxxx/xxxxx)
+> BioRxiv, 2026. DOI: [10.64898/2026.09.25.754065](https://doi.org/10.64898/2026.09.25.754065)
 
 It is based on [Quarto Manuscripts: Jupyter Lab](https://quarto.org/docs/manuscripts/authoring/jupyterlab.html)
 
@@ -57,7 +57,4 @@ pip install -r requirements.txt
 ```
 
 You can then run the notebook `index.ipynb`, which contains all the main results and figures. You can also execute all the supplementary notebooks. 
-
-
-This is a template repo for generating a manuscript from Quarto that accompanies the tutorial at: 
 
