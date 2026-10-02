@@ -7,4 +7,4 @@ jupyter == 1.1.1
 scikit-learn == 1.8.0
 networkx == 3.6.1
 pymc == 5.27.1
-stabst @ git+https://github.com/AlexLepauvre/state-abstraction.git@main
+stabst @ git+https://github.com/AlexLepauvre/state-abstraction.git@v1.0.0

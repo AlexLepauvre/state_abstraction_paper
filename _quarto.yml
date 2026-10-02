@@ -3,9 +3,10 @@ project:
   render:
     - "*.ipynb" 
     - "!./internal/"
+    - "!.qmd"
 
 execute:
-  enabled: true
+  enabled: false
 
 format:
   html:
@@ -14,7 +15,7 @@ format:
       hypothesis: false
   docx: default
   jats: default
-  plos-pdf: default
+  biorxiv-pdf: default
 
 crossref:
   custom:
