@@ -11,7 +11,6 @@
 
 **/*.quarto_ipynb
 /pres-test_files/
-/_extensions/
 /task_structured_pref_presentation_files/
 /utilities/__pycache__/
 /site_libs/
